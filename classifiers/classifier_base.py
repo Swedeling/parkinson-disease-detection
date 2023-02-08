@@ -2,10 +2,8 @@ from abc import ABC, abstractmethod
 
 
 class ClassifierBase(ABC):
-
-    @abstractmethod
-    def _name(self):
-        pass
+    def __init__(self):
+        self._name = None
 
     @abstractmethod
     def run_classifier(self):
