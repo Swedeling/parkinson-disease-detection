@@ -1,28 +1,71 @@
 import os
+import librosa
 import pandas as pd
+from pydub import AudioSegment
 
 DATA_ROOT_DIR = "data"
+SR = 44100
+PD_RECORDINGS_DIR = os.path.join(DATA_ROOT_DIR, "AGH-dataset", "Polish_audio_03_10_2022", "Polish_raw")
+HS_RECORDINGS_DIR = os.path.join(DATA_ROOT_DIR, "polish_audio_sustained_HS")
 
 
 class DataLoader:
     def __init__(self):
-        self.metadata = pd.read_excel(os.path.join(DATA_ROOT_DIR, "sustained_polish/UPDRS_description.xlsx"), nrows=28)
+        self.a_pd_off_recordings, self.a_pd_off_labels = self.load_recordings("PD", "a")
+        self.e_pd_off_recordings, self.e_pd_off_labels = self.load_recordings("PD", "e")
+        self.i_pd_off_recordings, self.i_pd_off_labels = self.load_recordings("PD", "i")
+        self.o_pd_off_recordings, self.o_pd_off_labels = self.load_recordings("PD", "o")
+        self.u_pd_off_recordings, self.u_pd_off_labels = self.load_recordings("PD", "u")
 
-        self.recording_no, self.disease_length, self.age = None, None, None
-        self.updrs_off, self.updrs_30, self.updrs_60, self.updrs_120, self.updrs_180 = None, None, None, None, None
+        self.a_hs_recordings, self.a_hs_labels = self.load_recordings("HS", "a")
+        self.e_hs_recordings, self.e_hs_labels = self.load_recordings("HS", "e")
+        self.i_hs_recordings, self.i_hs_labels = self.load_recordings("HS", "i")
+        self.o_hs_recordings, self.o_hs_labels = self.load_recordings("HS", "o")
+        self.u_hs_recordings, self.u_hs_labels = self.load_recordings("HS", "u")
 
-        self.prepare_labels()
+        self.metadata = self.load_metadata()
 
-    def prepare_labels(self):
-        self.recording_no = self.metadata["recording no"]
-        self.age = self.metadata["age"]
-        self.updrs_off = self.metadata["UPDRS OFF"]
-        self.updrs_30 = self.metadata["UPDRS 30"]
-        self.updrs_60 = self.metadata["UPDRS 60"]
-        self.updrs_120 = self.metadata[" UPDRS 120"]
-        self.updrs_180 = self.metadata[" UPDRS 180"]
-        self.disease_length = self.metadata["disease length [years]"]
+    @staticmethod
+    def load_recordings(mode, vowel):
+        data, labels = [], []
 
-    def load_data(self):
-        pass
+        if mode == "PD":
+            vowel_dir_path = os.path.join(PD_RECORDINGS_DIR, "off", vowel)
+        elif mode == "HS":
+            vowel_dir_path = os.path.join(HS_RECORDINGS_DIR, vowel)
+        else:
+            vowel_dir_path = []
 
+        for recording_name in os.listdir(vowel_dir_path):
+            if recording_name.endswith("m4a"):
+                convert_file_extension_into_wav(vowel_dir_path, recording_name)
+
+            try:
+                filename = recording_name.split('.')[0]
+                signal, sr = librosa.load(os.path.join(vowel_dir_path, filename + '.wav'), sr=SR)
+                data.append(signal)
+                labels.append(recording_name)
+
+            except:
+                print("Problem with load file, check extension")
+
+        return data, labels
+
+    @staticmethod
+    def load_metadata():
+        return pd.read_excel(os.path.join("data/AGH-dataset", "sustained_polish/UPDRS_description.xlsx"), nrows=28)
+
+
+def convert_file_extension_into_wav(dir_path, filename, overwrite=False):
+    formats_to_convert = ['.m4a']
+
+    if filename.endswith(tuple(formats_to_convert)):
+        (path, file_extension) = os.path.splitext(filename)
+        file_extension = file_extension.replace('.', '')
+        wav_filename = filename.replace(file_extension, 'wav')
+        wav_file_path = os.path.join(dir_path, wav_filename)
+
+        if not os.path.exists(wav_file_path) or overwrite is True:
+            track = AudioSegment.from_file(os.path.join(dir_path, filename), format=file_extension)
+            print('CONVERTING: ' + str(wav_file_path))
+            file_handle = track.export(wav_file_path, format='wav')
