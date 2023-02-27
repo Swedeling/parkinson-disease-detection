@@ -41,13 +41,12 @@ class DataLoader:
                 convert_file_extension_into_wav(vowel_dir_path, recording_name)
 
             try:
-                filename = recording_name.split('.')[0]
-                signal, sr = librosa.load(os.path.join(vowel_dir_path, filename + '.wav'), sr=SR)
+                signal, sr = librosa.load(os.path.join(vowel_dir_path, recording_name.split('.')[0] + '.wav'), sr=SR)
                 data.append(signal)
                 labels.append(recording_name)
 
             except:
-                print("Problem with load file, check extension")
+                print("Problem with loading file: {}".format(recording_name))
 
         return data, labels
 
@@ -66,6 +65,9 @@ def convert_file_extension_into_wav(dir_path, filename, overwrite=False):
         wav_file_path = os.path.join(dir_path, wav_filename)
 
         if not os.path.exists(wav_file_path) or overwrite is True:
-            track = AudioSegment.from_file(os.path.join(dir_path, filename), format=file_extension)
-            print('CONVERTING: ' + str(wav_file_path))
-            file_handle = track.export(wav_file_path, format='wav')
+            try:
+                track = AudioSegment.from_file(os.path.join(dir_path, filename), format=file_extension)
+                print('CONVERTING: ' + str(wav_file_path))
+                file_handle = track.export(wav_file_path, format='wav')
+            except:
+                print("Problem with converting file: {}".format(filename))
