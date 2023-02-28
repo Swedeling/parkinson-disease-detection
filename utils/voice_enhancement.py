@@ -27,10 +27,8 @@ def silence_removing(signal, filename):
     for window in frames:
         zeros, ones = 0, 0
         for i in window:
-            if i == 0:
-                zeros += 1
-            if i == 1:
-                ones += 1
+            zeros += 1 if i == 0 else 0
+            ones += 1 if i == 1 else 0
 
         corrected_window = np.zeros_like(window) if zeros > ones else np.ones_like(window)
         labels.append(corrected_window)
@@ -57,4 +55,3 @@ def silence_removing(signal, filename):
         plt.show()
 
     return result
-
