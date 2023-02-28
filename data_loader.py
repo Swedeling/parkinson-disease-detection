@@ -41,9 +41,10 @@ class DataLoader:
                 convert_file_extension_into_wav(vowel_dir_path, recording_name)
 
             try:
-                signal, sr = librosa.load(os.path.join(vowel_dir_path, recording_name.split('.')[0] + '.wav'), sr=SR)
-                data.append(signal)
-                labels.append(recording_name)
+                if recording_name.replace("m4a", "wav") not in labels:
+                    signal, sr = librosa.load(os.path.join(vowel_dir_path, recording_name.split('.')[0] + '.wav'), sr=SR)
+                    data.append(signal)
+                    labels.append(recording_name.replace("m4a", "wav"))
 
             except:
                 print("Problem with loading file: {}".format(recording_name))
