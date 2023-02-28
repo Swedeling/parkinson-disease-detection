@@ -2,3 +2,6 @@ pandas==1.5.1
 openpyxl
 librosa~=0.10.0
 pydub~=0.25.1
+matplotlib~=3.7.0
+sounddevice~=0.4.6
+numpy~=1.23.5
