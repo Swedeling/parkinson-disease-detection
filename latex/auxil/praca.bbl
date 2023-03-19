@@ -1,0 +1,187 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{WHO}{article}{}
+    \name{author}{1}{}{%
+      {{hash=OWH}{%
+         family={Organization},
+         familyi={O\bibinitperiod},
+         given={World\bibnamedelima Health},
+         giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {World Health Organization}%
+    }
+    \strng{namehash}{OWH1}
+    \strng{fullhash}{OWH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{isbn}{9789240050983}
+    \field{title}{Parkinson disease: a public health approach. Technical
+  brief.}
+    \verb{url}
+    \verb https://www.who.int/publications/i/item/9789240050983
+    \endverb
+    \field{year}{2022}
+  \endentry
+
+  \entry{ML_for_PD_review}{article}{}
+    \name{author}{3}{}{%
+      {{hash=MJ}{%
+         family={Mei},
+         familyi={M\bibinitperiod},
+         given={Jie},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=DC}{%
+         family={Desrosiers},
+         familyi={D\bibinitperiod},
+         given={Christian},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=FJ}{%
+         family={Frasnelli},
+         familyi={F\bibinitperiod},
+         given={Johannes},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MJDCFJ1}
+    \strng{fullhash}{MJDCFJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Diagnosis of Parkinson's disease (PD) is commonly based on medical
+  observations and assessment of clinical signs, including the characterization
+  of a variety of motor symptoms. However, traditional diagnostic approaches
+  may suffer from subjectivity as they rely on the evaluation of movements that
+  are sometimes subtle to human eyes and therefore difficult to classify,
+  leading to possible misclassification. In the meantime, early non-motor
+  symptoms of PD may be mild and can be caused by many other conditions.
+  Therefore, these symptoms are often overlooked, making diagnosis of PD at an
+  early stage challenging. To address these difficulties and to refine the
+  diagnosis and assessment procedures of PD, machine learning methods have been
+  implemented for the classification of PD and healthy controls or patients
+  with similar clinical presentations (e.g., movement disorders or other
+  Parkinsonian syndromes). To provide a comprehensive overview of data
+  modalities and machine learning methods that have been used in the diagnosis
+  and differential diagnosis of PD, in this study, we conducted a literature
+  review of studies published until February 14, 2020, using the PubMed and
+  IEEE Xplore databases. A total of 209 studies were included, extracted for
+  relevant information and presented in this review, with an investigation of
+  their aims, sources of data, types of data, machine learning methods and
+  associated outcomes. These studies demonstrate a high potential for
+  adaptation of machine learning methods and novel biomarkers in clinical
+  decision making, leading to increasingly systematic, informed diagnosis of
+  PD.%
+    }
+    \verb{doi}
+    \verb 10.3389/fnagi.2021.633752
+    \endverb
+    \field{issn}{1663-4365}
+    \field{title}{Machine Learning for the Diagnosis of Parkinson's Disease: A
+  Review of Literature}
+    \verb{url}
+    \verb https://www.frontiersin.org/articles/10.3389/fnagi.2021.633752
+    \endverb
+    \field{volume}{13}
+    \field{journaltitle}{Frontiers in Aging Neuroscience}
+    \field{year}{2021}
+  \endentry
+
+  \entry{SustainedVowelsProblems}{article}{}
+    \name{author}{5}{}{%
+      {{hash=OAS}{%
+         family={Ozbolt},
+         familyi={O\bibinitperiod},
+         given={Alex\bibnamedelima S.},
+         giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=MVL}{%
+         family={Moro-Velazquez},
+         familyi={M\bibinithyphendelim V\bibinitperiod},
+         given={Laureano},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=LI}{%
+         family={Lina},
+         familyi={L\bibinitperiod},
+         given={Ioan},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=BAA}{%
+         family={Butala},
+         familyi={B\bibinitperiod},
+         given={Ankur\bibnamedelima A.},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=DN}{%
+         family={Dehak},
+         familyi={D\bibinitperiod},
+         given={Najim},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{OAS+1}
+    \strng{fullhash}{OASMVLLIBAADN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Diagnosing Parkinson&rsquo;s Disease (PD) necessitates monitoring symptom
+  progression. Unfortunately, diagnostic confirmation often occurs years after
+  disease onset. A more sensitive and objective approach is paramount to the
+  expedient diagnosis and treatment of persons with PD (PwPDs). Recent studies
+  have shown that we can train accurate models to detect signs of PD from audio
+  recordings of confirmed PwPDs. However, disparities exist between studies and
+  may be caused, in part, by differences in employed corpora or methodologies.
+  Our hypothesis is that unaccounted covariates in methodology, experimental
+  design, and data preparation resulted in overly optimistic results in studies
+  of PD automatic detection employing sustained vowels. These issues include
+  record-wise fold creation rather than subject-wise; an imbalance of age
+  between the PwPD and control classes; using too small of a corpus compared to
+  the sizes of feature vectors; performing cross-validation without including
+  development data; and the absence of cross-corpora testing to confirm
+  results. In this paper, we evaluate the influence of these methodological
+  issues in the automatic detection of PD employing sustained vowels. We
+  perform several experiments isolating each issue to measure its influence
+  employing three different corpora. Moreover, we analyze if the perceived
+  dysphonia of the speakers could be causing differences in results between the
+  corpora. Results suggest that each independent methodological issue analyzed
+  has an effect on classification accuracy. Consequently, we recommend a list
+  of methodological steps to be considered in future experiments to avoid
+  overoptimistic or misleading results.%
+    }
+    \verb{doi}
+    \verb 10.3390/app12030991
+    \endverb
+    \field{issn}{2076-3417}
+    \field{number}{3}
+    \field{title}{Things to Consider When Automatically Detecting
+  Parkinson&rsquo;s Disease Using the Phonation of Sustained Vowels: Analysis
+  of Methodological Issues}
+    \verb{url}
+    \verb https://www.mdpi.com/2076-3417/12/3/991
+    \endverb
+    \field{volume}{12}
+    \field{journaltitle}{Applied Sciences}
+    \field{year}{2022}
+  \endentry
+\enddatalist
+\endinput

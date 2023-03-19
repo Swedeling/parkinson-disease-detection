@@ -1,0 +1,19 @@
+\babel@toc {polish}{}\relax 
+\contentsline {chapter}{\numberline {1}Wprowadzenie}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Cel pracy}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Zakres pracy}{7}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Problematyka zagadnienia w świetle literatury}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Charakterystyka choroby Parkinsona}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Etapy Choroby}{10}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Głos w chorobie Parkinsona}{10}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Problematyka choroby}{10}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}Przegląd dostępnych rozwiązań}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Rozwiązania teoretyczne}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Aplikacje rzeczywiste}{10}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Wady istniejących rozwiązań}{10}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Wnioski}{11}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Materiał i metoda badawcza}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Baza danych}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Architektury sieci}{13}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Wyniki badań}{15}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Podsumowanie}{17}{chapter.5}%
