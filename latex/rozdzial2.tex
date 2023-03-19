@@ -53,7 +53,7 @@ Nowe zachorowania nadal skorelowane są z wiekiem, średnia wieku chorych wynosi
 \label{sec:przeglad}
 
 Diagnoza PD jest powszechnie oparta na obserwacjach lekarskich i ocenie objawów klinicznych, w tym charakterystyce różnorodnych objawów ruchowych.
-Rosnąca liczba zachorowań i obniżenie wieku osób w grupie ryzyka, skutkuje wzrostem zainteresowania dotyczącym narzędzi, które ułatwiłyby
+Rosnąca liczba zachorowań i obniżenie wieku osób będących w grupie ryzyka, skutkuje wzrostem zainteresowania dotyczącym narzędzi, które ułatwiłyby
 zarówno codzienne funkcjonowanie pacjentów jak i pracę lekarzy.
 Tradycyjne metody diagnostyczne mogą być obarczone subiektywizmem ponieważ opierają się na ocenie ruchów, które są czasami subtelne dla
 ludzkiego oka i dlatego trudne do sklasyfikowania, co może przyczynić się do błędnej diagnozy.
@@ -69,12 +69,12 @@ pacjentów z podobnymi objawami klinicznymi (np. zaburzeniami ruchu lub innymi z
 W przeglądzie publikacji na temat wykorzystania uczenia maszynowego do diagnostyki PD do 2020 roku wyróżniono 209 artykułów\cite{ML_for_PD_review}.
 
 
-%\begin{figure}[htbp]
-%	\centering
-%	\includegraphics[width=0.7\textwidth]{./img/plot_PD_detection_methods}
-%	\caption{Wykres przedstawiający rozkład rodzaju danych na których bazowały systemy ML do diagnostyki PD\cite{ML_for_PD_review} (stan na dzień 14 luty 2020)}
-%    \label{fig:wykres_1}
-%\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./img/plot_PD_detection_methods}
+	\caption{Wykres przedstawiający rozkład rodzaju danych na których bazowały systemy ML do diagnostyki PD\cite{ML_for_PD_review} (stan na dzień 14 luty 2020)}
+    \label{fig:pd_detection_methods}
+\end{figure}
 
 
 \subsection{Rozwiązania teoretyczne}
@@ -84,42 +84,69 @@ W przeglądzie publikacji na temat wykorzystania uczenia maszynowego do diagnost
 \label{subsec:aplikacje}
 
 
-\subsection{Wady istniejących rozwiązań}
+\subsection{Niedopatrzenia dotychczasowych rozwiązań}
 \label{subsec:wady_rozwiazan}
 
 Ostatnie badania wykazały, że możemy wytrenować dokładne modele do wykrywania oznak PD z nagrań audio.
 Jednakże, istnieją rozbieżności pomiędzy badaniami i mogą być spowodowane, częściowo, przez różnice w
 wykorzystywanych korpusach lub metodologii.
-Dlatego w\cite{SustainedVowelsProblems} przeprowadzono analizę, która wykazała, że nieuwzględnione zmienne w metodologii,
-projekcie eksperymentalnym i przygotowaniu danych doprowadziły do zbyt optymistycznych wyników w badaniach nad
-automatyczną detekcją PD z wykorzystaniem podtrzymywanych samogłosek.
-Przeprowadzono eksperymenty, które pozwoliły na sformułowanie kilku zasad zabezpieczających przed zbyt
-optymistycznymi i mylącymi wynikami.
-Zidentyfikowano następujące czynniki, jako wpływające na wyniki klasyfikacji:
+Dlatego w  \cite{SustainedVowelsProblems} przeprowadzono analizę, wpływu niektórych czynników na wyniki klasyfikacji.
+Głównym celem artykułu była ich identyfikacja oraz stworzenie zasad, które w przyszłosći pozwolą usystematyzować
+stan wiedzy w tej dziedzinie.
+W badaniach skupiono się na przedłużonych samogłoskach (ang. \emph{sustained vowels}), ponieważ jak wykazano wcześniej
+[...].
+Przeprowadzone eksperymenty wykazały, że nieuwzględnione zmienne w metodologii, projekcie eksperymentalnym i
+przygotowaniu danych prowadzą do zbyt optymistycznych wyników w badaniach nad automatyczną detekcją PD.
+Czynniki, które zidentyfikowano jako przyczyniające sią do zbyt optymistycznych wyników klasyfikacji
+przedstawiono na Rys. \ref{fig:factors_PD_detection} oraz omówiono poniżej.
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.4\textwidth]{./img/influence_of_factors_on_PD_detection}
+	\caption{Czynniki wpływające na dokładność detekcji Parkinsona na podstawie głosu według analizy przeprowadzonej w \cite{SustainedVowelsProblems}}
+    \label{fig:factors_PD_detection}
+\end{figure}
 
 
 \begin{enumerate}[label={\alph*)}]
-	\item Wpływ tożsamości mówcy na dokładność klasyfikacji
-	\item[] Im większa różnica między liczbą plików a wymiarem wektora cech, tym większe szanse na znalezienie cechy, która losowo koreluje z etykietami klas.
-  	\item Wpływ różnicy wieku między klasami na dokładność klasyfikacji
-	\item[] Różnica w średnim wieku mówców z oraz bez choroby Parkinsona może prowadzić do zbyt optymistycznych wyników, ponieważ
-związany z wiekiem wpływ na głos mówców może wpływać na klasyfikator.
+	\item \textbf{Wpływ tożsamości mówcy}
+	\item[] W przypadku, gdy w zbiorze danych znajduje się kilka nagrań od tego samego mówcy można postąpić na dwa sposoby.
+Pierwszy z nich to podział według podmiotów (ang. \emph{subject-wise split}) polegający na tym, że nagrania od tej samej
+osoby znajdują się albo w zbiorze treningowym albo testowym - nigdy w obu na raz.
+W niektórych opracowań można spotkać też drugie podejście, czyli podział według rekordów (ang.\emph{record-wise split}), gdzie nagrania są losowo dzielone do zbiorów
+lub intencjonalnie używa się nagrań od tej samej osoby zarówno w zbiorze testowym jak i treningowym.
+Okazuje się, że podejście typu \emph{record-wise} prowadzi do wyższej dokładności niż \emph{subject-wise split}, jeśli pozostałe założenia pozostają identyczne.
+Prawdopodobnie wynika to z faktu, że klasyfikator nastawia się na wykrywanie unikalnych informacji indywidualnych,
+reprezentowanych przez współczynniki takie jak MFCC i PLP, a nie rzeczywiste biomarkery lub wzorce PD.
+Dlatego też rekomendowana jest technika \emph{subject-wise split}, aby uniknąć zbyt optymistycznych wyników.
+
+  	\item \textbf{Wpływ różnicy wieku między klasami}
+	\item[] W literaturze można znaleźć prace wykorzystujące zbiory danych, w których  średni wiek mówców
+w klasie osób chorych na PD różni się od średniego wieku w klasie osób zdrowych o ponad 5 lat.
+Autorzy zapewniają o wysokiej skuteczności  swoich rozwiązań, jednak nie rozważają oni sytuacji, w której klasyfikator
+uczy się wykrywać cechy powiązane z wiekiem, zamiast rzeczywistych wzorców PD.
+Aby zbadać wpływ średniej różnicy wieku między dwiema klasami, w \cite{SustainedVowelsProblems} testowano różne przesunięcia rozkładu wieku.
+Wraz ze wzrostem różnicy między średnim wiekiem uczestników z PD i HC, dokładność klasyfikacji konsekwentnie rosła (Rys. \ref{fig:acc_and_age_diff}).
+Na tej podstawie można stwierdzić, że związany z wiekiem wpływ na głos mówców może zaburzać wyniki otrzymywane przez klasyfikator.
+Dlatego też zaleca się zbilansowanie używanych zbiorów danych, tak aby średnia różnica wieku między dwoma klasami  była jak namniejsza.
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./img/acc_and_age_difference}
+	\caption{Wykres przedstawiający zależność różnicy wieku między klasami a dokładnością klasyfikacji \cite{SustainedVowelsProblems}}
+    \label{fig:acc_and_age_diff}
+\end{figure}
 
   	\item Wpływ losowości cech na dokładność klasyfikacji
+	\item [] Im większa różnica między liczbą plików a wymiarem wektora cech, tym większe szanse na znalezienie cechy, która losowo koreluje z etykietami klas.
   	\item Łagodzenie losowego nadmiernego dopasowania przy użyciu danych programistycznych
 	\item Wpływ rozpoczęcia i przesunięcia samogłosek na wyniki klasyfikacji
  	\item Eksperymenty międzykorporowe
 	\item Analiza cech
 \end{enumerate}
 
-
-
-%\begin{figure}[htbp]
-%	\centering
-%	\includegraphics[width=0.7\textwidth]{./img/influence_of_factos_on_PD_detection}
-%	\caption{Czynniki wpływające na dokładność detekcji Parkinsona na podstawie głosu]}
-%    \label{fig:wykres_2}
-%\end{figure}
 
 
 Nie są to jednak wszystkie czynniki, które zaburzają obiektywność wyników. Konieczna jest dyskusja na temat nowych
@@ -133,5 +160,11 @@ a także innych ogólnych zastosowań przetwarzania mowy.
 Prace nad automatyczną detekcją Parkinsona na podstawie głosu trwają już od dłuższego czasu.
 Jednak wciąż brakuje systemu, który mógłby zostać uznany jako wystarczajaco niezawodne narzędzie diagnostyczne.
 Wśród problemów, które ograniczają rzeczywiste wykorzystanie takich systemów wyróżnia się:
+
+\begin{itemize}
+\item pierwszy punkt
+\item drugi punkt
+\item trzeci punkt
+\end{itemize}
 
 %---------------------------------------------------------------------------
