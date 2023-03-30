@@ -3,7 +3,7 @@ import numpy as np
 
 from data_loader import SR
 
-SHOW_PLOTS = False
+SHOW_PLOTS = True
 
 
 def silence_removing(signal, filename):
