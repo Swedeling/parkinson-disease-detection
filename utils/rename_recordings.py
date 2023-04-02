@@ -3,9 +3,8 @@ import os
 import shutil
 
 
-def rename_italian_recordings_by_info_file(data_dir):
+def rename_polish_recordings_by_info_file(data_dir):
     data_dir = os.path.abspath(data_dir)
-
     encoding_file = os.path.join(data_dir, "encoding_file.json")
     if not os.path.isfile(encoding_file):
         print("Encoding file not found.")
@@ -13,6 +12,33 @@ def rename_italian_recordings_by_info_file(data_dir):
 
     with open(encoding_file, 'r') as file:
         recordings_info = json.load(file)
+
+    for dirpath, dirnames, filenames in os.walk(data_dir):
+        for filename in filenames:
+            if filename.endswith(".wav") and not filename.startswith("p_"):
+                new_filename = filename
+                for key, value in recordings_info.items():
+                    if key in filename:
+                        new_filename = filename.replace(key, str(value))
+                old_path = os.path.join(dirpath, filename)
+                new_path = os.path.join(dirpath, "p_" + new_filename)
+                os.rename(old_path, new_path)
+
+
+def load_encoding_file(data_dir):
+    encoding_file = os.path.join(data_dir, "encoding_file.json")
+    if not os.path.isfile(encoding_file):
+        print("Encoding file not found.")
+        return
+
+    with open(encoding_file, 'r') as file:
+        recordings_info = json.load(file)
+
+    return recordings_info
+
+
+def rename_italian_recordings_by_info_file(data_dir):
+    recordings_info = load_encoding_file(data_dir)
 
     for info in recordings_info:
         if len(info) != 4:
@@ -45,7 +71,7 @@ def rename_italian_recordings(data_dir, dirname, age, id, sex):
         return
 
     for file in os.listdir(dirname_path):
-        if file.startswith("i_"):
+        if str(file).startswith('i_'):
             continue
 
         if file[1] == "A":
