@@ -1,78 +1,49 @@
 import os
-import librosa
+from structs.recording import Recording
 import pandas as pd
-from pydub import AudioSegment
-
-DATA_ROOT_DIR = "data"
-SR = 44100
-PD_RECORDINGS_DIR = os.path.join(DATA_ROOT_DIR, "AGH-dataset", "Polish_audio_03_10_2022", "Polish_raw")
-HS_RECORDINGS_DIR = os.path.join(DATA_ROOT_DIR, "polish_audio_sustained_HS")
+from config import HS_RECORDINGS_DIR, PD_RECORDINGS_DIR, MODE
 
 
 class DataLoader:
     def __init__(self):
-        self.a_pd_off_recordings, self.a_pd_off_labels = self.load_recordings("PD", "a")
-        self.e_pd_off_recordings, self.e_pd_off_labels = self.load_recordings("PD", "e")
-        self.i_pd_off_recordings, self.i_pd_off_labels = self.load_recordings("PD", "i")
-        self.o_pd_off_recordings, self.o_pd_off_labels = self.load_recordings("PD", "o")
-        self.u_pd_off_recordings, self.u_pd_off_labels = self.load_recordings("PD", "u")
+        self.a_pd_off_recordings = self.load_recordings("PD", "a")
+        # self.a_pd_off_recordings = self.load_recordings("PD", "a")
+        # self.e_pd_off_recordings = self.load_recordings("PD", "e")
+        # self.i_pd_off_recordings = self.load_recordings("PD", "i")
+        # self.o_pd_off_recordings = self.load_recordings("PD", "o")
+        # self.u_pd_off_recordings = self.load_recordings("PD", "u")
+        # self.a_hs_recordings = self.load_recordings("HS", "a")
+        # self.e_hs_recordings = self.load_recordings("HS", "e")
+        # self.i_hs_recordings = self.load_recordings("HS", "i")
+        # self.o_hs_recordings = self.load_recordings("HS", "o")
+        # self.u_hs_recordings = self.load_recordings("HS", "u")
 
-        self.a_hs_recordings, self.a_hs_labels = self.load_recordings("HS", "a")
-        self.e_hs_recordings, self.e_hs_labels = self.load_recordings("HS", "e")
-        self.i_hs_recordings, self.i_hs_labels = self.load_recordings("HS", "i")
-        self.o_hs_recordings, self.o_hs_labels = self.load_recordings("HS", "o")
-        self.u_hs_recordings, self.u_hs_labels = self.load_recordings("HS", "u")
-
-        self.metadata = self.load_metadata()
+        self.metadata = self.load_metadata(MODE)
 
     @staticmethod
     def load_recordings(mode, vowel):
-        data, labels = [], []
+        data = []
 
         if mode == "PD":
-            vowel_dir_path = os.path.join(PD_RECORDINGS_DIR, "off", vowel)
+            vowel_dir_path = os.path.join(PD_RECORDINGS_DIR, vowel)
+            classname = 1
         elif mode == "HS":
             vowel_dir_path = os.path.join(HS_RECORDINGS_DIR, vowel)
+            classname = 0
         else:
-            vowel_dir_path = []
+            vowel_dir_path, classname = "", None
 
         for recording_name in os.listdir(vowel_dir_path):
-            if recording_name.endswith("m4a"):
-                convert_file_extension_into_wav(vowel_dir_path, recording_name)
-
-            try:
-                if recording_name.replace("m4a", "wav") not in labels:
-                    signal, sr = librosa.load(os.path.join(vowel_dir_path, recording_name.split('.')[0] + '.wav'), sr=SR)
-                    data.append(signal)
-                    labels.append(recording_name.replace("m4a", "wav"))
-
-            except:
-                print("Problem with loading file: {}".format(recording_name))
-
-        return data, labels
+            data.append(Recording(vowel_dir_path, str(recording_name), classname))
+        return data
 
     @staticmethod
-    def load_metadata():
-        return pd.read_excel(os.path.join("data/AGH-dataset", "sustained_polish/UPDRS_description.xlsx"), nrows=28)
-
-
-def convert_file_extension_into_wav(dir_path, filename, overwrite=False):
-    formats_to_convert = ['.m4a']
-
-    if filename.endswith(tuple(formats_to_convert)):
-        (path, file_extension) = os.path.splitext(filename)
-        file_extension = file_extension.replace('.', '')
-        wav_filename = filename.replace(file_extension, 'wav')
-        wav_file_path = os.path.join(dir_path, wav_filename)
-
-        if not os.path.exists(wav_file_path):
-            try:
-                track = AudioSegment.from_file(os.path.join(dir_path, filename), format=file_extension)
-                print('CONVERTING: ' + str(wav_file_path))
-                file_handle = track.export(wav_file_path, format='wav')
-
-                if overwrite:
-                    os.remove(os.path.join(dir_path, filename))
-
-            except:
-                print("Problem with converting file: {}".format(filename))
+    def load_metadata(mode):
+        df = pd.read_excel("data/database_summary.xlsx")
+        if mode == "italian":
+            return df[df['language'] == 'italian']
+        if mode == "polish":
+            return df[df['language'] == 'polish']
+        if mode == "all":
+            return df
+        return None

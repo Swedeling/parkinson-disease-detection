@@ -1,12 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
-from data_loader import SR
-
-SHOW_PLOTS = True
+from config import SR, SHOW_PLOTS
 
 
-def silence_removing(signal, filename):
+def silence_removing(signal, filename="Test signal"):
     std = np.std(signal[:int(SR*0.5)])
     mean = np.mean(signal[:int(SR*0.5)])
 

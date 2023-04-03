@@ -2,7 +2,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import sounddevice as sd
 
-from data_loader import SR
+from config import SR
 
 mpl.use('TkAgg')
 
@@ -21,4 +21,3 @@ def plot_voice_recording(signal, label):
 def play_voice_recording(signal, label):
     sd.play(signal, SR)
     status = sd.wait()
-

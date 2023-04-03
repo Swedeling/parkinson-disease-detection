@@ -1,7 +1,6 @@
-from utils.audio_player import plot_voice_recording
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
-from data_loader import convert_file_extension_into_wav
+from utils.convert_records import convert_file_extension_into_wav
 import os
 
 
