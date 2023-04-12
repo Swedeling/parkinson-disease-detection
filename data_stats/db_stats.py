@@ -1,23 +1,17 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-
-DATA_PATH = "data/database_summary.xlsx"
-PRINT_DB_INFO = False
-SAVE_PLOTS = True
-
-CLASS_ENCODING = {"PD": 1, "HS": 0}
-GENDER_ENCODING = {'K': 0, 'M': 1}
+from config import SUMMARY_PATH, PRINT_DB_INFO, SAVE_PLOTS, GENDER_ENCODING
 
 
 def run_dataset_analysis():
     variants = ["polish+italian", "polish", "italian"]
     for variant in variants:
         print("RUN ANALYSIS FOR {} VARIANT".format(variant.upper()))
-        df = _get_data_info(DATA_PATH, variant)
+        df = _get_data_info(SUMMARY_PATH, variant)
         if PRINT_DB_INFO:
             print_db_info(df)
-        _plot_graphs(df, variant)
+        # _plot_graphs(df, variant)
         _describe_dataset(df, variant)
         print("=================================================")
 
@@ -83,6 +77,11 @@ def _describe_dataset(df, variant):
         f.write("SUMMARY FOR {} DATASET\n\n".format(variant.upper()))
 
         f.write("NUMBER OF RECORDINGS: {} \n\n".format(len(df)))
+
+        f.write("CLASSES: \n")
+        f.write("PD: " + str(df['label'].value_counts()[1]) + "\n")
+        f.write("HS: " + str(df['label'].value_counts()[0]) + "\n\n")
+
         f.write("GENDER: \n")
         f.write("M: " + str(df['gender'].value_counts()[1]) + "\n")
         f.write("K: " + str(df['gender'].value_counts()[0]) + "\n\n")
@@ -90,3 +89,14 @@ def _describe_dataset(df, variant):
         f.write("AGE: \n")
         f.write("Mean: " + str(df['age'].mean()) + "\n")
         f.write("STD: " + str(df['age'].std()) + "\n\n")
+
+
+def save_recording_len_to_df(data):
+    paths, rec_lengths, rec_trimmed_lengths = [], [], []
+    for recording in data:
+        paths.append(recording.dir_path + recording.filename)
+        rec_lengths.append(recording.length)
+        rec_trimmed_lengths.append(len(recording.trimmed_recording))
+
+        df = pd.DataFrame({'path': paths, 'length': rec_lengths, 'trimmed length': rec_trimmed_lengths})
+        df.to_excel('data/recordings_summary.xlsx', index=False)
