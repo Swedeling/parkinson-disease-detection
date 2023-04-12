@@ -14,10 +14,10 @@ def divide_records(dir_path):
 
         sound = AudioSegment.from_file(os.path.join(dir_path, filename + ".wav"), format="wav")
 
-        silence_threshold = -50.0  # silence threshold
+        silence_threshold = -30  # silence threshold
 
         sound_chunks = split_on_silence(sound,
-                                        min_silence_len=500,  # (ms)
+                                        min_silence_len=200,  # (ms)
                                         silence_thresh=silence_threshold,
                                         keep_silence=100)  # (ms)
 

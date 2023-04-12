@@ -11,7 +11,7 @@ def run_dataset_analysis():
         df = _get_data_info(SUMMARY_PATH, variant)
         if PRINT_DB_INFO:
             print_db_info(df)
-        _plot_graphs(df, variant)
+        # _plot_graphs(df, variant)
         _describe_dataset(df, variant)
         print("=================================================")
 
@@ -77,6 +77,11 @@ def _describe_dataset(df, variant):
         f.write("SUMMARY FOR {} DATASET\n\n".format(variant.upper()))
 
         f.write("NUMBER OF RECORDINGS: {} \n\n".format(len(df)))
+
+        f.write("CLASSES: \n")
+        f.write("PD: " + str(df['label'].value_counts()[1]) + "\n")
+        f.write("HS: " + str(df['label'].value_counts()[0]) + "\n\n")
+
         f.write("GENDER: \n")
         f.write("M: " + str(df['gender'].value_counts()[1]) + "\n")
         f.write("K: " + str(df['gender'].value_counts()[0]) + "\n\n")
