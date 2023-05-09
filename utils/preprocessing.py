@@ -1,11 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
+
 from config import SR, SHOW_PLOTS
 
 
 def silence_removing(signal, filename="Test signal"):
-    std = np.std(signal[:int(SR*0.5)])
-    mean = np.mean(signal[:int(SR*0.5)])
+    std = np.std(signal[:1600])
+    mean = np.mean(signal[:1600])
 
     encoded_signal = np.zeros(signal.shape)
 
