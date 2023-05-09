@@ -1,7 +1,6 @@
 SR = 44100
-PD_RECORDINGS_DIR = "data/PD_polish"
-HS_RECORDINGS_DIR = "data/HS_polish"
-MODE = "polish"
+RECORDINGS_DIR = "data"
+AVAILABLE_LANGUAGES = ["polish", "italian"]
 RUN_DATASET_ANALYSIS = False
 SUMMARY_PATH = "data/database_summary.xlsx"
 PRINT_DB_INFO = False

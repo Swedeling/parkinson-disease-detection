@@ -37,16 +37,12 @@ def load_encoding_file(data_dir):
     return recordings_info
 
 
-def rename_italian_recordings_by_info_file(data_dir):
-    recordings_info = load_encoding_file(data_dir)
+def encode_italian_recordings(data_dir):
+    for filename in os.listdir(data_dir):
+        lang, id, gender, age, vowel, num = filename.split("_")
+        new_filename = "HS_{}.wav".format(id)
 
-    for info in recordings_info:
-        if len(info) != 4:
-            print("Invalid format in encoding file.")
-
-        if os.path.exists(os.path.join(data_dir, info[0])):
-            rename_italian_recordings(data_dir, info[0], info[1], info[2], info[3])
-
+        os.rename(os.path.join(data_dir, filename), os.path.join(data_dir, new_filename))
 
 def rename_italian_recordings(data_dir, dirname, age, id, sex):
     data_dir = os.path.abspath(data_dir)

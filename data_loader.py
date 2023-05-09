@@ -1,49 +1,58 @@
 import os
 from structs.recording import Recording
 import pandas as pd
-from config import HS_RECORDINGS_DIR, PD_RECORDINGS_DIR, MODE
+from config import AVAILABLE_LANGUAGES, RECORDINGS_DIR
+
+LANGUAGE = "all"
 
 
 class DataLoader:
     def __init__(self):
-        self.a_pd_off_recordings = self.load_recordings("PD", "a")
-        # self.a_pd_off_recordings = self.load_recordings("PD", "a")
-        # self.e_pd_off_recordings = self.load_recordings("PD", "e")
-        # self.i_pd_off_recordings = self.load_recordings("PD", "i")
-        # self.o_pd_off_recordings = self.load_recordings("PD", "o")
-        # self.u_pd_off_recordings = self.load_recordings("PD", "u")
-        # self.a_hs_recordings = self.load_recordings("HS", "a")
-        # self.e_hs_recordings = self.load_recordings("HS", "e")
-        # self.i_hs_recordings = self.load_recordings("HS", "i")
-        # self.o_hs_recordings = self.load_recordings("HS", "o")
-        # self.u_hs_recordings = self.load_recordings("HS", "u")
+        self.language = LANGUAGE
 
-        self.metadata = self.load_metadata(MODE)
+        if self.language == "all":
+            languages_to_load = ["italian", "polish"]
+        elif self.language not in AVAILABLE_LANGUAGES:
+            print("Language not available. I am using default language --> polish")
+            languages_to_load = ["polish"]
+        else:
+            languages_to_load = [self.language]
+
+        for language in languages_to_load:
+            if language == "polish":
+                self.a_pd_pol_recordings = self.load_recordings("PD", language, "a")
+                self.a_hs_pol_recordings = self.load_recordings("HS", language, "a")
+
+            if language == "italian":
+                self.a_pd_itl_recordings = self.load_recordings("PD", language, "a")
+                self.a_hs_itl_recordings = self.load_recordings("HS", language, "a")
+
+        self.metadata = self.load_metadata(LANGUAGE)
 
     @staticmethod
-    def load_recordings(mode, vowel):
+    def load_recordings(label, language, vowel):
         data = []
-
-        if mode == "PD":
-            vowel_dir_path = os.path.join(PD_RECORDINGS_DIR, vowel)
+        dir_path = os.path.join(RECORDINGS_DIR, language, "{}_{}".format(label, language))
+        if label == "PD":
             classname = 1
-        elif mode == "HS":
-            vowel_dir_path = os.path.join(HS_RECORDINGS_DIR, vowel)
+        elif label == "HS":
             classname = 0
         else:
-            vowel_dir_path, classname = "", None
+            dir_path, classname = "", None
+
+        vowel_dir_path = os.path.join(dir_path, "recordings", vowel)
 
         for recording_name in os.listdir(vowel_dir_path):
-            data.append(Recording(vowel_dir_path, str(recording_name), classname))
+            data.append(Recording(dir_path, vowel, str(recording_name), classname))
         return data
 
     @staticmethod
-    def load_metadata(mode):
+    def load_metadata(language):
         df = pd.read_excel("data/database_summary.xlsx")
-        if mode == "italian":
+        if language == "italian":
             return df[df['language'] == 'italian']
-        if mode == "polish":
+        if language == "polish":
             return df[df['language'] == 'polish']
-        if mode == "all":
+        if language == "all":
             return df
         return None

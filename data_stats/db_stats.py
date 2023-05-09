@@ -11,7 +11,7 @@ def run_dataset_analysis():
         df = _get_data_info(SUMMARY_PATH, variant)
         if PRINT_DB_INFO:
             print_db_info(df)
-        # _plot_graphs(df, variant)
+        _plot_graphs(df, variant)
         _describe_dataset(df, variant)
         print("=================================================")
 
