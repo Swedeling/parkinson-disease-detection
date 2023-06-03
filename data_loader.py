@@ -1,7 +1,7 @@
-import os
-from structs.recording import Recording
-import pandas as pd
 from config import AVAILABLE_LANGUAGES, RECORDINGS_DIR
+import os
+import pandas as pd
+from structs.recording import Recording
 
 LANGUAGE = "all"
 
@@ -27,7 +27,7 @@ class DataLoader:
                 self.a_pd_itl_recordings = self.load_recordings("PD", language, "a")
                 self.a_hs_itl_recordings = self.load_recordings("HS", language, "a")
 
-        self.metadata = self.load_metadata(LANGUAGE)
+        # self.metadata = self.load_metadata(LANGUAGE)
 
     @staticmethod
     def load_recordings(label, language, vowel):
