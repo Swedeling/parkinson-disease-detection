@@ -133,3 +133,4 @@ dmypy.json
 # private data
 /data
 /latex/templates
+/language analysis
