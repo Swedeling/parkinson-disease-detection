@@ -1,49 +1,35 @@
-from config import AVAILABLE_LANGUAGES, RECORDINGS_DIR
+import numpy as np
 import os
 import pandas as pd
-from structs.recording import Recording
+from sklearn.model_selection import train_test_split
 
-LANGUAGE = "all"
+from config import *
+from structs.recording import Recording
 
 
 class DataLoader:
     def __init__(self):
-        self.language = LANGUAGE
-
-        if self.language == "all":
-            languages_to_load = ["italian", "polish"]
-        elif self.language not in AVAILABLE_LANGUAGES:
-            print("Language not available. I am using default language --> polish")
-            languages_to_load = ["polish"]
-        else:
-            languages_to_load = [self.language]
-
-        for language in languages_to_load:
-            if language == "polish":
-                self.a_pd_pol_recordings = self.load_recordings("PD", language, "a")
-                self.a_hs_pol_recordings = self.load_recordings("HS", language, "a")
-
-            if language == "italian":
-                self.a_pd_itl_recordings = self.load_recordings("PD", language, "a")
-                self.a_hs_itl_recordings = self.load_recordings("HS", language, "a")
+        self.settings = get_settings()
+        self.languages_to_load = get_languages_to_load()
 
         # self.metadata = self.load_metadata(LANGUAGE)
 
-    @staticmethod
-    def load_recordings(label, language, vowel):
+    def load_recordings(self, label, vowel, dataset):
         data = []
-        dir_path = os.path.join(RECORDINGS_DIR, language, "{}_{}".format(label, language))
-        if label == "PD":
-            classname = 1
-        elif label == "HS":
-            classname = 0
-        else:
-            dir_path, classname = "", None
+        for language in self.languages_to_load:
+            dir_path = os.path.join(RECORDINGS_DIR, language, "{}_{}".format(label, language))
 
-        vowel_dir_path = os.path.join(dir_path, "recordings", vowel)
+            if label == "PD":
+                classname = 1
+            elif label == "HS":
+                classname = 0
+            else:
+                dir_path, classname = "", None
 
-        for recording_name in os.listdir(vowel_dir_path):
-            data.append(Recording(dir_path, vowel, str(recording_name), classname))
+            vowel_dir_path = os.path.join(dir_path, "recordings", vowel, dataset)
+
+            for recording_name in os.listdir(vowel_dir_path):
+                data.append(Recording(dir_path, vowel, dataset, str(recording_name), classname, self.settings))
         return data
 
     @staticmethod
@@ -56,3 +42,23 @@ class DataLoader:
         if language == "all":
             return df
         return None
+
+
+def divide_data_into_subsets(class0_data, class1_data):
+    class0_labels = len(class0_data) * [0]
+    class1_labels = len(class1_data) * [1]
+
+    data = class0_data + class1_data
+    labels = class0_labels + class1_labels
+
+    x_train, x_test, y_train, y_test = train_test_split(data, labels, test_size=0.3, random_state=42)
+    train_data = (np.array(x_train), np.array(y_train))
+
+    if USE_VALIDATION_DATASET:
+        x_test, x_val, y_test, y_val = train_test_split(x_test, y_test, test_size=0.33, random_state=42)
+        return train_data, (np.array(x_test), np.array(y_test)), (np.array(x_val), np.array(y_val))
+    else:
+        return train_data, (np.array(x_test), np.array(y_test))
+
+
+
