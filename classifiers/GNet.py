@@ -1,14 +1,15 @@
 from config import *
 from classifiers.classifier_base import ClassifierBase
+
 import tensorflow as tf
 
 
-class AlexNet(ClassifierBase):
+class GNet(ClassifierBase):
     def __init__(self, train_data, test_data, settings, results_dir, val_data=None):
         super().__init__(train_data, test_data, settings, results_dir, val_data)
 
     def _name(self):
-        return "AlexNet"
+        return "GNet"
 
     def _create_model(self):
         model = tf.keras.models.Sequential([
@@ -20,21 +21,15 @@ class AlexNet(ClassifierBase):
                                        padding="same"),
                 tf.keras.layers.BatchNormalization(),
                 tf.keras.layers.MaxPool2D(pool_size=(3, 3), strides=(2, 2)),
-                tf.keras.layers.Conv2D(filters=384, kernel_size=(3, 3), strides=(1, 1), activation='relu',
-                                       padding="same"),
-                tf.keras.layers.BatchNormalization(),
-                tf.keras.layers.Conv2D(filters=384, kernel_size=(3, 3), strides=(1, 1), activation='relu',
-                                       padding="same"),
-                tf.keras.layers.BatchNormalization(),
                 tf.keras.layers.Conv2D(filters=256, kernel_size=(3, 3), strides=(1, 1), activation='relu',
                                        padding="same"),
                 tf.keras.layers.BatchNormalization(),
                 tf.keras.layers.MaxPool2D(pool_size=(3, 3), strides=(2, 2)),
                 tf.keras.layers.Flatten(),
-                tf.keras.layers.Dense(4096, activation='relu'),
                 tf.keras.layers.Dropout(0.5),
-                tf.keras.layers.Dense(4096, activation='relu'),
+                tf.keras.layers.Dense(2048, activation='relu'),
                 tf.keras.layers.Dropout(0.5),
                 tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
             ])
         return model
+

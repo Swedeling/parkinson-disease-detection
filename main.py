@@ -1,69 +1,103 @@
 from classifiers.AlexNet import AlexNet
-from config import RUN_DATASET_ANALYSIS
+from classifiers.GNet import GNet
+from config import *
 from data_loader import DataLoader
-
 from data_stats.db_stats import run_dataset_analysis
+from utils.utils import set_cpu, set_gpu
+
 import numpy as np
-import random
-from sklearn.model_selection import train_test_split
-import tensorflow as tf
+import os
+import pandas as pd
 
-
-# GPUOptions.allow_growth = True
-# print(device_lib.list_local_devices())
-device_name = 'CPU:0'
-
+if DEVICE == "GPU":
+    set_gpu()
+else:
+    set_cpu()
 
 if __name__ == "__main__":
-    with tf.device(device_name):
 
-        if RUN_DATASET_ANALYSIS:
-            print("[INFO] Run dataset analysis...")
-            run_dataset_analysis()
+    if RUN_DATASET_ANALYSIS:
+        print("[INFO] Run dataset analysis...")
+        run_dataset_analysis()
 
-        print("[INFO] Loading data...")
-        data = DataLoader()
-        print(len(data.a_hs_pol_recordings))
-        print(len(data.a_pd_pol_recordings))
-        print(len(data.a_hs_itl_recordings))
-        print(len(data.a_pd_itl_recordings))
+    spectrograms_results = {"settings": ["model_name", "accuracy", "precision", "recall", "f1-score"]}
 
-        a_pd_spectrograms = [recording.spectrogram for recording in data.a_pd_pol_recordings]
-        a_hs_spectrograms = [recording.spectrogram for recording in data.a_hs_pol_recordings]
+    print("[INFO] Loading data...")
+    data = DataLoader()
 
-        pd_train, pd_test = train_test_split(a_pd_spectrograms, test_size=0.3, random_state=42)
-        pd_test, pd_val = train_test_split(pd_test, test_size=0.33, random_state=42)
+    for vowel in VOWELS_TO_LOAD:
+        print("[INFO] Vowel: ", vowel)
+        vowel_dir = os.path.join(RESULTS_DIR, vowel)
+        if not os.path.exists(vowel_dir):
+            os.mkdir(vowel_dir)
 
-        hs_train, hs_test = train_test_split(a_hs_spectrograms, test_size=0.3, random_state=42)
-        hs_test, hs_val = train_test_split(hs_test, test_size=0.33, random_state=42)
+        hs_test_data = data.load_recordings("HS", vowel, "test")
+        pd_test_data = data.load_recordings("PD", vowel, "test")
 
-        X_train = pd_train + hs_train
-        X_test = pd_test + hs_test
-        X_val = pd_val + hs_val
+        hs_train_data = data.load_recordings("HS", vowel, "train")
+        pd_train_data = data.load_recordings("PD", vowel, "train")
 
-        y_train = [1] * len(pd_train) + [0] * len(hs_train)
-        y_test = [1] * len(pd_test) + [0] * len(hs_test)
-        y_val = [1] * len(pd_val) + [0] * len(hs_val)
+        hs_val_data = data.load_recordings("HS", vowel, "val")
+        pd_val_data = data.load_recordings("PD", vowel, "val")
 
-        zipped = list(zip(X_train, y_train))
-        random.shuffle(zipped)
-        X_train, y_train = zip(*zipped)
+        print("Number of HS recordings: ", len(hs_test_data + hs_train_data + hs_val_data))
+        print("Number of PD recordings: ", len(pd_test_data + pd_train_data + pd_val_data))
 
-        zipped = list(zip(X_test, y_test))
-        random.shuffle(zipped)
-        X_test, y_test = zip(*zipped)
+        test_data = hs_test_data + pd_test_data
+        train_data = hs_train_data + pd_train_data
+        val_data = hs_val_data + pd_val_data
 
-        zipped = list(zip(X_val, y_val))
-        random.shuffle(zipped)
-        X_val, y_val = zip(*zipped)
+        y_test = [0] * len(hs_test_data) + [1] * len(pd_test_data)
+        y_train = [0] * len(hs_train_data) + [1] * len(pd_train_data)
+        y_val = [0] * len(hs_val_data) + [1] * len(pd_val_data)
 
-        train_data = (np.array(X_train), np.array(y_train))
-        test_data = (np.array(X_test), np.array(y_test))
-        val_data = (np.array(X_val), np.array(y_val))
+        for setting in data.settings:
+            results = {}
+            print("[INFO] Settings: ", setting)
+            settings_dir = os.path.join(vowel_dir, setting)
+            if not os.path.exists(settings_dir):
+                os.mkdir(settings_dir)
 
-        alex_net = AlexNet(train_data, test_data, val_data)
-        alex_net.run_classifier()
-#
-#     # save_recording_len_to_df(data_loader.a_pd_off_recordings)
-#     # divide_records("data/source/path)
-#     # rename_polish_recordings_by_info_file("data/path)
+            x_train = [recording.spectrograms[setting] for recording in train_data]
+            x_test = [recording.spectrograms[setting] for recording in test_data]
+            x_val = [recording.spectrograms[setting] for recording in val_data]
+
+            train = (np.array(x_train), np.array(y_train))
+
+            if USE_VALIDATION_DATASET:
+                test = (np.array(x_test), np.array(y_test))
+                val = (np.array(x_test), np.array(y_test))
+            else:
+                test = (np.array(x_test + x_val), np.array(y_test + y_val))
+                val = False
+
+            alex_net = AlexNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+            g_net = GNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+            for loss_fcn in LOSS_FUNCTION:
+                for optimizer in OPTIMIZER:
+                    for batch_size in BATCH_SIZE:
+                        for epochs_number in EPOCHS_NUMBER:
+                            alex_net_model = alex_net.run_classifier(loss_fcn, optimizer, batch_size, epochs_number)
+                            g_net_model = g_net.run_classifier(loss_fcn, optimizer, batch_size, epochs_number)
+                            model_params = "{}_{}_{}_{}".format(loss_fcn, optimizer, batch_size, epochs_number)
+                            alex_net_model.save(os.path.join(MODELS_DIR, vowel, setting, "AlexNet", model_params))
+
+            results = alex_net.results.copy()
+            results.update(g_net.results)
+
+            results_df = pd.DataFrame(results)
+
+            acc_row = results_df.drop('Model', axis=1).loc[5].astype(float)
+            max_acc_value = acc_row.max()
+            model_name = acc_row.idxmax()
+
+            model_settings = '_'.join(model_name.rsplit("_", maxsplit=5)[1:])
+            precision, recall, f1 = results_df[model_name].loc[6], \
+                                    results_df[model_name].loc[7], \
+                                    results_df[model_name].loc[8]
+
+            spectrograms_results[setting] = [model_settings, max_acc_value, precision, recall, f1]
+            results_df.to_excel(os.path.join(settings_dir, "summary.xlsx"))
+
+        spectrograms_results_df = pd.DataFrame(spectrograms_results)
+        spectrograms_results_df.to_excel(os.path.join(RESULTS_DIR, vowel, "spectrograms_summary.xlsx"))
