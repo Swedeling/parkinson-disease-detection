@@ -1,9 +1,15 @@
 from classifiers.AlexNet import AlexNet
 from classifiers.GNet import GNet
+from classifiers.InceptionV3 import InceptionNet
+from classifiers.ResNet50 import ResNet
+from classifiers.VGGNet import VGGNet
+from classifiers.LeNet5 import LeNet5
+import random
 from config import *
-from data_loader import DataLoader
+from utils.data_loader import DataLoader
 from data_stats.db_stats import run_dataset_analysis
 from utils.utils import set_cpu, set_gpu
+from utils.results_analysis import summarize_all_results, prepare_plots
 
 import numpy as np
 import os
@@ -14,11 +20,30 @@ if DEVICE == "GPU":
 else:
     set_cpu()
 
+
+def initialize_classifiers(train, test, setting, settings_dir, val):
+    classifiers = {}
+    for cls in CLASSIFIERS_TO_TEST:
+        if cls == "AlexNet":
+            classifiers[cls] = AlexNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+        elif cls == "GNet":
+            classifiers[cls] = GNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+        elif cls == "InceptionV3":
+            classifiers[cls] = InceptionNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+        elif cls == "LeNet-5":
+            classifiers[cls] = LeNet5(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+        elif cls == "ResNet50":
+            classifiers[cls] = ResNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+        elif cls == "VGGNet":
+            classifiers[cls] = VGGNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+    return classifiers
+
+
 if __name__ == "__main__":
 
     if RUN_DATASET_ANALYSIS:
         print("[INFO] Run dataset analysis...")
-        run_dataset_analysis()
+        run_dataset_analysis(["polish"])
 
     spectrograms_results = {"settings": ["model_name", "accuracy", "precision", "recall", "f1-score"]}
 
@@ -31,7 +56,8 @@ if __name__ == "__main__":
         if not os.path.exists(vowel_dir):
             os.mkdir(vowel_dir)
 
-        hs_test_data = data.load_recordings("HS", vowel, "test")
+        hs_test_data_mrps = data.load_recordings("HS", vowel, "test")
+        hs_test_data_orps = data.load_recordings("HS", vowel, "test - orps")
         pd_test_data = data.load_recordings("PD", vowel, "test")
 
         hs_train_data = data.load_recordings("HS", vowel, "train")
@@ -40,16 +66,49 @@ if __name__ == "__main__":
         hs_val_data = data.load_recordings("HS", vowel, "val")
         pd_val_data = data.load_recordings("PD", vowel, "val")
 
-        print("Number of HS recordings: ", len(hs_test_data + hs_train_data + hs_val_data))
+        print("Number of HS recordings [ORPS]: ", len(hs_test_data_orps), len(hs_train_data), len(hs_val_data))
+        print("Number of HS recordings [MRPS]: ", len(hs_test_data_mrps), len(hs_train_data), len(hs_val_data))
         print("Number of PD recordings: ", len(pd_test_data + pd_train_data + pd_val_data))
 
-        test_data = hs_test_data + pd_test_data
+        test_data_orps = hs_test_data_orps + pd_test_data
+        test_data_mrps = hs_test_data_mrps + pd_test_data
         train_data = hs_train_data + pd_train_data
         val_data = hs_val_data + pd_val_data
 
-        y_test = [0] * len(hs_test_data) + [1] * len(pd_test_data)
+        y_test_orps = [0] * len(hs_test_data_orps) + [1] * len(pd_test_data)
+        y_test_mrps = [0] * len(hs_test_data_mrps) + [1] * len(pd_test_data)
+
         y_train = [0] * len(hs_train_data) + [1] * len(pd_train_data)
         y_val = [0] * len(hs_val_data) + [1] * len(pd_val_data)
+
+        print(y_test_mrps)
+        print(y_train)
+
+        temp = list(zip(test_data_orps, y_test_orps))
+        random.shuffle(temp)
+        res1, res2 = zip(*temp)
+        test_data_orps, y_test_orps = list(res1), list(res2)
+
+        temp = list(zip(test_data_mrps, y_test_mrps))
+        random.shuffle(temp)
+        res1, res2 = zip(*temp)
+        test_data_mrps, y_test_mrps = list(res1), list(res2)
+
+
+        temp = list(zip(train_data, y_train))
+        random.shuffle(temp)
+        res1, res2 = zip(*temp)
+        train_data, y_train = list(res1), list(res2)
+
+
+        temp = list(zip(val_data, y_val))
+        random.shuffle(temp)
+        res1, res2 = zip(*temp)
+        val_data, y_val = list(res1), list(res2)
+
+        print(y_test_mrps)
+        print(y_train)
+
 
         for setting in data.settings:
             results = {}
@@ -59,45 +118,60 @@ if __name__ == "__main__":
                 os.mkdir(settings_dir)
 
             x_train = [recording.spectrograms[setting] for recording in train_data]
-            x_test = [recording.spectrograms[setting] for recording in test_data]
+            x_test_orps = [recording.spectrograms[setting] for recording in test_data_orps]
+            x_test_mrps = [recording.spectrograms[setting] for recording in test_data_mrps]
             x_val = [recording.spectrograms[setting] for recording in val_data]
 
             train = (np.array(x_train), np.array(y_train))
 
             if USE_VALIDATION_DATASET:
-                test = (np.array(x_test), np.array(y_test))
-                val = (np.array(x_test), np.array(y_test))
+                test_orps = (np.array(x_test_orps), np.array(y_test_orps))
+                test_mrps = (np.array(x_test_mrps), np.array(y_test_mrps))
+                val = (np.array(x_val), np.array(y_val))
             else:
-                test = (np.array(x_test + x_val), np.array(y_test + y_val))
+                test_orps = (np.array(x_test_orps + x_val), np.array(y_test_orps + y_val))
+                test_mrps = (np.array(x_test_mrps + x_val), np.array(y_test_mrps + y_val))
                 val = False
 
-            alex_net = AlexNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
-            g_net = GNet(train, test, settings=setting, results_dir=settings_dir, val_data=val)
+            test = {"orps": test_orps, "mrps": test_mrps}
+
+            classifiers = initialize_classifiers(train, test, setting, settings_dir, val)
+            orps_results = {}
+            mrps_results = {}
+
+
             for loss_fcn in LOSS_FUNCTION:
                 for optimizer in OPTIMIZER:
                     for batch_size in BATCH_SIZE:
-                        for epochs_number in EPOCHS_NUMBER:
-                            alex_net_model = alex_net.run_classifier(loss_fcn, optimizer, batch_size, epochs_number)
-                            g_net_model = g_net.run_classifier(loss_fcn, optimizer, batch_size, epochs_number)
-                            model_params = "{}_{}_{}_{}".format(loss_fcn, optimizer, batch_size, epochs_number)
-                            alex_net_model.save(os.path.join(MODELS_DIR, vowel, setting, "AlexNet", model_params))
+                        for cls_name, cls in classifiers.items():
+                            print(cls_name)
+                            cls.run_classifier(loss_fcn, optimizer, batch_size)
+                            model_params = "{}_{}_{}".format(loss_fcn, optimizer, batch_size)
+                            cls.model.save(os.path.join(MODELS_DIR, vowel, setting, cls_name, model_params))
+                            orps_results.update(cls.orps_results)
+                            mrps_results.update(cls.mrps_results)
 
-            results = alex_net.results.copy()
-            results.update(g_net.results)
+            summary_orps_path = os.path.join(settings_dir, "summary_orps.xlsx")
+            if os.path.exists(summary_orps_path):
+                results_df_orps = pd.read_excel(summary_orps_path)
+                for model_name, values in orps_results.items():
+                    if model_name not in results_df_orps.columns:
+                        results_df_orps[model_name] = values
+            else:
+                results_df_orps = pd.DataFrame(orps_results)
+            results_df_orps.to_excel(summary_orps_path)
 
-            results_df = pd.DataFrame(results)
+            summary_mrps_path = os.path.join(settings_dir, "summary_mrps.xlsx")
+            if os.path.exists(summary_mrps_path):
+                results_df_mrps = pd.read_excel(summary_mrps_path)
+                for model_name, values in mrps_results.items():
+                    if model_name not in results_df_mrps.columns:
+                        results_df_mrps[model_name] = values
+            else:
+                results_df_mrps = pd.DataFrame(mrps_results)
+            results_df_mrps.to_excel(summary_mrps_path)
 
-            acc_row = results_df.drop('Model', axis=1).loc[5].astype(float)
-            max_acc_value = acc_row.max()
-            model_name = acc_row.idxmax()
+    summarize_all_results("mrps")
+    summarize_all_results("orps")
 
-            model_settings = '_'.join(model_name.rsplit("_", maxsplit=5)[1:])
-            precision, recall, f1 = results_df[model_name].loc[6], \
-                                    results_df[model_name].loc[7], \
-                                    results_df[model_name].loc[8]
-
-            spectrograms_results[setting] = [model_settings, max_acc_value, precision, recall, f1]
-            results_df.to_excel(os.path.join(settings_dir, "summary.xlsx"))
-
-        spectrograms_results_df = pd.DataFrame(spectrograms_results)
-        spectrograms_results_df.to_excel(os.path.join(RESULTS_DIR, vowel, "spectrograms_summary.xlsx"))
+    # prepare_plots()

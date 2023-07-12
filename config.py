@@ -1,23 +1,30 @@
 # EXPERIMENT SETTINGS
-BATCH_SIZE = [5]
-BINSIZE = [512, 1024]
-EPOCHS_NUMBER = [30]
-LOSS_FUNCTION = ['categorical_cross-entropy']
-OPTIMIZER = ['adam']
-OVERLAP = [0.1, 0.25, 0.5]
+BATCH_SIZE = [8] # 8, 16, 32
+BINSIZE = [512] # 1024
+EPOCHS_NUMBER = 100
+LOSS_FUNCTION = ['categorical_crossentropy']
+OPTIMIZER = ['adam'] # 'sgd', 'rmsprop', 'adam'
+OVERLAP = [0.1] # 0.1, 0.25,
 
 LANGUAGE_TO_LOAD = "polish"
-VOWELS_TO_LOAD = ["a"]
+VOWELS_TO_LOAD = ["i"]
+# "ResNet50", "VGGNet"
+CLASSIFIERS_TO_TEST = ["LeNet-5", "AlexNet", "InceptionV3"] #  "AlexNet", "InceptionV3"
+SPECTROGRAMS = True
+MELSPECTROGRAMS = True
+
+MANY_RECORDINGS = True
 
 DEVICE = "GPU"
 
 # FEEDBACK SETTINGS
 PRINT_DB_INFO = False
-SAVE_PLOTS = True
-SHOW_PLOTS = False
+SAVE_PLOTS = False
+SHOW_PLOTS = True
 RUN_DATASET_ANALYSIS = False
 COMPUTE_ADDITIONAL_FEATURES = False
-USE_VALIDATION_DATASET = False
+RETRAIN_MODELS = False
+USE_VALIDATION_DATASET = True
 
 # CONSTANT VARIABLES
 AVAILABLE_LANGUAGES = ["polish", "italian"]
@@ -33,10 +40,13 @@ RECORDINGS_DIR = "data"
 
 
 def get_settings():
-    settings = ["melspectrogram"]
+    settings = []
     for binsize in BINSIZE:
         for overlap in OVERLAP:
-            settings.append("spectrogram_{}_{}".format(binsize, overlap))
+            if SPECTROGRAMS:
+                settings.append("spectrogram_{}_{}".format(binsize, overlap))
+            if MELSPECTROGRAMS:
+                settings.append("melspectrogram_{}_{}".format(binsize, overlap))
     return settings
 
 
