@@ -1,13 +1,15 @@
-import cv2
-from dataclasses import dataclass
-import os
-import shutil
-import wave
-
 from utils.audio_spectrogram import *
 from utils.preprocessing import silence_removing
-from utils.extract_features import *
+
+import cv2
+from dataclasses import dataclass
+import librosa
+import matplotlib.pyplot as plt
+import os
+import shutil
 from sklearn.preprocessing import MinMaxScaler
+import wave
+
 
 @dataclass
 class Recording:
@@ -26,14 +28,13 @@ class Recording:
 
         try:
             self.audio, self.sr = librosa.load(self.recording_path, sr=SR)
-            self.sound = parselmouth.Sound(self.recording_path)
         except:
             self.audio = []
-            self.sound = []
 
         self.length = len(self.audio)
         self.trimmed_audio = self._trim_recording()
-        self.normalized_signal = scaler.fit_transform(self.trimmed_audio.reshape(-1, 1)).flatten()
+        # self.normalized_signal = scaler.fit_transform(self.trimmed_audio.reshape(-1, 1)).flatten()
+        self.normalized_signal = self.trimmed_audio
 
         self.spectrograms = {}
 
@@ -49,6 +50,7 @@ class Recording:
                 if not os.path.exists(melspectrogram_dir):
                     os.makedirs(melspectrogram_dir)
                 self.spectrograms[setting] = self._get_melspectrogram(binsize, overlap, setting, filename)
+                
             elif spectrogram_type == "spectrogram":
                 spectrogram_dir = os.path.join(self.spectrogram_dir, setting)
                 if not os.path.exists(spectrogram_dir):
@@ -64,7 +66,7 @@ class Recording:
         trimmed_recording_path = os.path.join(trimmed_recording_dir, self.filename)
 
         if os.path.exists(trimmed_recording_path):
-            trimmed_recording, sr = librosa.load(self.recording_path, sr=SR)
+            trimmed_recording, sr = librosa.load(trimmed_recording_path, sr=SR)
         else:
             trimmed_recording = silence_removing(self.audio, self.filename)
             if trimmed_recording:
@@ -93,7 +95,7 @@ class Recording:
         return cv2.resize(spectrogram, (227, 227))
 
     def _generate_spectrogram(self, binsize, overlap, settings_dir, filename, colormap="gnuplot2"):
-        trimmed_signal = self.normalized_signal[:int(self.sr * 0.3)]  # trim the first 0.3 second
+        trimmed_signal = self.normalized_signal[int(self.sr * 0.1):int(self.sr * 0.4)]  # trim the first 0.3 second
 
         spectrogram = stft(trimmed_signal, binsize, overlap)
 
@@ -102,7 +104,7 @@ class Recording:
 
         plt.figure(figsize=(35, 27.5))
         plt.imshow(np.transpose(log_scale_spec_db), origin="lower", aspect="auto", cmap=colormap, interpolation="none")
-        plt.colorbar()
+        # plt.colorbar()
 
         plt.savefig(os.path.join(self.spectrogram_dir, settings_dir, filename + '.png'))
         np.save(os.path.join(self.spectrogram_dir, settings_dir, filename + '.npy'), np.transpose(log_scale_spec_db))
@@ -117,15 +119,16 @@ class Recording:
         spectrogram = np.load(melspectrogram_path + '.npy')
         return cv2.resize(spectrogram, (227, 227))
 
+
     def _generate_melspectrogram(self, binsize, overlap, settings_dir, filename, colormap="gnuplot2"):
-        y = self.normalized_signal[:int(self.sr * 0.3)]
+        y = self.normalized_signal[int(self.sr * 0.1):int(self.sr * 0.3)]
         hop_length = int(binsize * (1 - overlap))
         n_mels = 30
 
         S = librosa.feature.melspectrogram(y=y, sr=self.sr, n_fft=binsize, hop_length=hop_length, n_mels=n_mels)
         S_DB = librosa.power_to_db(S, ref=np.max)
         librosa.display.specshow(S_DB, sr=self.sr, hop_length=hop_length, x_axis='time', y_axis='mel')
-        plt.colorbar(format='%+2.0f dB')
+        # plt.colorbar(format='%+2.0f dB')
         # melspec = librosa.feature.melspectrogram(y=trimmed_signal, sr=self.sr, n_fft=binsize, n_mels=128,fmax=44100,
         #                                          hop_length=int(binsize * (1 - overlap)))
         # melspec_db = librosa.power_to_db(melspec, ref=np.max)

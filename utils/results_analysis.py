@@ -38,6 +38,9 @@ def plot_accuracy_and_loss(history, settings_dir, settings):
     loss_axis.set_title('Strata modelu')
     loss_axis.set_ylabel('strata')
     loss_axis.set_xlabel('epoka')
+    
+    accuracy_axis.set_ylim(bottom=0)
+    loss_axis.set_ylim(bottom=0)
 
     fig.subplots_adjust(hspace=0.4)
 
@@ -58,17 +61,17 @@ def plot_confusion_matrix(labels, predictions, settings_dir, settings):
     plt.close()
 
 
-def summarize_all_results(mode):
+def summarize_all_results():
     spectrograms_results = {}
     for vowel in os.listdir(RESULTS_DIR):
         print(vowel)
         for settings in os.listdir((os.path.join(RESULTS_DIR, vowel))):
-            if settings not in ["spectrograms_summary_orps.xlsx", "spectrograms_summary_mrps.xlsx", "melspectrograms_summary_orps.xlsx", "melspectrograms_summary_mrps.xlsx"]:
+            if settings not in ["spectrograms_summary.xlsx", "melspectrograms_summary.xlsx"]:
                 print(settings)
-                df = pd.read_excel(os.path.join(RESULTS_DIR, vowel, settings, "summary_{}.xlsx".format(mode)))
+                df = pd.read_excel(os.path.join(RESULTS_DIR, vowel, settings, "summary.xlsx"))
                 columns_to_drop = [col for col in df.columns if col.startswith('Unnamed:')]
                 df = df.drop(columns=columns_to_drop)
-                df.to_excel(os.path.join(RESULTS_DIR, vowel, settings, "summary_{}.xlsx".format(mode)))
+                df.to_excel(os.path.join(RESULTS_DIR, vowel, settings, "summary.xlsx"))
 
                 f1_row = df.drop('Model', axis=1).loc[7].astype(float)
                 max_f1_value = f1_row.max()
@@ -81,7 +84,7 @@ def summarize_all_results(mode):
 
                 spectrograms_results[settings] = [model_settings, accuracy, precision, recall, max_f1_value]
         spectrograms_results_df = pd.DataFrame(spectrograms_results)
-        spectrograms_results_df.to_excel(os.path.join(RESULTS_DIR, vowel, "spectrograms_summary_{}.xlsx".format(mode)))
+        spectrograms_results_df.to_excel(os.path.join(RESULTS_DIR, vowel, "spectrograms_summary.xlsx"))
 
 
 def prepare_plots():

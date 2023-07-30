@@ -21,27 +21,16 @@ class DataLoader:
 
             if label == "PD":
                 classname = 1
-            elif label == "HS":
+            elif label == "HC":
                 classname = 0
             else:
                 dir_path, classname = "", None
 
             vowel_dir_path = os.path.join(dir_path, "recordings", vowel, dataset)
 
-            ids = []
-
             for recording_name in os.listdir(vowel_dir_path):
-                if label == "HS":
-                    if MANY_RECORDINGS or dataset == "test":
-                        data.append(Recording(dir_path, vowel, dataset, str(recording_name), classname, self.settings))
-                    else:
-                        filename_list = str(recording_name).split("_")
-                        id = filename_list[1]
-                        if id not in ids:
-                            ids.append(id)
-                            data.append(Recording(dir_path, vowel, dataset, str(recording_name), classname, self.settings))
-                else:
-                    data.append(Recording(dir_path, vowel, dataset, str(recording_name), classname, self.settings))
+                print(recording_name)
+                data.append(Recording(dir_path, vowel, dataset, str(recording_name), classname, self.settings))
         return data
 
     @staticmethod
