@@ -1,55 +1,48 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
+import seaborn as sns
 from config import SR, SHOW_PLOTS
+import librosa
+from sklearn.preprocessing import MinMaxScaler
 
 
 def silence_removing(signal, filename="Test signal"):
-    std = np.std(signal[:1600])
-    mean = np.mean(signal[:1600])
+    voice_segments = librosa.effects.split(signal, top_db=30)
 
-    encoded_signal = np.zeros(signal.shape)
+    # Utwórz pusty sygnał, do którego dodane zostaną tylko fragmenty głosowe
+    voice_audio = []
 
-    for i in range(0, encoded_signal.shape[0]):
-        if std == 0:
-            encoded_signal[i] = 1 if (abs(signal[i] - mean)) > 3 else 0
-        else:
-            encoded_signal[i] = 1 if (abs(signal[i] - mean))/std > 3 else 0
-
-    frame_size = int(SR / 1000)
-    end = len(encoded_signal) - (len(encoded_signal) % frame_size)
-    frames = np.split(encoded_signal[:end], frame_size)
-    frames.append(encoded_signal[:end * -1])
-
-    labels = []
-    for window in frames:
-        zeros, ones = 0, 0
-        for i in window:
-            zeros += 1 if i == 0 else 0
-            ones += 1 if i == 1 else 0
-
-        corrected_window = np.zeros_like(window) if zeros > ones else np.ones_like(window)
-        labels.append(corrected_window)
-
-    labels = np.concatenate(labels, axis=0)
-
-    result = []
-    for label, sample in zip(labels, signal):
-        if label == 1:
-            result.append(sample)
+    # Przeiteruj przez segmenty i dodaj tylko fragmenty zawierające głos do nowego sygnału
+    for segment_start, segment_end in voice_segments:
+        voice_segment = signal[segment_start:segment_end]
+        voice_audio.extend(voice_segment)
+    colors = sns.color_palette('flare')
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    normalized_signal = scaler.fit_transform(np.array(voice_audio).reshape(-1, 1)).flatten()
 
     if SHOW_PLOTS:
-        plt.subplot(2, 1, 1)
-        plt.plot([x / SR for x in range(0, len(signal))], signal)
-        plt.title("Raw {} recording".format(filename))
-        plt.xlabel("Time [s]")
-        plt.ylabel("Amplitude")
+        n=9
+        plt.subplot(3, 1, 1)
+        plt.plot([x / SR for x in range(0, len(signal))], signal, color=colors[0])
+        plt.grid(True)
+        plt.title("Surowe nagranie", fontsize=n)
+        plt.xlabel("Czas [s]",fontsize=8)
+        plt.ylabel("Amplituda",fontsize=n)
 
-        plt.subplot(2, 1, 2)
-        plt.plot([x / SR for x in range(0, len(result))], result)
-        plt.title("{} recording after silence removing".format(filename))
-        plt.xlabel("Time [s]")
-        plt.ylabel("Amplitude")
+        plt.subplot(3, 1, 2)
+        plt.plot([x / SR for x in range(0, len(voice_audio))], voice_audio, color=colors[1])
+        plt.grid(True)
+        plt.title("Nagranie po usunięciu fragmentów ciszy", fontsize=8)
+        plt.xlabel("Czas [s]",fontsize=8)
+        plt.ylabel("Amplituda", fontsize=n)
+
+        plt.subplot(3, 1, 3)
+        plt.plot([x / SR for x in range(0, len(normalized_signal))], normalized_signal, color=colors[2])
+        plt.grid(True)
+        plt.title("Nagranie po usunięciu fragmentów ciszy i normalizacji", fontsize=8)
+        plt.xlabel("Czas [s]", fontsize=8)
+        plt.ylabel("Amplituda", fontsize=n)
+        plt.subplots_adjust(hspace=0.8)
         plt.show()
 
-    return result
+    return voice_audio

@@ -21,7 +21,7 @@ class DataLoader:
 
             if label == "PD":
                 classname = 1
-            elif label == "HS":
+            elif label == "HC":
                 classname = 0
             else:
                 dir_path, classname = "", None
@@ -29,6 +29,7 @@ class DataLoader:
             vowel_dir_path = os.path.join(dir_path, "recordings", vowel, dataset)
 
             for recording_name in os.listdir(vowel_dir_path):
+                print(recording_name)
                 data.append(Recording(dir_path, vowel, dataset, str(recording_name), classname, self.settings))
         return data
 
