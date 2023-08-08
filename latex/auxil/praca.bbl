@@ -17,6 +17,19 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{National_Institute_on_Aging_2022}{misc}{}
+    \list{publisher}{2}{%
+      {U.S. Department of Health}%
+      {Human Services}%
+    }
+    \verb{url}
+    \verb https://www.nia.nih.gov/health/parkinsons-disease
+    \endverb
+    \field{journaltitle}{National Institute on Aging}
+    \field{year}{2022}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
   \entry{WHO}{article}{}
     \name{author}{1}{}{%
       {{hash=OWH}{%
@@ -40,6 +53,145 @@
     \verb https://www.who.int/publications/i/item/9789240050983
     \endverb
     \field{year}{2022}
+  \endentry
+
+  \entry{https://doi.org/10.1080/136828200410654}{article}{}
+    \name{author}{4}{}{%
+      {{hash=JHR}{%
+         family={J.\bibnamedelima Holmes},
+         familyi={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+         given={Rhonda},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=MOJ}{%
+         family={M.\bibnamedelima Oates},
+         familyi={M\bibinitperiod\bibinitdelim O\bibinitperiod},
+         given={Jennifer},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JPD}{%
+         family={J.\bibnamedelima Phyland},
+         familyi={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+         given={Debbie},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=JHA}{%
+         family={J.\bibnamedelima Hughes},
+         familyi={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \keyw{Vocal dysfunction, Parkinson's disease, acoustic analysis, perceptual
+  analysis}
+    \strng{namehash}{JHR+1}
+    \strng{fullhash}{JHRMOJJPDJHA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1080/136828200410654
+    \endverb
+    \verb{eprint}
+    \verb https://onlinelibrary.wiley.com/doi/pdf/10.1080/136828200410654
+    \endverb
+    \field{number}{3}
+    \field{pages}{407\bibrangedash 418}
+    \field{title}{Voice characteristics in the progression of Parkinson's
+  disease}
+    \verb{url}
+    \verb https://onlinelibrary.wiley.com/doi/abs/10.1080/136828200410654
+    \endverb
+    \field{volume}{35}
+    \field{journaltitle}{International Journal of Language \& Communication
+  Disorders}
+    \field{year}{2000}
+  \endentry
+
+  \entry{Kuryłowicz_2019}{article}{}
+    \field{labeltitlesource}{title}
+    \field{issn}{1897-7839}
+    \field{number}{6}
+    \field{pages}{285 \bibrangedash  291}
+    \field{title}{Zaburzenia głosu w chorobach neurologicznych}
+    \verb{url}
+    \verb https://journals.viamedica.pl/forum_medycyny_rodzinnej/article/view/6
+    \verb 3136
+    \endverb
+    \field{volume}{13}
+    \field{journaltitle}{Forum Medycyny Rodzinnej}
+    \field{year}{2019}
+  \endentry
+
+  \entry{GAMBOA1997314}{article}{}
+    \name{author}{8}{}{%
+      {{hash=GJ}{%
+         family={Gamboa},
+         familyi={G\bibinitperiod},
+         given={Javier},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JJFJ}{%
+         family={Jiménez-Jiménez},
+         familyi={J\bibinithyphendelim J\bibinitperiod},
+         given={Félix\bibnamedelima Javier},
+         giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=NA}{%
+         family={Nieto},
+         familyi={N\bibinitperiod},
+         given={Alberto},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Montojo},
+         familyi={M\bibinitperiod},
+         given={Jose},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=OPM}{%
+         family={Ortí-Pareja},
+         familyi={O\bibinithyphendelim P\bibinitperiod},
+         given={Miguel},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MJA}{%
+         family={Molina},
+         familyi={M\bibinitperiod},
+         given={José\bibnamedelima Antonio},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=GAE}{%
+         family={García-Albea},
+         familyi={G\bibinithyphendelim A\bibinitperiod},
+         given={Esteban},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=CI}{%
+         family={Cobeta},
+         familyi={C\bibinitperiod},
+         given={Ignacio},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson's disease, Voice, Acoustic analysis}
+    \strng{namehash}{GJ+1}
+    \strng{fullhash}{GJJJFJNAMJOPMMJAGAECI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/S0892-1997(97)80010-0
+    \endverb
+    \field{issn}{0892-1997}
+    \field{number}{3}
+    \field{pages}{314\bibrangedash 320}
+    \field{title}{Acoustic voice analysis in patients with Parkinson's disease
+  treated with dopaminergic drugs}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0892199797800100
+    \endverb
+    \field{volume}{11}
+    \field{journaltitle}{Journal of Voice}
+    \field{year}{1997}
   \endentry
 
   \entry{Szurek_2018}{article}{}
@@ -110,19 +262,45 @@
     \field{year}{2013}
   \endentry
 
-  \entry{Kuryłowicz_2019}{article}{}
+  \entry{ROSSI202153}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RM}{%
+         family={Rossi},
+         familyi={R\bibinitperiod},
+         given={Malco},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=PLS}{%
+         family={Perez-Lloret},
+         familyi={P\bibinithyphendelim L\bibinitperiod},
+         given={Santiago},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Merello},
+         familyi={M\bibinitperiod},
+         given={Marcelo},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson's disease, Parkinsonism, Diagnosis, Criteria, Accuracy}
+    \strng{namehash}{RMPLSMM1}
+    \strng{fullhash}{RMPLSMM1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{issn}{1897-7839}
-    \field{number}{6}
-    \field{pages}{285 \bibrangedash  291}
-    \field{title}{Zaburzenia głosu w chorobach neurologicznych}
-    \verb{url}
-    \verb https://journals.viamedica.pl/forum_medycyny_rodzinnej/article/view/6
-    \verb 3136
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.parkreldis.2021.10.016
     \endverb
-    \field{volume}{13}
-    \field{journaltitle}{Forum Medycyny Rodzinnej}
-    \field{year}{2019}
+    \field{issn}{1353-8020}
+    \field{pages}{53\bibrangedash 58}
+    \field{title}{How much time is needed in clinical practice to reach a
+  diagnosis of clinically established Parkinson's disease?}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S1353802021003710
+    \endverb
+    \field{volume}{92}
+    \field{journaltitle}{Parkinsonism & Related Disorders}
+    \field{year}{2021}
   \endentry
 
   \entry{ML_for_PD_review}{article}{}

@@ -15,6 +15,8 @@ Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: rozdzial4.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: rozdzial5.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: rozdzial6.aux
 Reallocating 'glb_str_end' (item size: 4) to 20 items.
 Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
 Reallocating 'global_strs' (item size: 1) to 4000000 items.
@@ -32,47 +34,47 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: praca-blx.bib
 Database file #2: bibliografia.bib
-Biblatex version: 3.18
+Biblatex version: 3.19
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 7 entries,
+You've used 11 entries,
             6399 wiz_defined-function locations,
-            1260 strings with 14003 characters,
-and the built_in function-call counts, 45037 in all, are:
-= -- 3627
-> -- 578
-< -- 133
-+ -- 1282
-- -- 223
-* -- 3090
-:= -- 5283
+            1299 strings with 15576 characters,
+and the built_in function-call counts, 92301 in all, are:
+= -- 7959
+> -- 969
+< -- 239
++ -- 2595
+- -- 387
+* -- 6701
+:= -- 10928
 add.period$ -- 0
-call.type$ -- 7
-change.case$ -- 64
-chr.to.int$ -- 49
-cite$ -- 12
-duplicate$ -- 4631
-empty$ -- 4049
-format.name$ -- 336
-if$ -- 9032
+call.type$ -- 11
+change.case$ -- 125
+chr.to.int$ -- 50
+cite$ -- 20
+duplicate$ -- 8935
+empty$ -- 8255
+format.name$ -- 617
+if$ -- 18461
 int.to.chr$ -- 0
-int.to.str$ -- 12
+int.to.str$ -- 20
 missing$ -- 0
-newline$ -- 219
-num.names$ -- 218
-pop$ -- 2189
+newline$ -- 392
+num.names$ -- 373
+pop$ -- 3740
 preamble$ -- 1
-purify$ -- 99
+purify$ -- 195
 quote$ -- 0
-skip$ -- 989
+skip$ -- 1655
 stack$ -- 0
-substring$ -- 6832
-swap$ -- 846
-text.length$ -- 138
+substring$ -- 15936
+swap$ -- 1515
+text.length$ -- 220
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 226
+type$ -- 362
 warning$ -- 0
-while$ -- 658
+while$ -- 1257
 width$ -- 0
-write$ -- 213
+write$ -- 382
