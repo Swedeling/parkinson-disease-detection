@@ -17,19 +17,6 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
-  \entry{National_Institute_on_Aging_2022}{misc}{}
-    \list{publisher}{2}{%
-      {U.S. Department of Health}%
-      {Human Services}%
-    }
-    \verb{url}
-    \verb https://www.nia.nih.gov/health/parkinsons-disease
-    \endverb
-    \field{journaltitle}{National Institute on Aging}
-    \field{year}{2022}
-    \warn{\item Invalid format of field 'month'}
-  \endentry
-
   \entry{global_PD}{article}{}
     \name{author}{20}{}{%
       {{hash=DE}{%
@@ -195,6 +182,24 @@
     \field{year}{2022}
   \endentry
 
+  \entry{National_Institute_on_Aging_2022}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=N}{%
+         family={{National Institute on Aging}},
+         familyi={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{N1}
+    \strng{fullhash}{N1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://www.nia.nih.gov/health/parkinsons-disease}}
+    \field{note}{U.S. Department of Health and Human Services}
+    \field{title}{Parkinson's Disease Information}
+    \field{year}{2022}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
   \entry{Szurek_2018}{article}{}
     \name{author}{1}{}{%
       {{hash=SM}{%
@@ -278,47 +283,6 @@
     \field{year}{2019}
   \endentry
 
-  \entry{ROSSI202153}{article}{}
-    \name{author}{3}{}{%
-      {{hash=RM}{%
-         family={Rossi},
-         familyi={R\bibinitperiod},
-         given={Malco},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=PLS}{%
-         family={Perez-Lloret},
-         familyi={P\bibinithyphendelim L\bibinitperiod},
-         given={Santiago},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=MM}{%
-         family={Merello},
-         familyi={M\bibinitperiod},
-         given={Marcelo},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \keyw{Parkinson's disease, Parkinsonism, Diagnosis, Criteria, Accuracy}
-    \strng{namehash}{RMPLSMM1}
-    \strng{fullhash}{RMPLSMM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb https://doi.org/10.1016/j.parkreldis.2021.10.016
-    \endverb
-    \field{issn}{1353-8020}
-    \field{pages}{53\bibrangedash 58}
-    \field{title}{How much time is needed in clinical practice to reach a
-  diagnosis of clinically established Parkinson's disease?}
-    \verb{url}
-    \verb https://www.sciencedirect.com/science/article/pii/S1353802021003710
-    \endverb
-    \field{volume}{92}
-    \field{journaltitle}{Parkinsonism & Related Disorders}
-    \field{year}{2021}
-  \endentry
-
   \entry{diagnostyka_Sitek}{article}{}
     \name{author}{4}{}{%
       {{hash=SE}{%
@@ -358,6 +322,88 @@
     \field{volume}{9}
     \field{month}{11}
     \field{year}{2013}
+  \endentry
+
+  \entry{Loscalzo_2022}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=LJ}{%
+         family={Loscalzo},
+         familyi={L\bibinitperiod},
+         given={J},
+         giveni={J},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {21st ed. McGraw Hill}%
+    }
+    \strng{namehash}{LJ1}
+    \strng{fullhash}{LJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Parkinson’s disease}
+    \verb{url}
+    \verb https://accessmedicine.mhmedical.com
+    \endverb
+    \field{journaltitle}{Harrison’s Principles of Internal Medicine}
+    \field{year}{2022}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{Mayo_Clinic_PD}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=M}{%
+         family={{Mayo Clinic}},
+         familyi={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{M1}
+    \strng{fullhash}{M1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/diagnosis-treatment/drc-20376062}}
+    \field{note}{Mayo Clinic}
+    \field{title}{Parkinson's Disease: Diagnosis & Treatment}
+  \endentry
+
+  \entry{ROSSI202153}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RM}{%
+         family={Rossi},
+         familyi={R\bibinitperiod},
+         given={Malco},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=PLS}{%
+         family={Perez-Lloret},
+         familyi={P\bibinithyphendelim L\bibinitperiod},
+         given={Santiago},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Merello},
+         familyi={M\bibinitperiod},
+         given={Marcelo},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson's disease, Parkinsonism, Diagnosis, Criteria, Accuracy}
+    \strng{namehash}{RMPLSMM1}
+    \strng{fullhash}{RMPLSMM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.parkreldis.2021.10.016
+    \endverb
+    \field{issn}{1353-8020}
+    \field{pages}{53\bibrangedash 58}
+    \field{title}{How much time is needed in clinical practice to reach a
+  diagnosis of clinically established Parkinson's disease?}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S1353802021003710
+    \endverb
+    \field{volume}{92}
+    \field{journaltitle}{Parkinsonism & Related Disorders}
+    \field{year}{2021}
   \endentry
 
   \entry{https://doi.org/10.1080/136828200410654}{article}{}
