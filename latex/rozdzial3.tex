@@ -15,28 +15,59 @@ Aby rozwiązać trudności i udoskonalić procedury diagnozowania oraz oceny PD,
 pacjentów z podobnymi objawami klinicznymi (np. zaburzeniami ruchu lub innymi zespołami parkinsonowskimi).
 
 
-W przeglądzie publikacji na temat wykorzystania uczenia maszynowego do diagnostyki PD do 2020 roku wyróżniono 209 artykułów\cite{ML_for_PD_review}.
+Do roku 2020 powstało co najmniej 209 artykułów naukowych dotyczących wykorzystania metod uczenia maszynowego w diagnostyce i monitorowaniu \cite{ML_for_PD_review},
+a liczba ta cały czas rośnie.
 
+
+\section{Wykorzystywane dane}\label{sec:dane-przeglad}
+
+Diagnozowanie choroby Parkinsona stanowi zadanie złożone ze względu na różnorodność objawów, które dotykają różne aspekty
+funkcjonowania ciała i umysłu ludzkiego.
+W związku z tym, techniki uczenia maszynowego wykorzystywane w tym obszarze również skupiają się na różnych rodzajach danych.
+Wśród tych źródeł informacji znajdują się wyniki badań obrazowych (np. rezonans magnetyczny - MRI, tomografia komputerowa - SPECT),
+które wydają się intuicyjne, biorąc pod uwagę zmiany w aktywności mózgu, które można zaobserwować.
+Niemniej jednak, istnieją także mniej oczywiste metody diagnozy, które budzą duże zainteresowanie w środowisku naukowym, szczególnie w początkowym stadium choroby.
+Przykłady to analiza cezury głosu, ocena charakterystyki chodu oraz badanie pisma odręcznego.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./img/plot_PD_detection_methods}
-	\caption{Wykres przedstawiający rozkład rodzaju danych na których bazowały systemy ML do diagnostyki PD\cite{ML_for_PD_review} (stan na dzień 14 luty 2020)}
+	\caption{Wykres przedstawiający rozkład rodzaju danych na których bazowały systemy ML do diagnostyki PD (stan na dzień 14 luty 2020) \cite{ML_for_PD_review} }
     \label{fig:pd_detection_methods}\label{fig:figure}
 \end{figure}
 
+Rysunek \ref{fig:pd_detection_methods} ilustruje zastosowanie wymienionych metod zarówno w teorii, jak i praktyce.
+Metody oparte na obrazowaniu medycznym wykazują wyraźną przewagę w zastosowaniach klinicznych w porównaniu do kontekstu teoretycznego.
+Niemniej jednak, to pozostałe metody budzą znacznie większe zainteresowanie ze strony środowiska naukowego.
+Szczególnie w przypadku analizy głosu, gdzie rozbieżność między teorią a praktyką jest szczególnie znacząca.
+Przyczyny tego zjawiska zostaną dokładniej rozważone w kolejnych fragmentach.
 
+Niniejsza praca dotyczy diagnostyki na podstawie głosu, dlatego ten temat zostanie rozwinięty.
+Założeniem dla takich systemów jest zadanie potencjalnemu pacjentowi zadania wokalnego, może to być:
+\begin{itemize}[itemsep=0.1pt]
+	\item podtrzymywane samogłoski (ang. sustained vowels)
+	\item cechy diadochokinetyczne (DDK), mogące mierzyć zdolność do wydawania serii szybkich i naprzemiennych dźwięków (sylab).
+	\item czytanie tekstu
+	\item monolog
+\end{itemize}
 
-
-\section{Wykorzystywane dane}\label{sec:dane-przeglad}
+[TUTAJ TRZEBA O TYM NAPISAĆ - WADY, ZALETY ITD]
 
 %---------------------------------------------------------------------------
 
 \section{Metody klasyfikacji}\label{sec:metody-klasyfikacji}
 
+W zależności od przyjętego podłoża diagnostycznego, selekcjonuje się odpowiednią metodę klasyfikacji.
+Każdy problem wymaga unikalnego podejścia, a wybór metody jest dostosowany do konkretnej sytuacji.
+Różne metody okażą się skuteczne w przypadku analizy mowy spontanicznej w porównaniu do mowy kontrolowanej.
+W tej sekcji zostaną przedstawione metody klasyfikacji związane z podtrzymywaniem samogłosek, które to zostały wybrane jako
+fundament badawczy w ramach niniejszego opracowania.
+
 %---------------------------------------------------------------------------
 
 \section{Problemy związane z systemami automatycznej klasyfikacji choroby Parkinsona}\label{sec:problemy}
+
+Odnieść się do tego \ref{fig:pd_detection_methods} i duża dysproporcja między teorią i praktyką
 
 Ostatnie badania wykazały, że możemy wytrenować dokładne modele do wykrywania oznak PD z nagrań audio.
 Jednakże, istnieją rozbieżności pomiędzy badaniami i mogą być spowodowane, częściowo, przez różnice w

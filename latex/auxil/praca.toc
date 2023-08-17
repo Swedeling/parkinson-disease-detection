@@ -5,16 +5,15 @@
 \contentsline {chapter}{\numberline {2}Problematyka zagadnienia}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Charakterystyka choroby Parkinsona}{9}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Objawy choroby}{10}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Etapy choroby}{11}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Terapia osób chorych}{13}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}Metody diagnozowania i monitorowania choroby Parkinsona}{14}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Znaczenie głosu w diagnozowaniu choroby Parkinsona}{17}{section.2.3}%
+\contentsline {subsection}{\numberline {2.1.2}Terapia osób chorych}{11}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Metody diagnozowania i monitorowania choroby Parkinsona}{12}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Znaczenie głosu w diagnozowaniu choroby Parkinsona}{16}{section.2.3}%
 \contentsline {chapter}{\numberline {3}Analiza rozwiązań do automatycznej diagnostyki choroby Parkinsona}{19}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Wykorzystywane dane}{19}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Metody klasyfikacji}{19}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Problemy związane z systemami automatycznej klasyfikacji choroby Parkinsona}{19}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Wnioski}{22}{subsection.3.3.1}%
-\contentsline {section}{\numberline {3.4}Wykorzystanie rozwiązań teoretycznych w rzeczywistym środowisku}{22}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Materiał i metoda badawcza}{23}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Wyniki badań}{25}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Analiza i interpretacja wyników}{27}{chapter.6}%
+\contentsline {section}{\numberline {3.2}Metody klasyfikacji}{20}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Problemy związane z systemami automatycznej klasyfikacji choroby Parkinsona}{21}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Wnioski}{23}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}Wykorzystanie rozwiązań teoretycznych w rzeczywistym środowisku}{23}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Materiał i metoda badawcza}{25}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Wyniki badań}{27}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Analiza i interpretacja wyników}{29}{chapter.6}%
