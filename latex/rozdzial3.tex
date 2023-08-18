@@ -19,7 +19,7 @@ Do roku 2020 powstało co najmniej 209 artykułów naukowych dotyczących wykorz
 a liczba ta cały czas rośnie.
 
 
-\section{Wykorzystywane dane}\label{sec:dane-przeglad}
+\section{Rodzaj wykorzystywanych danych}\label{sec:dane-przeglad}
 
 Diagnozowanie choroby Parkinsona stanowi zadanie złożone ze względu na różnorodność objawów, które dotykają różne aspekty
 funkcjonowania ciała i umysłu ludzkiego.
@@ -63,20 +63,35 @@ Różne metody okażą się skuteczne w przypadku analizy mowy spontanicznej w p
 W tej sekcji zostaną przedstawione metody klasyfikacji związane z podtrzymywaniem samogłosek, które to zostały wybrane jako
 fundament badawczy w ramach niniejszego opracowania.
 
+
+
+In this research paper, we set forward a new approach based on speech signal analysis for PD detection. The main novelty of our approach resides
+in the extraction of new features which have not yet been extracted from the used dataset, called i-vector features and CNN
+deep features. We extracted from each voice sample three i-vectors
+of different sizes 100, 200, and 300 using Gaussian Mixture Models (GMM) based on Universal Background Model (UBM) applied
+on 39-dimensional Mel-Frequency Cepstral Coefficients (MFCC). As
+a matter of fact, three different models were obtained after using
+i-vector features and raw signal values as inputs for both learning
+techniques, namely CNN and SVM. Finally, we calculated the accuracy, precision, recall/sensitivity, specificity and f -score for each
+model in order to assess its performance in terms of PD detection. \cite{2023_PD_voice}
+
 %---------------------------------------------------------------------------
 
 \section{Problemy związane z systemami automatycznej klasyfikacji choroby Parkinsona}\label{sec:problemy}
 
-Odnieść się do tego \ref{fig:pd_detection_methods} i duża dysproporcja między teorią i praktyką
+Zainteresowanie systemami do automatycznej diagnostyki choroby Parkinsona na podstawie głosu jest ogromne i wiąże się z nim duże nadzieje.
+Istnieje jednak duża dysproporcja pomiędzy pracą badawczą a ich wykorzystaniem w rzeczywistym środowisku Rys \ref{fig:pd_detection_methods}.
+Przyczyn takie stanu rzeczy jest wiele, a większość z nich związana jest z brakiem usystematyzowanego podejścia do problemu, co utrudnia porównanie
+rozwiązań, a tym samym rzetelny postęp.
 
 Ostatnie badania wykazały, że możemy wytrenować dokładne modele do wykrywania oznak PD z nagrań audio.
-Jednakże, istnieją rozbieżności pomiędzy badaniami i mogą być spowodowane, częściowo, przez różnice w
+Jednakże, istnieją rozbieżności, które są częściowo powodowane przez różnice w
 wykorzystywanych korpusach lub metodologii.
 Dlatego w  \cite{SustainedVowelsProblems} przeprowadzono analizę, wpływu niektórych czynników na wyniki klasyfikacji.
 Głównym celem artykułu była ich identyfikacja oraz stworzenie zasad, które w przyszłosći pozwolą usystematyzować
 stan wiedzy w tej dziedzinie.
 W badaniach skupiono się na przedłużonych samogłoskach (ang. \emph{sustained vowels}), ponieważ jak wykazano wcześniej
-[...].
+są one najlepszym i najpopularniejszym zadaniem wokalnym w takich systemach.
 Przeprowadzone eksperymenty wykazały, że nieuwzględnione zmienne w metodologii, projekcie eksperymentalnym i
 przygotowaniu danych prowadzą do zbyt optymistycznych wyników w badaniach nad automatyczną detekcją PD.
 Czynniki, które zidentyfikowano jako przyczyniające sią do zbyt optymistycznych wyników klasyfikacji
@@ -86,32 +101,32 @@ przedstawiono na Rys. \ref{fig:factors_PD_detection} oraz omówiono poniżej.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.4\textwidth]{./img/influence_of_factors_on_PD_detection}
-	\caption{Czynniki wpływające na dokładność detekcji Parkinsona na podstawie głosu według analizy przeprowadzonej w \cite{SustainedVowelsProblems}}
+	\caption{Czynniki wpływające na dokładność detekcji PD na podstawie głosu \cite{SustainedVowelsProblems}}
     \label{fig:factors_PD_detection}
 \end{figure}
 
 
 \begin{enumerate}[label={\alph*)}]
-	\item \textbf{Wpływ tożsamości mówcy}
+	\item \textbf{Pominięcie aspektu tożsamości mówcy przy konstruowaniu zbiorów treningowych i testowych}
 	\item[] W przypadku, gdy w zbiorze danych znajduje się kilka nagrań od tego samego mówcy można postąpić na dwa sposoby.
 Pierwszy z nich to podział według podmiotów (ang. \emph{subject-wise split}) polegający na tym, że nagrania od tej samej
 osoby znajdują się albo w zbiorze treningowym albo testowym - nigdy w obu na raz.
-W niektórych opracowań można spotkać też drugie podejście, czyli podział według rekordów (ang.\emph{record-wise split}), gdzie nagrania są losowo dzielone do zbiorów
+Drugie podejście to podział według rekordów (ang.\emph{record-wise split}), gdzie nagrania są losowo dzielone do zbiorów
 lub intencjonalnie używa się nagrań od tej samej osoby zarówno w zbiorze testowym jak i treningowym.
 Okazuje się, że podejście typu \emph{record-wise} prowadzi do wyższej dokładności niż \emph{subject-wise split}, jeśli pozostałe założenia pozostają identyczne.
 Prawdopodobnie wynika to z faktu, że klasyfikator nastawia się na wykrywanie unikalnych informacji indywidualnych,
-reprezentowanych przez współczynniki takie jak MFCC i PLP, a nie rzeczywiste biomarkery lub wzorce PD.
+reprezentowanych przez współczynniki takie jak MFCC, a nie rzeczywiste biomarkery lub wzorce PD.
 Dlatego też rekomendowana jest technika \emph{subject-wise split}, aby uniknąć zbyt optymistycznych wyników.
 
-  	\item \textbf{Wpływ różnicy wieku między klasami}
-	\item[] W literaturze można znaleźć prace wykorzystujące zbiory danych, w których  średni wiek mówców
+  	\item \textbf{Niezbalansowanie klas pod względem wieku}
+	\item[] W literaturze można znaleźć prace wykorzystujące zbiory danych, w których średni wiek mówców
 w klasie osób chorych na PD różni się od średniego wieku w klasie osób zdrowych o ponad 5 lat.
-Autorzy zapewniają o wysokiej skuteczności  swoich rozwiązań, jednak nie rozważają oni sytuacji, w której klasyfikator
+Autorzy zapewniają o wysokiej skuteczności swoich rozwiązań, jednak pomijają informacje o ryzyku, że klasyfikator
 uczy się wykrywać cechy powiązane z wiekiem, zamiast rzeczywistych wzorców PD.
-Aby zbadać wpływ średniej różnicy wieku między dwiema klasami, w \cite{SustainedVowelsProblems} testowano różne przesunięcia rozkładu wieku.
+W \cite{SustainedVowelsProblems} testowano różne przesunięcia rozkładu wieku między klasami, aby zbadać wpływ tego czynnika.
 Wraz ze wzrostem różnicy między średnim wiekiem uczestników z PD i HC, dokładność klasyfikacji konsekwentnie rosła (Rys. \ref{fig:acc_and_age_diff}).
 Na tej podstawie można stwierdzić, że związany z wiekiem wpływ na głos mówców może zaburzać wyniki otrzymywane przez klasyfikator.
-Dlatego też zaleca się zbilansowanie używanych zbiorów danych, tak aby średnia różnica wieku między dwoma klasami  była jak namniejsza.
+Dlatego też zaleca się zbalansowanie używanych zbiorów danych, tak aby średnia różnica wieku między tymi dwoma klasami  była jak namniejsza.
 
 
 \begin{figure}[htbp]
@@ -121,37 +136,64 @@ Dlatego też zaleca się zbilansowanie używanych zbiorów danych, tak aby śred
     \label{fig:acc_and_age_diff}
 \end{figure}
 
-  	\item Wpływ losowości cech na dokładność klasyfikacji
-	\item [] Im większa różnica między liczbą plików a wymiarem wektora cech, tym większe szanse na znalezienie cechy, która losowo koreluje z etykietami klas.
-  	\item Łagodzenie losowego nadmiernego dopasowania przy użyciu danych programistycznych
-	\item Wpływ rozpoczęcia i przesunięcia samogłosek na wyniki klasyfikacji
- 	\item Eksperymenty międzykorporowe
-	\item Analiza cech
+  	\item \textbf{Wpływ losowości cech na dokładność klasyfikacji}
+	\item[] Badanie dotyczy wpływu przypadkowych cech na klasyfikację choroby Parkinsona.
+W pracy naukowej \cite{Essential_tremor_problematic_methodology} zastosowano cechy akustyczne głosu do wykrywania drżenia samoistnego (ang. \emph{essential tremor}, ET),
+osiągając wysoką skuteczność (AUC = 0,97). Jednak w liście do redakcji zwrócono uwagę na nadmierną liczbę analizowanych współczynników w
+porównaniu do rozmiaru próbki korpusu, co wpłynęło na wyniki.
+Po zastosowaniu losowych wektorów cech, skuteczność spadła, ale nadal pozostała wysoka (AUC = 0,90).
+To dowodzi, że duże ilości cech w stosunku do próbki mogą prowadzić do pozornie dobrych, ale sztucznych wyników klasyfikacji.
+
+Podobne badanie przeprowadzono analizując chorobę Parkinsona \cite{SustainedVowelsProblems}.
+Zamieniono cechy obliczone za pomocą DARTH-VAT na losowe liczby, zachowując etykiety i podziały.
+Wyniki wskazały, że nawet losowe cechy mogą prowadzić do wysokich wyników klasyfikacji (ponad 72\%).
+Efekt ten jest bardziej widoczny w mniejszych korpusach, gdzie różnica między liczbą nagrań a wymiarowością cech ma większy wpływ na potencjalną korelację przypadkową.
+Badanie pokazuje, że nadmierna liczba cech w stosunku do liczby obserwacji może prowadzić do fałszywie wysokich wyników klasyfikacji nawet przy użyciu losowych cech.
+Im większa różnica między liczbą plików a wymiarem wektora cech, tym większe szanse na znalezienie cechy, która losowo koreluje z etykietami klas.
+To sugeruje, że osiągnięcia klasyfikacyjne powinny być analizowane w kontekście proporcji cech do próbki, aby uniknąć nadmiernie optymistycznych interpretacji wyników klasyfikacji w zastosowaniach medycznych.
+
+  	\item \textbf{Ograniczenie losowego nadmiernego dopasowania poprzez uwzględnienie zbioru walidacyjnego}
+	\item[] Dla mniejszych zbiorów danych, praktyką jest często używanie tylko zbiorów treningowych i testowych podczas krzyżowej walidacji.
+Jest to podejście, które może prowadzić do wyników zbyt optymistycznych, ponieważ wszystkie wyniki testowe są brane pod uwagę przy wyborze optymalnej
+konfiguracji modelu.
+Inną strategią jest wykorzystanie danych treningowych do oceny wytrenowanych modeli i późniejsze przetestowanie najlepszego modelu na zbiorze testowym.
+Niemniej jednak, to podejście może być niepraktyczne, ponieważ może prowadzić do wyników idealnych (dokładność 100\%) na zbiorze treningowym, co jest niepożądane.
+Aby uniknąć tych problemów, proponuje się wykorzystanie dodatkowego zbioru walidacyjnego \cite{SustainedVowelsProblems}.
+Wybierając model na podstawie wyników walidacyjnych, a następnie testując go na zbiorze testowym, można uniknąć ryzyka nadmiernego dopasowania.
+Jednakże, dla mniejszych zbiorów danych, ta strategia może ograniczać dostępną liczbę danych treningowych, co wpływa na wydajność klasyfikacji.
+
+	\item \textbf{Wpływ początku i końca  nagrań samogłosek na wyniki klasyfikacji}
+\item[] Główną różnicą między korpusami wykorzystywanymi do klasyfikacji choroby Parkinsona (PD) jest obecność fragmentów nagrania oznaczonych jako "onset" i "offset".
+Niektóre nagrania zawierają te segmenty, podczas gdy inne zostały ich pozbawione, aby zapewnić stabilniejszą fonację, co jest korzystne dla pewnych cech i algorytmów analizy.
+W celu oceny znaczenia informacji zawartych w obszarach "onset" i "offset" dla klasyfikacji, przeprowadzono eksperymenty porównawcze,
+wykorzystując nagrania zarówno z fragmentami przyciętymi, jak i nieprzyciętymi \cite{SustainedVowelsProblems}.
+Wyniki tych eksperymentów ukazały, że wyeliminowanie fragmentów początkowych i końcowych wpłynęło negatywnie na dokładność klasyfikacji.
+To wskazuje na to, że obszary te zawierają istotne informacje artykulacyjne, które mają znaczenie dla procesu klasyfikacji.
+
+ 	\item \textbf{Eksperymenty międzykorporowe a zdolności generalizacyjne}
+	\item [] Większość badań dotyczących diagnozowania choroby Parkinsona na podstawie głosu opiera się na jednym, lub ewentualnie kilku (wykorzystywanych niezależnie)
+korpusach mowy.
+W tym kontekście często pomija się badanie zdolności klasyfikatorów do ogólnego zastosowania.
+W artykule \cite{SustainedVowelsProblems} przeprowadzono międzykorporowe eksperymenty na bazach danych w językach włoskim i hiszpańskim w celu
+przetestowania zdolności ogólnych modeli. Skuteczność tych modeli różniła się w zależności od języka zbioru testowego.
+Może to wynikać z odmiennej różnorodności nagrań, co ma wpływ na stabilność modelu.
+Drugim możliwym wyjaśnieniem jest to, że głos osób z chorobą Parkinsona może być w różnym stopniu obarczony objawami choroby w zależności od języka ojczystego lub stopnia zaawansowania choroby.
+Innymi słowy, w zależności od użytego zbioru danych objawy mogą być nasilone w różny sposób i konieczne jest wzięcie tego pod uwagę tak by zdolności generalizacyjne modelu były jak najwyższe.
 \end{enumerate}
 
 
+Identyfikacja i świadomość wpływu powyższych czynników, pozwala na dostosowaniu przeprowadzanych ekperymentów tak, aby uniknąć wyników zbyt optymistycznych.
+Usystematyzowanie podejścia do analizy głosu pod kątem diagnostyki choroby Parkinsona przyczyni się do możwliwości obiektywnego porównania istniejących i nowych rozwiązań.
+Tym samym przyspiesy to postęp w tej dziedzinie i uzyskanie optymalnego rozwiązania, które mogłoby zostac wykorzystane w rzeczywistym środowisku.
 
 Nie są to jednak wszystkie czynniki, które zaburzają obiektywność wyników. Konieczna jest dyskusja na temat nowych
 kompleksowych linii bazowych dla prowadzenia eksperymentów w automatycznym wykrywaniu PD na podstawie fonacji,
 a także innych ogólnych zastosowań przetwarzania mowy.
 
-
-\subsection{Wnioski}
-\label{subsec:wnioski}
+%---------------------------------------------------------------------------
+\section{Wykorzystanie rozwiązań teoretycznych w rzeczywistym środowisku}\label{sec:teoria-vs-praktyka}
 
 Prace nad automatyczną detekcją Parkinsona na podstawie głosu trwają już od dłuższego czasu.
 Jednak wciąż brakuje systemu, który mógłby zostać uznany jako wystarczajaco niezawodne narzędzie diagnostyczne.
 Wśród problemów, które ograniczają rzeczywiste wykorzystanie takich systemów wyróżnia się:
-
-\begin{itemize}
-\item pierwszy punkt
-\item drugi punkt
-\item trzeci punkt
-\end{itemize}
-
-
-%---------------------------------------------------------------------------
-\section{Wykorzystanie rozwiązań teoretycznych w rzeczywistym środowisku}\label{sec:teoria-vs-praktyka}
-
-
 %---------------------------------------------------------------------------

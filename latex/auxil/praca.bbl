@@ -365,6 +365,41 @@
     \field{year}{2019}
   \endentry
 
+  \entry{2023_PD_voice}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KR}{%
+         family={Khaskhoussy},
+         familyi={K\bibinitperiod},
+         given={Rania},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=AYB}{%
+         family={Ayed},
+         familyi={A\bibinitperiod},
+         given={Yassine\bibnamedelima Ben},
+         giveni={Y\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson’s disease, SVM, CNN, I-vector features, Speech}
+    \strng{namehash}{KRAYB1}
+    \strng{fullhash}{KRAYB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.patrec.2023.03.011
+    \endverb
+    \field{issn}{0167-8655}
+    \field{pages}{64\bibrangedash 70}
+    \field{title}{Improving Parkinson’s disease recognition through voice
+  analysis using deep learning}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0167865523000764
+    \endverb
+    \field{volume}{168}
+    \field{journaltitle}{Pattern Recognition Letters}
+    \field{year}{2023}
+  \endentry
+
   \entry{https://doi.org/10.1080/136828200410654}{article}{}
     \name{author}{4}{}{%
       {{hash=JHR}{%
@@ -514,31 +549,6 @@
     \strng{fullhash}{MJDCFJ1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{abstract}{%
-    Diagnosis of Parkinson's disease (PD) is commonly based on medical
-  observations and assessment of clinical signs, including the characterization
-  of a variety of motor symptoms. However, traditional diagnostic approaches
-  may suffer from subjectivity as they rely on the evaluation of movements that
-  are sometimes subtle to human eyes and therefore difficult to classify,
-  leading to possible misclassification. In the meantime, early non-motor
-  symptoms of PD may be mild and can be caused by many other conditions.
-  Therefore, these symptoms are often overlooked, making diagnosis of PD at an
-  early stage challenging. To address these difficulties and to refine the
-  diagnosis and assessment procedures of PD, machine learning methods have been
-  implemented for the classification of PD and healthy controls or patients
-  with similar clinical presentations (e.g., movement disorders or other
-  Parkinsonian syndromes). To provide a comprehensive overview of data
-  modalities and machine learning methods that have been used in the diagnosis
-  and differential diagnosis of PD, in this study, we conducted a literature
-  review of studies published until February 14, 2020, using the PubMed and
-  IEEE Xplore databases. A total of 209 studies were included, extracted for
-  relevant information and presented in this review, with an investigation of
-  their aims, sources of data, types of data, machine learning methods and
-  associated outcomes. These studies demonstrate a high potential for
-  adaptation of machine learning methods and novel biomarkers in clinical
-  decision making, leading to increasingly systematic, informed diagnosis of
-  PD.%
-    }
     \verb{doi}
     \verb 10.3389/fnagi.2021.633752
     \endverb
@@ -590,31 +600,6 @@
     \strng{fullhash}{OASMVLLIBAADN1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{abstract}{%
-    Diagnosing Parkinson&rsquo;s Disease (PD) necessitates monitoring symptom
-  progression. Unfortunately, diagnostic confirmation often occurs years after
-  disease onset. A more sensitive and objective approach is paramount to the
-  expedient diagnosis and treatment of persons with PD (PwPDs). Recent studies
-  have shown that we can train accurate models to detect signs of PD from audio
-  recordings of confirmed PwPDs. However, disparities exist between studies and
-  may be caused, in part, by differences in employed corpora or methodologies.
-  Our hypothesis is that unaccounted covariates in methodology, experimental
-  design, and data preparation resulted in overly optimistic results in studies
-  of PD automatic detection employing sustained vowels. These issues include
-  record-wise fold creation rather than subject-wise; an imbalance of age
-  between the PwPD and control classes; using too small of a corpus compared to
-  the sizes of feature vectors; performing cross-validation without including
-  development data; and the absence of cross-corpora testing to confirm
-  results. In this paper, we evaluate the influence of these methodological
-  issues in the automatic detection of PD employing sustained vowels. We
-  perform several experiments isolating each issue to measure its influence
-  employing three different corpora. Moreover, we analyze if the perceived
-  dysphonia of the speakers could be causing differences in results between the
-  corpora. Results suggest that each independent methodological issue analyzed
-  has an effect on classification accuracy. Consequently, we recommend a list
-  of methodological steps to be considered in future experiments to avoid
-  overoptimistic or misleading results.%
-    }
     \verb{doi}
     \verb 10.3390/app12030991
     \endverb
@@ -629,6 +614,89 @@
     \field{volume}{12}
     \field{journaltitle}{Applied Sciences}
     \field{year}{2022}
+  \endentry
+
+  \entry{Essential_tremor_problematic_methodology}{article}{}
+    \name{author}{9}{}{%
+      {{hash=SA}{%
+         family={Suppa},
+         familyi={S\bibinitperiod},
+         given={Antonio},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=AF}{%
+         family={Asci},
+         familyi={A\bibinitperiod},
+         given={Francesco},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Saggio},
+         familyi={S\bibinitperiod},
+         given={Giovanni},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=DLP}{%
+         family={Di\bibnamedelima Leo},
+         familyi={D\bibinitperiod\bibinitdelim L\bibinitperiod},
+         given={Pietro},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=ZZ}{%
+         family={Zarezadeh},
+         familyi={Z\bibinitperiod},
+         given={Zakarya},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=FG}{%
+         family={Ferrazzano},
+         familyi={F\bibinitperiod},
+         given={Gina},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=RG}{%
+         family={Ruoppolo},
+         familyi={R\bibinitperiod},
+         given={Giovanni},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Berardelli},
+         familyi={B\bibinitperiod},
+         given={Alfredo},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CG}{%
+         family={Costantini},
+         familyi={C\bibinitperiod},
+         given={Giovanni},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \keyw{voice tremor, essential tremor, spectral analysis, machine learning,
+  beta-blockers}
+    \strng{namehash}{SA+1}
+    \strng{fullhash}{SAAFSGDLPZZFGRGBACG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1002/mds.28508
+    \endverb
+    \verb{eprint}
+    \verb https://movementdisorders.onlinelibrary.wiley.com/doi/pdf/10.1002/mds
+    \verb .28508
+    \endverb
+    \field{number}{6}
+    \field{pages}{1401\bibrangedash 1410}
+    \field{title}{Voice Analysis with Machine Learning: One Step Closer to an
+  Objective Diagnosis of Essential Tremor}
+    \verb{url}
+    \verb https://movementdisorders.onlinelibrary.wiley.com/doi/abs/10.1002/mds
+    \verb .28508
+    \endverb
+    \field{volume}{36}
+    \field{journaltitle}{Movement Disorders}
+    \field{year}{2021}
   \endentry
 \enddatalist
 \endinput
