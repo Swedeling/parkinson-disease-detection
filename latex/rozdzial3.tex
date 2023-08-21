@@ -10,13 +10,13 @@ Ponadto wczesne objawy niemotoryczne PD mogą być łagodne oraz spowodowane wie
 Dlatego też rozpoznanie tej choroby na wczesnym etapie stanowi wyzwanie.
 
 Nie da się nie zauważyć, żę sztuczna inteligencja oraz nowoczesne technologie coraz częściej stają się integralną częścią systemu ochrony zdrowia.
-Wspierają lekarzy podczas diagnozy oraz wyboru sposobu leczenia pacjenta,a także pozwalają na monitorowanie choroby.
+Wspierają lekarzy podczas diagnozy oraz wyboru sposobu leczenia pacjenta, a także pozwalają na monitorowanie choroby.
 Aby rozwiązać trudności i udoskonalić procedury diagnozowania oraz oceny PD, wdrożono metody uczenia maszynowego do klasyfikacji PD i osób zdrowych lub
 pacjentów z podobnymi objawami klinicznymi (np. zaburzeniami ruchu lub innymi zespołami parkinsonowskimi).
 
 
-Do roku 2020 powstało co najmniej 209 artykułów naukowych dotyczących wykorzystania metod uczenia maszynowego w diagnostyce i monitorowaniu \cite{ML_for_PD_review},
-a liczba ta cały czas rośnie.
+Do roku 2020 powstało co najmniej 209 artykułów naukowych dotyczących wykorzystania metod uczenia maszynowego w diagnostyce i monitorowaniu \cite{ML_for_PD_review}
+choroby Parkinsona, a liczba ta cały czas rośnie.
 
 
 \section{Rodzaj wykorzystywanych danych}\label{sec:dane-przeglad}
@@ -45,13 +45,29 @@ Przyczyny tego zjawiska zostaną dokładniej rozważone w kolejnych fragmentach.
 Niniejsza praca dotyczy diagnostyki na podstawie głosu, dlatego ten temat zostanie rozwinięty.
 Założeniem dla takich systemów jest zadanie potencjalnemu pacjentowi zadania wokalnego, może to być:
 \begin{itemize}[itemsep=0.1pt]
-	\item podtrzymywane samogłoski (ang. sustained vowels)
-	\item cechy diadochokinetyczne (DDK), mogące mierzyć zdolność do wydawania serii szybkich i naprzemiennych dźwięków (sylab).
-	\item czytanie tekstu
-	\item monolog
+	\item podtrzymywane samogłoski (ang. \emph{sustained vowels}),
+	\item zadanie diadochokinetyczne (DDK), mogące mierzyć zdolność do wydawania serii szybkich i naprzemiennych dźwięków (sylab),
+	\item czytanie tekstu,
+	\item wypowiedzenie pojedynczego zdania,
+	\item monolog.
 \end{itemize}
 
-[TUTAJ TRZEBA O TYM NAPISAĆ - WADY, ZALETY ITD]
+Dotychczas nie przeprowadzono badań porównawczych dotyczących wpływu wyboru zadania wokalnego na efektywność klasyfikacji w przypadku choroby Parkinsona (PD).
+Jedynie w artykule  \cite{vocal_task_comparision} przeprowadzono takie porównanie, ale tylko za pomocą cech prozodii.
+Nie pozwala to jednak na wyciągnięcie obiektywnych wniosków, ponieważ każde z zadań wokalnych może wymagać innego podejścia i metod klasyfikacji.
+Niemniej jednak, przeprowadzono badanie \cite{monitoring_speech} na 200 pacjentach z PD,
+gdzie dokonano klasyfikacji deficytów mowy na pięć poziomów nasilenia.
+Oceniono typ (głos, artykulacja, płynność) oraz zakres upośledzenia dla każdego poziomu, korzystając z 2-minutowego fragmentu mowy.
+Wyniki ukazały, że głos stanowił najczęściej występujący i bardziej nasilony deficyt we wczesnych stadiach choroby.
+Deficyty artykulacji i płynności pojawiały się później.
+Wykazano, że upośledzenie artykulacji korelowało z upośledzeniem głosu w fazie "ciężkiej", a w fazie "głębokiej" dominującą cechą była upośledzona artykulacja.
+
+W rezultacie, w kontekście wczesnej diagnostyki choroby, artykulacja i płynność mowy nie wymagają głębokiej uwagi.
+Koncentrację należy skupić przede wszystkim na cechach głosowych, co sprawia, że wybór podtrzymywanych samogłosek jako zadania wokalnego
+wydaje się być najlepszym wyborem.
+To podejście może posiadać potencjał uniwersalności dla różnych języków, co oznacza, że analiza cezur głosowych może być stosowana
+niezależnie od języka, w którym pacjent się wypowiada.
+W efekcie pozwala to na bardziej efektywne i znormalizowane diagnozowanie choroby Parkinsona, niezależnie od lingwistycznych specyfik języka pacjenta.
 
 %---------------------------------------------------------------------------
 

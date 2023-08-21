@@ -563,6 +563,97 @@
     \field{year}{2021}
   \endentry
 
+  \entry{vocal_task_comparision}{article}{}
+    \name{author}{3}{}{%
+      {{hash=KM}{%
+         family={Kodali},
+         familyi={K\bibinitperiod},
+         given={Manila},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KSR}{%
+         family={Kadiri},
+         familyi={K\bibinitperiod},
+         given={Sudarsana\bibnamedelima Reddy},
+         giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=AP}{%
+         family={Alku},
+         familyi={A\bibinitperiod},
+         given={Paavo},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson’s disease, Severity level classification, MDS-UPDRS-III,
+  MDS-UPDRS-S}
+    \strng{namehash}{KMKSRAP1}
+    \strng{fullhash}{KMKSRAP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.csl.2023.101548
+    \endverb
+    \field{issn}{0885-2308}
+    \field{pages}{101548}
+    \field{title}{Automatic classification of the severity level of
+  Parkinson’s disease: A comparison of speaking tasks, features, and
+  classifiers}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0885230823000670
+    \endverb
+    \field{volume}{83}
+    \field{journaltitle}{Computer Speech & Language}
+    \field{year}{2023}
+  \endentry
+
+  \entry{monitoring_speech}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=AVT}{%
+         family={Arias-Vergara},
+         familyi={A\bibinithyphendelim V\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=VCJ}{%
+         family={Vasquez-Correa},
+         familyi={V\bibinithyphendelim C\bibinitperiod},
+         given={J.C.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=OAJ}{%
+         family={Orozco-Arroyave},
+         familyi={O\bibinithyphendelim A\bibinitperiod},
+         given={J.R.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=KP}{%
+         family={Klumpp},
+         familyi={K\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=NE}{%
+         family={Nöth},
+         familyi={N\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AVT+1}
+    \strng{fullhash}{AVTVCJOAJKPNE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2018 IEEE International Conference on Acoustics, Speech
+  and Signal Processing (ICASSP)}
+    \verb{doi}
+    \verb 10.1109/ICASSP.2018.8462332
+    \endverb
+    \field{pages}{6004\bibrangedash 6008}
+    \field{title}{Unobtrusive Monitoring of Speech Impairments of Parkinson'S
+  Disease Patients Through Mobile Devices}
+    \field{year}{2018}
+  \endentry
+
   \entry{SustainedVowelsProblems}{article}{}
     \name{author}{5}{}{%
       {{hash=OAS}{%
