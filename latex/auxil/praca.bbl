@@ -200,127 +200,28 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{diagnostyka_Sitek}{article}{}
-    \name{author}{4}{}{%
-      {{hash=SE}{%
-         family={Sitek},
-         familyi={S\bibinitperiod},
-         given={Emilia},
-         giveni={E\bibinitperiod},
-      }}%
-      {{hash=WJ}{%
-         family={Wójcik},
-         familyi={W\bibinitperiod},
-         given={Jan},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=WD}{%
-         family={Wieczorek},
-         familyi={W\bibinitperiod},
-         given={Dariusz},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=SJ}{%
-         family={Sławek},
-         familyi={S\bibinitperiod},
-         given={Jarosław},
-         giveni={J\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SE+1}
-    \strng{fullhash}{SEWJWDSJ1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{105}
-    \field{title}{Ocena neuropsychologiczna i neuropsychiatryczna w chorobie
-  Parkinsona – specyfika badania i dobór metod diagnostycznych
-  [Neuropsychological and neuropsychiatric assessment in Parkinson's disease -
-  examination and selection of diagnostic tools]. Text in Polish}
-    \field{volume}{9}
-    \field{month}{11}
-    \field{year}{2013}
-  \endentry
-
-  \entry{Loscalzo_2022}{misc}{}
+  \entry{lewicka}{inproceedings}{}
     \name{author}{1}{}{%
-      {{hash=LJ}{%
-         family={Loscalzo},
-         familyi={L\bibinitperiod},
-         given={J},
-         giveni={J},
+      {{hash=TLINKDS}{%
+         family={Tatiana\bibnamedelima Lewicka},
+         familyi={T\bibinitperiod\bibinitdelim L\bibinitperiod},
+         suffix={Daniel\bibnamedelima Stompel},
+         suffixi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+         given={Iwona Nowakowska-Kempna},
+         giveni={I\bibinitperiod\bibinitdelim N\bibinithyphendelim
+  K\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {21st ed. McGraw Hill}%
-    }
-    \strng{namehash}{LJ1}
-    \strng{fullhash}{LJ1}
+    \strng{namehash}{TLDSINK1}
+    \strng{fullhash}{TLDSINK1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Parkinson’s disease}
-    \verb{url}
-    \verb https://accessmedicine.mhmedical.com
-    \endverb
-    \field{journaltitle}{Harrison’s Principles of Internal Medicine}
-    \field{year}{2022}
-    \warn{\item Invalid format of field 'month'}
-  \endentry
-
-  \entry{Mayo_Clinic_PD}{misc}{}
-    \name{author}{1}{}{%
-      {{hash=M}{%
-         family={{Mayo Clinic}},
-         familyi={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{M1}
-    \strng{fullhash}{M1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-  \field{howpublished}{\url{https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/diagnosis-treatment/drc-20376062}}
-    \field{note}{Mayo Clinic}
-    \field{title}{Parkinson's Disease: Diagnosis & Treatment}
-  \endentry
-
-  \entry{ROSSI202153}{article}{}
-    \name{author}{3}{}{%
-      {{hash=RM}{%
-         family={Rossi},
-         familyi={R\bibinitperiod},
-         given={Malco},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=PLS}{%
-         family={Perez-Lloret},
-         familyi={P\bibinithyphendelim L\bibinitperiod},
-         given={Santiago},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=MM}{%
-         family={Merello},
-         familyi={M\bibinitperiod},
-         given={Marcelo},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \keyw{Parkinson's disease, Parkinsonism, Diagnosis, Criteria, Accuracy}
-    \strng{namehash}{RMPLSMM1}
-    \strng{fullhash}{RMPLSMM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb https://doi.org/10.1016/j.parkreldis.2021.10.016
-    \endverb
-    \field{issn}{1353-8020}
-    \field{pages}{53\bibrangedash 58}
-    \field{title}{How much time is needed in clinical practice to reach a
-  diagnosis of clinically established Parkinson's disease?}
-    \verb{url}
-    \verb https://www.sciencedirect.com/science/article/pii/S1353802021003710
-    \endverb
-    \field{volume}{92}
-    \field{journaltitle}{Parkinsonism & Related Disorders}
-    \field{year}{2021}
+    \field{booktitle}{Logopedia Silesiana}
+    \field{number}{3}
+    \field{pages}{76\bibrangedash 94}
+    \field{title}{Diagnoza i terapia zaburzen mowy u pacjentów z chorob ˛a
+  Parkinsona}
+    \field{year}{2009}
   \endentry
 
   \entry{Szurek_2018}{article}{}
@@ -524,6 +425,113 @@
     \field{year}{1997}
   \endentry
 
+  \entry{diagnostyka_Sitek}{article}{}
+    \name{author}{4}{}{%
+      {{hash=SE}{%
+         family={Sitek},
+         familyi={S\bibinitperiod},
+         given={Emilia},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={Wójcik},
+         familyi={W\bibinitperiod},
+         given={Jan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=WD}{%
+         family={Wieczorek},
+         familyi={W\bibinitperiod},
+         given={Dariusz},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Sławek},
+         familyi={S\bibinitperiod},
+         given={Jarosław},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SE+1}
+    \strng{fullhash}{SEWJWDSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{105}
+    \field{title}{Ocena neuropsychologiczna i neuropsychiatryczna w chorobie
+  Parkinsona – specyfika badania i dobór metod diagnostycznych
+  [Neuropsychological and neuropsychiatric assessment in Parkinson's disease -
+  examination and selection of diagnostic tools]. Text in Polish}
+    \field{volume}{9}
+    \field{month}{11}
+    \field{year}{2013}
+  \endentry
+
+  \entry{Loscalzo_2022}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=LJ}{%
+         family={Loscalzo},
+         familyi={L\bibinitperiod},
+         given={J},
+         giveni={J},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {21st ed. McGraw Hill}%
+    }
+    \strng{namehash}{LJ1}
+    \strng{fullhash}{LJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Parkinson’s disease}
+    \verb{url}
+    \verb https://accessmedicine.mhmedical.com
+    \endverb
+    \field{journaltitle}{Harrison’s Principles of Internal Medicine}
+    \field{year}{2022}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{ROSSI202153}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RM}{%
+         family={Rossi},
+         familyi={R\bibinitperiod},
+         given={Malco},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=PLS}{%
+         family={Perez-Lloret},
+         familyi={P\bibinithyphendelim L\bibinitperiod},
+         given={Santiago},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Merello},
+         familyi={M\bibinitperiod},
+         given={Marcelo},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson's disease, Parkinsonism, Diagnosis, Criteria, Accuracy}
+    \strng{namehash}{RMPLSMM1}
+    \strng{fullhash}{RMPLSMM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.parkreldis.2021.10.016
+    \endverb
+    \field{issn}{1353-8020}
+    \field{pages}{53\bibrangedash 58}
+    \field{title}{How much time is needed in clinical practice to reach a
+  diagnosis of clinically established Parkinson's disease?}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S1353802021003710
+    \endverb
+    \field{volume}{92}
+    \field{journaltitle}{Parkinsonism & Related Disorders}
+    \field{year}{2021}
+  \endentry
+
   \entry{ML_for_PD_review}{article}{}
     \name{author}{3}{}{%
       {{hash=MJ}{%
@@ -705,89 +713,6 @@
     \field{volume}{12}
     \field{journaltitle}{Applied Sciences}
     \field{year}{2022}
-  \endentry
-
-  \entry{Essential_tremor_problematic_methodology}{article}{}
-    \name{author}{9}{}{%
-      {{hash=SA}{%
-         family={Suppa},
-         familyi={S\bibinitperiod},
-         given={Antonio},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=AF}{%
-         family={Asci},
-         familyi={A\bibinitperiod},
-         given={Francesco},
-         giveni={F\bibinitperiod},
-      }}%
-      {{hash=SG}{%
-         family={Saggio},
-         familyi={S\bibinitperiod},
-         given={Giovanni},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=DLP}{%
-         family={Di\bibnamedelima Leo},
-         familyi={D\bibinitperiod\bibinitdelim L\bibinitperiod},
-         given={Pietro},
-         giveni={P\bibinitperiod},
-      }}%
-      {{hash=ZZ}{%
-         family={Zarezadeh},
-         familyi={Z\bibinitperiod},
-         given={Zakarya},
-         giveni={Z\bibinitperiod},
-      }}%
-      {{hash=FG}{%
-         family={Ferrazzano},
-         familyi={F\bibinitperiod},
-         given={Gina},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=RG}{%
-         family={Ruoppolo},
-         familyi={R\bibinitperiod},
-         given={Giovanni},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=BA}{%
-         family={Berardelli},
-         familyi={B\bibinitperiod},
-         given={Alfredo},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=CG}{%
-         family={Costantini},
-         familyi={C\bibinitperiod},
-         given={Giovanni},
-         giveni={G\bibinitperiod},
-      }}%
-    }
-    \keyw{voice tremor, essential tremor, spectral analysis, machine learning,
-  beta-blockers}
-    \strng{namehash}{SA+1}
-    \strng{fullhash}{SAAFSGDLPZZFGRGBACG1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb https://doi.org/10.1002/mds.28508
-    \endverb
-    \verb{eprint}
-    \verb https://movementdisorders.onlinelibrary.wiley.com/doi/pdf/10.1002/mds
-    \verb .28508
-    \endverb
-    \field{number}{6}
-    \field{pages}{1401\bibrangedash 1410}
-    \field{title}{Voice Analysis with Machine Learning: One Step Closer to an
-  Objective Diagnosis of Essential Tremor}
-    \verb{url}
-    \verb https://movementdisorders.onlinelibrary.wiley.com/doi/abs/10.1002/mds
-    \verb .28508
-    \endverb
-    \field{volume}{36}
-    \field{journaltitle}{Movement Disorders}
-    \field{year}{2021}
   \endentry
 \enddatalist
 \endinput
