@@ -6,21 +6,21 @@
 \contentsline {section}{\numberline {2.1}Znaczenie głosu w chorobie Parkinsona}{11}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Metody diagnozowania i monitorowania}{14}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Terapia osób chorych}{16}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Rola i zastosowanie aplikacji głosowych w poprawie jakości mowy u osób z chorobą Parkinsona}{18}{subsection.2.3.1}%
-\contentsline {chapter}{\numberline {3}Analiza rozwiązań do automatycznej diagnostyki choroby Parkinsona}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Rodzaj wykorzystywanych danych}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Metody klasyfikacji}{23}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Wyzwania związane z systemami automatycznej diagnostyki}{26}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Materiał i metoda badawcza}{31}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Materiał badawczy}{31}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Parametryzacja sygnału akustycznego}{33}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Metody klasyfikacji}{33}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Metody ewaluacji wyników}{33}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Wyniki badań}{35}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Samogłoska /a/}{35}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Samogłoska /e/}{35}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Samogłoska /i/}{35}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Samogłoska /o/}{35}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Samogłoska /u/}{35}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Zbiorcze podsumowanie wyników}{35}{section.5.6}%
-\contentsline {chapter}{\numberline {6}Analiza i interpretacja wyników}{37}{chapter.6}%
+\contentsline {subsection}{\numberline {2.3.1}Rola i zastosowanie aplikacji głosowych w poprawie jakości mowy u osób z chorobą Parkinsona}{17}{subsection.2.3.1}%
+\contentsline {chapter}{\numberline {3}Analiza rozwiązań do automatycznej diagnostyki choroby Parkinsona}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Rodzaj wykorzystywanych danych}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Metody klasyfikacji}{21}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Wyzwania związane z systemami automatycznej diagnostyki}{24}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Materiał i metoda badawcza}{29}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Materiał badawczy}{29}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Parametryzacja sygnału akustycznego}{32}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Metody klasyfikacji}{32}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Metody ewaluacji wyników}{32}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Wyniki badań}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Samogłoska /a/}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Samogłoska /e/}{33}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Samogłoska /i/}{33}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Samogłoska /o/}{33}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Samogłoska /u/}{33}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Zbiorcze podsumowanie wyników}{33}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Analiza i interpretacja wyników}{35}{chapter.6}%
