@@ -662,6 +662,612 @@
     \field{year}{2018}
   \endentry
 
+  \entry{7378178}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=KP}{%
+         family={Kraipeerapun},
+         familyi={K\bibinitperiod},
+         given={Pawalai},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=AS}{%
+         family={Amornsamankul},
+         familyi={A\bibinitperiod},
+         given={Somkid},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KPAS1}
+    \strng{fullhash}{KPAS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2015 11th International Conference on Natural Computation
+  (ICNC)}
+    \verb{doi}
+    \verb 10.1109/ICNC.2015.7378178
+    \endverb
+    \field{pages}{1290\bibrangedash 1294}
+    \field{title}{Using stacked generalization and complementary neural
+  networks to predict Parkinson's disease}
+    \field{year}{2015}
+  \endentry
+
+  \entry{multimodel-framework}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=AL}{%
+         family={Ali},
+         familyi={A\bibinitperiod},
+         given={Liaqat},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=kS}{%
+         family={khan},
+         familyi={k\bibinitperiod},
+         given={Shafqatullah},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=AM}{%
+         family={Arshad},
+         familyi={A\bibinitperiod},
+         given={Muhammad},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=AS}{%
+         family={Ali},
+         familyi={A\bibinitperiod},
+         given={Sardar},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=AM}{%
+         family={Anwar},
+         familyi={A\bibinitperiod},
+         given={Muhammad},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AL+1}
+    \strng{fullhash}{ALkSAMASAM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ICECCE47252.2019.8940696
+    \endverb
+    \field{pages}{1\bibrangedash 5}
+    \field{title}{A Multi-model Framework for Evaluating Type of Speech Samples
+  having Complementary Information about Parkinson's Disease}
+    \field{month}{07}
+    \field{year}{2019}
+  \endentry
+
+  \entry{new-hybrid}{article}{}
+    \name{author}{3}{}{%
+      {{hash=MH}{%
+         family={M},
+         familyi={M},
+         given={Hariharan},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=PK}{%
+         family={Polat},
+         familyi={P\bibinitperiod},
+         given={Kemal},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=aRS}{%
+         prefix={a},
+         prefixi={a},
+         family={R},
+         familyi={R},
+         given={Sindhu},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MHPKRSa1}
+    \strng{fullhash}{MHPKRSa1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1016/j.cmpb.2014.01.004
+    \endverb
+    \field{title}{A new hybrid intelligent system for accurate detection of
+  Parkinson's disease}
+    \field{volume}{113}
+    \field{journaltitle}{Computer methods and programs in biomedicine}
+    \field{month}{01}
+    \field{year}{2014}
+  \endentry
+
+  \entry{fuzzy-neural-system}{article}{}
+    \name{author}{2}{}{%
+      {{hash=AR}{%
+         family={Abiyev},
+         familyi={A\bibinitperiod},
+         given={Rahib},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=AS}{%
+         family={Abizade},
+         familyi={A\bibinitperiod},
+         given={Sanan},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ARAS1}
+    \strng{fullhash}{ARAS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1155/2016/1267919
+    \endverb
+    \field{pages}{1\bibrangedash 9}
+    \field{title}{Diagnosing Parkinson’s Diseases Using Fuzzy Neural System}
+    \field{volume}{2016}
+    \field{journaltitle}{Computational and Mathematical Methods in Medicine}
+    \field{month}{01}
+    \field{year}{2016}
+  \endentry
+
+  \entry{linear-discriminant-analysis}{article}{}
+    \name{author}{4}{}{%
+      {{hash=AL}{%
+         family={Ali},
+         familyi={A\bibinitperiod},
+         given={Liaqat},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=ZC}{%
+         family={Zhu},
+         familyi={Z\bibinitperiod},
+         given={Ce},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=ZZ}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Zhonghao},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=LY}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Yipeng},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AL+1}
+    \strng{fullhash}{ALZCZZLY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/JTEHM.2019.2940900
+    \endverb
+    \field{pages}{1\bibrangedash 1}
+    \field{title}{Automated Detection of Parkinson's Disease Based on Multiple
+  Types of Sustained Phonations Using Linear Discriminant Analysis and
+  Genetically Optimized Neural Network}
+    \field{volume}{PP}
+    \field{journaltitle}{IEEE Journal of Translational Engineering in Health
+  and Medicine}
+    \field{month}{10}
+    \field{year}{2019}
+  \endentry
+
+  \entry{dastjerd}{article}{}
+    \name{author}{4}{}{%
+      {{hash=KDN}{%
+         family={Karimi\bibnamedelima Dastjerd},
+         familyi={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+         given={Niousha},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=SO}{%
+         family={Sert},
+         familyi={S\bibinitperiod},
+         given={Onur},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=OT}{%
+         family={Ozyer},
+         familyi={O\bibinitperiod},
+         given={Tansel},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=AR}{%
+         family={Alhajj},
+         familyi={A\bibinitperiod},
+         given={Reda},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KDN+1}
+    \strng{fullhash}{KDNSOOTAR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.2174/1874609812666190625140311
+    \endverb
+    \field{title}{Fuzzy Classification Methods Based Diagnosis of Parkinson’s
+  disease from Speech Test Cases}
+    \field{volume}{12}
+    \field{journaltitle}{Current Aging Science}
+    \field{month}{06}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Majda-Zdancewicz_Potulska-Chromik_Jakubowski_Nojszewska_Kostera-Pruszczyk}{article}{}
+    \name{author}{5}{}{%
+      {{hash=MZE}{%
+         family={Majda-Zdancewicz},
+         familyi={M\bibinithyphendelim Z\bibinitperiod},
+         given={Ewelina},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=PCA}{%
+         family={Potulska-Chromik},
+         familyi={P\bibinithyphendelim C\bibinitperiod},
+         given={Anna},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=JJ}{%
+         family={Jakubowski},
+         familyi={J\bibinitperiod},
+         given={Jacek},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=NM}{%
+         family={Nojszewska},
+         familyi={N\bibinitperiod},
+         given={Monika},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KPA}{%
+         family={Kostera-Pruszczyk},
+         familyi={K\bibinithyphendelim P\bibinitperiod},
+         given={Anna},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MZE+1}
+    \strng{fullhash}{MZEPCAJJNMKPA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{issn}{0239-7528}
+    \field{number}{3}
+    \field{pages}{art. no. e137347}
+    \field{title}{Deep learning vs feature engineering in the assessment of
+  voice signals for diagnosis in Parkinson’s disease}
+    \field{volume}{69}
+    \field{journaltitle}{Bulletin of the Polish Academy of Sciences. Technical
+  Sciences}
+    \field{year}{2021}
+  \endentry
+
+  \entry{GUATELLI2023106700}{article}{}
+    \name{author}{5}{}{%
+      {{hash=GR}{%
+         family={Guatelli},
+         familyi={G\bibinitperiod},
+         given={Renata},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=AV}{%
+         family={Aubin},
+         familyi={A\bibinitperiod},
+         given={Verónica},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Mora},
+         familyi={M\bibinitperiod},
+         given={Marco},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NTJ}{%
+         family={Naranjo-Torres},
+         familyi={N\bibinithyphendelim T\bibinitperiod},
+         given={Jose},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MOA}{%
+         family={Mora-Olivari},
+         familyi={M\bibinithyphendelim O\bibinitperiod},
+         given={Antonia},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson detection, Speech analysis, Spectrogram images, Extreme
+  Learning Machine}
+    \strng{namehash}{GR+1}
+    \strng{fullhash}{GRAVMMNTJMOA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Parkinson’s disease consists in the degeneration of the mesencephalic
+  black substance, affecting the dopaminergic vias. Its causes are varied,
+  including exposure to pesticides, genetic factors and, one of the most
+  influential ones, age. Given the decrease in dopamine levels, the most common
+  symptoms are the appearance of tremors and muscle rigidity. Due to the
+  rigidity of the muscles, the patient has voice alterations which have great
+  potential for non-invasive and early diagnosis of the disease. In addition,
+  considering the low cost of the sound recorder respect to the clinical
+  studies, this approach allows the diagnosis of Parkinson’s disease in a
+  large number of people. Recent works, which present the analysis of voice
+  recordings through Convolutional Neural Networks, show high level of accuracy
+  in the diagnosis of Parkinson’s disease. Convolutional Neural Networks use
+  a Multilayer Neural Network to classify convolutional feature vectors. In
+  order to improve the training time of the classifier, in this paper the use
+  Extreme Learning Machines are proposed. Experiments considering 4 types of
+  spectrograms with AlexNet, VGG-16, SqueezeNet, Inception V3 and ResNet-50
+  Convolutional Neural Networks models. In the experiments, hit rate, training
+  and testing time, sensitivity and the specificity indicators of all the
+  neural architectures involved in the work are objectively compared. It is
+  shown that the Extreme Learning Machine have a high level of accuracy in the
+  diagnosis of Parkinson’s disease but with reduced training time.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.engappai.2023.106700
+    \endverb
+    \field{issn}{0952-1976}
+    \field{pages}{106700}
+    \field{title}{Detection of Parkinson’s disease based on spectrograms of
+  voice recordings and Extreme Learning Machine random weight neural networks}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0952197623008849
+    \endverb
+    \field{volume}{125}
+    \field{journaltitle}{Engineering Applications of Artificial Intelligence}
+    \field{year}{2023}
+  \endentry
+
+  \entry{Gelvez-Almeida_2022}{article}{}
+    \name{author}{5}{}{%
+      {{hash=GAE}{%
+         family={Gelvez-Almeida},
+         familyi={G\bibinithyphendelim A\bibinitperiod},
+         given={E},
+         giveni={E},
+      }}%
+      {{hash=VCA}{%
+         family={Váasquez-Coronel},
+         familyi={V\bibinithyphendelim C\bibinitperiod},
+         given={A},
+         giveni={A},
+      }}%
+      {{hash=GR}{%
+         family={Guatelli},
+         familyi={G\bibinitperiod},
+         given={R},
+         giveni={R},
+      }}%
+      {{hash=AV}{%
+         family={Aubin},
+         familyi={A\bibinitperiod},
+         given={V},
+         giveni={V},
+      }}%
+      {{hash=MM}{%
+         family={Mora},
+         familyi={M\bibinitperiod},
+         given={M},
+         giveni={M},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IOP Publishing}%
+    }
+    \strng{namehash}{GAE+1}
+    \strng{fullhash}{GAEVCAGRAVMM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Extreme learning machine is an algorithm that has shown a good performance
+  facing classification and regression problems. It has gained great acceptance
+  by the scientific community due to the simplicity of the model and its sola
+  great generalization capacity. This work proposes the use of extreme learning
+  machine neural networks to carry out the classification between Parkinson’s
+  disease patients and healthy individuals. The descriptor used corresponds to
+  the feature vector generated applying the local binary Pattern algorithm to
+  the grayscale spectrograms. The spectrograms are obtained from the audio
+  signal samples from the considered repository. Experiments are conducted with
+  single hidden layer and multilayer extreme learning machine networks
+  comparing the results of each structure. Results show that hierarchical
+  extreme learning machine with three hidden layers has a better general
+  performance over multilayer extreme learning machine networks and a single
+  hidden layer extreme learning machine. The rate of success obtained is within
+  the ranges presented in the literature. However, the hierarchical network
+  training time is considerably faster compared to multilayer networks of three
+  or two hidden layers.%
+    }
+    \verb{doi}
+    \verb 10.1088/1742-6596/2153/1/012014
+    \endverb
+    \field{number}{1}
+    \field{pages}{012014}
+    \field{title}{Classification of Parkinson’s disease patients based on
+  spectrogram using local binary pattern descriptors}
+    \verb{url}
+    \verb https://dx.doi.org/10.1088/1742-6596/2153/1/012014
+    \endverb
+    \field{volume}{2153}
+    \field{journaltitle}{Journal of Physics: Conference Series}
+    \field{year}{2022}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{8999815}{article}{}
+    \name{author}{8}{}{%
+      {{hash=ZL}{%
+         family={Zahid},
+         familyi={Z\bibinitperiod},
+         given={Laiba},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Maqsood},
+         familyi={M\bibinitperiod},
+         given={Muazzam},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DMY}{%
+         family={Durrani},
+         familyi={D\bibinitperiod},
+         given={Mehr\bibnamedelima Yahya},
+         giveni={M\bibinitperiod\bibinitdelim Y\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Bakhtyar},
+         familyi={B\bibinitperiod},
+         given={Maheen},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Baber},
+         familyi={B\bibinitperiod},
+         given={Junaid},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JH}{%
+         family={Jamal},
+         familyi={J\bibinitperiod},
+         given={Habibullah},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=MI}{%
+         family={Mehmood},
+         familyi={M\bibinitperiod},
+         given={Irfan},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=SOY}{%
+         family={Song},
+         familyi={S\bibinitperiod},
+         given={Oh-Young},
+         giveni={O\bibinithyphendelim Y\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZL+1}
+    \strng{fullhash}{ZLMMDMYBMBJJHMISOY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ACCESS.2020.2974008
+    \endverb
+    \field{pages}{35482\bibrangedash 35495}
+    \field{title}{A Spectrogram-Based Deep Feature Assisted Computer-Aided
+  Diagnostic System for Parkinson’s Disease}
+    \field{volume}{8}
+    \field{journaltitle}{IEEE Access}
+    \field{year}{2020}
+  \endentry
+
+  \entry{9257451}{article}{}
+    \name{author}{4}{}{%
+      {{hash=XZJ}{%
+         family={Xu},
+         familyi={X\bibinitperiod},
+         given={Zhi-Jing},
+         giveni={Z\bibinithyphendelim J\bibinitperiod},
+      }}%
+      {{hash=WRF}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Rong-Fei},
+         giveni={R\bibinithyphendelim F\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Juan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=YDH}{%
+         family={Yu},
+         familyi={Y\bibinitperiod},
+         given={Da-Hai},
+         giveni={D\bibinithyphendelim H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{XZJ+1}
+    \strng{fullhash}{XZJWRFWJYDH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ACCESS.2020.3037775
+    \endverb
+    \field{pages}{206888\bibrangedash 206900}
+    \field{title}{Parkinson’s Disease Detection Based on Spectrogram-Deep
+  Convolutional Generative Adversarial Network Sample Augmentation}
+    \field{volume}{8}
+    \field{journaltitle}{IEEE Access}
+    \field{year}{2020}
+  \endentry
+
+  \entry{ER2021103006}{article}{}
+    \name{author}{3}{}{%
+      {{hash=EMB}{%
+         family={Er},
+         familyi={E\bibinitperiod},
+         given={Mehmet\bibnamedelima Bilal},
+         giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=IE}{%
+         family={Isik},
+         familyi={I\bibinitperiod},
+         given={Esme},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=II}{%
+         family={Isik},
+         familyi={I\bibinitperiod},
+         given={Ibrahim},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson’s disease, Long short-term memory, Variational Mode
+  Decomposition, Convolutional Neural Network}
+    \strng{namehash}{EMBIEII1}
+    \strng{fullhash}{EMBIEII1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Parkinson’s disease (PD) can cause many non-motor and motor symptoms such
+  as speech and smell. One of the difficulties that Parkinson’s patients can
+  experience is a change in speech or speaking difficulties. Therefore, the
+  right diagnosis in the early period is important in reducing the possible
+  effects of speech disorders caused by the disease. Speech signal of Parkinson
+  patients shows major differences compared to normal people. In this study, a
+  new approach based on pre-trained deep networks and Long short-term memory
+  (LSTM) by using mel-spectrograms obtained from denoised speech signals with
+  Variational Mode Decomposition (VMD) for detecting PD from speech sounds is
+  proposed. The proposed model consists of four steps. In the first step, the
+  noise is removed by applying VMD to the signals. In the second step,
+  mel-spectrograms are extracted from the enhanced sound signals with VMD. In
+  the third step, pre-trained deep networks are preferred to extract deep
+  features from the mel-spectrograms. For this purpose, ResNet-18, ResNet-50
+  and ResNet-101 models are used as pre-trained deep network architecture. In
+  the last step, the classification process is occurred by giving these
+  features as input to the LSTM model, which is designed to define sequential
+  information from the extracted features. Experiments are performed with the
+  PC-GITA dataset, which consists of two classes and is widely used in the
+  literature. The results obtained from the proposed method are compared with
+  the latest methods in the literature, it is seen that it has a better
+  performance in terms of classification performance.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.bspc.2021.103006
+    \endverb
+    \field{issn}{1746-8094}
+    \field{pages}{103006}
+    \field{title}{Parkinson’s detection based on combined CNN and LSTM using
+  enhanced speech signals with Variational mode decomposition}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S1746809421006030
+    \endverb
+    \field{volume}{70}
+    \field{journaltitle}{Biomedical Signal Processing and Control}
+    \field{year}{2021}
+  \endentry
+
   \entry{SustainedVowelsProblems}{article}{}
     \name{author}{5}{}{%
       {{hash=OAS}{%
