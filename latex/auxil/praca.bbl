@@ -942,6 +942,185 @@
     \field{year}{2021}
   \endentry
 
+  \entry{Gunduz}{article}{}
+    \name{author}{1}{}{%
+      {{hash=GH}{%
+         family={Gündüz},
+         familyi={G\bibinitperiod},
+         given={Hakan},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GH1}
+    \strng{fullhash}{GH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ACCESS.2019.2936564
+    \endverb
+    \field{pages}{1\bibrangedash 1}
+    \field{title}{Deep Learning-Based Parkinson’s Disease Classification
+  Using Vocal Feature Sets}
+    \field{volume}{PP}
+    \field{journaltitle}{IEEE Access}
+    \field{month}{08}
+    \field{year}{2019}
+  \endentry
+
+  \entry{HIRES2022105021}{article}{}
+    \name{author}{6}{}{%
+      {{hash=HM}{%
+         family={Hireš},
+         familyi={H\bibinitperiod},
+         given={Máté},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GM}{%
+         family={Gazda},
+         familyi={G\bibinitperiod},
+         given={Matej},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DP}{%
+         family={Drotár},
+         familyi={D\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=PND}{%
+         family={Pah},
+         familyi={P\bibinitperiod},
+         given={Nemuel\bibnamedelima Daniel},
+         giveni={N\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=MMA}{%
+         family={Motin},
+         familyi={M\bibinitperiod},
+         given={Mohammod\bibnamedelima Abdul},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=KDK}{%
+         family={Kumar},
+         familyi={K\bibinitperiod},
+         given={Dinesh\bibnamedelima Kant},
+         giveni={D\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+    }
+    \keyw{Automatic voice analysis, Parkinson's disease, Convolutional neural
+  network, Transfer learning, CNN ensemble}
+    \strng{namehash}{HM+1}
+    \strng{fullhash}{HMGMDPPNDMMAKDK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    The computerized detection of Parkinson's disease (PD) will facilitate
+  population screening and frequent monitoring and provide a more objective
+  measure of symptoms, benefiting both patients and healthcare providers.
+  Dysarthria is an early symptom of the disease and examining it for
+  computerized diagnosis and monitoring has been proposed. Deep learning-based
+  approaches have advantages for such applications because they do not require
+  manual feature extraction, and while this approach has achieved excellent
+  results in speech recognition, its utilization in the detection of
+  pathological voices is limited. In this work, we present an ensemble of
+  convolutional neural networks (CNNs) for the detection of PD from the voice
+  recordings of 50 healthy people and 50 people with PD obtained from PC-GITA,
+  a publicly available database. We propose a multiple-fine-tuning method to
+  train the base CNN. This approach reduces the semantical gap between the
+  source task that has been used for network pretraining and the target task by
+  expanding the training process by including training on another dataset.
+  Training and testing were performed for each vowel separately, and a 10-fold
+  validation was performed to test the models. The performance was measured by
+  using accuracy, sensitivity, specificity and area under the ROC curve (AUC).
+  The results show that this approach was able to distinguish between the
+  voices of people with PD and those of healthy people for all vowels. While
+  there were small differences between the different vowels, the best
+  performance was when/a/was considered; we achieved 99% accuracy, 86.2%
+  sensitivity, 93.3% specificity and 89.6% AUC. This shows that the method has
+  potential for use in clinical practice for the screening, diagnosis and
+  monitoring of PD, with the advantage that vowel-based voice recordings can be
+  performed online without requiring additional hardware.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.compbiomed.2021.105021
+    \endverb
+    \field{issn}{0010-4825}
+    \field{pages}{105021}
+    \field{title}{Convolutional neural network ensemble for Parkinson's disease
+  detection from voice recordings}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0010482521008155
+    \endverb
+    \field{volume}{141}
+    \field{journaltitle}{Computers in Biology and Medicine}
+    \field{year}{2022}
+  \endentry
+
+  \entry{8999815}{article}{}
+    \name{author}{8}{}{%
+      {{hash=ZL}{%
+         family={Zahid},
+         familyi={Z\bibinitperiod},
+         given={Laiba},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Maqsood},
+         familyi={M\bibinitperiod},
+         given={Muazzam},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DMY}{%
+         family={Durrani},
+         familyi={D\bibinitperiod},
+         given={Mehr\bibnamedelima Yahya},
+         giveni={M\bibinitperiod\bibinitdelim Y\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Bakhtyar},
+         familyi={B\bibinitperiod},
+         given={Maheen},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Baber},
+         familyi={B\bibinitperiod},
+         given={Junaid},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JH}{%
+         family={Jamal},
+         familyi={J\bibinitperiod},
+         given={Habibullah},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=MI}{%
+         family={Mehmood},
+         familyi={M\bibinitperiod},
+         given={Irfan},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=SOY}{%
+         family={Song},
+         familyi={S\bibinitperiod},
+         given={Oh-Young},
+         giveni={O\bibinithyphendelim Y\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZL+1}
+    \strng{fullhash}{ZLMMDMYBMBJJHMISOY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ACCESS.2020.2974008
+    \endverb
+    \field{pages}{35482\bibrangedash 35495}
+    \field{title}{A Spectrogram-Based Deep Feature Assisted Computer-Aided
+  Diagnostic System for Parkinson’s Disease}
+    \field{volume}{8}
+    \field{journaltitle}{IEEE Access}
+    \field{year}{2020}
+  \endentry
+
   \entry{GUATELLI2023106700}{article}{}
     \name{author}{5}{}{%
       {{hash=GR}{%
@@ -1094,114 +1273,6 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{8999815}{article}{}
-    \name{author}{8}{}{%
-      {{hash=ZL}{%
-         family={Zahid},
-         familyi={Z\bibinitperiod},
-         given={Laiba},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=MM}{%
-         family={Maqsood},
-         familyi={M\bibinitperiod},
-         given={Muazzam},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=DMY}{%
-         family={Durrani},
-         familyi={D\bibinitperiod},
-         given={Mehr\bibnamedelima Yahya},
-         giveni={M\bibinitperiod\bibinitdelim Y\bibinitperiod},
-      }}%
-      {{hash=BM}{%
-         family={Bakhtyar},
-         familyi={B\bibinitperiod},
-         given={Maheen},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=BJ}{%
-         family={Baber},
-         familyi={B\bibinitperiod},
-         given={Junaid},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=JH}{%
-         family={Jamal},
-         familyi={J\bibinitperiod},
-         given={Habibullah},
-         giveni={H\bibinitperiod},
-      }}%
-      {{hash=MI}{%
-         family={Mehmood},
-         familyi={M\bibinitperiod},
-         given={Irfan},
-         giveni={I\bibinitperiod},
-      }}%
-      {{hash=SOY}{%
-         family={Song},
-         familyi={S\bibinitperiod},
-         given={Oh-Young},
-         giveni={O\bibinithyphendelim Y\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{ZL+1}
-    \strng{fullhash}{ZLMMDMYBMBJJHMISOY1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1109/ACCESS.2020.2974008
-    \endverb
-    \field{pages}{35482\bibrangedash 35495}
-    \field{title}{A Spectrogram-Based Deep Feature Assisted Computer-Aided
-  Diagnostic System for Parkinson’s Disease}
-    \field{volume}{8}
-    \field{journaltitle}{IEEE Access}
-    \field{year}{2020}
-  \endentry
-
-  \entry{9257451}{article}{}
-    \name{author}{4}{}{%
-      {{hash=XZJ}{%
-         family={Xu},
-         familyi={X\bibinitperiod},
-         given={Zhi-Jing},
-         giveni={Z\bibinithyphendelim J\bibinitperiod},
-      }}%
-      {{hash=WRF}{%
-         family={Wang},
-         familyi={W\bibinitperiod},
-         given={Rong-Fei},
-         giveni={R\bibinithyphendelim F\bibinitperiod},
-      }}%
-      {{hash=WJ}{%
-         family={Wang},
-         familyi={W\bibinitperiod},
-         given={Juan},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=YDH}{%
-         family={Yu},
-         familyi={Y\bibinitperiod},
-         given={Da-Hai},
-         giveni={D\bibinithyphendelim H\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{XZJ+1}
-    \strng{fullhash}{XZJWRFWJYDH1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1109/ACCESS.2020.3037775
-    \endverb
-    \field{pages}{206888\bibrangedash 206900}
-    \field{title}{Parkinson’s Disease Detection Based on Spectrogram-Deep
-  Convolutional Generative Adversarial Network Sample Augmentation}
-    \field{volume}{8}
-    \field{journaltitle}{IEEE Access}
-    \field{year}{2020}
-  \endentry
-
   \entry{ER2021103006}{article}{}
     \name{author}{3}{}{%
       {{hash=EMB}{%
@@ -1266,6 +1337,48 @@
     \field{volume}{70}
     \field{journaltitle}{Biomedical Signal Processing and Control}
     \field{year}{2021}
+  \endentry
+
+  \entry{9257451}{article}{}
+    \name{author}{4}{}{%
+      {{hash=XZJ}{%
+         family={Xu},
+         familyi={X\bibinitperiod},
+         given={Zhi-Jing},
+         giveni={Z\bibinithyphendelim J\bibinitperiod},
+      }}%
+      {{hash=WRF}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Rong-Fei},
+         giveni={R\bibinithyphendelim F\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Juan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=YDH}{%
+         family={Yu},
+         familyi={Y\bibinitperiod},
+         given={Da-Hai},
+         giveni={D\bibinithyphendelim H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{XZJ+1}
+    \strng{fullhash}{XZJWRFWJYDH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ACCESS.2020.3037775
+    \endverb
+    \field{pages}{206888\bibrangedash 206900}
+    \field{title}{Parkinson’s Disease Detection Based on Spectrogram-Deep
+  Convolutional Generative Adversarial Network Sample Augmentation}
+    \field{volume}{8}
+    \field{journaltitle}{IEEE Access}
+    \field{year}{2020}
   \endentry
 
   \entry{SustainedVowelsProblems}{article}{}
