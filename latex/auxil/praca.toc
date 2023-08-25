@@ -24,3 +24,5 @@
 \contentsline {section}{\numberline {5.5}Samogłoska /u/}{33}{section.5.5}%
 \contentsline {section}{\numberline {5.6}Zbiorcze podsumowanie wyników}{33}{section.5.6}%
 \contentsline {chapter}{\numberline {6}Analiza i interpretacja wyników}{35}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Podsumowanie}{37}{chapter.7}%
+\contentsline {chapter}{Bibliografia}{39}{section*.7}%

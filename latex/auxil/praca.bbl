@@ -219,7 +219,7 @@
     \field{booktitle}{Logopedia Silesiana}
     \field{number}{3}
     \field{pages}{76\bibrangedash 94}
-    \field{title}{Diagnoza i terapia zaburzen mowy u pacjentów z chorob ˛a
+    \field{title}{Diagnoza i terapia zaburzeń mowy u pacjentów z chorobą
   Parkinsona}
     \field{year}{2009}
   \endentry
@@ -299,58 +299,6 @@
     \field{volume}{168}
     \field{journaltitle}{Pattern Recognition Letters}
     \field{year}{2023}
-  \endentry
-
-  \entry{https://doi.org/10.1080/136828200410654}{article}{}
-    \name{author}{4}{}{%
-      {{hash=JHR}{%
-         family={J.\bibnamedelima Holmes},
-         familyi={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-         given={Rhonda},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=MOJ}{%
-         family={M.\bibnamedelima Oates},
-         familyi={M\bibinitperiod\bibinitdelim O\bibinitperiod},
-         given={Jennifer},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=JPD}{%
-         family={J.\bibnamedelima Phyland},
-         familyi={J\bibinitperiod\bibinitdelim P\bibinitperiod},
-         given={Debbie},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=JHA}{%
-         family={J.\bibnamedelima Hughes},
-         familyi={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-         given={Andrew},
-         giveni={A\bibinitperiod},
-      }}%
-    }
-    \keyw{Vocal dysfunction, Parkinson's disease, acoustic analysis, perceptual
-  analysis}
-    \strng{namehash}{JHR+1}
-    \strng{fullhash}{JHRMOJJPDJHA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb https://doi.org/10.1080/136828200410654
-    \endverb
-    \verb{eprint}
-    \verb https://onlinelibrary.wiley.com/doi/pdf/10.1080/136828200410654
-    \endverb
-    \field{number}{3}
-    \field{pages}{407\bibrangedash 418}
-    \field{title}{Voice characteristics in the progression of Parkinson's
-  disease}
-    \verb{url}
-    \verb https://onlinelibrary.wiley.com/doi/abs/10.1080/136828200410654
-    \endverb
-    \field{volume}{35}
-    \field{journaltitle}{International Journal of Language \& Communication
-  Disorders}
-    \field{year}{2000}
   \endentry
 
   \entry{GAMBOA1997314}{article}{}
@@ -456,39 +404,87 @@
     \strng{fullhash}{SEWJWDSJ1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{pages}{105}
+    \verb{doi}
+    \verb 10.5603/ppn.36264
+    \endverb
+    \field{pages}{105\bibrangedash 112}
     \field{title}{Ocena neuropsychologiczna i neuropsychiatryczna w chorobie
-  Parkinsona – specyfika badania i dobór metod diagnostycznych
-  [Neuropsychological and neuropsychiatric assessment in Parkinson's disease -
-  examination and selection of diagnostic tools]. Text in Polish}
+  Parkinsona – specyfika badania i dobór metod diagnostycznych}
     \field{volume}{9}
+    \field{journaltitle}{Polski Przegląd Neurologiczny}
     \field{month}{11}
     \field{year}{2013}
   \endentry
 
-  \entry{Loscalzo_2022}{misc}{}
-    \name{author}{1}{}{%
+  \entry{Loscalzo_2022}{inbook}{}
+    \name{author}{2}{}{%
+      {{hash=OCW}{%
+         family={Olanow},
+         familyi={O\bibinitperiod},
+         given={C.\bibnamedelima Warren},
+         giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=SAH}{%
+         family={Schapira},
+         familyi={S\bibinitperiod},
+         given={Anthony\bibnamedelima H.V.},
+         giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \name{editor}{6}{}{%
       {{hash=LJ}{%
          family={Loscalzo},
          familyi={L\bibinitperiod},
-         given={J},
-         giveni={J},
+         given={Joseph},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Fauci},
+         familyi={F\bibinitperiod},
+         given={Anthony},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KD}{%
+         family={Kasper},
+         familyi={K\bibinitperiod},
+         given={Dennis},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={Hauser},
+         familyi={H\bibinitperiod},
+         given={Stephen},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=LD}{%
+         family={Longo},
+         familyi={L\bibinitperiod},
+         given={Dan},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=JJL}{%
+         family={Jameson},
+         familyi={J\bibinitperiod},
+         given={J.\bibnamedelima Larry},
+         giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {21st ed. McGraw Hill}%
+      {McGraw-Hill Education}%
     }
-    \strng{namehash}{LJ1}
-    \strng{fullhash}{LJ1}
+    \strng{namehash}{OCWSAH1}
+    \strng{fullhash}{OCWSAH1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Parkinson’s disease}
+    \field{booktitle}{Harrison's Principles of Internal Medicine, 21e}
+    \field{title}{Parkinson’s Disease}
     \verb{url}
-    \verb https://accessmedicine.mhmedical.com
+    \verb accessmedicine.mhmedical.com/content.aspx?aid=1201290812
     \endverb
-    \field{journaltitle}{Harrison’s Principles of Internal Medicine}
+    \list{location}{1}{%
+      {New York, NY}%
+    }
     \field{year}{2022}
-    \warn{\item Invalid format of field 'month'}
   \endentry
 
   \entry{ROSSI202153}{article}{}
@@ -528,7 +524,7 @@
     \verb https://www.sciencedirect.com/science/article/pii/S1353802021003710
     \endverb
     \field{volume}{92}
-    \field{journaltitle}{Parkinsonism & Related Disorders}
+    \field{journaltitle}{Parkinsonism \& Related Disorders}
     \field{year}{2021}
   \endentry
 
@@ -610,7 +606,7 @@
     \verb https://www.sciencedirect.com/science/article/pii/S0885230823000670
     \endverb
     \field{volume}{83}
-    \field{journaltitle}{Computer Speech & Language}
+    \field{journaltitle}{Computer Speech \& Language}
     \field{year}{2023}
   \endentry
 
@@ -1423,9 +1419,9 @@
     \endverb
     \field{issn}{2076-3417}
     \field{number}{3}
-    \field{title}{Things to Consider When Automatically Detecting
-  Parkinson&rsquo;s Disease Using the Phonation of Sustained Vowels: Analysis
-  of Methodological Issues}
+    \field{title}{Things to Consider When Automatically Detecting Parkinson's
+  Disease Using the Phonation of Sustained Vowels: Analysis of Methodological
+  Issues}
     \verb{url}
     \verb https://www.mdpi.com/2076-3417/12/3/991
     \endverb
