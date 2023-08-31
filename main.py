@@ -2,13 +2,16 @@ import numpy as np
 import os
 import pandas as pd
 import random
-
+import tensorflow as tf
 from classifiers.utils import initialize_classifiers
 from config import *
 from data_stats.db_stats import run_dataset_analysis
 from utils.data_loader import DataLoader
 from utils.utils import set_cpu, set_gpu, mix_lists, prepare_datasets
 from utils.results_analysis import summarize_all_results, prepare_plots
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import KFold
+from sklearn.model_selection import train_test_split
 
 
 if DEVICE == "GPU":
@@ -22,9 +25,7 @@ if __name__ == "__main__":
         print("[INFO] Run dataset analysis...")
         run_dataset_analysis([LANGUAGE_TO_LOAD])
 
-    spectrograms_results = {
-        "settings": ["model_name", "accuracy", "precision", "recall", "f1-score"]
-    }
+    spectrograms_results = {"settings": ["model_name", "accuracy", "precision", "recall", "f1-score"]}
 
     print("[INFO] Loading data...")
     data = DataLoader()
@@ -35,13 +36,60 @@ if __name__ == "__main__":
         if not os.path.exists(vowel_dir):
             os.mkdir(vowel_dir)
 
-        train_data, y_train = prepare_datasets(data, vowel, "train")
-        test_data, y_test = prepare_datasets(data, vowel, "test")
-        val_data, y_val = prepare_datasets(data, vowel, "val")
-        
-        print("Train dataset size: ", len(y_train))
-        print("Test dataset size: ", len(y_test))
-        print("Val dataset size: ", len(y_val))
+        x_data, y_data = prepare_datasets(data, vowel)
+
+        speakers_ids = []
+        speakers_classes = []
+
+        for recording in x_data:
+            if "_".join(recording.filename.split("_")[0:2]) not in speakers_ids:
+                speakers_ids.append( "_".join(recording.filename.split("_")[0:2]))
+                speakers_classes.append(recording.classname)
+
+        print(speakers_ids)
+
+        speakers_ids = np.array(speakers_ids)
+        speakers_classes = np.array(speakers_classes)
+
+        classes_train, classes_test, speakers_ids_train, speakers_ids_test = (
+            train_test_split(speakers_classes, speakers_ids, test_size=0.2, random_state=42))
+
+        speakers_classes_train = np.array(classes_train)
+
+        x_test, y_test = [], []
+        for recording in x_data:
+            if  "_".join(recording.filename.split("_")[0:2]) in speakers_ids_test:
+                x_test.append(recording)
+                y_test.append(recording.classname)
+
+        x_test, y_test = np.array(x_test), np.array(y_test)
+        y_test = tf.keras.utils.to_categorical(y_test, NUM_CLASSES)
+
+        kf = KFold(n_splits=5, shuffle=True)
+        cv_train_data, cv_val_data = [], []
+        cv_train_labels, cv_val_labels = [], []
+
+        for train_idx, val_idx in kf.split(speakers_ids_train):
+            train_data, val_data = [], []
+            train_labels, val_labels = [], []
+            X_train, X_val = speakers_ids_train[train_idx], speakers_ids_train[val_idx]
+
+            for recording in x_data:
+                if  "_".join(recording.filename.split("_")[0:2])  in X_train:
+                    train_data.append(recording)
+                    train_labels.append(recording.classname)
+
+                if  "_".join(recording.filename.split("_")[0:2])  in X_val:
+                    val_data.append(recording)
+                    val_labels.append(recording.classname)
+
+            train_labels = tf.keras.utils.to_categorical(train_labels, NUM_CLASSES)
+            val_labels = tf.keras.utils.to_categorical(val_labels, NUM_CLASSES)
+
+            cv_train_data.append(train_data)
+            cv_val_data.append(val_data)
+            cv_train_labels.append(train_labels)
+            cv_val_labels.append(val_labels)
 
         for setting in data.settings:
             results = {}
@@ -50,26 +98,39 @@ if __name__ == "__main__":
             print(settings_dir)
             if not os.path.exists(settings_dir):
                 os.mkdir(settings_dir)
-                            
-            x_train = [recording.spectrograms[setting] for recording in train_data]
-            x_test = [recording.spectrograms[setting] for recording in test_data]
-            x_val = [recording.spectrograms[setting] for recording in val_data]
 
-            train = (np.array(x_train), np.array(y_train))
-            test = (np.array(x_test), np.array(y_test))
-            val = (np.array(x_val), np.array(y_val))
+            cv_spectrograms_train = []
+            for x_train in cv_train_data:
+                x_train_spectrograms = np.array([(recording.spectrograms[setting]).astype('float32') / 255 for recording in x_train])
+                cv_spectrograms_train.append(x_train_spectrograms)
 
+            cv_spectrograms_val = []
+            for x_val in cv_val_data:
+                x_val_spectrograms = np.array([(recording.spectrograms[setting]).astype('float32') / 255 for recording in x_val])
+                cv_spectrograms_val.append(x_val_spectrograms)
+
+            x_test = np.array([(recording.spectrograms[setting]).astype('float32') / 255 for recording in x_test])
+
+            print("Train dataset size: ", len(cv_spectrograms_train[0]), len(cv_train_labels[0]))
+            print("Test dataset size: ", len(x_test), len(y_test))
+            print("Val dataset size: ", len(cv_spectrograms_val[0]), len(cv_val_labels[0]))
+
+            train = (np.array(cv_spectrograms_train), np.array(cv_train_labels))
+            test = (x_test, y_test)
+            val = (cv_spectrograms_val, cv_val_labels)
+    #
             classifiers = initialize_classifiers(train, test, setting, settings_dir, val)
 
-            for loss_fcn in LOSS_FUNCTIONS:
-                for optimizer in OPTIMIZERS:
-                    for batch_size in BATCH_SIZES:
-                        for cls_name, cls in classifiers.items():
-                            print(cls_name)
-                            cls.run_classifier(loss_fcn, optimizer, batch_size)
-                            model_params = "{}_{}_{}".format(loss_fcn, optimizer, batch_size)
-                            # cls.model.save(os.path.join(MODELS_DIR, vowel, setting, cls_name, model_params))
-                            results.update(cls.results)
+            loss_fcn = LOSS_FUNCTIONS[0]
+            batch_size = BATCH_SIZES[0]
+            optimizer = OPTIMIZERS[0]
+
+            for cls_name, cls in classifiers.items():
+                print(cls_name)
+                cls.run_classifier(loss_fcn, optimizer, batch_size)
+                model_params = "{}_{}_{}".format(loss_fcn, optimizer, batch_size)
+                cls.model.save(os.path.join(MODELS_DIR, vowel, setting, cls_name, model_params))
+                results.update(cls.results)
 
             summary_path = os.path.join(settings_dir, "summary.xlsx")
             if os.path.exists(summary_path):
@@ -84,4 +145,4 @@ if __name__ == "__main__":
 
         summarize_all_results()
 
-    # # prepare_plots()
+    # prepare_plots()

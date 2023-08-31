@@ -16,7 +16,7 @@ class LeNet5(ClassifierBase):
     def _create_model(self):
         l2_strength=0.01
         model = Sequential()
-        model.add(Conv2D(6, kernel_size=(5, 5), activation='relu', input_shape=(227, 227, 1), kernel_regularizer=regularizers.l2(l2_strength)))
+        model.add(Conv2D(6, kernel_size=(5, 5), activation='relu', input_shape=(227, 227, 3), kernel_regularizer=regularizers.l2(l2_strength)))
         model.add(MaxPooling2D(pool_size=(2, 2)))
         model.add(Conv2D(16, kernel_size=(5, 5), activation='relu', kernel_regularizer=regularizers.l2(l2_strength)))
         model.add(MaxPooling2D(pool_size=(2, 2)))

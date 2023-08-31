@@ -19,9 +19,9 @@ def mix_lists(list1, list2):
     return list(list1), list(list2)
 
 
-def prepare_datasets(data, vowel, mode):
-    hc_data = data.load_recordings("HC", vowel, mode)
-    pd_data = data.load_recordings("PD", vowel, mode)
+def prepare_datasets(data, vowel):
+    hc_data = data.load_recordings("HC", vowel)
+    pd_data = data.load_recordings("PD", vowel)
     x_data = pd_data + hc_data
     y_data = [1] * len(pd_data) + [0] * len(hc_data)
     x_data, y_data = mix_lists(x_data, y_data)

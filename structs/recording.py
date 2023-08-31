@@ -1,6 +1,8 @@
 from utils.audio_spectrogram import *
 from utils.preprocessing import silence_removing
-
+import numpy as np
+from scipy.signal import find_peaks
+from scipy.stats import entropy
 import cv2
 from dataclasses import dataclass
 import librosa
@@ -9,19 +11,22 @@ import os
 import shutil
 from sklearn.preprocessing import MinMaxScaler
 import wave
+import math
+from PIL import Image
 
+COLOR_PALETTES = [ 'gray', 'jet'] # 'bone', 'cool', 'copper', 'hot', 'hsv', 'pink'
+SIZE = 227
 
 @dataclass
 class Recording:
     dir_path: str
     vowel: str
-    dataset: str
     filename: str
     classname: int
     settings: list
 
     def __post_init__(self):
-        self.recording_path = os.path.join(self.dir_path, "recordings", self.vowel, self.dataset, self.filename)
+        self.recording_path = os.path.join(self.dir_path, "recordings", self.vowel, self.filename)
         self.spectrogram_dir = os.path.join(self.dir_path, "spectrograms", self.vowel)
         self.melspectrogram_dir = os.path.join(self.dir_path, "melspectrograms", self.vowel)
         scaler = MinMaxScaler(feature_range=(0, 1))
@@ -31,10 +36,12 @@ class Recording:
         except:
             self.audio = []
 
-        self.length = len(self.audio)
         self.trimmed_audio = self._trim_recording()
-        # self.normalized_signal = scaler.fit_transform(self.trimmed_audio.reshape(-1, 1)).flatten()
+        self.normalized_signal = scaler.fit_transform(self.trimmed_audio.reshape(-1, 1)).flatten()
         self.normalized_signal = self.trimmed_audio
+        self.length = len(self.normalized_signal)
+        if self.length < self.sr * 0.4:
+            print(self.length)
 
         self.spectrograms = {}
 
@@ -49,13 +56,48 @@ class Recording:
                 melspectrogram_dir = os.path.join(self.melspectrogram_dir, setting)
                 if not os.path.exists(melspectrogram_dir):
                     os.makedirs(melspectrogram_dir)
-                self.spectrograms[setting] = self._get_melspectrogram(binsize, overlap, setting, filename)
-                
+                spectrograms = self._get_melspectrogram(binsize, overlap, setting, filename)
+                self.spectrograms[setting] = spectrograms
+
             elif spectrogram_type == "spectrogram":
                 spectrogram_dir = os.path.join(self.spectrogram_dir, setting)
                 if not os.path.exists(spectrogram_dir):
                     os.makedirs(spectrogram_dir)
-                self.spectrograms[setting] = self._get_spectrogram(binsize, overlap, setting, filename)
+                spectrograms = self._get_spectrogram(binsize, overlap, setting, filename)
+                self.spectrograms[setting] = spectrograms
+
+    def get_features(self):
+        y = self.trimmed_audio
+        sr = self.sr
+        # Obliczenie cechy jitter (RR-interval variability)
+        rr_intervals = np.diff(librosa.times_like(y))
+        jitter = np.mean(np.abs(np.diff(rr_intervals)))
+
+        # Obliczenie cechy shimmer (amplitude variation between consecutive periods)
+        peaks, _ = find_peaks(y, height=0)
+        shimmer = np.mean(np.abs(np.diff(peaks))) / len(peaks)
+
+        # # Obliczenie cechy HNR (Harmonic-to-Noise Ratio)
+        # harmonics, percussive = librosa.effects.hpss(y)
+        # hnr = np.mean(librosa.feature.spectral_centroid() / librosa.feature.spectral_centroid(percussive))
+
+        # Obliczenie cechy f0 (fundamental frequency)
+        f0, voiced_flag, voiced_probs = librosa.pyin(y, fmin=librosa.note_to_hz('C2'), fmax=librosa.note_to_hz('C7'))
+
+        # Obliczenie cech MFCC (Mel-Frequency Cepstral Coefficients)
+        mfcc = librosa.feature.mfcc(y=y, sr=sr)
+
+        # Obliczenie cechy NHR (Noise-to-Harmonic Ratio)
+        nhr = np.mean(librosa.effects.harmonic(y) / librosa.effects.percussive(y))
+
+        # W tej wersji brakuje cech RPDE i DFA, ponieważ nie ma dostępnej biblioteki
+
+        # Obliczenie cechy PPE (Pitch Period Entropy)
+        autocorr = np.correlate(y, y, mode='full')
+        autocorr = autocorr / np.max(autocorr)  # Normalizacja
+        ppe = entropy(autocorr)
+
+        return [jitter, shimmer, f0, voiced_flag, voiced_probs, mfcc, nhr, ppe]
 
     def _trim_recording(self):
         trimmed_recording_dir = os.path.join(self.dir_path, "trimmed_recordings", self.vowel)
@@ -87,47 +129,55 @@ class Recording:
 
     def _get_spectrogram(self, binsize, overlap, settings_dir, filename):
         spectrogram_path = os.path.join(self.spectrogram_dir, settings_dir, filename)
+        spectrograms = []
+        for palette in COLOR_PALETTES:
+            if not os.path.exists(spectrogram_path + f"{palette}.png"):
+                self._generate_spectrogram(binsize, overlap, settings_dir, filename, palette)
 
-        if not os.path.exists(spectrogram_path + '.npy'):
-            self._generate_spectrogram(binsize, overlap, settings_dir, filename)
+            image_array = cv2.imread(spectrogram_path + f"{palette}.png")
+            resized_image = cv2.resize(image_array, (SIZE, SIZE))
+            spectrograms.append(resized_image)
+        return spectrograms
 
-        spectrogram = np.load(spectrogram_path + '.npy')
-        return cv2.resize(spectrogram, (227, 227))
+    def _generate_spectrogram(self, binsize, overlap, settings_dir, filename, palette, colormap="gnuplot2"):
+        trimmed_signal = self.normalized_signal[:int(self.sr * 0.75)]  # trim the first 0.4 second
 
-    def _generate_spectrogram(self, binsize, overlap, settings_dir, filename, colormap="gnuplot2"):
-        trimmed_signal = self.normalized_signal[int(self.sr * 0.1):int(self.sr * 0.4)]  # trim the first 0.3 second
+        D = librosa.amplitude_to_db(librosa.stft(trimmed_signal), ref=np.max)
+        plt.figure(figsize=(10, 6))
+        librosa.display.specshow(D, sr=self.sr, x_axis='off', y_axis='off', cmap=palette)
 
-        spectrogram = stft(trimmed_signal, binsize, overlap)
-
-        log_scale_spec, freq = transfrom_spectrogram_to_logscale(spectrogram, factor=1.0, sr=self.sr)
-        log_scale_spec_db = 20. * np.log10(np.abs(log_scale_spec) / 10e-6)  # amplitude to decibel
-
-        plt.figure(figsize=(35, 27.5))
-        plt.imshow(np.transpose(log_scale_spec_db), origin="lower", aspect="auto", cmap=colormap, interpolation="none")
-        # plt.colorbar()
-
-        plt.savefig(os.path.join(self.spectrogram_dir, settings_dir, filename + '.png'))
-        np.save(os.path.join(self.spectrogram_dir, settings_dir, filename + '.npy'), np.transpose(log_scale_spec_db))
+        plt.axis('off')
+        plt.tight_layout()
+        plt.savefig(os.path.join(self.spectrogram_dir, settings_dir, filename + '{}.png'.format(palette)), pad_inches=0, transparent=True)
         plt.close()
 
     def _get_melspectrogram(self, binsize, overlap, settings_dir, filename):
         melspectrogram_path = os.path.join(self.melspectrogram_dir, settings_dir, filename)
-
-        if not os.path.exists(melspectrogram_path + '.npy'):
+        if not os.path.exists(melspectrogram_path + ".png"):
             self._generate_melspectrogram(binsize, overlap, settings_dir, filename)
 
-        spectrogram = np.load(melspectrogram_path + '.npy')
-        return cv2.resize(spectrogram, (227, 227))
+        image_array = cv2.imread(melspectrogram_path + ".png")
+        resized_image = cv2.resize(image_array, (SIZE, SIZE))
+        return resized_image
 
 
     def _generate_melspectrogram(self, binsize, overlap, settings_dir, filename, colormap="gnuplot2"):
-        y = self.normalized_signal[int(self.sr * 0.1):int(self.sr * 0.3)]
+        y = self.normalized_signal[:int(self.sr * 0.5)]
         hop_length = int(binsize * (1 - overlap))
-        n_mels = 30
+        n_fft = 2048  # Rozmiar okna FFT
+        hop_length = 512  # Krok analizy
+        n_mels = 128  # Liczba pasm Mel
 
-        S = librosa.feature.melspectrogram(y=y, sr=self.sr, n_fft=binsize, hop_length=hop_length, n_mels=n_mels)
+        S = librosa.feature.melspectrogram(y=y, sr=self.sr, n_fft=n_fft, hop_length=hop_length, n_mels=n_mels)
         S_DB = librosa.power_to_db(S, ref=np.max)
-        librosa.display.specshow(S_DB, sr=self.sr, hop_length=hop_length, x_axis='time', y_axis='mel')
+        librosa.display.specshow(S_DB, sr=self.sr, x_axis='off', y_axis='off', cmap=colormap)
+        plt.axis('off')
+        plt.tight_layout()
+        plt.savefig(os.path.join(self.melspectrogram_dir, settings_dir, filename + '.png'), pad_inches=0,
+                    transparent=True)
+        plt.close()
+
+
         # plt.colorbar(format='%+2.0f dB')
         # melspec = librosa.feature.melspectrogram(y=trimmed_signal, sr=self.sr, n_fft=binsize, n_mels=128,fmax=44100,
         #                                          hop_length=int(binsize * (1 - overlap)))
@@ -145,7 +195,20 @@ class Recording:
         # ax.label_outer()
         # ax.set_ylim([0, self.sr / 2])  # Domyślna wartość dla osi y mel-spectrogramu
         #
-        plt.savefig(os.path.join(self.melspectrogram_dir, settings_dir, filename + '.png'))
-        np.save(os.path.join(self.melspectrogram_dir, settings_dir, filename + '.npy'), S_DB)
-
-        plt.close()
+        # plt.savefig(os.path.join(self.melspectrogram_dir, settings_dir, filename + '.png'))
+        # np.save(os.path.join(self.melspectrogram_dir, settings_dir, filename + '.npy'), S_DB)
+        #
+        # plt.close()
+        # mel_spectrogram = librosa.feature.melspectrogram(y=self.normalized_signal, sr=self.sr)
+        #
+        # # Przekształcenie do skali decybelowej
+        # mel_spectrogram_db = librosa.amplitude_to_db(mel_spectrogram, ref=np.max)
+        #
+        # # Tworzenie obrazu z mel-spectrogramem
+        # plt.figure(figsize=(10, 6))
+        # librosa.display.specshow(mel_spectrogram_db, sr=self.sr, x_axis='off', y_axis='off')
+        # plt.axis('off')
+        # plt.tight_layout()
+        #
+        # plt.savefig(os.path.join(self.melspectrogram_dir, settings_dir, filename + '.png'), pad_inches=0, transparent=True)
+        # plt.close()

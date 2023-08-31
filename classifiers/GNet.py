@@ -14,7 +14,7 @@ class GNet(ClassifierBase):
     def _create_model(self):
         model = tf.keras.models.Sequential([
                 tf.keras.layers.Conv2D(filters=96, kernel_size=(11, 11), strides=(4, 4), activation='relu',
-                                       input_shape=(227, 227, 1)),
+                                       input_shape=(227, 227, 3)),
                 tf.keras.layers.BatchNormalization(),
                 tf.keras.layers.MaxPool2D(pool_size=(3, 3), strides=(2, 2)),
                 tf.keras.layers.Conv2D(filters=256, kernel_size=(5, 5), strides=(1, 1), activation='relu',

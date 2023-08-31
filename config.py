@@ -1,18 +1,18 @@
 import os
 
 # EXPERIMENT SETTINGS
-BATCH_SIZES = [32] # 8, 16, 32
-BINSIZE = [512, 1024] # 1024
-EPOCHS_NUMBER = 100
+BATCH_SIZES = [8] # 8, 16, 32
+BINSIZE = [1024] # 1024
+EPOCHS_NUMBER = 50
 LOSS_FUNCTIONS = ['binary_crossentropy']
 OPTIMIZERS = ['adam'] # 'sgd', 'rmsprop', 'adam'
-OVERLAP = [0.1, 0.25, 0.5] # 0.1, 0.25,
+OVERLAP = [0.5] # 0.1, 0.25,
 
-LANGUAGE_TO_LOAD = "it+pol"
-VOWELS_TO_LOAD = ["a", "e", "i", "o", "u"]
+LANGUAGE_TO_LOAD = "all"
+VOWELS_TO_LOAD = ["a"]
 
-CLASSIFIERS_TO_TEST = ["LeNet-5"] #  "LeNet-5", "AlexNet", "InceptionV3" # LeNet-5 # "ResNet50", "VGGNet"
-SPECTROGRAMS = True
+CLASSIFIERS_TO_TEST = ["MobileNet"] #  "InceptionV3", "InceptionV3" # LeNet-5 # "ResNet50", "VGGNet"
+SPECTROGRAMS = False
 MELSPECTROGRAMS = True
 
 DEVICE = "CPU"
@@ -27,7 +27,7 @@ RETRAIN_MODELS = False
 USE_VALIDATION_DATASET = True
 
 # CONSTANT VARIABLES
-AVAILABLE_LANGUAGES = ["polish", "italian", "spanish"]
+AVAILABLE_LANGUAGES = ["polish", "italian", "spanish", "hungarian"]
 CLASS_ENCODING = {"PD": 1, "HC": 0}
 CLASSES = ["HC", "PD"]
 GENDER_ENCODING = {'K': 0, 'M': 1}
@@ -60,9 +60,11 @@ def get_settings():
 
 def get_languages_to_load():
     if LANGUAGE_TO_LOAD == "all":
-        languages_to_load = ["italian", "spanish", "polish"]
+        languages_to_load = ["italian", "spanish", "polish", "hungarian"]
     elif LANGUAGE_TO_LOAD == "it+pol":
         languages_to_load = ["italian", "polish"]
+    elif LANGUAGE_TO_LOAD == "spanish+hungarian":
+        languages_to_load = ["spanish", "hungarian"]
     elif LANGUAGE_TO_LOAD not in AVAILABLE_LANGUAGES:
         print("Language not available. I am using default language --> polish")
         languages_to_load = ["polish"]

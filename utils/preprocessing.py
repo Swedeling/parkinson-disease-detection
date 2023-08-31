@@ -25,7 +25,7 @@ def silence_removing(signal, filename="Test signal"):
         plt.subplot(3, 1, 1)
         plt.plot([x / SR for x in range(0, len(signal))], signal, color=colors[0])
         plt.grid(True)
-        plt.title("Surowe nagranie", fontsize=n)
+        plt.title(f"Surowe nagranie: {filename}", fontsize=n)
         plt.xlabel("Czas [s]",fontsize=8)
         plt.ylabel("Amplituda",fontsize=n)
 

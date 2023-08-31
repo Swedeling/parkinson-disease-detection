@@ -12,7 +12,7 @@ class VGGNet(ClassifierBase):
 
     def _create_model(self):
         model = tf.keras.models.Sequential([
-            tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same', input_shape=(227, 227, 1)),
+            tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same', input_shape=(227, 227, 3)),
             tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
             tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
             tf.keras.layers.Flatten(),

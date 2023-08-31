@@ -14,7 +14,7 @@ class DataLoader:
 
         # self.metadata = self.load_metadata(LANGUAGE)
 
-    def load_recordings(self, label, vowel, dataset):
+    def load_recordings(self, label, vowel):
         data = []
         for language in self.languages_to_load:
             dir_path = os.path.join(RECORDINGS_DIR, language, "{}_{}".format(label, language))
@@ -25,12 +25,11 @@ class DataLoader:
                 classname = 0
             else:
                 dir_path, classname = "", None
-
-            vowel_dir_path = os.path.join(dir_path, "recordings", vowel, dataset)
+            vowel_dir_path = os.path.join(dir_path, "recordings", vowel)
 
             for recording_name in os.listdir(vowel_dir_path):
                 print(recording_name)
-                data.append(Recording(dir_path, vowel, dataset, str(recording_name), classname, self.settings))
+                data.append(Recording(dir_path, vowel, str(recording_name), classname, self.settings))
         return data
 
     @staticmethod
