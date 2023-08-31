@@ -27,7 +27,8 @@ sorting=none,
 language=autobib,
 autolang=other,
 % Zapisuj datę dostępu do strony WWW w formacie RRRR-MM-DD.
-urldate=iso8601,
+urldate=iso,
+seconds=true,
 % Nie dodawaj numerów stron, na których występuje cytowanie.
 backref=false,
 % Podawaj ISBN.
@@ -46,6 +47,18 @@ backend=bibtex
 \DeclareQuoteAlias{croatian}{polish}
 
 \addbibresource{bibliografia.bib}
+
+% Przecinki zamiast kropek do oddzielenia pól wpisu bibliograficznego
+% i dwukropek po nazwisku autora, bez kropki na końcu
+\AtBeginBibliography{
+    \renewcommand\labelnamepunct{:\space}
+    \renewcommand\newunitpunct{\addcomma\space}
+    \renewcommand{\finentrypunct}{}
+
+    \renewcommand{\bibopenparen}{\addcomma\addspace}
+    \renewcommand{\bibcloseparen}{\addspace}
+}
+
 
 % Nie wyświetlaj wybranych pól.
 %\AtEveryBibitem{\clearfield{note}}
@@ -129,7 +142,7 @@ backend=bibtex
 
 \date{2023}
 
-\department{Katedra Informatyki Stosowanej}
+%\department{Katedra Informatyki Stosowanej}
 %\department{Department of Applied Computer Science}
 
 \faculty{Wydział Elektrotechniki, Automatyki,\protect\\[-1mm] Informatyki i Inżynierii Biomedycznej}
@@ -160,7 +173,7 @@ backend=bibtex
 	\renewcommand{\footrulewidth}{0pt}
 }
 
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \tableofcontents
 \clearpage
 
@@ -169,7 +182,14 @@ backend=bibtex
 \include{rozdzial3}
 \include{rozdzial4}
 \include{rozdzial5}
+\include{rozdzial6}
+\include{rozdzial7}
 
+%Kod poniżej dodaje Bibliografię do spisu treści
+\cleardoublepage{}
+\phantomsection{}
+\addcontentsline{toc}{chapter}{Bibliografia}
+\printbibliography{}
 
 
 % itd.
@@ -178,6 +198,6 @@ backend=bibtex
 % \include{dodatekB}
 % itd.
 
-%\printbibliography
+%\printbibliography{}
 
 \end{document}
