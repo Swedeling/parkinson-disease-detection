@@ -19,7 +19,7 @@ class InceptionNet(ClassifierBase):
         x = base_model.output
         x = GlobalAveragePooling2D()(x)
         x = Dense(1024, activation='relu')(x)
-        predictions = Dense(NUM_CLASSES, activation='softmax')(x)
+        predictions = Dense(NUM_CLASSES, activation='sigmoid')(x)
 
         model = Model(inputs=base_model.input, outputs=predictions)
         return model

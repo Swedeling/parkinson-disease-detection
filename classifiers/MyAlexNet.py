@@ -30,6 +30,6 @@ class MyAlexNet(ClassifierBase):
             Dropout(0.5),
             Dense(4096, activation='relu'),
             Dropout(0.5),
-            Dense(NUM_CLASSES, activation='softmax')
+            Dense(NUM_CLASSES, activation='sigmoid')
         ])
         return model

@@ -1,19 +1,21 @@
 import os
 
 # EXPERIMENT SETTINGS
-BATCH_SIZES = [8] # 8, 16, 32
-BINSIZE = [1024] # 1024
+BATCH_SIZES = [16] # 8, 16, 32
+BINSIZE = [128] # 1024
 EPOCHS_NUMBER = 50
-LOSS_FUNCTIONS = ['binary_crossentropy']
+LOSS_FUNCTION = ['binary_crossentropy']
 OPTIMIZERS = ['adam'] # 'sgd', 'rmsprop', 'adam'
-OVERLAP = [0.5] # 0.1, 0.25,
+OVERLAP = [320] # 0.1, 0.25,
+LEARNING_RATE = 0.0005
 
 LANGUAGE_TO_LOAD = "all"
-VOWELS_TO_LOAD = ["a"]
+VOWELS_TO_LOAD = ["u"]
 
-CLASSIFIERS_TO_TEST = ["MobileNet"] #  "InceptionV3", "InceptionV3" # LeNet-5 # "ResNet50", "VGGNet"
+CLASSIFIERS_TO_TEST = ["VGGNet"] #  "InceptionV3" # LeNet-5 # "ResNet50", "VGGNet", "LeNet-5", "InceptionV3", "ResNet50", "MobileNet"
 SPECTROGRAMS = False
 MELSPECTROGRAMS = True
+MFCC = False
 
 DEVICE = "CPU"
 
@@ -55,16 +57,21 @@ def get_settings():
                 settings.append("spectrogram_{}_{}".format(binsize, overlap))
             if MELSPECTROGRAMS:
                 settings.append("melspectrogram_{}_{}".format(binsize, overlap))
+
     return settings
 
 
 def get_languages_to_load():
     if LANGUAGE_TO_LOAD == "all":
-        languages_to_load = ["italian", "spanish", "polish", "hungarian"]
+        languages_to_load = ["italian", "spanish", "polish"]
     elif LANGUAGE_TO_LOAD == "it+pol":
         languages_to_load = ["italian", "polish"]
+    elif LANGUAGE_TO_LOAD == "polish+italian+hungarian":
+        languages_to_load = ["italian", "polish", "hungarian"]
     elif LANGUAGE_TO_LOAD == "spanish+hungarian":
         languages_to_load = ["spanish", "hungarian"]
+    elif LANGUAGE_TO_LOAD == "spanish+italian":
+        languages_to_load = ["spanish", "italian"]
     elif LANGUAGE_TO_LOAD not in AVAILABLE_LANGUAGES:
         print("Language not available. I am using default language --> polish")
         languages_to_load = ["polish"]

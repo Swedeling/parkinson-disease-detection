@@ -5,6 +5,7 @@ from classifiers.ResNet50 import ResNet
 from classifiers.VGGNet import VGGNet
 from classifiers.LeNet5 import LeNet5
 from classifiers.MyMobileNet import MyMobileNet
+from classifiers.AE import AE
 
 
 from config import CLASSIFIERS_TO_TEST
@@ -39,6 +40,10 @@ def initialize_classifiers(train, test, setting, settings_dir, val):
             )
         elif cls == "MobileNet":
             classifiers[cls] = MyMobileNet(
+                train, test, settings=setting, results_dir=settings_dir, val_data=val
+            )
+        elif cls == "AE":
+            classifiers[cls] = AE(
                 train, test, settings=setting, results_dir=settings_dir, val_data=val
             )
     return classifiers

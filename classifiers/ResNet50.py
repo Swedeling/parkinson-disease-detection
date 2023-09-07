@@ -23,24 +23,26 @@ class ResNet(ClassifierBase):
 
 
     def _create_model(self):
-        input_shape = (227, 227, 3)
+        input_shape = (224, 224, 3)
 
         # Utworzenie wejściowego tensora
         input_tensor = Input(shape=input_shape)
 
         # Utworzenie modelu ResNet-50 bez ostatniej warstwy klasyfikacyjnej
         base_model = ResNet50(input_tensor=input_tensor, weights='imagenet', include_top=False)
+        # Zamrożenie wag warstw bazowego modelu
+        for layer in base_model.layers:
+            layer.trainable = False
+
+        for layer in base_model.layers[-10:]:
+            layer.trainable = False
 
         # Dodanie nowej warstwy klasyfikacyjnej
         x = base_model.output
         x = tf.keras.layers.GlobalAveragePooling2D()(x)
-        x = Dense(256, activation='relu')(x)
-        predictions = Dense(NUM_CLASSES, activation='softmax')(x)
+        x = Dense(1024, activation='relu')(x)
+        predictions = Dense(1, activation='sigmoid')(x)
 
         # Utworzenie nowego modelu
         model = Model(inputs=base_model.input, outputs=predictions)
-
-        # Zamrożenie wag warstw bazowego modelu
-        for layer in base_model.layers:
-            layer.trainable = False
         return model

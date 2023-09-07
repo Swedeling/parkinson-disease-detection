@@ -23,5 +23,5 @@ class LeNet5(ClassifierBase):
         model.add(Flatten())
         model.add(Dense(120, activation='relu', kernel_regularizer=regularizers.l2(l2_strength)))
         model.add(Dense(84, activation='relu', kernel_regularizer=regularizers.l2(l2_strength)))
-        model.add(Dense(NUM_CLASSES, activation='softmax'))
+        model.add(Dense(NUM_CLASSES, activation='sigmoid'))
         return model

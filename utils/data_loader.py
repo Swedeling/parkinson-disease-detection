@@ -14,7 +14,7 @@ class DataLoader:
 
         # self.metadata = self.load_metadata(LANGUAGE)
 
-    def load_recordings(self, label, vowel):
+    def load_recordings(self, label, vowel, mode):
         data = []
         for language in self.languages_to_load:
             dir_path = os.path.join(RECORDINGS_DIR, language, "{}_{}".format(label, language))
@@ -25,11 +25,17 @@ class DataLoader:
                 classname = 0
             else:
                 dir_path, classname = "", None
-            vowel_dir_path = os.path.join(dir_path, "recordings", vowel)
+            vowel_dir_path = os.path.join(dir_path, "recordings", vowel, mode)
 
+            ids = []
+            limit = 40
+            num = 0
             for recording_name in os.listdir(vowel_dir_path):
+                # if "_".join(recording_name.split("_")[0:2]) not in ids:
                 print(recording_name)
-                data.append(Recording(dir_path, vowel, str(recording_name), classname, self.settings))
+                recording = Recording(dir_path, vowel, str(recording_name), classname, self.settings, mode, language)
+                data.append(recording)
+                    # ids.append("_".join(recording_name.split("_")[0:2]))
         return data
 
     @staticmethod
