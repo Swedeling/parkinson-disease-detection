@@ -1706,6 +1706,81 @@
     \field{year}{2018}
   \endentry
 
+  \entry{italian-database}{misc}{}
+    \name{author}{2}{}{%
+      {{hash=DG}{%
+         family={Dimauro},
+         familyi={D\bibinitperiod},
+         given={Giovanni},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=GF}{%
+         family={Girardi},
+         familyi={G\bibinitperiod},
+         given={Francesco},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE Dataport}%
+    }
+    \strng{namehash}{DGGF1}
+    \strng{fullhash}{DGGF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.21227/aw6b-tg17
+    \endverb
+    \field{title}{Italian Parkinson's Voice and Speech}
+    \verb{url}
+    \verb https://dx.doi.org/10.21227/aw6b-tg17
+    \endverb
+    \field{year}{2019}
+  \endentry
+
+  \entry{pc-gita}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=OJR}{%
+         family={Orozco},
+         familyi={O\bibinitperiod},
+         given={Juan\bibnamedelima Rafael},
+         giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=ALJD}{%
+         family={Arias-Londoño},
+         familyi={A\bibinithyphendelim L\bibinitperiod},
+         given={Julian\bibnamedelima D.},
+         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=VBJ}{%
+         family={Vargas-Bonilla},
+         familyi={V\bibinithyphendelim B\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GRM}{%
+         family={González-Rátiva},
+         familyi={G\bibinithyphendelim R\bibinitperiod},
+         given={María},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NE}{%
+         family={Noeth},
+         familyi={N\bibinitperiod},
+         given={Elmar},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{OJR+1}
+    \strng{fullhash}{OJRALJDVBJGRMNE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{New Spanish speech corpus database for the analysis of people
+  suffering from Parkinson’s disease}
+    \field{month}{05}
+    \field{year}{2014}
+  \endentry
+
   \entry{augmentation}{inproceedings}{}
     \name{author}{4}{}{%
       {{hash=HM}{%

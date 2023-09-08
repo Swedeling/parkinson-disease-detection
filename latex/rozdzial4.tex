@@ -1,35 +1,53 @@
 \chapter{Materiał i metoda badawcza}
 
-%W ramach pracy przeprowadzone zostały badania dotyczące klasyfikacji choroby Parkinsona.
-%Głównym celem było opracowanie efektywnego modelu klasyfikacji binarnej, który może rozróżniać
-%osoby chore na chorobę Parkinsona od osób zdrowych na podstawie analizy sygnałów mowy.
-%Przyjęte podejście opiera się na wykorzystaniu metod przetwarzania sygnałów mowy oraz
-%uczenia maszynowego. Najpierw zebrano dane, w tym nagrania głosowe osób z chorobą Parkinsona
-%(PD) oraz osób zdrowych (HC, ang. \emph{Healthy Controls}). Następnie przeprowadzono analizę przy użyciu różnych ustawień
-%spektrogramów i melspektrogramów. Obejmuje to zmienne parametry takie jak rozmiar okna i
-%przesunięcie okna. Dodatkowo, przeprowadzono badania dotyczące różnych architektur
-%konwolucyjnych sieci neuronowych. Celem jest zbadanie, które architektury sieci i ustawienia
-%spektrogramów dają najlepsze wyniki w klasyfikacji choroby Parkinsona dla poszczególnych
-%samogłosek. Przeprowadzona analiza porównawcza pozwala na lepsze zrozumienie wpływu tych
-%czynników na skuteczność klasyfikacji. W rezultacie, możliwe będzie ustalenie optymalnych ustawień i
-%architektur dla klasyfikacji choroby Parkinsona na podstawie analizy sygnałów mowy. Ponadto zbadano
-%wpływ rozszerzenia zbioru danych o dodatkowe nagrania pochodzące od tych samych osób.
-%
-%\begin{figure}[htbp]
-%	\centering
-%	\includegraphics[width=1\textwidth]{./img/methodology}
-%	\caption{Schemat przyjętej metody badawczej [opracowanie własne]}
-%    \label{fig:methodology}
-%\end{figure}
+W ramach pracy przeprowadzone zostały badania dotyczące klasyfikacji choroby Parkinsona.
+Głównym celem było opracowanie efektywnego modelu klasyfikacji binarnej, który może rozróżniać
+osoby z PD od osób zdrowych na podstawie analizy sygnałów mowy.
+Przyjęte podejście opiera się na wykorzystaniu metod przetwarzania sygnałów mowy oraz
+uczenia maszynowego. Najpierw zebrano dane, w tym nagrania głosowe osób z chorobą Parkinsona
+(PD) oraz osób zdrowych (HC, ang. \emph{Healthy Controls}). Następnie przeprowadzono analizę przy użyciu różnych ustawień
+spektrogramów i melspektrogramów. Obejmuje to zmienne parametry takie jak rozmiar okna i
+przesunięcie okna. Dodatkowo, przeprowadzono badania dotyczące różnych architektur
+konwolucyjnych sieci neuronowych. Celem jest zbadanie, które architektury sieci i ustawienia
+spektrogramów dają najlepsze wyniki w klasyfikacji choroby Parkinsona dla poszczególnych
+samogłosek. Przeprowadzona analiza porównawcza pozwala na lepsze zrozumienie wpływu tych
+czynników na skuteczność klasyfikacji. W rezultacie, możliwe będzie ustalenie optymalnych ustawień i
+architektur dla klasyfikacji choroby Parkinsona na podstawie analizy sygnałów mowy. Ponadto zbadano
+wpływ rozszerzenia zbioru danych o dodatkowe nagrania pochodzące od tych samych osób.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1\textwidth]{./img/methodology}
+	\caption{Schemat przyjętej metody badawczej}
+    \label{fig:methodology}
+\end{figure}
 
 %---------------------------------------------------------------------------
 
 \section{Materiał badawczy}
 \label{sec:material-badawczy}
 
-Materiałem badawczym w niniejszej pracy magisterskiej są nagrania głosowe samogłosek: /a/, /e/, /i/, /o/ oraz /u/.
+Materiałem badawczym w niniejszej pracy magisterskiej są nagrania głosowe podtrzymywanych samogłosek (ang. \emph{sustained vowels}) /a/, /e/, /i/, /o/ oraz /u/, ze względu na największą uniwersalność.
 Baza danych obejmuje nagrania osób zdrowych oraz z chorobą Parkinsona.
-Zdecydowano się porównać skuteczność proponowanych metod na dwóch korpusach językowych: w języku polskim oraz włoskim.
+Podstawą skuteczności metod uczenia maszynowego jest odpowiednie przygotowanie danych, zarówno pod względem jakości, jak i ilości.
+To kluczowy element, który wpływa na wydajność i zdolność modelu do radzenia sobie w rzeczywistym środowisku.
+Dane użyte do trenowania modelu muszą być dokładne, spójne i reprezentatywne dla rzeczywistego środowiska, w którym będzie działał model.
+
+Dlatego model uczenia maszynowego musi być trenowany na wystarczająco dużej ilości danych.
+Jest to podobne do procesu nauki lekarza – im więcej przypadków lekarz widzi i diagnozuje, tym lepiej radzi sobie z różnymi przypadkami w praktyce.
+W  uczeniu maszynowym większa ilość danych pozwala na uchwycenie różnic międzyosobniczych i niuansów w danych, co przekłada się na większą stabilność i skuteczność modelu.
+Model musi być w stanie radzić sobie z nowymi danymi, które nie były używane podczas treningu.
+
+W badaniu opublikowanym w artykule~\cite{SustainedVowelsProblems} podkreślono, że często osoby zajmujące się rozwiązaniami do automatycznej diagnozy choroby Parkinsona na podstawie mowy polegają na jednym konkretnym zbiorze danych.
+Takie podejście może prowadzić do wyników, które są zbyt optymistyczne, ze względu na różnice związane z językiem ojczystym osób badanych oraz warunki i sposób przeprowadzania nagrań.
+
+Biorąc pod uwagę powyższe, podjęto decyzję o połączeniu trzech różnych baz danych w językach polskim, włoskim oraz hiszpańskim.
+Ta inicjatywa badawcza ma na celu zbadanie potencjalnej uniwersalności narzędzia służącego do automatycznej diagnozy choroby Parkinsona, tak by nie było ograniczone tylko do jednej grupy narodowościowej.
+Ponadto można by uniknąć potencjalnych błędów wynikających z języka ojczystego osób badanych czy lokalnych warunków nagrywania.
+Pozwoliłoby to na rozwinięcie bardziej ogólnego i zastosowalnego narzędzia diagnostycznego, które może być używane na skalę międzynarodową, przyczyniając się do poprawy jakości opieki zdrowotnej i diagnozy tej choroby.
+
+Ponadto żaden z dostępnych publicznie korpusów nie zawiera wystarczającej ilości nagrań by mówić o stabilnym rozwiązaniu.
+Łączenie korpusów może znacząco poprawić zdolności generalizacyjne modelu.
 
 \subsection{Baza danych w języku polskim}
 \label{subsec:polska-baza}
@@ -39,38 +57,29 @@ realizacji rozprawy doktorskiej we współpracy z Krakowskim Szpitalem Specjalis
 Jana Pawła II~\cite{daria:2018}.
 Zawarta w bazie danych kolekcja obejmuje nagrania samogłosek /a/, /e/, /i/, /o/ oraz /u/ z wydłużoną intonacją, pozyskane od 27 pacjentów.
 Dla każdego z pacjentów dostępne jest jedno nagranie każdej z wymienionych samogłosek.
-W ramach przeprowadzonych badań pomiary zostały wykonane przed spożyciem leków oraz w określonych odstępach czasowych: 30, 60, 120 i 180 minut po podaniu lewodopy.
+W ramach przeprowadzonych badań pomiary zostały wykonane przed spożyciem leków oraz w określonych odstępach czasowych po podaniu lewodopy.
 Przed każdym pomiarem lekarz neurolog przeprowadzał badanie pacjenta i oceniał jego stan, wykorzystując skalę UPDRS\@.
-W niniejszej pracy magisterskiej wykorzystano jedynie nagrania głosowe zarejestrowane przed podaniem leku, stanowiące część tego zbioru danych badawczych.
+W niniejszej pracy magisterskiej wykorzystano jedynie nagrania głosowe zarejestrowane przed podaniem leku.
 
 Nagrania osób zdrowych zostały zebrane w ramach pracy przy wykorzystaniu aplikacji \emph{Easy Voice Recorder}, która jest programem do nagrywania dźwięku.
-Przed przystąpieniem do pozyskiwania danych zapoznano się z charakterystyką problemu.
-Na podstawie literatury wyróżniono płeć, wiek oraz język ojczysty jako czynniki, które mogą wpływać na wyniki klasyfikacji.
-Zbiór danych powinien być zrównoważony pod kątem tych aspektów, tak by nie dopuścić do sytuacji, gdy model uczy się wzorców nie związanych z chorobą Parkinsona.
 Ustalono protokół nagrywania, wykluczając osoby poniżej 50 roku życia, palące oraz ze zdiagnozowaną lub podejrzewaną chorobą wpływającą na aparat mowy lub korę mózgową (np. choroba Parkinsona, epilepsja, padaczka).
 Pozyskiwano nagrania jedynie od osób, dla których językiem ojczystym jest polski.
-W tabeli \ref{tab:charakterystyka-bazy-danych} przedstawiono informacje dotyczące bazy danych.
+W tabeli~\ref{tab:polish_database} przedstawiono informacje dotyczące bazy danych.
 
-\begin{table}[t]
+\begin{table}[h]
 \centering
-\caption{Charakterystyka polskiej bazy danych [opracowanie własne]}
-\label{tab:charakterystyka-bazy-danych}
+\caption{Charakterystyka polskiej bazy danych}
+\label{tab:polish_database}
 \begin{tabular}{|l|c|c|c|}
 \hline
 \textbf{Kategoria} &\textbf{Osoby zdrowe (HC)} &\textbf{Osoby chore (PD)} &\textbf{Razem} \\ \hline
 Liczba osób &26 &27 &53\\ \hline
+Liczba nagrań &67 &27 &94\\ \hline
 Średnia wieku &60,88 ± 7,98 &64,49 ± 8,49  &62,68 ± 8,43\\ \hline
 Liczba kobiet &18 &13 &31\\ \hline
 Liczba mężczyzn &8 &14 &22 \\ \hline
 \end{tabular}
 \end{table}
-
-Dołożono starań, by zachować jak najbardziej zbliżone proporcje wieku i płci pomiędzy grupą pacjentów a grupą porównawczą.
-Jednak ze względu na specyfikę samodzielnego zbierania danych, nie udało się osiągnąć pełnej zgodności w tym zakresie.
-Mimo to zapewniono różnorodny zbiór danych, obejmujący zarówno kobiety, jak i mężczyzn w różnych grupach wiekowych.
-Drobne różnice w liczbie próbek w poszczególnych przedziałach wiekowych nie powinny mieć istotnego wpływu na wyniki
-klasyfikacji.
-Szczegółowa charakterystyka zbioru danych została przedstawiona na Rys.~\ref{fig:database}.
 
 Każda osoba kwalifikująca się do badania otrzymała zadanie trzykrotnego wypowiedzenia
 samogłosek /a/, /e/, /i/, /o/ oraz /u/ w odstępach czasowych, utrzymując dźwięk przez co najmniej 2 sekundy.
@@ -79,43 +88,124 @@ Usunięto nagrania zbyt krótkie oraz te, które nie spełniały kryteriów doty
 Otrzymana baza danych nadal zawierała nagrania od 27 osób chorych oraz od 26 osób zdrowych, zmieniła się jedynie liczebność nagrań dla poszczególnych
 samogłosek.
 
-Jednym z głównych celów niniejszej pracy jest przeprowadzenie analizy porównawczej samogłosek pod kątem ich przydatności w klasyfikacji choroby Parkinsona.
-Dla wiarygodnych wyników kluczowe jest zachowanie zbliżonych warunków eksperymentalnych. Odpowiednie dostosowanie zbiorów danych jest istotnym aspektem,
-który wpływa na wyniki analizy.
-Początkowo każda osoba zdrowa miała trzy nagrania każdej samogłoski, a osoba z chorobą Parkinsona jedno.
-Jednak po przefiltrowaniu bazy danych te liczby uległy zmianie.
-W rezultacie zdecydowano się ograniczyć zbiór, tak by dla każdej samogłoski uwzględniona była identyczna liczba (67) nagrań od różnych osób.
-
-
 \subsection{Baza danych w języku włoskim}
-\label{subsec:włoska-baza}
+\label{subsec:wloska-baza}
 
-%Pierwsza z nich to Italian Parkinson's Voice And Speech dostępna na platformie
-%IEEEDataPort. Dane zostały zebrane na cele artykułu \cite{italian-database}, który badał zrozumiałość mowy w
-%chorobie Parkinsona z wykorzystaniem systemu speech-to-text. Zbiór zawiera wiele różnych
-%podzbiorów, ale zdecydowano się na analizę podtrzymywanych samogłosek (ang. sustained
-%vowels) ze względu na największą uniwersalność pod kątem automatycznej klasyfikacji.
-%Ocena stopnia zaawansowania choroby została przeprowadzona przy pomocy skali UPDRS.
-%Wszystkie nagrania pochodzą od osób, dla których natywnym językiem jest włoski. Zbiór
-%zawiera nagrania samogłosek: „a”, „e”, „i”, „o” oraz „u”. Łącznie liczy 50 nagrań: 22 nagrania
-%osób zdrowych (średnia wieku: 67,02) oraz 28 nagrań osób chorych na PD (średnia wieku:
-%67,21).
+Włoska baza danych to \emph{Italian Parkinson's Voice And Speech} dostępna na platformie \emph{IEEEDataPort}.
+Dane zostały zebrane na cele artykułu~\cite{italian-database}, który badał zrozumiałość mowy w chorobie Parkinsona z wykorzystaniem systemu \emph{speech-to-text}.
+Zbiór zawiera wiele różnych podzbiorów, ale wykorzystano jedynie podtrzymywane samogłoski /a/, /e/, /i/, /o/ oraz /u/.
+Ocena stopnia zaawansowania choroby została przeprowadzona przy pomocy skali UPDRS.
+Wszystkie nagrania pochodzą od osób, dla których natywnym językiem jest włoski.
+Początkowo baza danych zawiera nagrania od 50 osób, jednak po wstępnym oczyszczeniu wykorzystano jedynie 45. Charakterystykę zbioru przedstawiono w tabeli~\ref{tab:italian-database}
+
+\begin{table}[h]
+\centering
+\caption{Charakterystyka włoskiej bazy danych}
+\label{tab:italian-database}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Kategoria} &\textbf{Osoby zdrowe (HC)} &\textbf{Osoby chore (PD)} &\textbf{Razem} \\ \hline
+Liczba osób &19 &26 &45\\ \hline
+Liczba nagrań &38 &52 &90\\ \hline
+Średnia wieku &67,31 ± 5,23 &66,96 ± 8,59  & 67,11 ± 7,36 \\ \hline
+Liczba kobiet &10 &7 &17\\ \hline
+Liczba mężczyzn &9 &19 &28 \\ \hline
+\end{tabular}
+\end{table}
+
 
 \subsection{Baza danych w języku hiszpańskim}
 \label{subsec:hiszpanska-baza}
 
-%\cite{pc-gita}
+
+Hiszpańska baza danych nazywana jest PC-GITA i została zaprezentowana w publikacji~\cite{pc-gita}.
+Zawiera nagrania mowy 50 pacjentów z PD i ich tyle samo osób zdrowych, dopasowanych pod względem wieku i płci.
+Wszyscy uczestnicy są hiszpańskojęzycznymi native speakerami, a nagrania zostały zebrane zgodnie z protokołem uwzględniającym wymagania
+techniczne oraz kilka zaleceń ekspertów z dziedzin lingwistyki, foniatryki i neurologii.
+Kolekcja obejmuje takie zadania jak trwałe wymawianie samogłosek, ocenę dyadokokinetyczną, 45 słów, 10 zdań, tekst do czytania i monolog.
+Podobnie jak w przypadku pozostałych baz wykorzystano jedynie nagrania samogłosek /a/, /e/, /i/, /o/ oraz /u/.
+Szczegółowa charakterystyka zbioru została przedstawiona w tabeli~\ref{tab:spanish-database}
+
+\begin{table}[h]
+\centering
+\caption{Charakterystyka hiszpańskiej bazy danych}
+\label{tab:spanish-database}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Kategoria} &\textbf{Osoby zdrowe (HC)} &\textbf{Osoby chore (PD)} &\textbf{Razem} \\ \hline
+Liczba osób &50 &50 &100\\ \hline
+Liczba nagrań &150 &150 &300\\ \hline
+Średnia wieku &60,90 ± 9,37 &61,14 ± 9,51  &61,02 ± 9,15\\ \hline
+Liczba kobiet &25 &25 &50\\ \hline
+Liczba mężczyzn &25 &25 &50 \\ \hline
+\end{tabular}
+\end{table}
 
 \subsection{Podsumowanie wykorzystanych baz danych}
 \label{subsec:podsumowanie-baz}
 
-!!! RYSUNEK DO POPRAWY !!
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1\textwidth]{./img/database}
-	\caption{Charakterystyka bazy danych [opracowanie własne]}
-    \label{fig:database}
+Połączenie baz danych było możliwe ze względu na uniwersalność podstawy diagnostycznej jakiej są podtrzymywane samogłoski.
+Nagrania różniły się długością, jednak wykorzystano jedynie krótkie fragmenty, więc nie stanowiło to problemu.
+Wszystkie zostały zarejestrowane z częstotliwością próbkowania 44,1 kHz.
+
+Trudno nie zauważyć znaczącej przewagi liczby nagrań w bazie hiszpańskojęzycznej (Rys.~\ref{fig:language-distribution}).
+Jednak zdecydowano się na rezygnację z wyrównywania liczby nagrań w poszczególnych językach, z uwagi na to, że baza danych jest już stosunkowo niewielka, i dodatkowe ograniczenie liczby nagrań mogłoby znacząco zmniejszyć jej wartość i możliwości badawcze.
+
+Zachowano zbliżone proporcje wieku (różnica w średniej wieku mniejsza niż 5 lat) i płci pomiędzy grupą pacjentów a grupą porównawczą.
+Drobne różnice w liczbie próbek w poszczególnych przedziałach wiekowych nie powinny mieć istotnego wpływu na wyniki klasyfikacji.
+Szczegółowe charakterystyki zbioru danych zostały przedstawiona na Rys.~\ref{fig:age-distribution} i~\ref{fig:gender-distribution}.
+
+
+\begin{figure}
+    \begin{subfigure}{0.9\textwidth}
+        \centering
+       	\includegraphics[width=0.60\textwidth]{./img/database stats/languages_distribution}
+	    \caption{Udział nagrań w poszczególnych językach w ostatecznej bazie danych}
+        \label{fig:language-distribution}
+    \end{subfigure}
+
+    \begin{subfigure}{0.9\textwidth}
+        \centering
+        \includegraphics[width=0.60\textwidth]{./img/database stats/age_distribution}
+        \caption{Rozkład klas w grupach wiekowych}
+        \label{fig:age-distribution}
+    \end{subfigure}
+
+    \begin{subfigure}{0.9\textwidth}
+        \centering
+       \includegraphics[width=0.65\textwidth]{./img/database stats/gender_distribution}
+	    \caption{Rozkład płci w klasach}
+        \label{fig:gender-distribution}
+    \end{subfigure}
+
+    \caption{Charakterystyka wykorzystanej bazy danych}
+    \label{fig:charakterystyka-bazy}
 \end{figure}
+
+
+
+\begin{table}[h]
+\centering
+\caption{Charakterystyka stworzonej bazy danych}
+\label{tab:summary-database}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Kategoria} &\textbf{Osoby zdrowe (HC)} &\textbf{Osoby chore (PD)} &\textbf{Razem} \\ \hline
+Liczba osób &95 &103 &198\\ \hline
+Liczba nagrań &255 &229 &484\\ \hline
+Średnia wieku & 62,18 ± 8,70 & 62,84 ± 9,45  & 62,32 ± 8,99 \\ \hline
+Liczba kobiet &53 &45 &98\\ \hline
+Liczba mężczyzn &42 &58 &100 \\ \hline
+\end{tabular}
+\end{table}
+
+%Jednym z głównych celów niniejszej pracy jest przeprowadzenie analizy porównawczej samogłosek pod kątem ich przydatności w klasyfikacji choroby Parkinsona.
+%Dla wiarygodnych wyników kluczowe jest zachowanie zbliżonych warunków eksperymentalnych. Odpowiednie dostosowanie zbiorów danych jest istotnym aspektem,
+%który wpływa na wyniki analizy.
+%Początkowo każda osoba zdrowa miała trzy nagrania każdej samogłoski, a osoba z chorobą Parkinsona jedno.
+%Jednak po przefiltrowaniu bazy danych te liczby uległy zmianie.
+%W rezultacie zdecydowano się ograniczyć zbiór, tak by dla każdej samogłoski uwzględniona była identyczna liczba (67) nagrań od różnych osób.
+
 
 %---------------------------------------------------------------------------
 
@@ -130,23 +220,34 @@ Nagrania zostały przycięte, tak by nie zawierały początkowych i końcowych f
 Skorzystano z pakietu \emph{Librosa} do automatycznego usunięcia niepożądanych fragmentów, a następnie każde z nagrań zostało przeanalizowane w programie \emph{Audacity}.
 Upewniono się, że nagrania zostały poprawnie przetworzone oraz wprowadzono ręcznie ewentualne poprawki.
 
-Analizowane nagrania różnią się dynamiką amplitudową.
-Dlatego zdecydowano się na skalowanie metodą \emph{Min-Max}, która pozwala zachować względną amplitudę sygnału przed generowaniem spektrogramu.
-Wybrano metodę skalowania \emph{Min-Max} na zakres od 0 do 1 opisaną wzorem \eqref{eq:minmax}.
-Ma to na celu przekształcenie amplitudy w sposób proporcjonalny i ustandaryzowany.
-Utrzymywane są proporcje między wartościami pikseli.
-Oznacza to, że różnice proporcjonalne w amplitudach na spektrogramie zostaną zachowane po skalowaniu.
-Skalowanie nie wprowadza dodatkowych informacji ani nie zmienia wzorców zmienności w spektrogramie.
-Ponadto zapewnia, że spektrogramy o podobnych charakterystykach zostaną przekształcone w podobne zakresy wartości.
-Dzięki temu możliwe jest porównywanie spektrogramów między różnymi nagraniami lub próbkami.
+
+Z uwagi na wykorzystanie różnych baz danych, charakteryzujących się zróżnicowanymi warunkami nagrywania, zdecydowano się na ograniczenie wpływu fragmentów dźwięków otoczenia na dokładność klasyfikacji.
+W tym celu zastosowano filtr pasmowoprzepustowy, który pozwolił na eliminację niepotrzebnych odstających częstotliwości, które mogą nie mieć znaczenia dla analizy mowy.
+Wykorzystanie tego filtru zapobiegło również jedynie dostosowaniu modelu do cech charakteryzujących odstające częstotliwości, takie jak chrypka czy inne zakłócenia dźwiękowe.
+W efekcie przekazywane były jedynie częstotliwości zawarte w przedziale między 500 Hz a 1500 Hz.
+
+
+\subsection{Obliczanie melspektrogramów}
+\label{subsec:melspectrogram}
+
+
+Tutaj chcę wykres głosu HC i PD oraz spektrogramy
+%Analizowane nagrania różnią się dynamiką amplitudową.
+%Dlatego zdecydowano się na skalowanie metodą \emph{Min-Max}, która pozwala zachować względną amplitudę sygnału przed generowaniem spektrogramu.
+%Wybrano metodę skalowania \emph{Min-Max} na zakres od 0 do 1 opisaną wzorem \eqref{eq:minmax}.
+%Ma to na celu przekształcenie amplitudy w sposób proporcjonalny i ustandaryzowany.
+%Utrzymywane są proporcje między wartościami pikseli.
+%Oznacza to, że różnice proporcjonalne w amplitudach na spektrogramie zostaną zachowane po skalowaniu.
+%Skalowanie nie wprowadza dodatkowych informacji ani nie zmienia wzorców zmienności w spektrogramie.
+%Ponadto zapewnia, że spektrogramy o podobnych charakterystykach zostaną przekształcone w podobne zakresy wartości.
+%Dzięki temu możliwe jest porównywanie spektrogramów między różnymi nagraniami lub próbkami.
 %Wyniki przekształceń przestawiono na Rys.~\ref{fig:preprocessing}.
 
-Filtracja pasmowo przepustowa
 
-\begin{equation}
-	\label{eq:minmax}
-	\text{Skalowanie Min-Max: } X_{\text{scaled}} = \frac{X - X_{\text{min}}}{X_{\text{max}} - X_{\text{min}}}
-\end{equation}
+%\begin{equation}
+%	\label{eq:minmax}
+%	\text{Skalowanie Min-Max: } X_{\text{scaled}} = \frac{X - X_{\text{min}}}{X_{\text{max}} - X_{\text{min}}}
+%\end{equation}
 
 %\begin{figure}[htbp]
 %	\centering
@@ -155,28 +256,74 @@ Filtracja pasmowo przepustowa
 %    \label{fig:preprocessing}
 %\end{figure}
 
-\subsection{Obliczanie melspektrogramów}
-\label{subsec:melspectrogram}
-
 \subsection{Augmentacja}
 \label{subsec:augmentacja}
 
+Aktualny stan wiedzy w dziedzinie automatycznej diagnostyki choroby Parkinsona ukazuje, że konwolucyjne sieci neuronowe (CNN) znacząco poprawiły wyniki w zadaniach przetwarzania mowy.
+Jednakże, aby uniknąć przeuczenia, konieczna jest duża ilość danych treningowych.
+Dostępne bazy danych zawierają zwykle do kilkuset nagrań, co ogranicza możliwość uwzględnienia wielu istotnych cech i stworzenia stabilnego modelu klasyfikacyjnego.
 
-Opierano się na tym \cite{augmentation}
-* przesunięcie w czasie
+W początkowych eksperymentach przeprowadzonych w ramach tej pracy, mimo zastosowania transfer learningu, nie udało się osiągnąć oczekiwanych wyników, ze względu na bardzo duże przeuczenie (ang. \emph{overfitting}).
+Jest to częsty problem, który można rozwiązać dzięki praktyce znanej jako augmentacja danych.
+Polega ona na modyfikacji oryginalnych próbek, co prowadzi do zwiększenia ilości danych treningowych.
+Augmentacja danych znacząco poprawia zdolność modeli CNN do generalizacji i zwiększa ich odporność na przeuczenie.
 
-* spowolnienie
+W badaniach opisanych w publikacji~\cite{augmentation} zastosowano sześć technik augmentacji danych specyficznych dla mowy w celu polepszenia zdolności modelu do generalizacji na dane, które nie były wcześniej widziane.
+Wyniki tych badań pokazują, że techniki augmentacji danych specyficznych dla mowy istotnie poprawiają zdolność do wykrywania zaburzeń mowy u pacjentów z chorobą Parkinsona.
+Podobne znaczenie augmentacji danych podkreślono również w publikacji~\cite{Wodzinski} jako istotny czynnik wpływający na skuteczność rozwiązań w dziedzinie klasyfikacji choroby Parkinsona.
 
-* przyspieszenie
+Dlatego w tej pracy zstosowano 4 techniki augmentacyjne: przesunięcie w czasie, spowolnienie, przyspieszenie oraz losową zmianę wysokości dźwięku.
+Wszystkie modyfikacje zostały przeprowadzone na sygnałach przed wyznaczeniem spektrogramów.
+Wpływ zmian na mel-spektrogramy przedstawiono na Rys~\ref{fig:augumentacja}.
 
-* losowa zmiana wysokości dźwięku
+
+\begin{enumerate}[label={\alph*)}]
+	\item Przesunięcie w czasie (ang.~\emph{time shifting}): Aby zapewnić, że model nie dostosowuje się do lokalizacji czasowej danej próbki mowy lub głosu, zmieniana jest kolejność sygnałów. Jest to osiągane poprzez przesunięcie sygnałów w prawo wzdłuż osi czasu o losową ilość, która jest mniejsza niż długość wejściowego nagrania audio.
+    \item Losowa zmiana wysokości dźwięku (ang.~\emph{pitch change}): Składowe częstotliwości próbek są losowo przesuwane w dół lub w górę, przy czym należy zadbać o to, aby długość nie uległa zmianie poprzez rozciągnięcie oryginalnej próbki o losową ilość czasu z przedziału [3; 5] w dziedzinie czasu, a następnie jej resampling.
+    \item Spowolnienie (ang.~\emph{slow-down})
+Przez rozciągnięcie w czasie próbki dźwiękowej zapewniamy, że model sieci neuronowej nie dostosowuje się tylko do prędkości mowy lub głosu badanego podmiotu. Współczynnik spowolnienia jest losowo wybierany z przedziału [0,2; 0,8]. Jest to osiągane poprzez przesamplingowanie oryginalnej próbki.
+    \item Przyspieszenie (ang.~\emph{speed-up}): Tak samo jak spowolnienie dźwięku, losowe przyspieszenie ma na celu zapobieżenie dostosowywaniu modelu do prędkości mowy mówcy. Współczynnik przyspieszenia jest losowo wybierany z przedziału [1,2; 2,5]. Jest to osiągane poprzez resampling oryginalnej próbki.
+\end{enumerate}
+
+
+\begin{figure}[ht]
+    \centering
+
+    \begin{subfigure}{0.7\textwidth}
+        \includegraphics[width=\linewidth]{./img/augmentation/rolled}
+        \caption{Przesunięcie w czasie}
+        \label{fig:roll}
+    \end{subfigure}
+
+    \begin{subfigure}{0.7\textwidth}
+        \includegraphics[width=\linewidth]{./img/augmentation/pitch}
+        \caption{Zmiana wysokości dźwięku}
+        \label{fig:pitch}
+    \end{subfigure}
+
+    \begin{subfigure}{0.7\textwidth}
+        \includegraphics[width=\linewidth]{./img/augmentation/slow}
+        \caption{Spowolnienie}
+        \label{fig:slow}
+    \end{subfigure}
+
+    \begin{subfigure}{0.7\textwidth}
+        \includegraphics[width=\linewidth]{./img/augmentation/speed}
+        \caption{Przyspieszenie}
+        \label{fig:speed}
+    \end{subfigure}
+
+    \caption{Porównanie różnych technik augmentacji i ich wpływu na wygląd spektrogramu (zbiór danych PC-GITA, samogłoska /a/, HC)}
+    \label{fig:augumentacja}
+\end{figure}
+
 %---------------------------------------------------------------------------
 
 \section{Metody klasyfikacji}
 \label{sec:klasyfikacja}
 
 Ze względu na ograniczoną dostępność danych głosowych pacjentów z chorobą Parkinsona, zastosowano technikę znana jako \emph{transfer learning}.
-\emph{Transfer learning} umożliwia wykorzystanie wstępnie wytrenowanych modeli, które zostały nauczane na dużym zbiorze danych, takim jak ImageNet,
+Transfer learning umożliwia wykorzystanie wstępnie wytrenowanych modeli, które zostały nauczane na dużym zbiorze danych, takim jak ImageNet,
 do zadań diagnostycznych z wykorzystaniem ograniczonej ilości dostępnych danych głosowych.
 
 Kluczowym krokiem w transfer learningu było wybranie modeli, które miały dostępne wagi wytrenowane na zbiorze ImageNet.
@@ -231,10 +378,13 @@ Wykorzystanie wstępnego treningu na ImageNet i fine-tuningu pozwoliło na poł�
 %---------------------------------------------------------------------------
 
 \section{Metody ewaluacji wyników}
-\label{sec:metody-ewaluacji-wyników}
+\label{sec:metody-ewaluacji-wynikow}
 
-W kontekście oceny efektywności klasyfikacji choroby Parkinsona, zastosowano różnorodne techniki ewaluacji.
-W niniejszej sekcji zostaną przedstawione wybrane metody, które zostały wykorzystane w ramach przeprowadzonych eksperymentów.
+W celu oceny skuteczności różnych metod klasyfikacji choroby Parkinsona, przeprowadzono badania wykorzystujące różnorodne techniki ewaluacji.
+Niniejsza sekcja zawiera prezentację wybranych metod, które zostały użyte w ramach przeprowadzonych eksperymentów.
+Kluczowym aspektem tych eksperymentów jest konieczność zastosowania odpowiednich technik walidacji wyników.
+Techniki te nie tylko umożliwiają obiektywną ocenę efektywności proponowanych rozwiązań, ale także pozwalają na porównanie ich ze sobą.
+Dzięki temu pozwalają lepiej zrozumieć, które podejścia są najbardziej obiecujące w kontekście diagnozowania choroby Parkinsona i polepszania dokładności klasyfikacji, co jest kluczowe dla postępu w dziedzinie medycyny i diagnostyki tej choroby.
 
 \subsection{Krzywe uczenia}
 \label{subsec:krzywe-uczenia}
@@ -255,12 +405,16 @@ W podanych wzorach zastosowano oznaczenia:  TP – True Positive, TN – True Ne
 
 \begin{enumerate}[label={\alph*)}]
 	\item Dokładność (ang.~\emph{accuracy})
-    \item [] To prosta i intuicyjna miara, która oblicza stosunek poprawnie sklasyfikowanych próbek do wszystkich próbek. Wyraża ona ogólną skuteczność klasyfikacji.Wyrażana jest wzorem \ref{eq:accuracy}
+    \item [] To prosta i intuicyjna miara, która oblicza stosunek poprawnie sklasyfikowanych próbek do wszystkich próbek.
+    Wyraża ona ogólną skuteczność klasyfikacji.
+    Wyrażana jest wzorem \ref{eq:accuracy}
     \begin{equation}
         \frac{TP + TN}{TP + FN + TN + FP}\label{eq:accuracy}
     \end{equation}
     \item Precyzja (ang.~\emph{precision})
-    \item [] Mierzy stosunek prawdziwie pozytywnych predykcji do sumy prawdziwie pozytywnych i  fałszywie pozytywnych predykcji. Wyraża zdolność modelu do identyfikowania prawdziwie pozytywnych przypadków. Określa się ją wzorem \ref{eq:precision}
+    \item [] Mierzy stosunek prawdziwie pozytywnych predykcji do sumy prawdziwie pozytywnych i  fałszywie pozytywnych predykcji.
+Wyraża zdolność modelu do identyfikowania prawdziwie pozytywnych przypadków.
+Określa się ją wzorem \ref{eq:precision}
       \begin{equation}
         \frac{TP}{TP + FP}\label{eq:precision}
     \end{equation}
