@@ -34,7 +34,7 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'field_info' (item size: 4) to 10180 items.
+Reallocating 'field_info' (item size: 4) to 10460 items.
 Database file #1: praca-blx.bib
 Database file #2: bibliografia.bib
 Warning--entry type for "italian-database" isn't style-file defined
@@ -42,45 +42,45 @@ Warning--entry type for "italian-database" isn't style-file defined
 Biblatex version: 3.19
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 37 entries,
+You've used 39 entries,
             6399 wiz_defined-function locations,
-            1496 strings with 28423 characters,
-and the built_in function-call counts, 432325 in all, are:
-= -- 39006
-> -- 4149
-< -- 830
-+ -- 13728
-- -- 1689
-* -- 31561
-:= -- 54222
+            1514 strings with 28857 characters,
+and the built_in function-call counts, 438143 in all, are:
+= -- 39314
+> -- 4223
+< -- 855
++ -- 13819
+- -- 1718
+* -- 31923
+:= -- 54653
 add.period$ -- 0
-call.type$ -- 37
-change.case$ -- 404
-chr.to.int$ -- 98
-cite$ -- 72
-duplicate$ -- 43924
-empty$ -- 36497
-format.name$ -- 3058
-if$ -- 84280
+call.type$ -- 39
+change.case$ -- 414
+chr.to.int$ -- 99
+cite$ -- 76
+duplicate$ -- 44635
+empty$ -- 37194
+format.name$ -- 3102
+if$ -- 85525
 int.to.chr$ -- 0
-int.to.str$ -- 81
+int.to.str$ -- 84
 missing$ -- 0
-newline$ -- 1679
-num.names$ -- 1540
-pop$ -- 14445
+newline$ -- 1721
+num.names$ -- 1578
+pop$ -- 15084
 preamble$ -- 1
-purify$ -- 769
+purify$ -- 782
 quote$ -- 0
-skip$ -- 6310
+skip$ -- 6517
 stack$ -- 0
-substring$ -- 77510
-swap$ -- 6198
-text.length$ -- 851
+substring$ -- 77949
+swap$ -- 6410
+text.length$ -- 876
 text.prefix$ -- 8
 top$ -- 1
-type$ -- 1244
+type$ -- 1312
 warning$ -- 0
-while$ -- 6490
+while$ -- 6548
 width$ -- 0
-write$ -- 1643
+write$ -- 1683
 (There was 1 warning)

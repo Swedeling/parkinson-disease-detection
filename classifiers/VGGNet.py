@@ -25,14 +25,18 @@ class VGGNet(ClassifierBase):
 
         vgg16 = VGG16(weights='imagenet', include_top=False, input_shape=(128, 128, 3))
         for layer in vgg16.layers:
-            layer.trainable = True
+            layer.trainable = False
         # for layer in vgg16.layers[-4:]:
         #     layer.trainable = True
         x = Flatten()(vgg16.output)
         # x = tf.keras.layers.GlobalAveragePooling2D()(x)
         # x = Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.001))(x)
-        # x = Dense(64, activation='relu')(x)
-        x = BatchNormalization()(x)
+        x = Dense(128, activation='relu')(x)
+        x = Dropout(0.25)(x)
+        x = Dense(128, activation='relu')(x)
+        x = Dropout(0.25)(x)
+
+        # x = BatchNormalization()(x)
         predictions = Dense(1, activation='sigmoid')(x)
         model = Model(inputs=vgg16.input, outputs=predictions)
         return model

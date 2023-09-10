@@ -59,7 +59,7 @@ class ClassifierBase(ABC):
         plt.axis('off')
         plt.show()
 
-        callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=8)
+        callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
 
         accuracy_scores = []
         precision_scores = []

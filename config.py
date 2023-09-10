@@ -2,15 +2,15 @@ import os
 
 # EXPERIMENT SETTINGS
 BATCH_SIZES = [16] # 8, 16, 32
-BINSIZE = [128] # 1024
+BINSIZE = [512] # 1024
 EPOCHS_NUMBER = 50
 LOSS_FUNCTION = ['binary_crossentropy']
 OPTIMIZERS = ['adam'] # 'sgd', 'rmsprop', 'adam'
 OVERLAP = [320] # 0.1, 0.25,
 LEARNING_RATE = 0.0005
 
-LANGUAGE_TO_LOAD = "all"
-VOWELS_TO_LOAD = ["u"]
+LANGUAGE_TO_LOAD = "spanish"
+VOWELS_TO_LOAD = ["a"]
 
 CLASSIFIERS_TO_TEST = ["VGGNet"] #  "InceptionV3" # LeNet-5 # "ResNet50", "VGGNet", "LeNet-5", "InceptionV3", "ResNet50", "MobileNet"
 SPECTROGRAMS = False

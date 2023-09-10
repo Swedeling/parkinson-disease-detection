@@ -1,3 +1,5 @@
+import scipy
+
 from utils.audio_spectrogram import *
 from utils.preprocessing import silence_removing
 import numpy as np
@@ -10,8 +12,9 @@ import os
 import shutil
 import wave
 import random
+import seaborn as sns
 
-AUGUMENTATION = ["filtered", "pitch", "slow", "speed"] #,  "pitch", "filtered", "rolled", "slow", "speed"
+AUGUMENTATION = ["filtered", "pitch", "slow", "speed", "rolled"] #,  "pitch", "filtered", "rolled", "slow", "speed"
 SIZE = 224
 
 @dataclass
@@ -168,6 +171,37 @@ class Recording:
     def _get_melspectrogram(self, binsize, overlap, settings_dir, filename):
         melspectrogram_path = os.path.join(self.melspectrogram_dir, settings_dir, filename)
         images = []
+
+        if self.filename == "s_1_x_x_a_001.wav" and self.classname == 0:
+            print(self.classname)
+            y = self.audio[int(self.sr * 0.41):]
+            y = self.bandpass_filter(y)
+            colors = sns.color_palette('flare')
+            print(self.classname)
+            n = 9
+            # plt.subplot(3, 1, 1)
+            plt.plot([x / SR for x in range(0, len(y))], y, color=colors[2])
+            plt.grid(True)
+            # plt.title(f"Surowe nagranie: {filename}", fontsize=n)
+            plt.xlabel("Czas [s]", fontsize=8)
+            plt.ylabel("Amplituda", fontsize=n)
+
+            # plt.subplot(3, 1, 2)
+            # plt.plot([x / SR for x in range(0, len(voice_audio))], voice_audio, color=colors[1])
+            # plt.grid(True)
+            # plt.title("Nagranie po usunięciu fragmentów ciszy", fontsize=8)
+            # plt.xlabel("Czas [s]", fontsize=8)
+            # plt.ylabel("Amplituda", fontsize=n)
+            #
+            # plt.subplot(3, 1, 3)
+            # plt.plot([x / SR for x in range(0, len(normalized_signal))], normalized_signal, color=colors[2])
+            # plt.grid(True)
+            # plt.title("Nagranie po usunięciu fragmentów ciszy i normalizacji", fontsize=8)
+            # plt.xlabel("Czas [s]", fontsize=8)
+            # plt.ylabel("Amplituda", fontsize=n)
+            # plt.subplots_adjust(hspace=0.8)
+            plt.show()
+
         for augmentation in AUGUMENTATION:
             if not os.path.exists(melspectrogram_path + f"_{augmentation}.npy"):
                 self._generate_melspectrogram(augmentation, binsize, overlap, settings_dir, filename)
@@ -208,7 +242,7 @@ class Recording:
 
         librosa.feature.mfcc(y=y, sr=sr, hop_length=binsize, htk=True)
 
-        S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=overlap, fmax=44100)
+        S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=overlap, fmax=44100,  n_fft=2048, hop_length=binsize, window=scipy.signal.windows.hann)
 
         librosa.feature.mfcc(S=librosa.power_to_db(S))
 

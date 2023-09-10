@@ -224,6 +224,48 @@
     \field{year}{2009}
   \endentry
 
+  \entry{Szurek_2018}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SM}{%
+         family={Szurek},
+         familyi={S\bibinitperiod},
+         given={Mateusz},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SM1}
+    \strng{fullhash}{SM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.14746/ikps.2016.14.08
+    \endverb
+    \field{number}{14}
+    \field{pages}{137–157}
+    \field{title}{Mowa pacjentki z chorobą Parkinsona w fazie zaawansowanej}
+    \verb{url}
+    \verb https://pressto.amu.edu.pl/index.php/ikps/article/view/12800
+    \endverb
+    \field{journaltitle}{Interdyscyplinarne Konteksty Pedagogiki Specjalnej}
+    \field{year}{2018}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{Kurylowicz_2019}{article}{}
+    \field{labeltitlesource}{title}
+    \field{issn}{1897-7839}
+    \field{number}{6}
+    \field{pages}{285 \bibrangedash  291}
+    \field{title}{Zaburzenia głosu w chorobach neurologicznych}
+    \verb{url}
+    \verb https://journals.viamedica.pl/forum_medycyny_rodzinnej/article/view/6
+    \verb 3136
+    \endverb
+    \field{volume}{13}
+    \field{journaltitle}{Forum Medycyny Rodzinnej}
+    \field{year}{2019}
+  \endentry
+
   \entry{2023_PD_voice}{article}{}
     \name{author}{2}{}{%
       {{hash=KR}{%
