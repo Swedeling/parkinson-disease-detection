@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-VOWEL = "i"
+VOWEL = "all"
 
 dir_path = "C:/Users/User/Desktop/wyniki końcowe/" + VOWEL
 #
@@ -77,7 +77,7 @@ plt.plot(lista3, marker='x', label='MobileNet', color=COLORS[2])
 plt.plot(lista4, marker='D', label='ResNet50', color=COLORS[3])
 plt.plot(lista5, marker='^', label='VGG16', color=COLORS[5])
 
-plt.ylim([0.60, 1.1])
+plt.ylim([0.60, 1.3])
 plt.xlabel('Epoka')
 plt.ylabel('Strata')
 plt.legend()

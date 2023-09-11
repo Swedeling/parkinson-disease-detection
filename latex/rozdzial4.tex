@@ -1,25 +1,22 @@
-\chapter{Materiał i metoda badawcza}
+\chapter{Materiał i metoda badawcza\@}
 \label{ch:material-badawczy}
 
-W ramach pracy przeprowadzone zostały badania dotyczące klasyfikacji choroby Parkinsona.
-Głównym celem było opracowanie efektywnego modelu klasyfikacji binarnej, który może rozróżniać osoby z PD od osób zdrowych na podstawie analizy sygnałów mowy.
-Przyjęte podejście opiera się na wykorzystaniu metod przetwarzania sygnałów mowy oraz uczenia maszynowego.
-Najpierw zebrano dane, w tym nagrania głosowe osób z chorobą Parkinsona
-(PD) oraz osób zdrowych (HC, ang. \emph{Healthy Controls}).
-Następnie przeprowadzono analizę przy użyciu różnych ustawień spektrogramów i melspektrogramów.
-Obejmuje to zmienne parametry takie jak rozmiar okna i przesunięcie okna.
-Dodatkowo przeprowadzono badania dotyczące różnych architektur konwolucyjnych sieci neuronowych.
-Celem jest zbadanie, które architektury sieci i ustawienia spektrogramów dają najlepsze wyniki w klasyfikacji choroby Parkinsona dla poszczególnych samogłosek.
-Przeprowadzona analiza porównawcza pozwala na lepsze zrozumienie wpływu tych czynników na skuteczność klasyfikacji.
-W rezultacie możliwe będzie ustalenie optymalnych ustawień i
-architektur dla klasyfikacji choroby Parkinsona na podstawie analizy sygnałów mowy.
-Ponadto zbadano wpływ rozszerzenia zbioru danych o dodatkowe nagrania pochodzące od tych samych osób.
-Zostało to poglądowo przedstawione na Rys.~\ref{fig:methodology}.
+Przegląd literatury pokazuje obfitość raportów dotyczących identyfikacji choroby Parkinsona na podstawie krótkich fragmentów mowy, czyli samogłosek, sylaby czy krótkich słów zdań.
+Wykorzystywane są różne zadania wokalne, metody ekstrakcji cech oraz klasyfikacji.
+Wiele czynników wpływa na fakt, że ciężko porównać obiektywnie proponowane rozwiązania m.in.
+wykorzystywana baza danych.
+Dlatego w pracy zdecydowano się porównać skuteczność wybranych architektur sieci konwolucyjnych oraz użyteczność informacji diagnostycznej dla różnych samogłosek wykorzystując aż 3 różne bazy danych.
+
+W rozdziale tym przedstawiono opis danych wykorzystanych do porównania skuteczności i wydajności różnych algorytmów w diagnostyce choroby Parkinsona na podstawie głosu.
+Przedstawiono proces przygotowania sygnałów oraz parametryzacji sygnału akustycznego.
+W dalszej części przedstawiono opis algorytmów, które zostały wykorzystane do realizacji postawionych zadań.
+Przyjęte podejście zostało poglądowo przedstawione na Rys.~\ref{fig:methodology}.
+
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1\textwidth]{./img/methodology}
-	\caption{Schemat przyjętej metody badawczej}
+	\caption{Schemat przyjętego podejścia\@}
     \label{fig:methodology}
 \end{figure}
 
@@ -123,7 +120,7 @@ Podobnie jak w przypadku pozostałych baz wykorzystano jedynie nagrania samogło
 Na jednego uczestnika przypadają trzy powtórzenia każdej z samogłosek.
 Szczegółowa charakterystyka zbioru została przedstawiona w tabeli~\ref{tab:spanish-database}
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Charakterystyka hiszpańskiej bazy danych}
 \label{tab:spanish-database}
@@ -289,7 +286,7 @@ Wybór tych wartości został przeprowadzony na podstawie dostępną literaturę
 
 Rozmiar okna czasowego jest jednym z kluczowych parametrów obliczeń melspektrogramów.
 W kontekście diagnozowania choroby Parkinsona istnieje potrzeba uwzględnienia zarówno krótkotrwałych, dynamicznych zmian w mowie, jak i dłuższych charakterystyk.
-Wybór okna o długości 2048 został dokonany w celu uzyskania odpowiedniej rozdzielczości w dziedzinie czasu i częstotliwości, co pozwala na dokładniejsze odwzorowanie tych cech w melspektrogramie.
+Wybór okna o długości 2048 został dokonany w celu uzyskania odpowiedniej rozdzielczości w dziedzinie czasu i częstotliwości, co pozwala na dokładniejsze odwzorowanie tych cech w mel-spektrogramie.
 Długość przesunięcia określa, co ile próbek dźwiękowych nowe okno czasowe jest nakładane na sygnał.
 W celu zachowania równowagi między dokładnością w dziedzinie czasu a efektywnością obliczeń wybrano \emph{hop\_length} o wartości 512.
 Jest to kompromis, który pozwala na zachowanie informacji o krótkotrwałych zmianach w sygnale, co jest istotne w diagnozowaniu choroby Parkinsona.
@@ -321,7 +318,7 @@ Augmentacja danych znacząco poprawia zdolność modeli CNN do generalizacji i z
 
 W badaniach opisanych w publikacji~\cite{augmentation} zastosowano sześć technik augmentacji danych specyficznych dla mowy w celu polepszenia zdolności modelu do generalizacji na dane, które nie były wcześniej widziane.
 Wyniki tych badań pokazują, że techniki augmentacji danych specyficznych dla mowy istotnie poprawiają zdolność do wykrywania zaburzeń mowy u pacjentów z chorobą Parkinsona.
-Podobne znaczenie augmentacji danych jako istotnego czynnika wpływającego na skuteczność rozwiązań w dziedzinie klasyfikacji choroby Parkinsona podkreślono również w publikacji~\cite{Wodzinski} .
+Podobne znaczenie augmentacji danych jako istotnego czynnika wpływającego na skuteczność rozwiązań w dziedzinie klasyfikacji choroby Parkinsona podkreślono również w publikacji~\cite{Wodzinski}.
 
 Dlatego w niniejszej pracy zdecydowano się zastosować 4 techniki augmentacyjne: przesunięcie w czasie, spowolnienie, przyspieszenie oraz losową zmianę wysokości dźwięku.
 Wszystkie modyfikacje zostały przeprowadzone na sygnałach przed wyznaczeniem mel-spektrogramów.
@@ -344,7 +341,6 @@ Jest to osiągane poprzez resampling oryginalnej próbki.
 
 \begin{figure}[ht]
     \centering
-
     \begin{subfigure}{0.7\textwidth}
         \includegraphics[width=\linewidth]{./img/augmentation/rolled}
         \caption{Przesunięcie w czasie\@}
@@ -374,27 +370,26 @@ Jest to osiągane poprzez resampling oryginalnej próbki.
 \end{figure}
 
 %---------------------------------------------------------------------------
-
+\newpage
 \section{Metody klasyfikacji}
 \label{sec:klasyfikacja}
 
 Zdecydowano się na graficzne reprezentacje sygnałów, co wymaga też doboru odpowiednich metod klasyfikacji.
 Popularnym rozwiązaniem są konwolucyjne sieci neuronowe (ang. \emph{Convolutional Neural Network}, CNN).
 Jest to rodzaj zaawansowanych modeli uczenia maszynowego, które zostały pierwotnie zaprojektowane do przetwarzania i analizy danych wizualnych, takich jak obrazy i filmy.
-Jednakże, ze względu na swoją skuteczność w ekstrakcji cech z danych przestrzennych, CNN znalazły zastosowanie także w dziedzinach związanych z przetwarzaniem dźwięku, w tym w analizie mel-spektrogramów i rozpoznawaniu mowy.
+Jednakże, ze względu na swoją skuteczność w ekstrakcji cech z danych przestrzennych, CNN znalazły zastosowanie także w dziedzinach związanych z przetwarzaniem dźwięku.
 
-Główną cechą konwolucyjnych sieci neuronowych są warstwy konwolucyjne.
-CNN wykorzystują warstwy konwolucyjne do przetwarzania danych wejściowych.
-Te warstwy wykorzystują filtry konwolucyjne, które przesuwają się po wejściowych danych, wyodrębniając lokalne wzorce, takie jak krawędzie, tekstury i inne cechy.
+Główną cechą CNN są warstwy konwolucyjne.
+Wykorzystują one filtry konwolucyjne, które przesuwają się po wejściowych danych, wyodrębniając lokalne wzorce, takie jak krawędzie, tekstury i inne cechy.
 To pozwala na automatyczną ekstrakcję istotnych cech.
-CNN często zawierają też warstwy pooling, które zmniejszają rozmiar danych wyjściowych z warstw konwolucyjnych.
-Pooling pomaga zmniejszyć liczbę parametrów w sieci i sprawia, że sieć jest bardziej odporna na przetwarzanie danych o różnych rozmiarach.
+CNN często zawierają też warstwy \emph{pooling}, które zmniejszają rozmiar danych wyjściowych z warstw konwolucyjnych.
+Pomaga to zmniejszyć liczbę parametrów w sieci i sprawia, że sieć jest bardziej odporna na przetwarzanie danych o różnych rozmiarach.
 CNN zwykle składają się z wielu warstw konwolucyjnych i warstw fully connected, które uczą się reprezentacji coraz bardziej abstrakcyjnych cech danych.
-Dzięki tym cechom są wysoce zdolne do rozpoznawania wzorców w danych, co czyni je skutecznymi w zadaniach klasyfikacji, detekcji obiektów, rozpoznawaniu mowy i wielu innych.
+Są wysoce zdolne do rozpoznawania wzorców w danych, co czyni je skutecznymi w zadaniach klasyfikacji, detekcji obiektów, rozpoznawaniu mowy i wielu innych.
 Dużą zaletą sieci konwolucyjnych jest możliwość skorzystania z uczenia z transferem, co oznacza wykorzystanie pre-trenowanych modeli na dużych zbiorach danych, a następnie dostosowanie ich do konkretnej dziedziny lub zadania.
 
-Podsumowując, konwolucyjne sieci neuronowe (CNN) są potężnym narzędziem w analizie graficznych reprezentacji danych i są powszechnie stosowane w wielu dziedzinach, aby automatycznie ekstrahować i analizować cechy złożonych danych przestrzennych.
-Dzięki ich zdolności do hierarchicznego uczenia się i rozpoznawania wzorców, są używane w różnych zastosowaniach, w tym również w medycynie.
+Konwolucyjne sieci neuronowe są potężnym narzędziem w analizie graficznych reprezentacji danych i są powszechnie stosowane w wielu dziedzinach, aby automatycznie ekstrahować i analizować cechy złożonych danych przestrzennych.
+Dzięki ich zdolności do hierarchicznego uczenia się i rozpoznawania wzorców są używane w różnych zastosowaniach, w tym również w medycynie.
 Dlatego zdecydowano się wykorzystać tę metodę do klasyfikacji mel-spektrogramów.
 
 \subsection{Wykorzystane architektury}
@@ -404,11 +399,10 @@ Ze względu na ograniczoną dostępność danych głosowych pacjentów z chorob�
 Transfer learning umożliwia wykorzystanie wstępnie wytrenowanych modeli, które zostały nauczane na dużym zbiorze danych,
 do zadań diagnostycznych z wykorzystaniem ograniczonej ilości dostępnych danych głosowych.
 
-Kluczowym krokiem w transfer learningu było wybranie modeli, które miały dostępne wagi wytrenowane na dużym i takim samym zbiorze danych.
+Kluczowym krokiem było wybranie modeli, które miały dostępne wagi wytrenowane na dużym i takim samym zbiorze danych.
 Zdecydowano się na ImageNet, ponieważ jest to jedna z najważniejszych baz danych obrazów wykorzystywana w dziedzinie komputerowego widzenia i uczenia maszynowego.
-Wybrano modele takie jak Xception, MobileNetV2, InceptionV3, VGG16 i ResNet50, co było uzasadnione dostępnością wstępnie wytrenowanych wag, które zawierały ogólne cechy obrazów.
-To pozwoliło na zaoszczędzenie czasu i zasobów, które byłyby potrzebne do wytrenowania sieci od podstaw na niewielkim zbiorze danych.
-
+Wybrano modele takie jak Xception, MobileNetV2, InceptionV3, VGG16 i ResNet50.
+Takie podejście pozwoliło na zaoszczędzenie czasu i zasobów, które byłyby potrzebne do wytrenowania sieci od podstaw na niewielkim zbiorze danych.
 W ramach pracy magisterskiej skoncentrowano się na porównaniu różnych architektur w kontekście automatycznej diagnostyki choroby Parkinsona na podstawie analizy głosu.
 
 \begin{enumerate}[label={\alph*)}]
@@ -438,12 +432,10 @@ Choroba Parkinsona manifestuje się na różne sposoby w głosie pacjentów, dla
 Xception i InceptionV3 są znane z efektywności w ekstrakcji wielu rodzajów cech, co jest istotne przy analizie złożonych danych głosowych.
 MobileNetV2, z kolei, jest lekki i mobilny, co pozwala na przenośność rozwiązania do urządzeń mobilnych, które mogą być używane w codziennym monitoringu pacjentów.
 VGG16 i ResNet50, choć głębokie, mają zdolność do wyodrębniania skomplikowanych wzorców, co może być przydatne w diagnozie.
-Wybór tych różnorodnych klasyfikatorów pozwoli na rzetelne porównanie ich wydajności i skuteczności w diagnostyce na podstawie głosu, co może przyczynić się do lepszego zrozumienia, który model najlepiej radzi sobie z tym zadaniem.
+Porównanie różnych klasyfikatorów pozwoli na ocenę ich wydajności i skuteczności w diagnostyce na podstawie głosu.
 
-Po wstępnym treningu na ImageNet przeprowadzono proces fine-tuningu na zbiorze danych zawierającym nagrania głosowe pacjentów związane z diagnozą choroby Parkinsona.
-Dostrajanie jest kluczowym etapem w procesie dostosowywania wstępnie wytrenowanych klasyfikatorów do konkretnej diagnozy na podstawie głosu.
-W trakcie fine-tuningu modele były dostosowywane, aby nauczyć się rozpoznawania specyficznych cech akustycznych charakterystycznych dla pacjentów z chorobą Parkinsona.
-Umożliwiło to dostosowanie wag i parametrów modeli do konkretnego zadania diagnostycznego.
+Po wstępnym treningu na ImageNet przeprowadzono proces fine-tuningu na przygotowanym wcześniej zbiorze danych.
+Modele były dostosowywane, aby nauczyć się rozpoznawania specyficznych cech akustycznych charakterystycznych dla pacjentów z chorobą Parkinsona.
 W ten sposób klasyfikatory stały się bardziej odpowiednie do analizy dźwięku i diagnozy choroby Parkinsona na podstawie danych głosowych.
 
 \subsection{Dobór parametrów i optymalizacja modeli}
@@ -469,23 +461,24 @@ Bardzo ważny w tym problemie klasyfikacyjnym jest odpowiedni dobór współczyn
 Wartość tego parametru wpływa na tempo, z jakim model aktualizuje swoje wagi podczas procesu uczenia.
 Wysoki learning rate może prowadzić do oscylacji i trudności w zbieżności algorytmu, podczas gdy zbyt niski może spowolnić proces uczenia.
 Dlatego optymalny wybór learning rate jest istotnym krokiem w dostrojeniu algorytmu SGD do konkretnego problemu.
-Zdecydowano się na ustawienie wartości współćzynnika uczenia na 0,0005.
+Zdecydowano się na ustawienie wartości współczynnika uczenia na 0,0005.
 
-Podczas treningu modelu użyto również monitorowania funkcji straty.
-Mechanizm ten umożliwia wczesne zatrzymanie treningu, jeśli funkcja straty przestaje się poprawiać przez określoną liczbę epok (przyjęto 5).
+Modele były trenowane przez 50 epok, ponieważ zbyt duża liczba epok mogłaby prowadzić do przetrenowania na tak małej ilości danych, co wpłynęłoby negatywnie na ich zdolność do generalizacji na nowe dane.
+Dodatkowo zastosowano monitorowanie funkcji straty.
+Ten mechanizm umożliwia wczesne zatrzymanie treningu, jeśli funkcja straty przestaje się poprawiać przez określoną liczbę epok (w tym przypadku przyjęto 5)
 
 \subsection{Podział danych}
 \label{subsec:podzial-danych}
 
 Klasyczną techniką w uczeniu maszynowym jest podział zbioru danych na 3 podzbiory: treningowy, testowy oraz walidacyjny.
 W problemie klasyfikacji celem jest stworzenie algorytmu, który na podstawie znanych sobie, opisanych wzorców, będzie w stanie efektywnie rozpoznawać wzorce nieopisane i dotąd sobie nieznane.
-Dlatego wydziela się zbiór treningowy, na podstawie, którego model uczy się wzorców i dopasowuje do danych.
+Dlatego wydziela się zbiór treningowy, na podstawie którego model uczy się wzorców i dopasowuje do danych.
 Aby uniknąć nadmiernego dopasowania danych do modelu (ang.
 overfitting) stosuje się również zbiór walidacyjny, który  przeprowadza bezstronną ocenę dopasowania modelu do zbioru danych szkoleniowych podczas dostrajania hiperparametrów modelu.
 Na koniec ocenia się skuteczność modelu na niezależnym zbiorze testowym.
 
-Innym często wykorzystywaną techniką jest wykorzystanie krosswalidacji (ang. \emph{cross-validation}).
-Jest to technika oceny wydajności modelu maszynowego, która polega na podziale dostępnych danych na kilka części, z których jedna służy jako zbiór testowy, a pozostałe jako zbiór treningowy.
+Inną często wykorzystywaną techniką jest wykorzystanie krosswalidacji (ang. \emph{cross-validation}).
+Jest to technika oceny wydajności modelu maszynowego, która polega na podziale dostępnych danych na kilka części, z których jedna służy jako zbiór walidacyjny, a pozostałe jako zbiór treningowy.
 Proces ten jest wielokrotnie powtarzany, aby uzyskać stabilniejszą ocenę wydajności modelu i uniknąć przeuczenia.
 Najpopularniejszym typem krosswalidacji jest walidacja krzyżowa typu k-fold, gdzie dane są dzielone na k podzbiorów, a każdy z nich jest używany jako zbiór testowy w jednym z k cykli walidacji.
 
@@ -555,19 +548,19 @@ Wyraża się ją wzorem~\ref{eq:f1}.
 \end{enumerate}
 
 
-\subsection{Macierz pomyłek}
-\label{subsec:macierz-pomylek}
-
-Macierz pomyłek to narzędzie służące do analizy wyników klasyfikacji.
-Przedstawia ona liczbę prawidłowo i błędnie zaklasyfikowanych próbek dla każdej klasy.
-Na podstawie macierzy pomyłek możemy obliczyć błędy I i II rzędu.
-\begin{enumerate}[label={\alph*)}]
-	\item Błąd I rzędu (ang. \emph{False Positive}) oznacza błędną klasyfikację przypadku, który jest negatywny, jako pozytywny.
-    W kontekście Parkinsona, błąd I rzędu oznacza, że model zaklasyfikował zdrową osobę jako chorą na chorobę Parkinsona.
-\item Błąd II rzędu (ang. \emph{False Negative}) oznacza błędną klasyfikację przypadku, który jest pozytywny, jako negatywny.
-    W kontekście Parkinsona, błąd II rzędu oznacza, że model zaklasyfikował osobę chorą na chorobę Parkinsona jako zdrową.
-\end{enumerate}
-
-Analiza błędów I i II rzędu ma duże znaczenie w kontekście ewaluacji systemów diagnostycznych.
-Błąd I rzędu może prowadzić do niezdiagnozowania choroby u pacjenta, podczas gdy błąd II rzędu może prowadzić do błędnego zdiagnozowania osoby zdrowej jako cierpiącej na chorobę Parkinsona.
-Ważne jest, aby oceniać i minimalizować te błędy w celu uzyskania jak najdokładniejszej klasyfikacji.
+%\subsection{Macierz pomyłek}
+%\label{subsec:macierz-pomylek}
+%
+%Macierz pomyłek to narzędzie służące do analizy wyników klasyfikacji.
+%Przedstawia ona liczbę prawidłowo i błędnie zaklasyfikowanych próbek dla każdej klasy.
+%Na podstawie macierzy pomyłek możemy obliczyć błędy I i II rzędu.
+%\begin{enumerate}[label={\alph*)}]
+%	\item Błąd I rzędu (ang. \emph{False Positive}) oznacza błędną klasyfikację przypadku, który jest negatywny, jako pozytywny.
+%    W kontekście Parkinsona, błąd I rzędu oznacza, że model zaklasyfikował zdrową osobę jako chorą na chorobę Parkinsona.
+%\item Błąd II rzędu (ang. \emph{False Negative}) oznacza błędną klasyfikację przypadku, który jest pozytywny, jako negatywny.
+%    W kontekście Parkinsona, błąd II rzędu oznacza, że model zaklasyfikował osobę chorą na chorobę Parkinsona jako zdrową.
+%\end{enumerate}
+%
+%Analiza błędów I i II rzędu ma duże znaczenie w kontekście ewaluacji systemów diagnostycznych.
+%Błąd I rzędu może prowadzić do niezdiagnozowania choroby u pacjenta, podczas gdy błąd II rzędu może prowadzić do błędnego zdiagnozowania osoby zdrowej jako cierpiącej na chorobę Parkinsona.
+%Ważne jest, aby oceniać i minimalizować te błędy w celu uzyskania jak najdokładniejszej klasyfikacji.

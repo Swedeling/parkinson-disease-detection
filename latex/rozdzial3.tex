@@ -123,12 +123,24 @@ Model drugiej struktury osiągał lepsze rezultaty niż SVM, zwłaszcza z łącz
 Zaproponowane podejście CNN osiągnęło skuteczność 86,9\%, przewyższając inne metody.
 Są to pierwsze obiecujące rezultaty podejścia opartego na głębokich sieciach neuronowych.
 
-Od 2020 roku ukazało się kilka dodatkowych publikacji, które pogłębiły ten temat.
-Na przykład w 2022 roku autorzy artykułu~\cite{HIRES2022105021} wykorzystali spektrogramy oraz metodę wielokrotnego dopasowywania modelu.
-Model był wstępnie trenowany na zbiorze ImageNet, następnie adaptowany do pośredniego zbioru, a na koniec dostosowywany do danych PC-GITA (baza danych zawierająca nagrania samogłosek od
-osób posługujących się kolumbijskiej odmianie języka hiszpańskiego).
-Mimo niewielkich różnic pomiędzy różnymi samogłoskami najlepszą skuteczność osiągnięto przy uwzględnieniu samogłoski /a/.
-Uzyskano 99\% dokładności, 86,2\% czułości, 93,3\% swoistości.
+Od tamtego czasu ukazało się kilka dodatkowych publikacji, które pogłębiły ten temat.
+Na przykład w publikacji~\cite{Wodzinski} zaprezentowano podejście do detekcji choroby Parkinsona, wykorzystując samogłoski o długotrwałej artykulacji oraz architekturę ResNet,
+pierwotnie dedykowaną do klasyfikacji obrazów.
+Obliczono spektrogramy nagrań dźwiękowych i wykorzystano je jako dane wejściowe do architektury ResNet wytrenowanej wcześniej na bazach danych ImageNet i SVD.
+Osiągnięta dokładność przekraczała 90\% na zestawie walidacyjnym (PC-GITA, czyli baza danych zawierająca nagrania samogłosek od
+osób posługujących się kolumbijską odmianą języka hiszpańskiego).
+Wyniki pokazały, że cechy  nauczone na naturalnych obrazach potrafią przenieść wiedzę na obrazy reprezentujące spektrogram sygnału głosowego.
+Co więcej, pokazano, że możliwa jest skuteczna detekcja choroby Parkinsona, wykorzystując tylko cechy oparte na częstotliwościach.
+
+
+Podejście to zostało zbadane również w artykule~\cite{KARAMAN2021115013}, gdzie  porównano różne architektury CNN do automatycznej identyfikacji PD na podstawie mel-spektrogramów opierając się na uczeniu transferowym.
+Porównano architektury SqueezeNet1\_1, ResNet101 i DenseNet161.
+Wyniki wykazały, że zaproponowany model oparty na uczeniu transferowym z podejściem fine-tuning zapewnia akceptowalną detekcję PD z dokładnością wynoszącą 89,75\%.
+
+
+Później, w 2022 roku autorzy artykułu~\cite{HIRES2022105021} wykorzystali spektrogramy oraz metodę wielokrotnego dopasowywania modelu.
+Model był wstępnie trenowany na zbiorze ImageNet, następnie adaptowany do pośredniego zbioru, a na koniec dostosowywany do danych PC-GITA.
+Mimo niewielkich różnic pomiędzy różnymi samogłoskami najlepszą skuteczność osiągnięto przy uwzględnieniu samogłoski /a/ uzyskując 99\% dokładności.
 Co ciekawe, wykazano, że skuteczność podejścia nie zależy od płci.
 To pokazuje, że metoda ma potencjał do zastosowania w praktyce klinicznej do przesiewowego badania, diagnozowania i monitorowania choroby Parkinsona.
 
@@ -190,11 +202,6 @@ Wartością dodaną tych badań jest możliwość zastosowania analizy głosowej
 wczesne wykrycie objawów i rozpoczęcie leczenia.
 Wyniki te sugerują, że głębokie sieci neuronowe mogą pomóc w identyfikowaniu subtelnych cech
 głosowych, które są trudne do wykrycia przez konwencjonalne metody diagnostyczne.
-
-o tym~\cite{Wodzinski}
-o tym~\cite{KARAMAN2021115013}
-o tym~\cite{app11073043}
-o tym~\cite{bioengineering10050531}- dopisać
 %---------------------------------------------------------------------------
 
 \section{Wyzwania związane z systemami automatycznej diagnostyki}\label{sec:wyzwania}

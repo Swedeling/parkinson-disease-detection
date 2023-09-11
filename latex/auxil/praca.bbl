@@ -1016,6 +1016,103 @@
     \field{year}{2019}
   \endentry
 
+  \entry{Wodzinski}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=WM}{%
+         family={Wodzinski},
+         familyi={W\bibinitperiod},
+         given={Marek},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={Skalski},
+         familyi={S\bibinitperiod},
+         given={Andrzej},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=HD}{%
+         family={Hemmerling},
+         familyi={H\bibinitperiod},
+         given={Daria},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=OAJR}{%
+         family={Orozco-Arroyave},
+         familyi={O\bibinithyphendelim A\bibinitperiod},
+         given={Juan\bibnamedelima Rafael},
+         giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=NE}{%
+         family={Nöth},
+         familyi={N\bibinitperiod},
+         given={Elmar},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WM+1}
+    \strng{fullhash}{WMSAHDOAJRNE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2019 41st Annual International Conference of the IEEE
+  Engineering in Medicine and Biology Society (EMBC)}
+    \verb{doi}
+    \verb 10.1109/EMBC.2019.8856972
+    \endverb
+    \field{pages}{717\bibrangedash 720}
+    \field{title}{Deep Learning Approach to Parkinson’s Disease Detection
+  Using Voice Recordings and Convolutional Neural Network Dedicated to Image
+  Classification}
+    \field{year}{2019}
+  \endentry
+
+  \entry{KARAMAN2021115013}{article}{}
+    \name{author}{4}{}{%
+      {{hash=KO}{%
+         family={Karaman},
+         familyi={K\bibinitperiod},
+         given={Onur},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=�H}{%
+         family={Çakın},
+         familyi={�\bibinitperiod},
+         given={Hakan},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=AA}{%
+         family={Alhudhaif},
+         familyi={A\bibinitperiod},
+         given={Adi},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=PK}{%
+         family={Polat},
+         familyi={P\bibinitperiod},
+         given={Kemal},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \keyw{Parkinson's disease (PD), Acoustic sensing, Convolutional neural
+  network (CNN), Transfer Learning, Voice signal}
+    \strng{namehash}{KO+1}
+    \strng{fullhash}{KO�HAAPK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.eswa.2021.115013
+    \endverb
+    \field{issn}{0957-4174}
+    \field{pages}{115013}
+    \field{title}{Robust automated Parkinson disease detection based on voice
+  signals with transfer learning}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0957417421004541
+    \endverb
+    \field{volume}{178}
+    \field{journaltitle}{Expert Systems with Applications}
+    \field{year}{2021}
+  \endentry
+
   \entry{HIRES2022105021}{article}{}
     \name{author}{6}{}{%
       {{hash=HM}{%
@@ -1428,248 +1525,6 @@
     \field{volume}{8}
     \field{journaltitle}{IEEE Access}
     \field{year}{2020}
-  \endentry
-
-  \entry{Wodzinski}{inproceedings}{}
-    \name{author}{5}{}{%
-      {{hash=WM}{%
-         family={Wodzinski},
-         familyi={W\bibinitperiod},
-         given={Marek},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=SA}{%
-         family={Skalski},
-         familyi={S\bibinitperiod},
-         given={Andrzej},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=HD}{%
-         family={Hemmerling},
-         familyi={H\bibinitperiod},
-         given={Daria},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=OAJR}{%
-         family={Orozco-Arroyave},
-         familyi={O\bibinithyphendelim A\bibinitperiod},
-         given={Juan\bibnamedelima Rafael},
-         giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
-      }}%
-      {{hash=NE}{%
-         family={Nöth},
-         familyi={N\bibinitperiod},
-         given={Elmar},
-         giveni={E\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{WM+1}
-    \strng{fullhash}{WMSAHDOAJRNE1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{2019 41st Annual International Conference of the IEEE
-  Engineering in Medicine and Biology Society (EMBC)}
-    \verb{doi}
-    \verb 10.1109/EMBC.2019.8856972
-    \endverb
-    \field{pages}{717\bibrangedash 720}
-    \field{title}{Deep Learning Approach to Parkinson’s Disease Detection
-  Using Voice Recordings and Convolutional Neural Network Dedicated to Image
-  Classification}
-    \field{year}{2019}
-  \endentry
-
-  \entry{KARAMAN2021115013}{article}{}
-    \name{author}{4}{}{%
-      {{hash=KO}{%
-         family={Karaman},
-         familyi={K\bibinitperiod},
-         given={Onur},
-         giveni={O\bibinitperiod},
-      }}%
-      {{hash=�H}{%
-         family={Çakın},
-         familyi={�\bibinitperiod},
-         given={Hakan},
-         giveni={H\bibinitperiod},
-      }}%
-      {{hash=AA}{%
-         family={Alhudhaif},
-         familyi={A\bibinitperiod},
-         given={Adi},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=PK}{%
-         family={Polat},
-         familyi={P\bibinitperiod},
-         given={Kemal},
-         giveni={K\bibinitperiod},
-      }}%
-    }
-    \keyw{Parkinson's disease (PD), Acoustic sensing, Convolutional neural
-  network (CNN), Transfer Learning, Voice signal}
-    \strng{namehash}{KO+1}
-    \strng{fullhash}{KO�HAAPK1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb https://doi.org/10.1016/j.eswa.2021.115013
-    \endverb
-    \field{issn}{0957-4174}
-    \field{pages}{115013}
-    \field{title}{Robust automated Parkinson disease detection based on voice
-  signals with transfer learning}
-    \verb{url}
-    \verb https://www.sciencedirect.com/science/article/pii/S0957417421004541
-    \endverb
-    \field{volume}{178}
-    \field{journaltitle}{Expert Systems with Applications}
-    \field{year}{2021}
-  \endentry
-
-  \entry{app11073043}{article}{}
-    \name{author}{5}{}{%
-      {{hash=SS}{%
-         family={Shin},
-         familyi={S\bibinitperiod},
-         given={Sungho},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=KJ}{%
-         family={Kim},
-         familyi={K\bibinitperiod},
-         given={Jongwon},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=YY}{%
-         family={Yu},
-         familyi={Y\bibinitperiod},
-         given={Yeonguk},
-         giveni={Y\bibinitperiod},
-      }}%
-      {{hash=LS}{%
-         family={Lee},
-         familyi={L\bibinitperiod},
-         given={Seongju},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=LK}{%
-         family={Lee},
-         familyi={L\bibinitperiod},
-         given={Kyoobin},
-         giveni={K\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SS+1}
-    \strng{fullhash}{SSKJYYLSLK1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{abstract}{%
-    We propose the implementation of transfer learning from natural images to
-  audio-based images using self-supervised learning schemes. Through
-  self-supervised learning, convolutional neural networks (CNNs) can learn the
-  general representation of natural images without labels. In this study, a
-  convolutional neural network was pre-trained with natural images (ImageNet)
-  via self-supervised learning; subsequently, it was fine-tuned on the target
-  audio samples. Pre-training with the self-supervised learning scheme
-  significantly improved the sound classification performance when validated on
-  the following benchmarks: ESC-50, UrbanSound8k, and GTZAN. The network
-  pre-trained via self-supervised learning achieved a similar level of accuracy
-  as those pre-trained using a supervised method that require labels.
-  Therefore, we demonstrated that transfer learning from natural images
-  contributes to improvements in audio-related tasks, and self-supervised
-  learning with natural images is adequate for pre-training scheme in terms of
-  simplicity and effectiveness.%
-    }
-    \verb{doi}
-    \verb 10.3390/app11073043
-    \endverb
-    \field{issn}{2076-3417}
-    \field{number}{7}
-    \field{title}{Self-Supervised Transfer Learning from Natural Images for
-  Sound Classification}
-    \verb{url}
-    \verb https://www.mdpi.com/2076-3417/11/7/3043
-    \endverb
-    \field{volume}{11}
-    \field{journaltitle}{Applied Sciences}
-    \field{year}{2021}
-  \endentry
-
-  \entry{bioengineering10050531}{article}{}
-    \name{author}{9}{}{%
-      {{hash=FP}{%
-         family={Faragó},
-         familyi={F\bibinitperiod},
-         given={Paul},
-         giveni={P\bibinitperiod},
-      }}%
-      {{hash=�SA}{%
-         family={Ștefănigă},
-         familyi={�\bibinitperiod},
-         given={Sebastian-Aurelian},
-         giveni={S\bibinithyphendelim A\bibinitperiod},
-      }}%
-      {{hash=CCG}{%
-         family={Cordoș},
-         familyi={C\bibinitperiod},
-         given={Claudia-Georgiana},
-         giveni={C\bibinithyphendelim G\bibinitperiod},
-      }}%
-      {{hash=MLI}{%
-         family={Mihăilă},
-         familyi={M\bibinitperiod},
-         given={Laura-Ioana},
-         giveni={L\bibinithyphendelim I\bibinitperiod},
-      }}%
-      {{hash=HS}{%
-         family={Hintea},
-         familyi={H\bibinitperiod},
-         given={Sorin},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=PAS}{%
-         family={Peștean},
-         familyi={P\bibinitperiod},
-         given={Ana-Sorina},
-         giveni={A\bibinithyphendelim S\bibinitperiod},
-      }}%
-      {{hash=BM}{%
-         family={Beyer},
-         familyi={B\bibinitperiod},
-         given={Michel},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=PDL}{%
-         family={Perju-Dumbravă},
-         familyi={P\bibinithyphendelim D\bibinitperiod},
-         given={Lăcrămioara},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=IRR}{%
-         family={Ileșan},
-         familyi={I\bibinitperiod},
-         given={Robert\bibnamedelima Radu},
-         giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{FP+1}
-    \strng{fullhash}{FP�SACCGMLIHSPASBMPDLIRR1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.3390/bioengineering10050531
-    \endverb
-    \field{issn}{2306-5354}
-    \field{number}{5}
-    \field{title}{CNN-Based Identification of Parkinson's Disease from
-  Continuous Speech in Noisy Environments}
-    \verb{url}
-    \verb https://www.mdpi.com/2306-5354/10/5/531
-    \endverb
-    \field{volume}{10}
-    \field{journaltitle}{Bioengineering}
-    \field{year}{2023}
   \endentry
 
   \entry{SustainedVowelsProblems}{article}{}

@@ -34,7 +34,7 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'field_info' (item size: 4) to 10460 items.
+Reallocating 'field_info' (item size: 4) to 10180 items.
 Database file #1: praca-blx.bib
 Database file #2: bibliografia.bib
 Warning--entry type for "italian-database" isn't style-file defined
@@ -42,45 +42,45 @@ Warning--entry type for "italian-database" isn't style-file defined
 Biblatex version: 3.19
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 39 entries,
+You've used 37 entries,
             6399 wiz_defined-function locations,
-            1514 strings with 28857 characters,
-and the built_in function-call counts, 438143 in all, are:
-= -- 39314
-> -- 4223
-< -- 855
-+ -- 13819
-- -- 1718
-* -- 31923
-:= -- 54653
+            1500 strings with 27138 characters,
+and the built_in function-call counts, 402701 in all, are:
+= -- 35928
+> -- 3985
+< -- 823
++ -- 12660
+- -- 1608
+* -- 29219
+:= -- 50001
 add.period$ -- 0
-call.type$ -- 39
-change.case$ -- 414
+call.type$ -- 37
+change.case$ -- 400
 chr.to.int$ -- 99
-cite$ -- 76
-duplicate$ -- 44635
-empty$ -- 37194
-format.name$ -- 3102
-if$ -- 85525
+cite$ -- 72
+duplicate$ -- 41169
+empty$ -- 34244
+format.name$ -- 2882
+if$ -- 78733
 int.to.chr$ -- 0
-int.to.str$ -- 84
+int.to.str$ -- 80
 missing$ -- 0
-newline$ -- 1721
-num.names$ -- 1578
-pop$ -- 15084
+newline$ -- 1592
+num.names$ -- 1502
+pop$ -- 14188
 preamble$ -- 1
-purify$ -- 782
+purify$ -- 738
 quote$ -- 0
-skip$ -- 6517
+skip$ -- 6189
 stack$ -- 0
-substring$ -- 77949
-swap$ -- 6410
-text.length$ -- 876
+substring$ -- 70910
+swap$ -- 5990
+text.length$ -- 830
 text.prefix$ -- 8
 top$ -- 1
-type$ -- 1312
+type$ -- 1244
 warning$ -- 0
-while$ -- 6548
+while$ -- 6012
 width$ -- 0
-write$ -- 1683
+write$ -- 1556
 (There was 1 warning)

@@ -11,34 +11,33 @@
 \contentsline {section}{\numberline {3.1}Rodzaj wykorzystywanych danych}{19}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Metody klasyfikacji}{21}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Wyzwania związane z systemami automatycznej diagnostyki}{25}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Materiał i metoda badawcza}{31}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Materiał i metoda badawcza\spacefactor \@m {}}{31}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Materiał badawczy}{31}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Baza danych w języku polskim}{32}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Baza danych w języku włoskim}{33}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}Baza danych w języku hiszpańskim}{33}{subsection.4.1.3}%
 \contentsline {subsection}{\numberline {4.1.4}Podsumowanie wykorzystanych baz danych}{34}{subsection.4.1.4}%
-\contentsline {section}{\numberline {4.2}Parametryzacja sygnału akustycznego}{36}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Parametryzacja sygnału akustycznego}{34}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Przygotowanie nagrań}{36}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Obliczanie mel-spektrogramów}{37}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Augmentacja}{39}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.2}Obliczanie mel-spektrogramów}{36}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Augmentacja}{38}{subsection.4.2.3}%
 \contentsline {section}{\numberline {4.3}Metody klasyfikacji}{40}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Wykorzystane architektury}{40}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Dobór parametrów i optymalizacja modeli}{42}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Podział danych}{43}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.3}Podział danych}{42}{subsection.4.3.3}%
 \contentsline {section}{\numberline {4.4}Metody ewaluacji wyników}{43}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Krzywe uczenia}{44}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.1}Krzywe uczenia}{43}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Metryki walidacyjne}{44}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Macierz pomyłek}{45}{subsection.4.4.3}%
 \contentsline {chapter}{\numberline {5}Wyniki badań}{47}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Samogłoska /a/}{47}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Samogłoska /e/}{48}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Samogłoska /i/}{48}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Samogłoska /o/}{48}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Samogłoska /u/}{48}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Połączenie samogłosek /a/, /e/, /i/, /o/, /u/}{48}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Zbiorcze podsumowanie wyników}{48}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Analiza i interpretacja wyników}{51}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Samogłoski a informacja diagnostyczna\spacefactor \@m {}}{51}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Architektury CNN a skuteczność klasyfikacji}{51}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Podsumowanie}{53}{chapter.7}%
-\contentsline {chapter}{Bibliografia}{55}{section*.26}%
+\contentsline {section}{\numberline {5.3}Samogłoska /i/}{49}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Samogłoska /o/}{50}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Samogłoska /u/}{51}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Połączenie samogłosek /a/, /e/, /i/, /o/, /u/}{51}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Zbiorcze podsumowanie wyników}{51}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Analiza i interpretacja wyników}{55}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Samogłoski a informacja diagnostyczna\spacefactor \@m {}}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Architektury CNN a skuteczność klasyfikacji}{55}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Podsumowanie}{57}{chapter.7}%
+\contentsline {chapter}{Bibliografia}{59}{section*.28}%
