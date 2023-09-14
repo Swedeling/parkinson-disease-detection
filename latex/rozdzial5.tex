@@ -1,11 +1,10 @@
-\chapter{Wyniki badań}
+\chapter{Wyniki badań\@}
 \label{ch:wyniki}
 
 W niniejszym rozdziale zostaną przedstawione rezultaty eksperymentów dotyczących wykorzystania samogłosek /a/, /e/, /i/, /o/ oraz /u/ w procesie automatycznej diagnostyki choroby Parkinsona.
 Wcześniej omówione zostały teoretyczne podstawy oraz użyte modele i metody badawcze.
-Niniejsza część pracy zawiera uzyskane wyniki, które stanowią istotny wkład w kontekście rozwoju dziedziny diagnostyki medycznej.
-Przeprowadzono porównanie różnych modeli opartych na popularnych architekturach sieci neuronowych, mające na celu ocenę ich skuteczności w identyfikacji choroby Parkinsona.
-Należy zaznaczyć, że w pracy przedstawiono jedynie najlepsze z osykanych wyników.
+Niniejsza część pracy zawiera wyniki uzyskane po przeprowadzeniu badań obejmujących porównanie różnych modeli opartych na popularnych architekturach sieci neuronowych, mające na celu ocenę ich skuteczności w identyfikacji choroby Parkinsona.
+Należy zaznaczyć, że w pracy przedstawiono jedynie najlepsze z uzyskanych wyników.
 Tabele~\ref{tab:wyniki-a},~\ref{tab:wyniki-e},~\ref{tab:wyniki-i},~\ref{tab:wyniki-o} oraz~\ref{tab:wyniki-u} przedstawiają średnie z wyników otrzymanych z wykorzystaniem 10-krotnej walidacji krzyżowej.
 
 
@@ -15,8 +14,8 @@ Tabele~\ref{tab:wyniki-a},~\ref{tab:wyniki-e},~\ref{tab:wyniki-i},~\ref{tab:wyni
 Samogłoska /a/ jest wybierana najczęściej jako podstawa analizy w podobnych procesach badawczych.
 Ponadto często przy jej wykorzystaniu osiągane są najwyższe wyniki.
 Podczas eksperymentów w przypadku samogłoski /a/ najlepszą skuteczność uzyskano wykorzystując architekturę VGG16.
-Każda z metryk accuracy, recall, precision i F1-score oscylowała w okolicy 75\%.
-Kolejne dwie architektury dla których osiągnięto zada walające wyniki na poziomie ponad 70\% to ResNet50 i MobileNetV2.
+Każda z badanych metryk (dokładność, czułość, precyzja oraz parametr F1) oscylowała w okolicy 75\%.
+Kolejne dwie architektury, dla których osiągnięto zadowalające wyniki na poziomie ponad 70\% to ResNet50 i MobileNetV2.
 Najgorzej z tym zadaniem, biorąc pod uwagę skuteczność, poradziła sobie architektura Xception.
 
 \begin{table}[ht]
@@ -35,8 +34,8 @@ Najgorzej z tym zadaniem, biorąc pod uwagę skuteczność, poradziła sobie arc
 \end{table}
 
 Analiza wartości funkcji straty dla różnych modeli wskazuje na zróżnicowaną skuteczność w procesie minimalizacji błędu.
-Model ResNet50 osiągnął najniższy wynik straty (0.563), co sugeruje jego lepszą zdolność do generalizacji na dane testowe.
-Jednakże, modele VGG16 (0.645) i Xception (0.611) również uzyskały akceptowalne wyniki, podczas gdy modele InceptionV3 (0.676) i MobileNetV2 (0.750) wypadają w tym kontekście najsłabiej.
+Model ResNet50 osiągnął najniższy wynik straty (0,563), co sugeruje jego lepszą zdolność do generalizacji na dane testowe.
+Jednakże, modele VGG16 (0,645) i Xception (0,611) również uzyskały akceptowalne wyniki, podczas gdy model MobileNetV2 (0,750) wypada pod tym względem najsłabiej.
 Wszystkie z przedstawionych rozwiązań mogą wymagać dalszej optymalizacji lub dostrojenia parametrów w celu poprawy skuteczności.
 Szczegółowe wartości zostały zawarte w tabeli~\ref{tab:wyniki-a}.
 
@@ -59,11 +58,12 @@ Szczegółowe wartości zostały zawarte w tabeli~\ref{tab:wyniki-a}.
     \label{fig:a_results}
 \end{figure}
 
-Analizując proces uczenia na zbiorze walidacyjnym (Rys.~\ref{fig:a_results}),  można stwierdzić, że przebiegał on podobnie we wszystkich przypadkach.
+Analizując proces uczenia na zbiorze walidacyjnym (Rys.~\ref{fig:a_results}),  można stwierdzić, że przebiegał on podobnie w większości przypadków.
 Wartości osiągnięte na tym zbiorze były zbliżone do wyników uzyskanych na zbiorze testowym, co wskazuje na zdolność modeli do generalizacji.
 Wykresy reprezentujące różne klasyfikatory wykazują podobne tendencje, jednak krzywa funkcji straty w przypadku modelu MobileNetV2 wykazuje pewne odchylenia od pozostałych.
 To może sugerować, że MobileNetV2 reaguje inaczej na dane walidacyjne, co może mieć wpływ na jego ogólną skuteczność.
-Należy szczegółowo zbadać te odchylenia w kontekście optymalizacji modelu.
+Na podstawie przedstawionych wyników można wyróżnić model VGG16 jako potencjalnie najlepszy w przypadku diagnostyki choroby Parkinsona na podstawie samogłoski /a/.
+Dobrym wyborem byłby również niewiele odbiegający ResNet50, wykazujący się niższą wartością funkcji straty.
 %---------------------------------------------------------------------------
 
 \section{Samogłoska /e/}
@@ -71,9 +71,9 @@ Należy szczegółowo zbadać te odchylenia w kontekście optymalizacji modelu.
 
 W przypadku samogłoski /e/ otrzymano wyniki nieco gorsze, ale zbliżone do tych uzyskanych w przypadku samogłoski /a/.
 Tym razem również architektury VGG16 (73\%) i MobileNetV2 (70\%) osiągnęły najwyższą skuteczność, co wskazuje na ich potencjał w tym zadaniu klasyfikacyjnym.
-Warto zwrócić uwagę, że architektura ResNet50 (62\%) uzyskała najniższą dokładność w tym przypadku.
-Wartości funkcji straty wahają się od 0.582 (dla VGG16) do 0.659 (dla ResNet50).
+Wartości funkcji straty wahają się od 0,582 (dla VGG16) do 0,659 (dla ResNet50).
 Jest to istotna informacja, ponieważ niższa wartość straty może sugerować lepszą zdolność modelu do dokładnej klasyfikacji.
+Warto zwrócić uwagę, że architektura ResNet50 (62\%) uzyskała najniższą dokładność w tym przypadku, mimo wysokich wyników dla samogłoski /a/.
 Raport przedstawiony został w tabeli~\ref{tab:wyniki-e}.
 
 \begin{table}[ht]
@@ -112,9 +112,10 @@ Raport przedstawiony został w tabeli~\ref{tab:wyniki-e}.
 \end{figure}
 
 Jeśli chodzi o zachowanie modelu w trakcie procesu uczenia, można zauważyć, że było ono podobne we wszystkich przypadkach, co zostało zobrazowane na Rys.~\ref{fig:e_results}.
-Modele osiągały stabilność w różnych momentach procesu uczenia i różniły się tempem dostosowywania się do danych treningowych oraz początkowymi wartościami funkcji straty w kilku pierwszych epokach.
+Modele osiągały względną stabilność w różnych momentach procesu uczenia i różniły się tempem dostosowywania się do danych treningowych oraz początkowymi wartościami funkcji straty w kilku pierwszych epokach.
 Jednak na końcu procesu uczenia wartości te były zbliżone do siebie i odzwierciedlały te uzyskane na zbiorze testowym.
 Nie zaobserwowano wyraźnego przeuczenia (ang. \emph{overfittingu}) modeli, co jest pozytywnym wynikiem eksperymentu.
+Na tle pozostałych ponownie najlepiej sprawdził się model VGG16.
 %---------------------------------------------------------------------------
 
 \section{Samogłoska /i/}
@@ -123,9 +124,9 @@ Nie zaobserwowano wyraźnego przeuczenia (ang. \emph{overfittingu}) modeli, co j
 W przypadku samogłoski /i/ można zauważyć, że wyniki uległy pogorszeniu w porównaniu do samogłoski /a/ oraz /e/.
 Najlepsze rezultaty uzyskano przy wykorzystaniu architektur MobileNetV2 i VGG16, gdzie dokładność wyniosła około 63\%.
 Warto zaznaczyć, że jest to znacznie niższy poziom dokładności w porównaniu do wyników uzyskanych dla samogłoski /a/.
-Szczególnie niski wynik obserwuje się dla modelu ResNet50, który osiągnął tylko około 59\% dokładności.
+Szczególnie niski wynik obserwuje się ponownie dla modelu ResNet50, który osiągnął tylko około 59\% dokładności.
 
-Wartości funkcji straty są natomiast bardzo wysokie, w zakresie od 0.656 dla MobileNetV2 do 0.775 dla VGG16.
+Wartości funkcji straty są natomiast bardzo wysokie, w zakresie od 0,656 dla MobileNetV2 do 0,775 dla VGG16.
 To może sugerować, że informacja diagnostyczna zawarta w samogłosce /i/ jest trudniej dostępna w porównaniu do innych samogłosek, co wpływa na wyższe wartości straty i niższą dokładność.
 Możliwe jest, że inne samogłoski mogą dostarczać bardziej wyraźnych i łatwiejszych do interpretacji sygnałów diagnostycznych.
 Szczegółowe wartości przedstawia tabela~\ref{tab:wyniki-i}.
@@ -141,7 +142,7 @@ Szczegółowe wartości przedstawia tabela~\ref{tab:wyniki-i}.
     Precision &0.642 &0.589 &0.638 &0.598 &0.672 \\ \hline
     Recall &0.616 &0.584 &0.642 &0.595  &0.623 \\ \hline
     F1-score &0.605 &0.572 &0.643 &0.597 &0.614 \\ \hline
-    Loss &0.775 &0.699 &0.751 &0.686 &0.656 \\ \hline
+    Loss &0.775 &0.699 &0.705 &0.686 &0.656 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -165,19 +166,26 @@ Szczegółowe wartości przedstawia tabela~\ref{tab:wyniki-i}.
 \end{figure}
 
 Na Rys.~\ref{fig:i_results} przedstawiono proces uczenia na zbiorze walidacyjnym dla samogłoski /i/.
-Nie zaobserwowano oznak przeuczenia (overfittingu), a wykresy procesu uczenia są zbliżone do siebie.
+Nie zaobserwowano oznak przeuczenia, a wykresy procesu uczenia są zbliżone do siebie.
 Jedynie wartość funkcji straty jest znacznie wyższa w przypadku modelu VGG16 niż w pozostałych przypadkach.
-Warto zauważyć, że proces uczenia wydaje się być mniej stabilny w przypadku modeli Inception i Xception, co może wpływać na gorsze wyniki.
+Warto zauważyć, że proces uczenia wydaje się mniej stabilny w przypadku modeli Inception i Xception, co może wpływać na gorsze wyniki.
+
+Mimo że żaden z tych modeli nie jest zalecany do wykorzystania w rzeczywistym środowisku, a wyniki dla innych samogłosek są wyższe, to nadal istnieje możliwość wykorzystania /i/ jako podstawy klasyfikacyjnej.
+Konieczne jest jednak dokładniejsze zgłębienie tematu i specjalne dostosowanie metody.
 %---------------------------------------------------------------------------
 
 \section{Samogłoska /o/}
 \label{sec:samogloska-o}
 
-Wyniki uzyskane w przypadku samogłoski /o/ wykazują znaczną podobieństwo do tych uzyskanych w przypadku samogłoski /i/.
-Dokładność klasyfikacji oscyluje między 61\% a 65\%, a funkcje straty są zbliżone (około 67\%).
-Podobne podobieństwo można zaobserwować, analizując wykresy procesu uczenia na Rys.~\ref{fig:o_results}.
+Wyniki uzyskane w przypadku samogłoski /o/ wykazują znaczne podobieństwo do tych uzyskanych w przypadku samogłoski /i/.
+Dokładność klasyfikacji oscyluje między 61\% a 65\%, a funkcje straty są zbliżone (około 0,67).
+Analizując wykresy procesu uczenia na Rys.~\ref{fig:o_results}, również można zaobserwować podobne zjawisko.
 
-To podobieństwo wyników między samogłoskami /o/ i /i/ może sugerować, że te dwie samogłoski zawierają podobne cechy lub informacje diagnostyczne dla choroby Parkinsona.
+Na podstawie tych wyników nie da się wyróżnić optymalnego rozwiązania.
+Konieczne jest pogłębienie analizy o więcej danych lub być może inne metody ekstrakcji cech.
+Z pewnością istnieją markery, które pozwalają na odróżnienie osób chorych na PD od osób zdrowych na podstawie jednostki /i/, jednak nie są one tak wyraźne przy zastosowaniu wykorzystywanych w tym badaniu metod.
+
+Podobieństwo wyników między samogłoskami /o/ i /i/ może sugerować, że te dwie samogłoski zawierają podobne cechy lub informacje diagnostyczne dla choroby Parkinsona.
 Jednak warto zwrócić uwagę, że choć wyniki są zbliżone, to nie są one identyczne.
 Istnieje subtelna różnica w dokładności klasyfikacji oraz wartościach funkcji straty, co może wynikać z różnic w akustyce lub wymowie tych dźwięków.
 
@@ -192,7 +200,7 @@ Istnieje subtelna różnica w dokładności klasyfikacji oraz wartościach funkc
     Precision &0.654 &0.651 &0.651 &0.612 &0.624 \\ \hline
     Recall &0.649 &0.635 &0.649 &0.609 &0.606 \\ \hline
     F1-score &0.650 &0.633 &0.646 &0.601 &0.594 \\ \hline
-    Loss &0.674 &0.679 &0.662 &0.679 &0.677 \\ \hline
+    Loss &0.674 &0.679 &0.662 &0.679 &0.677\@ \\ \hline
 \end{tabular}
 \end{table}
 
@@ -219,6 +227,15 @@ Istnieje subtelna różnica w dokładności klasyfikacji oraz wartościach funkc
 
 \section{Samogłoska /u/}
 \label{sec:samogloska-u}
+
+W przypadku samogłoski /u/ obserwacje sugerują podobieństwo wyników do tych uzyskanych dla samogłoski /e/.
+Tutaj również model VGG16 osiąga najlepsze wyniki, osiągając poziom skuteczności na poziomie 72\%.
+Natomiast wyniki pozostałych modeli wahają się w zakresie od 64\% do 70\%.
+Należy zwrócić uwagę na istotną różnicę w funkcji straty pomiędzy MobileNetV2 a pozostałymi modelami.
+Wykazuje on znacząco wyższą wartość funkcji straty (0,750) w porównaniu do pozostałych modeli, które osiągają wartości w zakresie od 0,637 do 0,685.
+Ta różnica może być istotna w kontekście oceny wydajności modeli.
+Szczegółowe wartości przedstawia tabela~\ref{tab:wyniki-u}.
+
 
 \begin{table}[ht]
 \centering
@@ -253,10 +270,22 @@ Istnieje subtelna różnica w dokładności klasyfikacji oraz wartościach funkc
     \caption{Porównanie krzywych uczenia dla różnych klasyfikatorów na zbiorze walidacyjnym (samogłoska /u/)}
     \label{fig:u_results}
 \end{figure}
+
+Analizując procesy uczenia testowanych modeli (Rys.~\ref{fig:u_results}), można zauważyć znaczne podobieństwo.
+Warto zaznaczyć, że w przypadku MobileNetV2 funkcja straty pozostaje praktycznie stała przez cały proces uczenia, co nie jest pożądanym zjawiskiem.
+
 %---------------------------------------------------------------------------
 \section{Połączenie samogłosek /a/, /e/, /i/, /o/, /u/}
 \label{sec:samogloski}
 
+
+Zdecydowano się również zbadać skuteczność modeli trenowanych na zbiorze, który został stworzony przez połączenie wszystkich dotychczas badanych samogłosek.
+Teoretycznie, taka praktyka mogła przyczynić się do poprawy wyników poprzez zwiększenie różnorodności zbioru danych.
+Jednak nie przyniosła ona oczekiwanych efektów.
+Może to wynikać z faktu, że rozszerzenie bazy nie zmieniło zestawu osób mówiących, a także możliwe, że markery choroby różnią się w zależności od wypowiadanej samogłoski.
+Wyniki uzyskane w tym przypadku kształtują się w zakresie od 58\% do 63\%, a żadna z innych metryk nie wykazuje istotnych odchyleń od tego zakresu.
+Warto również zwrócić uwagę na wartość funkcji straty, która utrzymuje się na poziomie około 0,7 z wyjątkiem modelu ResNet50, gdzie wartość ta znacząco odbiega i wynosi 0,970.
+Cały raport został przedstawiony w tabeli~\ref{tab:wyniki-vowels}.
 
 \begin{table}[ht]
 \centering
@@ -272,6 +301,11 @@ Istnieje subtelna różnica w dokładności klasyfikacji oraz wartościach funkc
     Loss &0.692 &0.970 &0.654 &0.677 &0.645 \\ \hline
 \end{tabular}
 \end{table}
+
+Znacznie odmienną wartość funkcji straty dla modelu ResNet50 można zobaczyć na Rys.~\ref{fig:vowels_results}.
+Natomiast pozostałe modele wykazują bardzo niewielką zmienność w trakcie procesu uczenia, co przejawia się w niewielkim spadku tej wartości.
+To zjawisko może sugerować, że ResNet50 doświadczało pewnych trudności lub przeszkód w procesie uczenia, które nie występowały w przypadku innych modeli.
+
 
 \begin{figure}[ht]
     \centering
@@ -291,7 +325,38 @@ Istnieje subtelna różnica w dokładności klasyfikacji oraz wartościach funkc
     \caption{Porównanie krzywych uczenia dla różnych klasyfikatorów na zbiorze walidacyjnym (połączenie samogłosek /a/, /e/, /i/, /o/ oraz /u/)}
     \label{fig:vowels_results}
 \end{figure}
+
 %---------------------------------------------------------------------------
 
 \section{Zbiorcze podsumowanie wyników}
 \label{sec:podsumowanie-wynikow}
+
+Na podstawie przedstawionych do tej pory wyników, zebrano najlepsze z nich w Tab.~\ref{tab:wyniki-podsumowanie}, aby ułatwić ich porównanie.
+Najlepsze osiągnięcia zostały zarejestrowane dla samogłosek /a/, /e/ oraz /u/, gdzie dokładność przekroczyła 70\%.
+W przypadku /i/ oraz /o/, a także połączenia wszystkich samogłosek, wyniki były znacznie niższe i utrzymywały się na poziomie około 65\%.
+Pozostałe metryki są zbliżone, co wskazuje na podobną jakość rozpoznawania każdej z klas.
+Oznacza to, że prawdopodobieństwo popełnienia błędu I jak i II rodzaju są bardzo podobne.
+Warto zaznaczyć, że w analizowanym problemie badawczym szczególnie istotna jest minimalizacja błędu II rodzaju.
+
+Jeśli chodzi o architektury, to najczęściej najlepiej radził sobie model VGG16, osiągając najwyższą skuteczność w przypadku 4 z 6 analizowanych przypadków.
+Obiecująco wypadły także modele Xception i MobileNetV2 w przypadku samogłosek /i/ oraz /o/.
+
+\begin{table}[ht]
+\centering
+\caption{Najlepsze z otrzymanych wyników dla poszczególnych wariantów badanych samogłosek\@}
+\label{tab:wyniki-podsumowanie}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Samogłoska} &\textbf{/a/} &\textbf{/e/} &\textbf{/i/} &\textbf{/o/} &\textbf{/u/}  &\textbf{wszystkie samogłoski}\\ \hline
+    Model  &VGG16 &VGG16 &Xception &VGG16 &VGG16 &MobileNetV2 \\ \hline
+    Accuracy  &0.751 &0.733 &0.641 &0.653 &0.724 &0.638 \\ \hline
+    Precision  &0.752 &0.729 &0.638 &0.654 &0.730 &0.635 \\ \hline
+    Recall  &0.751 &0.733 &0.642 &0.649 &0.715 &0.637 \\ \hline
+    F1-score &0.749 &0.75 &0.643 &0.650 &0.712 &0.639 \\ \hline
+    Loss &0.645 &0.582 &0.705 &0.674 &0.654 &0.645 \\ \hline
+\end{tabular}
+\end{table}
+
+Warto zaznaczyć, że funkcja straty utrzymywała się na stosunkowo wysokim poziomie we wszystkich analizowanych przypadkach, co może sugerować pewne trudności lub wyzwania w procesie uczenia.
+Istnieje możliwość, że optymalizacja modeli mogłaby być bardziej precyzyjna, aby osiągnąć niższą wartość funkcji straty i poprawić skuteczność klasyfikacji.
+Dalsza analiza i eksperymenty mogą być potrzebne w celu doskonalenia wydajności modeli.

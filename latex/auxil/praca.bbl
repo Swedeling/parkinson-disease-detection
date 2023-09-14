@@ -1719,5 +1719,48 @@
   Detection Using Deep Convolutional Neural Network}
     \field{year}{2022}
   \endentry
+
+  \entry{vowels-in-PD}{article}{}
+    \name{author}{4}{}{%
+      {{hash=BYI}{%
+         family={Bang},
+         familyi={B\bibinitperiod},
+         given={Young-Im},
+         giveni={Y\bibinithyphendelim I\bibinitperiod},
+      }}%
+      {{hash=MK}{%
+         family={Min},
+         familyi={M\bibinitperiod},
+         given={Kyunghoon},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=SY}{%
+         family={Sohn},
+         familyi={S\bibinitperiod},
+         given={Young},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=CSR}{%
+         family={Cho},
+         familyi={C\bibinitperiod},
+         given={Sung-Rae},
+         giveni={S\bibinithyphendelim R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BYI+1}
+    \strng{fullhash}{BYIMKSYCSR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.3233/NRE-130887
+    \endverb
+    \field{pages}{649\bibrangedash 54}
+    \field{title}{Acoustic characteristics of vowel sounds in patients with
+  Parkinson disease}
+    \field{volume}{32}
+    \field{journaltitle}{NeuroRehabilitation}
+    \field{month}{05}
+    \field{year}{2013}
+  \endentry
 \enddatalist
 \endinput

@@ -1,12 +1,124 @@
-\chapter{Analiza i interpretacja wyników}
+\chapter{Analiza i interpretacja wyników\@}
 \label{ch:interpretacja-wynikow}
+
+Przedstawione wyniki, mimo że nie osiągnęły jeszcze poziomu zadowalającego dla zastosowań w rzeczywistych warunkach, stanowią obiecujący punkt wyjścia.
+Warto podkreślić, że analiza została przeprowadzona na niewielkiej grupie badawczej, co wprowadza pewne ograniczenia.
+Zebrano nagrania od blisko 200 uczestników zróżnicowanych pod względem narodowości, w tym 103 osoby z diagnozą choroby Parkinsona.
+Jednakże, aby pełniej oddać różnorodność i reprezentatywność populacji, konieczne jest zgromadzenie większej liczby próbek.
+
+Podjęcie tego wyzwania jest kluczowe, gdyż badanie głębokich metod uczenia maszynowego w kontekście diagnostyki choroby Parkinsona to złożone zagadnienie badawcze.
+Analiza literatury naukowej wskazuje, że istnieją możliwości konstrukcji bardziej efektywnych narzędzi, korzystających z zaawansowanych metod uczenia maszynowego.
+
+Mimo to, uzyskany wynik na poziomie 75\% jest bardzo obiecujący i otwiera perspektywy wykorzystania głębokich metod uczenia maszynowego w diagnozowaniu choroby Parkinsona.
+Dalsze badania, rozszerzenie bazy danych oraz ulepszenia w modelach mogą przyczynić się do osiągnięcia jeszcze lepszych rezultatów w przyszłości, co byłoby znaczącym osiągnięciem w dziedzinie medycyny.
+
+Warto podkreślić, że badania opierały się na połączeniu trzech zupełnie różnych baz danych, które reprezentowały różne narodowości.
+Ten interdyscyplinarny i międzynarodowy charakter podejścia wskazuje na potencjał stworzenia narzędzia diagnostycznego o uniwersalnym zastosowaniu.
+To otwiera perspektywy na rozwinięcie narzędzia, które będzie skuteczne w diagnozowaniu choroby Parkinsona niezależnie od narodowości pacjentów.
+Ten aspekt pracy jest niezwykle obiecujący i daje nadzieję na przyszłość również z biznesowego punktu widzenia.
+
+Przeprowadzone badania umożliwiają również wstępną analizę przydatności różnych samogłosek i architektur CNN, co zostanie rozwinięte w dalszej części rozdziału.
 
 \section{Samogłoski a informacja diagnostyczna\@}
 \label{sec:samogloski-informacja-diagnostyczna}
 
-\section{Architektury CNN a skuteczność klasyfikacji}
+Przeprowadzone badania wykazały, że najlepsze wyniki osiągnięto dla samogłoski /a/ (75\%), /e/ (73\%) oraz /u/ (72\%), a znacznie słabsze dla /i/ (64\%) oraz /o/ (65\%).
+Połączenie wszystkich analizowanych samogłosek w jeden zbiór nie przyniosło poprawy wyników, mimo znaczącego zwiększenia zbioru uczącego.
+Może to wiązać się z różnym sposobem przekazywania przez nie informacji diagnostycznej.
+
+W badaniu~\cite{vowels-in-PD} przeanalizowano nagrania samogłosek /a/, /e/, /i/ oraz /u/ u 7 pacjentów i 7 pacjentek.
+Analiza wykazała, że charakterystyka tych nagrań różni się zależnie od płci, ale również od wypowiadanej samogłoski.
+Biorąc pod uwagę powyższe, rozwiązanie do automatycznej diagnostyki PD powinno skupiać się na jednej lub uwzględniać informację o rodzaju wykorzystanej samogłoski.
+
+Nie spotkano się do tej pory z publikacją, która w bezpośredni i rzetelny sposób porównywałaby potencjał poszczególnych samogłosek w kontekście diagnostyki choroby Parkinsona.
+Natomiast w badaniu, którego głównym celem była ocena augmentacji danych~\cite{augmentation} w tym zagadnieniu, pośrednio oceniono potencjał różnych samogłosek w diagnostyce.
+Najlepsze wyniki osiągnięto przy wykorzystaniu samogłoski /a/ (92\%), a najgorsze w przypadku /i/ (74\%).
+Zależność ta pokrywa się z przeprowadzonymi w tej pracy eksperymentami.
+Ponadto samogłoska /a/ jest najczęściej wykorzystywana w podobnych badaniach, więc gdyby istniała potrzeba wskazania najlepszej podstawy diagnostycznej spośród samogłosek to wskazano by samogłoskę /a/, mimo że jej przewaga nad /e/ nie jest znacząca według przeprowadzonych badań.
+Oczywiście konieczne jest przeprowadzenie dalszych badań, z wykorzystaniem znacznie większej bazy danych.
+Mimo to każda z samogłosek wykazuje potencjał wykorzystania w rozwiązaniu do automatycznej diagnostyki choroby Parkinsona na podstawie głosu.
+
+\section{Architektury CNN a skuteczność klasyfikacji\@}
 \label{sec:CNN-a-skutecznosc-klasyfikacji}
+W niniejszej pracy porównano potencjał wykorzystania 5 różnych klasyfikatorów pod kątem wykorzystania ich jako narzędzia do diagnostyki choroby Parkinsona na podstawie nagrań głosowych samogłosek.
+Ze względu na niewielką ilość danych użyto podejścia znanego jako transfer learning, którego główną zaletą jest korzystanie ze wstępnie wytrenowanych wag, zamiast losowych wartości.
+Takie podejście było już badane w literaturze naukowej i wykazało duży potencjał.
+Dlatego zdecydowano się wybrać 5 różnych architektur CNN i przeprowadzić ich porównanie.
+Ocena różnych architektur sieci neuronowych w kontekście detekcji anomalii w sygnale mowy u osób z chorobą Parkinsona stanowi ważny aspekt badawczy.
+Otrzymane wyniki wskazują na istotne różnice w skuteczności tych architektur, co może dostarczyć cennych wskazówek dla przyszłych badań w tej dziedzinie.
 
+Na podstawie przeprowadzonych badań można stwierdzić, że VGG16 wyróżnił się jako najlepsza architektura, osiągając wysokie wyniki dla 4 z 6 testowanych wariantów samogłosek (/a/, /e/, /o/ oraz /u/).
+Może to sugerować, że jest ona szczególnie skuteczna w wykrywaniu anomalii w sygnale mowy związanych z chorobą Parkinsona w przypadku samogłosek.
+VGG16 to głęboka architektura konwolucyjna, która składa się z 16 warstw konwolucyjnych i warstw poolingowych.
+Ta głębokość pozwala na efektywne wykrywanie i ekstrakcję cech złożonych, co może być istotne w rozpoznawaniu subtelnych zmian w sygnale mowy związanych z chorobą Parkinsona.
+Ponadto wiele warstw konwolucyjnych jest stosowanych po sobie.
+To umożliwia wielokrotne przekształcanie sygnału wejściowego, co pozwala na wyodrębnienie bardziej abstrakcyjnych cech.
+W przypadku sygnału mowy może to pomóc w wykryciu subtelnych zmian w akustyce lub innym aspekcie sygnału związanym z chorobą Parkinsona.
+VGG16 radzi sobie dobrze w przypadku większości wariantów samogłosek, może to sugerować, że ma zdolność do generalizacji cech istotnych dla detekcji anomalii w sygnale mowy osób z chorobą Parkinsona.
+To jest ważne, ponieważ różne warianty samogłosek mogą mieć różne cechy akustyczne.
 
+Xception i MobileNet również wykazały się obiecująco, osiągając dobre wyniki w niektórych przypadkach (odpowiednio /o/ oraz wszystkie samogłoski).
+Choć nieco mniej skuteczne niż VGG16, nadal mogą być rozważane jako przyzwoite alternatywy.
+Ich dalsza eksploracja może zaowocować jeszcze lepszymi wynikami.
 
-%Komputerowe wykrywanie choroby Parkinsona umożliwi przesiewowe badania populacji oraz częste monitorowanie, dostarczając bardziej obiektywny pomiar objawów, co przyniesie korzyści zarówno pacjentom, jak i dostawcom opieki zdrowotnej.
+ResNet okazał się mniej skuteczny w porównaniu do pozostałych architektur, co może sugerować, że ta konkretna architektura może nie być odpowiednia do tego konkretnego zadania.
+Co ciekawe, obiecujące wyniki wykazał dla samogłoski /a/ i był już  z powodzeniem wykorzystywany w innych badaniach dotyczący tego zagadnienia.
+
+Inception wydaje się mieć wyniki średnie, co sugeruje, że może być skuteczna w niektórych przypadkach, ale niekoniecznie jest najlepszą opcją w każdym scenariuszu.
+
+Należy zwrócić uwagę, że efektywność tych architektur może zależeć od konkretnej charakteryzacji sygnału mowy i konkretnego rodzaju anomalii związanych z chorobą Parkinsona.
+Dlatego też warto kontynuować badania w celu dalszej optymalizacji i dostosowania tych architektur do specyfiki tego zadania.
+
+Warto również wziąć pod uwagę, że dalszy \emph{fine-tuning}  tych architektur mógłby jeszcze poprawić skuteczność.
+Ponadto eksploracja innych architektur sieci neuronowych lub technik uczenia maszynowego może również przynieść korzyści w dalszych badaniach w tej dziedzinie.
+
+Przeprowadzone badania dostarczają istotnych informacji na temat skuteczności różnych architektur sieci neuronowych w detekcji anomalii w sygnale mowy osób z chorobą Parkinsona.
+Wskazują one na potencjalnie obiecujące wyniki VGG16, Xception i MobileNet, ale sugerują również potrzebę dalszych badań i optymalizacji w tej dziedzinie.
+Warto jednak zaznaczyć, że wybór architektury zależy od konkretnego zadania i zbioru danych.
+Wyniki mogą różnić się w zależności od charakterystyki danych i konkretnej metody przetwarzania sygnału mowy.
+Dlatego eksperymentowanie z różnymi architekturami i optymalizacja modelu dla konkretnego zadania jest ważnym krokiem w badaniach nad detekcją anomalii w sygnale mowy u osób z chorobą Parkinsona.
+
+\section{Kierunki rozwoju}
+\label{sec:kierunki-rozwoju}
+
+Diagnostyka choroby Parkinsona na podstawie analizy głosu stanowi fascynujące pole badań, które obiecuje rewolucję w wykrywaniu tej choroby w jej wczesnym stadium.
+Niniejsza praca nie stanowi rozwiązania, które w zadowalającym stopniu mogłoby służyć jako narzędzie diagnostyczne.
+Natomiast bada potencjał wykorzystania metod głębokiego uczenia maszynowego w tej dziedzinie.
+Osiągnięte wyniki wskazują bardziej kierunki dalszej eksploracji zagadnienia niż odpowiedź na stawiane pytania.
+
+Pierwszym istotnym kierunkiem rozwoju jest zwiększenie rozmiaru bazy danych.
+Przeprowadzone badania bazowały na próbkach od pacjentów z różnych narodowości, jednakże, aby narzędzie to stało się bardziej uniwersalne, konieczne jest uwzględnienie większej liczby danych z różnych kultur i grup wiekowych.
+Rozszerzenie bazy danych pozwoli na uzyskanie bardziej reprezentatywnego zbioru, co może istotnie wpłynąć na zdolność modeli do diagnozowania choroby Parkinsona.
+Markery choroby Parkinsona są zagadnieniem bardzo skomplikowanym i nie da się na podstawie 100 pacjentów stworzyć uniwersalnego i skutecznego narzędzia diagnostycznego.
+Należy również pamiętać, że zmiany w głosie nie tylko dotyczą jedynie 89\% osób chorych, ale też objawiają się w różnym nasileniu na różnych etapach choroby.
+Pogłębiona augmentacja danych może przyczynić się do stworzenia bardziej zróżnicowanego zbioru treningowego, co jest kluczowe w kontekście generalizacji modeli.
+Rozważenie bardziej zaawansowanych technik augmentacji, takich jak zmienne warunki akustyczne czy emulacja różnych akcentów, może poprawić zdolność modeli do rozpoznawania subtelnych zmian w głosie pacjentów.
+
+Kolejnym krokiem jest eksploracja różnych ustawień spektrogramów i mel-spektrogramów.
+Parametry takie jak rozdzielczość czasowa i częstotliwościowa mają znaczący wpływ na jakość danych wejściowych dla modeli.
+Dokładna optymalizacja tych ustawień może pomóc w wydobyciu bardziej istotnych informacji z danych i zwiększyć efektywność diagnozy.
+Takie eksperymenty zostały wstępnie przeprowadzone na cele tej pracy, jednak konieczne jest ich pogłębienie.
+W literaturze również nie ma informacji na temat badań, które definiowałyby tzw.~\emph{złoty środek} tego zagadnienia.
+Zarówno jeśli chodzi o wybór między spektrogramami a mel-spektrogramami, ich parametry, jak i sama długość nagrania.
+
+Dla dalszego rozwoju narzędzia diagnostycznego kluczowa jest również eksploracja innych i architektur CNN\@.
+Oprócz modeli CNN warto rozważyć wykorzystanie zaawansowanych lub specjalizowanych modeli, a także podejść opartych na uczeniu transferowym, być może trenowanych wstępnie na innych zbiorach danych.
+Warte rozważenia byłaby dalsza eksploracja podejścia przedstawionego w~\cite{Wodzinski}.
+Polega ono na wstępnym trenowaniu modeli na większej bazie danych dotyczącej nagrań głosowych pacjentów z różnymi schorzeniami (w tym przypadku była to baza SVD), a następnie dotrenowanie modelu na danych dotyczących choroby Parkinsona.
+Kombinacja różnych architektur również może pomóc w osiągnięciu wyższej dokładności diagnozy.
+Eksperymentowanie z technikami uczenia zespołowego, które łączą wyniki z różnych modeli, może przynieść korzyści w postaci poprawy ogólnej wydajności i niezawodności diagnostyki.
+Uczenie zespołowe pozwala na korzystanie z różnych perspektyw i źródeł informacji, co może znacząco zwiększyć skuteczność narzędzia.
+
+Kontynuacja procesu \emph{fine-tuningu} wykorzystanych w pracy modeli może przynieść dalsze doskonalenie i dostosowanie do specyficznych cezur diagnostycznych.
+Dalszy rozwój w tym obszarze może prowadzić do bardziej precyzyjnych i efektywnych narzędzi diagnostycznych.
+Dużym problemem podczas prób okazał się overfitting, możliwe, że połączenie rozszerzenia bazy danych wraz z dalszym dostrajaniem modeli przyniosłoby znacznie lepsze efekty.
+
+Ostatnim, ale nie mniej istotnym kierunkiem rozwoju, jest uwzględnienie dodatkowych informacji meta.
+Dane takie jak płeć, wiek czy język mówiącej osoby mogą stanowić cenne informacje w procesie diagnostycznym.
+Są to informacje, które wpływają na przykład na sposób wydobywania dźwięku i jego wysokość.
+Dodanie takich cech mogłoby znacząco ułatwić naukę modelu.
+Jednakże, aby uniknąć błędów i utrzymania spójności, konieczne jest uzyskanie takich informacji dla wszystkich próbek w zbiorze danych.
+
+Kierunki rozwoju w diagnostyce choroby Parkinsona na podstawie analizy głosu są obiecujące i otwierają perspektywy na stworzenie narzędzia o globalnym zastosowaniu.
+Kontynuacja badań w opisanych obszarach może przyczynić się do osiągnięcia jeszcze lepszych wyników i poprawić jakość opieki nad pacjentami cierpiącymi na tę chorobę.
+Komputerowe wykrywanie choroby Parkinsona umożliwiłoby przesiewowe badania populacji oraz częste monitorowanie, dostarczając bardziej obiektywny pomiar objawów, co przyniesie korzyści zarówno pacjentom, jak i dostawcom opieki zdrowotnej.

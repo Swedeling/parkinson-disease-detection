@@ -11,33 +11,33 @@ Dlatego też rozpoznanie tej choroby na wczesnym etapie stanowi wyzwanie.
 
 Sztuczna inteligencja oraz nowoczesne technologie coraz częściej stają się integralną częścią systemu ochrony zdrowia.
 Wspierają lekarzy podczas diagnozy oraz wyboru sposobu leczenia pacjenta, a także pozwalają na monitorowanie choroby.
-Aby rozwiązać trudności i udoskonalić procedury diagnozowania oraz oceny PD, poszerzono stan techniki o metody uczenia maszynowego do
+Aby rozwiązać trudności i udoskonalić procedury diagnozowania oraz oceny PD, stan techniki został poszerzony o metody uczenia maszynowego do
 klasyfikacji PD i osób zdrowych lub pacjentów z podobnymi objawami klinicznymi (np.
-zaburzeniami ruchu lub innymi zespołami parkinsonowskimi).
-\section{Rodzaj wykorzystywanych danych}\label{sec:dane-przeglad}
+zaburzeniami ruchu lub innymi zespołami parkinsonowskimi), a rozwój w tej dziedzinie jeszcze się nie zakończył.
+
+\section{Metody diagnozy choroby Parkinsona}\label{sec:dane-przeglad}
 
 Diagnozowanie choroby Parkinsona stanowi zadanie złożone ze względu na różnorodność objawów, które dotykają różnych aspektów
 funkcjonowania ciała i umysłu ludzkiego.
 W związku z tym, techniki uczenia maszynowego wykorzystywane w tym obszarze, także skupiają się na różnych rodzajach danych.
 Wśród źródeł informacji diagnostycznej znajdują się wyniki badań obrazowych (np.
 rezonans magnetyczny (MRI), tomografia komputerowa (SPECT)),
-które wydają się intuicyjne, biorąc pod uwagę zmiany w aktywności mózgu, które można zaobserwować.
+które wydają się intuicyjne, biorąc pod uwagę, że zmiany dotyczą przede wszystkim aktywności mózgu.
 Niemniej jednak istnieją także mniej oczywiste metody diagnozy, które budzą duże zainteresowanie w środowisku naukowym, szczególnie w początkowym stadium choroby.
 Przykłady to analiza głosu, ocena charakterystyki chodu oraz badanie pisma odręcznego.
 
 \begin{figure}[htbp]
-	\centering\includegraphics[width=0.6\textwidth]{./img/plot_PD_detection_methods}~\caption{Wykorzystanie rozwiązań w opracowaniach teoretycznych i zastosowaniach klinicznych w zależności od rodzaju danych (stan na 14 lutego 2020) \cite {ML_for_PD_review} }
+	\centering\includegraphics[width=0.6\textwidth]{./img/plot_PD_detection_methods}~\caption{Metody diagnostyki choroby Parkinsona oraz ich częstotliwość wykorzystania [\%]~\cite {ML_for_PD_review}}
     \label{fig:pd_detection_methods}
 \end{figure}
 
 
-Rys. \ref{fig:pd_detection_methods} ilustruje zastosowanie wymienionych metod zarówno w teorii, jak i praktyce.
+Rys. \ref{fig:pd_detection_methods} ilustruje zastosowanie wymienionych metod diagnostyki zarówno w teorii, jak i praktyce.
 Metody oparte na obrazowaniu medycznym wykazują wyraźną przewagę w zastosowaniach klinicznych w porównaniu do kontekstu teoretycznego.
 Niemniej jednak to pozostałe metody budzą znacznie większe zainteresowanie ze strony środowiska naukowego.
-Szczególnie w przypadku analizy głosu, gdzie rozbieżność między teorią a praktyką jest szczególnie znacząca.
+Szczególnie w przypadku analizy głosu, gdzie rozbieżność między teorią a praktyką jest szczególnie duża.
 Przyczyny tego zjawiska zostaną dokładniej rozważone w dalszej części pracy.
-Co ciekawe, jak przedstawiono na Rys.~\ref{fig:pd_accuracy_methods}, detekcja choroby na podstawie głosu daje bardzo wysokie wyniki,
-w większości analizowanych artykułów.
+Co ciekawe, jak przedstawiono na Rys.~\ref{fig:pd_accuracy_methods}, detekcja choroby Parkinsona sięga niemalże 100\% skuteczności na podstawie badań literaturowych.
 
 \begin{figure}[htbp]
 	\centering
@@ -45,8 +45,7 @@ w większości analizowanych artykułów.
     \label{fig:pd_accuracy_methods}
 \end{figure}
 
-Niniejsza praca dotyczy diagnostyki opartej na analizie głosu, dlatego temat ten zostanie bliżej rozważony.
-Założeniem dla takich systemów jest zadanie potencjalnemu pacjentowi zadania wokalnego, mogą to być:
+Podstawą rozwiązań opartych na analizie głosu jest zadanie potencjalnemu pacjentowi zadania wokalnego, mogą to być:
 \begin{itemize}[itemsep=0.1pt]
 	\item podtrzymywane samogłoski (ang. \emph{sustained vowels}),
 	\item zadanie diadochokinetyczne (DDK), mogące mierzyć zdolność do wydawania serii szybkich i naprzemiennych dźwięków (sylab),
@@ -78,7 +77,7 @@ Aktualnie brakuje albo nie udało się jeszcze ustalić, która z tych samogłos
 W związku z tym, w ramach badawczej części niniejszej pracy przeprowadzone zostanie takie porównanie dla wybranych metod klasyfikacji.
 %---------------------------------------------------------------------------
 
-\section{Metody klasyfikacji}\label{sec:metody-klasyfikacji}
+\section{Klasyfikacja choroby Parkinsona}\label{sec:metody-klasyfikacji}
 
 W obszarze automatycznej diagnostyki choroby Parkinsona (PD) opartej na analizie głosu, istnieje wiele różnych metod klasyfikacji.
 W publikacji~\cite{ML_for_PD_review} przeanalizowano 55 artykułów dotyczących tego zagadnienia, które zostały opublikowane przed lutym 2020 roku.
@@ -88,8 +87,7 @@ Wyniki były zależne od różnorodnych zbiorów danych oraz różnych podejść
 
 Istnieje wiele czynników, które wpływają na wybór konkretnej metody klasyfikacji w zależności od kontekstu diagnostycznego.
 Przykładowo, różne metody mogą być skuteczniejsze w analizie mowy spontanicznej w porównaniu do mowy kontrolowanej.
-W niniejszej pracy skupiono się na metodach związanych z analizą podtrzymywanych samogłosek, co
-stanowi główny obszar badawczy.
+W niniejszej pracy skupiono się na metodach związanych z analizą podtrzymywanych samogłosek.
 
 Tradycyjna inżynieria cech to jedno z najpowszechniejszych podejść w automatycznej diagnostyce choroby Parkinsona na podstawie analizy głosu.
 To podejście polega na wydobyciu charakterystycznych cech z sygnału mowy, takich jak formanty, nieregularność odstępów czasowych (\emph{jitter}),
@@ -126,7 +124,7 @@ Są to pierwsze obiecujące rezultaty podejścia opartego na głębokich sieciac
 Od tamtego czasu ukazało się kilka dodatkowych publikacji, które pogłębiły ten temat.
 Na przykład w publikacji~\cite{Wodzinski} zaprezentowano podejście do detekcji choroby Parkinsona, wykorzystując samogłoski o długotrwałej artykulacji oraz architekturę ResNet,
 pierwotnie dedykowaną do klasyfikacji obrazów.
-Obliczono spektrogramy nagrań dźwiękowych i wykorzystano je jako dane wejściowe do architektury ResNet wytrenowanej wcześniej na bazach danych ImageNet i SVD.
+Obliczono spektrogramy nagrań dźwiękowych i wykorzystano je jako dane wejściowe do architektury ResNet wytrenowanej wcześniej na bazach danych ImageNet i SVD\@.
 Osiągnięta dokładność przekraczała 90\% na zestawie walidacyjnym (PC-GITA, czyli baza danych zawierająca nagrania samogłosek od
 osób posługujących się kolumbijską odmianą języka hiszpańskiego).
 Wyniki pokazały, że cechy  nauczone na naturalnych obrazach potrafią przenieść wiedzę na obrazy reprezentujące spektrogram sygnału głosowego.
@@ -139,7 +137,7 @@ Wyniki wykazały, że zaproponowany model oparty na uczeniu transferowym z podej
 
 
 Później, w 2022 roku autorzy artykułu~\cite{HIRES2022105021} wykorzystali spektrogramy oraz metodę wielokrotnego dopasowywania modelu.
-Model był wstępnie trenowany na zbiorze ImageNet, następnie adaptowany do pośredniego zbioru, a na koniec dostosowywany do danych PC-GITA.
+Model był wstępnie trenowany na zbiorze ImageNet, następnie adaptowany do pośredniego zbioru, a na koniec dostosowywany do danych PC-GITA\@.
 Mimo niewielkich różnic pomiędzy różnymi samogłoskami najlepszą skuteczność osiągnięto przy uwzględnieniu samogłoski /a/ uzyskując 99\% dokładności.
 Co ciekawe, wykazano, że skuteczność podejścia nie zależy od płci.
 To pokazuje, że metoda ma potencjał do zastosowania w praktyce klinicznej do przesiewowego badania, diagnozowania i monitorowania choroby Parkinsona.
@@ -150,7 +148,7 @@ spektrogramów mowy za pomocą klasyfikatorów uczenia maszynowego; oraz trzecie
 proste cechy akustyczne nagrań również przy użyciu klasyfikatorów uczenia maszynowego.
 Wyniki wskazują, że druga propozycja wykazuje obiecujące rezultaty.
 Zaobserwowano najwyższą dokładność na poziomie 99,7\% dla samogłoski /o/ oraz odczytywanego tekstu przy użyciu perceptronu wielowarstwowego.
-Natomiast przy wykorzystaniu głębokich cech samogłoski /i/ uzyskano dokładność wynoszącą 99,1\% przy użyciu lasu losowego.
+Natomiast przy wykorzystaniu głębokich cech samogłoski /i/ uzyskano dokładność wynoszącą 99,1\% przy użyciu klasyfikatora Random Forest.
 Z badania można wywnioskować, że metoda bazująca na głębokich cechach wykazuje lepsze wyniki w porównaniu do prostych cech akustycznych i
 podejść opartych na transfer learning.
 
@@ -171,8 +169,8 @@ W przeciwieństwie do sieci rekurencyjnych sieci te są zazwyczaj stosowane do k
 Dlatego w publikacji~\cite{ER2021103006} zastosowano podejście, gdzie wyodrębnione cechy z sieci CNN są przekazywane do warstwy LSTM, aby nauczyć się
 informacji czasowych w dźwiękach, rozpoznawać sekwencyjne informacje i analizować stan choroby Parkinsona.
 Wykorzystano połączenie modeli ResNet LSTM\@.
-Modele ResNet służą do wyciągania cech z obrazów mel-spektrogramu sygnałów mowy, a
-sieć LSTM jest wykorzystywana do rozpoznawania informacji sekwencyjnych z uzyskanych cech.
+Modele ResNet służyły do wyciągania cech z obrazów mel-spektrogramu sygnałów mowy, a
+sieć LSTM była wykorzystywana do rozpoznawania informacji sekwencyjnych z uzyskanych cech.
 Najwyższą wydajność klasyfikacji osiągnięto na poziomie 98,61\%.
 Porównanie zaproponowanego modelu z aktualnym stanem wiedzy pokazuje jego wysoką wydajność w detekcji choroby Parkinsona.
 
@@ -181,22 +179,15 @@ Większość publicznie dostępnych baz danych składa się z około 50 nagrań,
 realnego zastosowania w medycynie klinicznej.
 Specyfika choroby utrudnia też samodzielne rozszerzenie bazy o nagrania pacjentów z chorobą Parkinsona.
 To wyzwanie stawiane jest przed każdym, kto próbuje stworzyć automatyczne narzędzie do diagnozowania choroby Parkinsona na podstawie analizy głosu.
-W artykule~\cite{9257451} przedstawiono wykorzystanie \emph{Spectrogram-Deep Convolutional Generative Adversarial Network} (S-DCGAN) do
+W artykule~\cite{9257451} przedstawiono wykorzystanie Spectrogram-Deep Convolutional Generative Adversarial Network (S-DCGAN) do
 augmentacji próbek głosowych, co może częściowo rozwiązać próblem i przyczynić się do większej różnorodności w zbiorach danych.
 Na zestawie danych Sakar, hybrydowy model S-DCGAN-ResNet50 osiągnął najwyższą dokładność rozpoznawania wzorca głosowego wynoszącą 91,25\%
-oraz swoistość na poziomie 92,5\%, co pozwala na precyzyjniejsze różnicowanie między pacjentami z PD a zdrowymi osobami w porównaniu z modelem
-DCGAN-ResNet50.
+oraz swoistość na poziomie 92,5\%.
 
 Wszystkie te badania prowadzą do wniosku, że wykorzystanie uczenia maszynowego oraz głębokich sieci neuronowych może istotnie poprawić precyzję
 i skuteczność diagnostyki choroby Parkinsona na podstawie analizy cech głosowych.
 Te nowoczesne techniki otwierają nowe horyzonty w kwestii doskonalenia opieki nad pacjentami oraz procesów diagnostycznych w dziedzinie medycyny.
 Jednakże warto zaznaczyć, że wyniki te są osiągane na różnorodnych zbiorach danych, co utrudnia bezpośrednie porównania między poszczególnymi badaniami.
-
-Najlepsze wyniki skuteczności klasyfikacji osiągnięto przy użyciu różnych podejść i modeli.
-Przykładem jest metoda opisana przez Gómeza et al.~\cite{8999815}, która osiągnęła dokładność 99,7\% dla jednej samogłoski.
-Z drugiej strony, istnieją też przypadki, jak w badaniu Guatelliego et al.~\cite{GUATELLI2023106700}, gdzie osiągnięto wyniki między
-81,74\% a 83,91\% dokładności klasyfikacji, co może być związane z ograniczonym zbiorem danych.
-Konieczne jest dalsze prowadzenie prac w tym kierunku, najlepiej na jak najbardziej rozbudowanych bazach danych.
 
 Wartością dodaną tych badań jest możliwość zastosowania analizy głosowej w procesie diagnozowania choroby Parkinsona, co może umożliwić
 wczesne wykrycie objawów i rozpoczęcie leczenia.
@@ -215,7 +206,7 @@ Ostatnie badania wykazały, że możemy wytrenować dokładne modele do wykrywan
 Jednakże istnieją rozbieżności, które są częściowo powodowane przez różnice w
 wykorzystywanych korpusach lub metodologii.
 Dlatego autorzy publikacji~\cite{SustainedVowelsProblems} przeprowadzili analizę, wpływu niektórych czynników na wyniki klasyfikacji.
-Głównym celem była ich identyfikacja oraz stworzenie zasad, które w przyszłości pozwolą usystematyzować stan wiedzy w tej dziedzinie.
+Głównym celem było stworzenie zasad, które w przyszłości pozwolą usystematyzować stan wiedzy w tej dziedzinie.
 W badaniach skupiono się na przedłużonych samogłoskach (ang. \emph{sustained vowels}), ponieważ są one najlepszym i najpopularniejszym zadaniem
 wokalnym w takich systemach.
 Przeprowadzone eksperymenty wykazały, że nieuwzględnione zmienne w metodologii, projekcie eksperymentalnym i
@@ -257,11 +248,11 @@ Dlatego też zaleca się zbalansowanie używanych zbiorów danych, tak aby śred
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./img/acc_and_age_difference}
-	\caption{Wykres przedstawiający zależność różnicy wieku między klasami a dokładnością klasyfikacji~\cite {SustainedVowelsProblems}}
+	\caption{Wykres przedstawiający zależność różnicy wieku między klasami a dokładnością klasyfikacji~\cite{SustainedVowelsProblems}}
     \label{fig:acc_and_age_diff}
 \end{figure}
 
-  	\item wpływ losowości cech na dokładność klasyfikacji
+  	\item Wpływ losowości cech na dokładność klasyfikacji
 	\item[] W publikacji~\cite{SustainedVowelsProblems} przeprowadzono badania analizujące wpływ losowości cech na dokładność klasyfikacji.
 Zamieniono cechy obliczone za pomocą DARTH-VAT na losowe liczby, zachowując etykiety i podziały.
 Wyniki wskazały, że nawet losowe cechy mogą prowadzić do wysokich wyników klasyfikacji (ponad 72\%).
@@ -270,7 +261,7 @@ Badanie pokazuje, że nadmierna liczba cech w stosunku do liczby obserwacji moż
 Im większa różnica między liczbą plików a wymiarem wektora cech, tym większe szanse na znalezienie cechy, która losowo koreluje z etykietami klas.
 To sugeruje, że osiągnięcia klasyfikacyjne powinny być analizowane w kontekście proporcji cech do próbki, aby uniknąć nadmiernie optymistycznych interpretacji wyników klasyfikacji w zastosowaniach medycznych.
 
-  	\item ograniczenie losowego nadmiernego dopasowania poprzez uwzględnienie zbioru walidacyjnego
+  	\item Ograniczenie losowego nadmiernego dopasowania poprzez wydzielenie osobnego zbioru walidacyjnego
 	\item[] Dla mniejszych zbiorów danych, praktyką jest często używanie tylko zbiorów treningowych i testowych podczas krzyżowej walidacji.
 Jest to podejście, które może prowadzić do wyników zbyt optymistycznych, ponieważ wszystkie wyniki testowe są brane pod uwagę przy wyborze optymalnej
 konfiguracji modelu.
@@ -278,9 +269,9 @@ Inną strategią jest wykorzystanie danych treningowych do oceny wytrenowanych m
 Niemniej jednak to podejście może być niepraktyczne, ponieważ może prowadzić do wyników idealnych (dokładność 100\%) na zbiorze treningowym, co jest niepożądane.
 Aby uniknąć tych problemów, proponuje się wykorzystanie dodatkowego zbioru walidacyjnego~\cite{SustainedVowelsProblems}.
 Wybierając model na podstawie wyników walidacyjnych, a następnie testując go na zbiorze testowym, można uniknąć ryzyka nadmiernego dopasowania.
-Dla mniejszych zbiorów danych ta strategia może ograniczać dostępną liczbę danych treningowych, co wpływa na wydajność klasyfikacji.
+Dla mniejszych zbiorów danych ta strategia może ograniczać dostępną liczbę danych treningowych, co wpływa negatywnie na wydajność klasyfikacji.
 
-	\item wpływ początku i końca  nagrań samogłosek na wyniki klasyfikacji
+	\item Wpływ początku i końca  nagrań samogłosek na wyniki klasyfikacji
 \item[] Główną różnicą między korpusami wykorzystywanymi do klasyfikacji choroby Parkinsona jest obecność fragmentów nagrania oznaczonych jako \emph{onset} i \emph{offset}.
 Niektóre nagrania zawierają te segmenty, podczas gdy inne zostały ich pozbawione, aby zapewnić stabilniejszą fonację, co jest korzystne dla pewnych cech i algorytmów analizy.
 W celu oceny znaczenia informacji zawartych w obszarach \emph{onset} i \emph{offset} dla klasyfikacji przeprowadzono eksperymenty porównawcze,
@@ -288,7 +279,7 @@ wykorzystując nagrania zarówno z fragmentami przyciętymi, jak i nieprzycięty
 Wyniki tych eksperymentów ukazały, że wyeliminowanie fragmentów początkowych i końcowych wpłynęło negatywnie na dokładność klasyfikacji.
 To wskazuje na to, że obszary te zawierają istotne informacje artykulacyjne, które mają znaczenie dla procesu klasyfikacji.
 
- 	\item eksperymenty międzykorpusowe a zdolności generalizacyjne
+ 	\item Eksperymenty międzykorpusowe a zdolności generalizacyjne
 	\item [] Większość badań dotyczących diagnozowania choroby Parkinsona na podstawie głosu opiera się na jednym lub ewentualnie kilku (wykorzystywanych niezależnie)
 korpusach mowy.
 W tym kontekście często pomija się badanie zdolności klasyfikatorów do ogólnego zastosowania.
@@ -297,45 +288,41 @@ przetestowania zdolności ogólnych modeli.
 Skuteczność tych modeli różniła się w zależności od języka zbioru testowego.
 Może to wynikać z odmiennej różnorodności nagrań, co ma wpływ na stabilność modelu.
 Drugim możliwym wyjaśnieniem jest to, że głos osób z chorobą Parkinsona może być w różnym stopniu obarczony objawami choroby w zależności od języka ojczystego lub stopnia zaawansowania choroby.
-Innymi słowy, w zależności od użytego zbioru danych objawy mogą być nasilone w różny sposób i konieczne jest wzięcie tego pod uwagę tak by zdolności generalizacyjne modelu były jak najwyższe.
+Innymi słowy, w zależności od użytego zbioru danych objawy mogą być nasilone w różny sposób i konieczne jest wzięcie tego pod uwagę tak by zdolności generalizacyjne modelu były jak największe.
 \end{enumerate}
 
 
-Identyfikacja i świadomość wpływu powyższych czynników pozwala na dostosowaniu przeprowadzanych eksperymentów tak, aby uniknąć wyników zbyt optymistycznych.
+Identyfikacja i świadomość wpływu powyższych czynników pozwala na dostosowanie przeprowadzanych eksperymentów tak, aby uniknąć wyników zbyt optymistycznych.
 Usystematyzowanie podejścia do analizy głosu pod kątem diagnostyki choroby Parkinsona przyczyni się do możliwości obiektywnego porównania istniejących i nowych rozwiązań.
 Tym samym przyspieszy to postęp w tej dziedzinie i uzyskanie optymalnego rozwiązania, które mogłoby zostać wykorzystane w rzeczywistym środowisku.
-
-Nie są to jednak wszystkie czynniki, które zaburzają obiektywność wyników.
-Konieczna jest dyskusja na temat nowych kompleksowych linii bazowych dla prowadzenia eksperymentów w automatycznym wykrywaniu PD na podstawie fonacji,
-a także innych ogólnych zastosowań przetwarzania mowy.
 
 Prace nad automatyczną detekcją Parkinsona na podstawie głosu trwają już od dłuższego czasu.
 Jednak wciąż brakuje systemu, który mógłby zostać uznany za wystarczająco niezawodne narzędzie diagnostyczne.
 Wśród problemów, które ograniczają rzeczywiste wykorzystanie takich systemów wyróżnia się:
 \begin{itemize}[itemsep=0.1pt]
-	\item zróżnicowanie wzorców mowy: osoby z chorobą Parkinsona mogą różnić się w sposób, w jaki zmiany w mowie wpływają na ich głos.
+	\item Zróżnicowanie wzorców mowy.
+Osoby z chorobą Parkinsona mogą różnić się w sposób, w jaki zmiany w mowie wpływają na ich głos.
 To zróżnicowanie utrudnia stworzenie uniwersalnego modelu, który działałby skutecznie dla wszystkich pacjentów.
-	\item wpływ zmiennych czynników: wpływ na mowę mogą mieć różne czynniki, takie jak zmęczenie, stres czy otoczenie akustyczne.
+	\item Wpływ zmiennych czynników. Wpływ na mowę mogą mieć różne czynniki, takie jak zmęczenie, stres czy otoczenie akustyczne.
 Te zmienne mogą wprowadzać zakłócenia w analizie mowy i utrudniać jednoznaczną diagnozę.
-	\item potrzeba dużej bazy danych: aby stworzyć dokładny system detekcji, konieczne jest posiadanie dużej bazy danych głosów osób z i
+	\item Potrzeba dużej bazy danych.
+Aby stworzyć dokładny system detekcji, konieczne jest posiadanie dużej bazy danych głosów osób z i
 bez choroby Parkinsona.
 Uzyskanie takiej bazy danych, która odzwierciedla różnorodność pacjentów i warunki środowiskowe, może być wyzwaniem.
 Większość publikacji opiera się na bazach danych zawierających około 50 nagrań, co nie jest wystarczająco reprezentatywną próbą.
-	\item wczesne wykrycie i subtelne objawy: wczesne stadia choroby Parkinsona często manifestują się subtelnie, a różnice w mowie mogą być
-trudne do zauważenia.
-To może prowadzić do błędnych diagnoz lub niskiej skuteczności systemu.
-	\item weryfikacja i walidacja: Aby narzędzie diagnostyczne oparte na mowie było skuteczne, musi być poddane rygorystycznym testom w rzeczywistych
+	\item Weryfikacja i walidacja.
+	Aby narzędzie diagnostyczne oparte na mowie było skuteczne, musi być poddane rygorystycznym testom w rzeczywistych
 warunkach klinicznych.
 Weryfikacja i walidacja takiego systemu to skomplikowany proces.
-	\item ograniczenia technologiczne: pomimo postępów w technologii analizy mowy, istnieją nadal ograniczenia w dokładności i precyzji takich systemów.
+	\item Ograniczenia technologiczne.
+	Pomimo postępów w technologii analizy mowy, istnieją nadal ograniczenia w dokładności i precyzji takich systemów.
 Może to prowadzić do wyników fałszywie pozytywnych lub negatywnych.
-	\item aspekty etyczne i prywatność: wykorzystywanie danych głosowych do diagnozowania chorób podnosi kwestie związane z prywatnością i etyką.
+	\item Aspekty etyczne i prywatność. Wykorzystywanie danych głosowych do diagnozowania chorób podnosi kwestie związane z prywatnością i etyką.
 Konieczne jest zagwarantowanie odpowiednich zabezpieczeń danych i zgody pacjentów na wykorzystanie ich informacji w celach medycznych.
 \end{itemize}
 
 Mimo tych wyzwań, prace nad wykorzystaniem analizy mowy do diagnozowania choroby Parkinsona są obiecujące i mogą przyczynić się do poprawy jakości życia
 pacjentów oraz usprawnienia procesu diagnozy i leczenia.
-Jednakże przed stworzeniem skutecznego narzędzia diagnostycznego opartego na głosie jest jeszcze wiele pracy do wykonania
-
+Jednakże przed stworzeniem skutecznego narzędzia diagnostycznego opartego na głosie jest jeszcze wiele pracy do wykonania.
 W niniejszej pracy podjęta zostanie próba implementacji takiego rozwiązania.
 Uwzględnione zostaną wszystkie z rekomendacji przedstawionych w artykule~\cite{SustainedVowelsProblems}.
