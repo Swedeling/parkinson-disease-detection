@@ -35,11 +35,7 @@ Jest to podobne do procesu nauki lekarza – im więcej przypadków lekarz widzi
 W  uczeniu maszynowym większa ilość danych pozwala na uchwycenie różnic międzyosobniczych i niuansów w danych, co przekłada się na większą stabilność i skuteczność modelu.
 Model musi być w stanie radzić sobie z nowymi danymi, które nie były używane podczas treningu.
 
-W badaniu opublikowanym w artykule~\cite{SustainedVowelsProblems} podkreślono, że często zespoły badawcze zajmujące się rozwiązaniami do automatycznej diagnozy choroby Parkinsona na podstawie mowy polegają na jednej bazie danych.
-Takie podejście może prowadzić do wyników, które są zbyt optymistyczne.
-Nie uwzględniają one bowiem na przykład różnic związanych z pochodzeniem badanych oraz warunków i sposobu przeprowadzania nagrań.
-
-W pracy wykorzystano dane, zarejestrowane dla 3 różnych jezyków: polskiego, włoskiego oraz hiszpańskiego.
+W pracy wykorzystano dane, zarejestrowane dla 3 różnych języków: polskiego, włoskiego oraz hiszpańskiego.
 Wykorzystanie baz danych uwzględniając różne grupy językowe pozwala na analizę uniwersalności narzędzia służącego do automatycznej diagnozy choroby Parkinsona, tak by nie było ono ograniczone tylko do jednej grupy narodowościowej czy geograficznej.
 Takie podejście pozwala na utworzenie modelu uniwersalnego, który mógłby być używany na skalę międzynarodową przyczyniając się do poprawy jakości opieki zdrowotnej i diagnozy tej choroby.
 
@@ -135,9 +131,7 @@ Liczba mężczyzn &25 &25 &50 \\ \hline
 \end{tabular}
 \end{table}
 
-\subsection{Podsumowanie wykorzystanych baz danych}
-\label{subsec:podsumowanie-baz}
-
+\section*{}
 Połączenie baz danych było możliwe ze względu na uniwersalność podstawy diagnostycznej, jaką są podtrzymywane samogłoski.
 Nagrania różniły się długością, jednak wykorzystano jedynie krótkie fragmenty (0,1 s), więc nie stanowiło to problemu.
 Wszystkie zostały zarejestrowane z częstotliwością próbkowania 44,1 kHz.
@@ -154,25 +148,26 @@ Szczegółowe charakterystyki zbioru danych zostały przedstawione na Rys.~\ref{
     \begin{subfigure}{0.9\textwidth}
         \centering
        	\includegraphics[width=0.60\textwidth]{./img/database stats/languages_distribution}
-	    \caption{Udział nagrań w poszczególnych językach w ostatecznej bazie danych}
+	    \caption{Udział nagrań z poszczególnych grup językowych}
         \label{fig:language-distribution}
     \end{subfigure}
 
-    \begin{subfigure}{0.9\textwidth}
+    \begin{subfigure}{0.85\textwidth}
         \centering
         \includegraphics[width=0.60\textwidth]{./img/database stats/age_distribution}
-        \caption{Rozkład klas w grupach wiekowych}
+        \caption{Rozkład grup wiekowych w poszczególnych klasach}
         \label{fig:age-distribution}
     \end{subfigure}
 
-    \begin{subfigure}{0.9\textwidth}
+    \begin{subfigure}{0.85\textwidth}
         \centering
        \includegraphics[width=0.65\textwidth]{./img/database stats/gender_distribution}
 	    \caption{Rozkład płci w klasach}
         \label{fig:gender-distribution}
     \end{subfigure}
 
-    \caption{Charakterystyka wykorzystanej bazy danych}
+    \caption{Charakterystyka wykorzystanej bazy danych. (a) stosunek liczby osób z poszczególnych grup językowych;
+        (b) rozkład wiekowy w grupie osób z chorobą Parkinsona i grupie osób zdrowych; (c) rozkład płci w grupie osób z PD i grupie osób zdrowych.}
     \label{fig:charakterystyka-bazy}
 \end{figure}
 
@@ -239,7 +234,7 @@ Sygnały po przekształceniach przedstawiono na rysunku~\ref{fig:recordings}.
         \label{fig:recording_PD}
     \end{subfigure}
 
-    \caption{Porównanie przykładowego nagrania osoby zdrowej (HC) oraz chorej (PD), po preprocessingu (hiszpańskojęzyczny zbiór danych, samogłoska /a/)}
+    \caption{Przykładowe nagrania samogłoski /a/ po preprocessingu (a) dla osoby zdrowej oraz (b) dla osoby z chorobą Parkinsona.}
     \label{fig:recordings}
 \end{figure}
 
@@ -339,31 +334,32 @@ Augmentacja została przeprowadzona tylko dla zbioru treningowego i walidacyjneg
 
 \begin{figure}[ht]
     \centering
-    \begin{subfigure}{0.7\textwidth}
+    \begin{subfigure}{0.68\textwidth}
         \includegraphics[width=\linewidth]{./img/augmentation/rolled}
         \caption{Przesunięcie w czasie\@}
         \label{fig:roll}
     \end{subfigure}
 
-    \begin{subfigure}{0.7\textwidth}
+    \begin{subfigure}{0.68\textwidth}
         \includegraphics[width=\linewidth]{./img/augmentation/pitch}
         \caption{Zmiana wysokości dźwięku\@}
         \label{fig:pitch}
     \end{subfigure}
 
-    \begin{subfigure}{0.7\textwidth}
+    \begin{subfigure}{0.68\textwidth}
         \includegraphics[width=\linewidth]{./img/augmentation/slow}
         \caption{Spowolnienie\@}
         \label{fig:slow}
     \end{subfigure}
 
-    \begin{subfigure}{0.7\textwidth}
+    \begin{subfigure}{0.68\textwidth}
         \includegraphics[width=\linewidth]{./img/augmentation/speed}
         \caption{Przyspieszenie\@}
         \label{fig:speed}
     \end{subfigure}
 
-    \caption{Porównanie różnych technik augmentacji i ich wpływu na wygląd spektrogramu (zbiór danych PC-GITA, samogłoska /a/, HC)}
+    \caption{Porównanie wpływu technik augmentacji na wygląd mel-spektrogramu. Po lewej stronie przedstawiony jest mel-spektrogram obliczony na podstawie surowego sygnału, a po prawej stronie widoczne są efekty augmentacji, w kolejności: (a) przesunięcie w czasie, (b) zmiana wysokości dźwięku, (c) spowolnienie sygnału oraz (d) przyspieszenie sygnału. (Zbiór danych: PC-GITA, samogłoska /a/, HC)}
+
     \label{fig:augumentacja}
 \end{figure}
 
@@ -428,10 +424,11 @@ MobileNetV2, z kolei, jest lekki i mobilny, co pozwala na przenośność rozwią
 VGG16 i ResNet50, choć głębokie, mają zdolność do wyodrębniania skomplikowanych wzorców, co może być przydatne w diagnozie.
 Porównanie różnych klasyfikatorów pozwoli na ocenę ich wydajności i skuteczności w diagnostyce na podstawie głosu.
 
-Po początkowym przeszkoleniu na zbiorze danych ImageNet przeprowadzono proces fine-tuningu na wcześniej przygotowanym zestawie danych.
+Po początkowym przeszkoleniu na zbiorze danych ImageNet przeprowadzono proces \emph{fine-tuningu} na wcześniej przygotowanym zestawie danych.
+Fine-tuning to technika dostosowywania już przeszkolonych modeli do specyficznych zastosowań.
 Modele były dostosowywane w celu nauki rozpoznawania specyficznych cech akustycznych charakterystycznych dla pacjentów z chorobą Parkinsona.
-Proces ten obejmował dodawanie warstw gęstych oraz korzystanie z techniki dropout.
-Dzięki tym modyfikacjom klasyfikatory stały się bardziej odpowiednie do analizy dźwięku oraz diagnozowania choroby Parkinsona na podstawie danych głosowych.
+Proces ten obejmował dodawanie dodatkowych warstw gęstych do modelu oraz wykorzystywanie techniki dropout, która pomaga uniknąć przeuczenia modelu.
+Dzięki tym modyfikacjom klasyfikatory stały się bardziej odpowiednie do analizy dźwięku oraz diagnozowania choroby Parkinsona na podstawie danych głosowych
 
 %W każdym przypadku wykorzystano pretrenowane wagi do ekstrakcji cech.
 %Ostatnią warstwę gęstą zastąpiono odpowiednimi warstwami, zależnie od architektury sieci.
@@ -543,29 +540,60 @@ W podanych wzorach zastosowano oznaczenia:  TP – True Positive, TN – True Ne
 	\item Dokładność (ang.~\emph{accuracy})
     \item [] To prosta i intuicyjna miara, która oblicza stosunek poprawnie sklasyfikowanych próbek do wszystkich próbek.
     Wyraża ona ogólną skuteczność klasyfikacji.
-    Wyrażana jest wzorem~\ref{eq:accuracy}
+    Opisywana jest wzorem~\ref{eq:accuracy}
     \begin{equation}
-        \frac{TP + TN}{TP + FN + TN + FP}\label{eq:accuracy}
+        \text{Accuracy} = \frac{TP + TN}{TP + FN + TN + FP}
+        \label{eq:accuracy}
     \end{equation}
+    , gdzie:
+
+\quad$TP$ - True Positives (prawdziwie pozytywne),
+
+\quad$TN$ - True Negatives (prawdziwie negatywne),
+
+\quad$FP$ - False Positives (fałszywie pozytywne),
+
+\quad$FN$ - False Negatives (fałszywie negatywne).
+
     \item Precyzja (ang.~\emph{precision})
     \item [] Mierzy stosunek prawdziwie pozytywnych predykcji do sumy prawdziwie pozytywnych i  fałszywie pozytywnych predykcji.
 Wyraża zdolność modelu do identyfikowania prawdziwie pozytywnych przypadków.
 Określa się ją wzorem~\ref{eq:precision}
       \begin{equation}
-        \frac{TP}{TP + FP}\label{eq:precision}
+        \text{Precision} = \frac{TP}{TP + FP}\label{eq:precision}
     \end{equation}
+    , gdzie:
+
+\quad$TP$ - True Positives (prawdziwie pozytywne),
+
+\quad$FP$ - False Positives (fałszywie pozytywne).
+
     \item Czułość (ang.~\emph{recall})
     \item [] Jest to stosunek prawdziwie pozytywnych predykcji do sumy prawdziwie pozytywnych i fałszywie negatywnych predykcji.
 Wyrażana jest wzorem~\ref{eq:recall} i określa zdolność modelu do wykrywania wszystkich prawdziwie pozytywnych przypadków.
     \begin{equation}
-        \frac{TP}{TP + FN}\label{eq:recall}
+        \text{Recall} = \frac{TP}{TP + FN}\label{eq:recall}
     \end{equation}
+    , gdzie:
+
+\quad$TP$ - True Positives (prawdziwie pozytywne),
+
+\quad$FN$ - False Negatives (fałszywie negatywne).
+
     \item Miara F1 (ang.~\emph{F1-score})
     \item [] To harmoniczna średnia precyzji i czułości.
 Jest używana jako miara równowagi między precyzją a czułością.
 Wyższe wartości wskazują na lepszą jakość klasyfikacji modelu.
 Wyraża się ją wzorem~\ref{eq:f1}.
   \begin{equation}
-        \frac{2 * TP}{2 * TP + FP + FN}\label{eq:f1}
+        \text{F1} = \frac{2 * TP}{2 * TP + FP + FN}\label{eq:f1}
     \end{equation}
+        , gdzie:
+
+\quad$TP$ - True Positives (prawdziwie pozytywne),
+
+\quad$FP$ - False Positives (fałszywie pozytywne),
+
+\quad$FN$ - False Negatives (fałszywie negatywne).
+
 \end{enumerate}

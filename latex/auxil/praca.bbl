@@ -620,47 +620,70 @@
     \field{year}{2021}
   \endentry
 
-  \entry{vocal_task_comparision}{article}{}
-    \name{author}{3}{}{%
-      {{hash=KM}{%
-         family={Kodali},
-         familyi={K\bibinitperiod},
-         given={Manila},
-         giveni={M\bibinitperiod},
+  \entry{vocal-tasks}{article}{}
+    \name{author}{8}{}{%
+      {{hash=OAJR}{%
+         family={Orozco-Arroyave},
+         familyi={O\bibinithyphendelim A\bibinitperiod},
+         given={Juan\bibnamedelima Rafael},
+         giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
       }}%
-      {{hash=KSR}{%
-         family={Kadiri},
-         familyi={K\bibinitperiod},
-         given={Sudarsana\bibnamedelima Reddy},
-         giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+      {{hash=HF}{%
+         family={H{\"o}nig},
+         familyi={H\bibinitperiod},
+         given={Florian},
+         giveni={F\bibinitperiod},
       }}%
-      {{hash=AP}{%
-         family={Alku},
-         familyi={A\bibinitperiod},
-         given={Paavo},
-         giveni={P\bibinitperiod},
+      {{hash=ALJD}{%
+         family={Arias-Londo{\~n}o},
+         familyi={A\bibinithyphendelim L\bibinitperiod},
+         given={Juli{\'a}n\bibnamedelima David},
+         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=VBJF}{%
+         family={Vargas-Bonilla},
+         familyi={V\bibinithyphendelim B\bibinitperiod},
+         given={Jes{\'u}s\bibnamedelima Francisco},
+         giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=DK}{%
+         family={Daqrouq},
+         familyi={D\bibinitperiod},
+         given={Khaled},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Skodda},
+         familyi={S\bibinitperiod},
+         given={Sabine},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=RJ}{%
+         family={Rusz},
+         familyi={R\bibinitperiod},
+         given={Jan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=NE}{%
+         family={N{\"o}th},
+         familyi={N\bibinitperiod},
+         given={Elmar},
+         giveni={E\bibinitperiod},
       }}%
     }
-    \keyw{Parkinson’s disease, Severity level classification, MDS-UPDRS-III,
-  MDS-UPDRS-S}
-    \strng{namehash}{KMKSRAP1}
-    \strng{fullhash}{KMKSRAP1}
+    \strng{namehash}{OAJR+1}
+    \strng{fullhash}{OAJRHFALJDVBJFDKSSRJNE1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb https://doi.org/10.1016/j.csl.2023.101548
-    \endverb
-    \field{issn}{0885-2308}
-    \field{pages}{101548}
-    \field{title}{Automatic classification of the severity level of
-  Parkinson’s disease: A comparison of speaking tasks, features, and
-  classifiers}
+    \field{pages}{481\bibrangedash 500}
+    \field{title}{Automatic detection of Parkinson's disease in running speech
+  spoken in three different languages.}
     \verb{url}
-    \verb https://www.sciencedirect.com/science/article/pii/S0885230823000670
+    \verb https://api.semanticscholar.org/CorpusID:19394601
     \endverb
-    \field{volume}{83}
-    \field{journaltitle}{Computer Speech \& Language}
-    \field{year}{2023}
+    \field{volume}{139 1}
+    \field{journaltitle}{The Journal of the Acoustical Society of America}
+    \field{year}{2016}
   \endentry
 
   \entry{monitoring_speech}{inproceedings}{}
@@ -941,54 +964,6 @@
     \field{journaltitle}{Current Aging Science}
     \field{month}{06}
     \field{year}{2019}
-  \endentry
-
-  \entry{Majda-Zdancewicz_Potulska-Chromik_Jakubowski_Nojszewska_Kostera-Pruszczyk}{article}{}
-    \name{author}{5}{}{%
-      {{hash=MZE}{%
-         family={Majda-Zdancewicz},
-         familyi={M\bibinithyphendelim Z\bibinitperiod},
-         given={Ewelina},
-         giveni={E\bibinitperiod},
-      }}%
-      {{hash=PCA}{%
-         family={Potulska-Chromik},
-         familyi={P\bibinithyphendelim C\bibinitperiod},
-         given={Anna},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=JJ}{%
-         family={Jakubowski},
-         familyi={J\bibinitperiod},
-         given={Jacek},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=NM}{%
-         family={Nojszewska},
-         familyi={N\bibinitperiod},
-         given={Monika},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=KPA}{%
-         family={Kostera-Pruszczyk},
-         familyi={K\bibinithyphendelim P\bibinitperiod},
-         given={Anna},
-         giveni={A\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{MZE+1}
-    \strng{fullhash}{MZEPCAJJNMKPA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{issn}{0239-7528}
-    \field{number}{3}
-    \field{pages}{art. no. e137347}
-    \field{title}{Deep learning vs feature engineering in the assessment of
-  voice signals for diagnosis in Parkinson’s disease}
-    \field{volume}{69}
-    \field{journaltitle}{Bulletin of the Polish Academy of Sciences. Technical
-  Sciences}
-    \field{year}{2021}
   \endentry
 
   \entry{Gunduz}{article}{}

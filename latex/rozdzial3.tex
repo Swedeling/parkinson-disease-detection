@@ -54,11 +54,14 @@ Podstawą rozwiązań opartych na analizie głosu jest zadanie potencjalnemu pac
 	\item monolog.
 \end{itemize}
 
-Dotychczas nie przeprowadzono badań porównawczych dotyczących wpływu wyboru zadania wokalnego na efektywność klasyfikacji w przypadku choroby Parkinsona (PD).
-Jedynie w artykule~\cite{vocal_task_comparision} przeprowadzono takie porównanie, przy użyciu cech prozodii (brzmieniowych
-właściwości mowy nakładających się na głoskowy, sylabiczny i wyrazowy ciąg wypowiedzi).
-Nie pozwala to jednak na wyciągnięcie obiektywnych wniosków, ponieważ każde z zadań wokalnych może wymagać innego podejścia i metod klasyfikacji.
-Niemniej jednak, autorzy publikacji~\cite{monitoring_speech} przeprowadzili badanie na 200 pacjentach z PD,
+
+W publikacji~\cite{vocal-tasks} przeprowadzono porównanie wpływu zadania wokalnego na efektywność klasyfikacji w przypadku choroby Parkinsona.
+Porównano bazy danych w języku hiszpańskim, niemieckim oraz czeskim wykorzystując zadania wokalne w postaci czytanego tekstu, zdań, izolowanych słów oraz szybkiego powtarzania sylab /pa/-/ta/-/ka/ (DDK).
+Wyniki zależne były od wykorzystywanego zbioru i wszystkie rodzaje danych okazały się w różnym stopniu odpowiednie do tego zadania.
+Jednak ocena DDK okazała się najbardziej odpowiednia w międzyjęzykowych testach.
+Zabrakło w tym porównaniu uwzględnienia podtrzymywanych samogłosek.
+
+Autorzy publikacji~\cite{monitoring_speech} przeprowadzili badanie na 200 pacjentach z PD,
 gdzie dokonano klasyfikacji deficytów mowy na pięć poziomów nasilenia.
 Oceniono typ (głos, artykulacja, płynność) oraz zakres upośledzenia dla każdego poziomu, korzystając z 2-minutowego fragmentu mowy.
 Wyniki ukazały, że głos stanowił najczęściej występujący i bardziej nasilony deficyt we wczesnych stadiach choroby.
@@ -97,15 +100,9 @@ Choć to podejście jest popularne, istnieją również bardziej zaawansowane me
 Niemniej jednak tradycyjna inżynieria cech ma swoje zalety, takie jak możliwość interpretacji wyników przy użyciu powszechnie znanych miar akustycznych.
 
 Inną perspektywą jest wykorzystanie spektrogramów jako podstawy dla procesu klasyfikacji.
-Proces ten polega na przekształceniu dźwięków mowy na formę wizualną na przykład w postaci spektrogramów, które obrazują zmiany w czasie i częstotliwości.
+Proces ten polega na przekształceniu dźwięków mowy na dane obrazowe na przykład w postaci spektrogramów lub mel-spektrogramów, które obrazują zmiany w czasie i częstotliwości.
 Następnie, sieci konwolucyjne (CNN), które są zaprojektowane do pracy z obrazami, mogą analizować struktury i wzorce w spektrogramach.
 To podejście może umożliwić dokładniejszą klasyfikację, szczególnie dla cech trudnych do wykrycia za pomocą innych metod.
-
-W publikacji~\cite{Majda-Zdancewicz_Potulska-Chromik_Jakubowski_Nojszewska_Kostera-Pruszczyk} przeprowadzono porównanie tradycyjnego podejścia
-opartego na inżynierii cech z nowoczesnym wykorzystaniem głębokich sieci neuronowych.
-Wyniki sugerują, że połączenie tych podejść może przynieść skuteczniejsze wyniki.
-Chociaż tradycyjna inżynieria cech osiągała lepsze wyniki, głębokie sieci, takie jak te z rodzin VGG i ResNet, mają potencjał do osiągnięcia jeszcze
-lepszych rezultatów.
 
 Publikacji na temat wykorzystania spektrogramów oraz CNN w klasyfikacji PD na podstawie mowy jest znacznie mniej niż tych dotyczących tradycyjnej inżynierii cech.
 Spośród 55 artykułów analizowanych w~\cite{ML_for_PD_review} tylko jeden dotyczył takiego podejścia.

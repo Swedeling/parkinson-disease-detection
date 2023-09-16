@@ -32,7 +32,7 @@ Razem z innymi chorobami neurodegeneracyjnymi, takimi jak choroba Alzheimera, ma
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./img/PD_prevalence}
+	\includegraphics[width=0.6\textwidth]{./img/PD_prevalence}
 	\caption{Rozpowszechnienie choroby Parkinsona w zależności od wieku \cite {global_PD}}
     \label{fig:PD_prevalance}
 \end{figure}
@@ -50,7 +50,7 @@ Proces diagnozowania choroby jest niezwykle złożony i czasochłonny.
 Nie istnieje obecnie kompletne badanie pozwalające na postawienie pewnej diagnozy.
 W związku z tym poszukuje się nowych rozwiązań, które mogłyby usprawnić ten proces.
 Coraz częściej wykorzystuje się metody uczenia maszynowego i sztucznej inteligencji w dziedzinie medycyny.
-W ramach niniejszej pracy przeanalizowano aktualny stan rzeczy oraz zbadano potencjał jednego z proponowanych w literaturze zrozwiązań, dotyczącego automatycznej diagnostyki
+W ramach niniejszej pracy przeanalizowano aktualny stan rzeczy oraz zbadano potencjał jednego z proponowanych w literaturze rozwiązań, dotyczącego automatycznej diagnostyki
 choroby Parkinsona na podstawie głosu.
 
 %---------------------------------------------------------------------------
@@ -58,13 +58,27 @@ choroby Parkinsona na podstawie głosu.
 \section{Cel pracy}
 \label{sec:celPracy}
 
-Celem pracy jest detekcja choroby Parkinsona na podstawie sygnału głosowego z wykorzystaniem metod uczenia maszynowego.
-Obejmuje to dokładny przegląd literaturowy ze szczególnym uwzględnieniem aktualnie najlepszych algorytmów
-dostępnych w literaturze.
-Pośrednim celem jest ocena skuteczności wybranych architektur konwolucyjnych sieci neuronowych (CNN) oraz analiza, która z wypowiadanych przez
-pacjentów samogłosek niesie ze sobą najwięcej informacji diagnostycznych.
+W pracy przedstawiono przegląd metod pozyskiwania informacji diagnostycznej w chorobie Parkinsona.
+Ponadto zaprezentowano aktualny stan wiedzy dotyczący klasyfikacji głosu w poparciu o badania literaturowe.
+Wykorzystano dane obrazowe sygnału głosu samogłosek /a/, /e/, /i/, /o/, /u/ w postaci mel-spektrogramów i zaproponowano sieci neuronowe CNN o różnej architekturze, w tym sieci VGG16, ResNet50, Xception, InceptionV3 ora MobileNetV2.
+Wyniki przedstawiono w postaci metryki dokładności, F1, specyficzności i precyzji.
+W efekcie pracy wyznaczono skuteczność działania poszczególnych algorytmów określających występowanie choroby Parkinsona.
 
 %---------------------------------------------------------------------------
 
 \section{Zakres pracy}
 \label{sec:zakresPracy}
+
+
+Praca koncentruje się na problematyce choroby Parkinsona, skupiając się na jej charakterystyce oraz na bieżących procesach diagnostycznych i terapeutycznych.
+W części teoretycznej przeprowadzono również gruntowny przegląd metod pozyskiwania informacji diagnostycznych w kontekście choroby Parkinsona oraz przedstawiono najnowsze osiągnięcia w klasyfikacji mowy w związku z tą chorobą.
+Przedstawiono również wyzwania, które stoją na drodze do stworzenia optymalnego rozwiązania do automatycznej diagnostyki choroby Parkinsona na podstawie głosu.
+
+W ramach części praktycznej przeprowadzono badania nad użytecznością wybranych architektur sieci neuronowych typu CNN w tym problemie badawczym.
+Wykorzystano trzy różne bazy danych w językach polskim, hiszpańskim oraz włoskim.
+Na potrzeby pracy osobiście zebrano nagrania głosowe od osób zdrowych posługujących się językiem polskim.
+Nagrania głosowe samogłosek  /a/, /e/, /i/, /o/, /u/ zostały poddane przekształceniu na dane obrazowe w postaci mel-spektrogramów.
+W trakcie badań zaproponowano oraz zaimplementowano różne architektury sieci neuronowych, takie jak VGG16, ResNet50, Xception, InceptionV3 oraz MobileNetV2.
+
+Na zakończenie pracy dokonano porównania testowanych algorytmów i analizowanych samogłosek w celu określenia, które z algorytmów wykazują największy potencjał i skuteczność w automatycznej diagnozie choroby Parkinsona na podstawie danych głosowych.
+Ocenę skuteczności przeprowadzono  przy użyciu metryk, takich jak dokładność, F1, specyficzność i precyzja.

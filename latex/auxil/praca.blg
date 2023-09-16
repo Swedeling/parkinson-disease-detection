@@ -34,7 +34,7 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'field_info' (item size: 4) to 10320 items.
+Reallocating 'field_info' (item size: 4) to 10180 items.
 Database file #1: praca-blx.bib
 Database file #2: bibliografia.bib
 Warning--entry type for "italian-database" isn't style-file defined
@@ -42,45 +42,45 @@ Warning--entry type for "italian-database" isn't style-file defined
 Biblatex version: 3.19
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 38 entries,
+You've used 37 entries,
             6399 wiz_defined-function locations,
-            1507 strings with 27347 characters,
-and the built_in function-call counts, 413588 in all, are:
-= -- 36896
-> -- 4091
-< -- 843
-+ -- 12999
-- -- 1648
-* -- 30017
-:= -- 51356
+            1496 strings with 26851 characters,
+and the built_in function-call counts, 413302 in all, are:
+= -- 37091
+> -- 3988
+< -- 819
++ -- 12980
+- -- 1606
+* -- 30068
+:= -- 51474
 add.period$ -- 0
-call.type$ -- 38
-change.case$ -- 407
+call.type$ -- 37
+change.case$ -- 400
 chr.to.int$ -- 105
-cite$ -- 74
-duplicate$ -- 42285
-empty$ -- 35180
-format.name$ -- 2959
-if$ -- 80852
+cite$ -- 72
+duplicate$ -- 41990
+empty$ -- 35149
+format.name$ -- 2910
+if$ -- 80756
 int.to.chr$ -- 0
-int.to.str$ -- 82
+int.to.str$ -- 80
 missing$ -- 0
-newline$ -- 1634
-num.names$ -- 1540
-pop$ -- 14580
+newline$ -- 1613
+num.names$ -- 1502
+pop$ -- 14273
 preamble$ -- 1
-purify$ -- 754
+purify$ -- 744
 quote$ -- 0
-skip$ -- 6341
+skip$ -- 6181
 stack$ -- 0
-substring$ -- 72839
-swap$ -- 6153
-text.length$ -- 852
+substring$ -- 73615
+swap$ -- 6027
+text.length$ -- 828
 text.prefix$ -- 8
 top$ -- 1
-type$ -- 1278
+type$ -- 1244
 warning$ -- 0
-while$ -- 6178
+while$ -- 6163
 width$ -- 0
-write$ -- 1597
+write$ -- 1577
 (There was 1 warning)
