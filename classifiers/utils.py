@@ -1,9 +1,7 @@
-from classifiers.MyAlexNet import MyAlexNet
-from classifiers.GNet import GNet
-from classifiers.InceptionV3 import InceptionNet
-from classifiers.ResNet50 import MyResNet50
+from classifiers.MyXception import MyXception
+from classifiers.MyInceptionV3 import MyInceptionV3
+from classifiers.MyResNet50 import MyResNet50
 from classifiers.MyVGG16 import MyVGG16
-from classifiers.LeNet5 import LeNet5
 from classifiers.MyMobileNet import MyMobileNet
 from config import CLASSIFIERS_TO_TEST
 
@@ -11,36 +9,25 @@ from config import CLASSIFIERS_TO_TEST
 def initialize_classifiers(train, test, setting, settings_dir, val):
     classifiers = {}
     for cls in CLASSIFIERS_TO_TEST:
-        if cls == "AlexNet":
-            classifiers[cls] = MyAlexNet(
-                train, test, settings=setting, results_dir=settings_dir, val_data=val
-            )
-        elif cls == "GNet":
-            classifiers[cls] = GNet(
-                train, test, settings=setting, results_dir=settings_dir, val_data=val
-            )
-        elif cls == "InceptionV3":
-            classifiers[cls] = InceptionNet(
-                train, test, settings=setting, results_dir=settings_dir, val_data=val
-            )
-        elif cls == "LeNet-5":
-            classifiers[cls] = LeNet5(
+        if cls == "VGG16":
+            classifiers[cls] = MyVGG16(
                 train, test, settings=setting, results_dir=settings_dir, val_data=val
             )
         elif cls == "ResNet50":
             classifiers[cls] = MyResNet50(
                 train, test, settings=setting, results_dir=settings_dir, val_data=val
             )
-        elif cls == "VGGNet":
-            classifiers[cls] = MyVGG16(
+        elif cls == "Xception":
+            classifiers[cls] = MyXception(
                 train, test, settings=setting, results_dir=settings_dir, val_data=val
             )
-        elif cls == "MobileNet":
+        elif cls == "MobileNetV2":
             classifiers[cls] = MyMobileNet(
                 train, test, settings=setting, results_dir=settings_dir, val_data=val
             )
-        elif cls == "AE":
-            classifiers[cls] = AE(
+        elif cls == "InceptionV3":
+            classifiers[cls] = MyInceptionV3(
                 train, test, settings=setting, results_dir=settings_dir, val_data=val
             )
+
     return classifiers

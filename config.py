@@ -12,7 +12,7 @@ LEARNING_RATE = 0.0005
 LANGUAGE_TO_LOAD = "spanish"
 VOWELS_TO_LOAD = ["a"]
 
-CLASSIFIERS_TO_TEST = ["VGGNet"] #  "InceptionV3" # LeNet-5 # "ResNet50", "VGGNet", "LeNet-5", "InceptionV3", "ResNet50", "MobileNet"
+CLASSIFIERS_TO_TEST = []    # "VGG16",  "ResNet50", "Xception", "InceptionV3", "MobileNetV2"
 SPECTROGRAMS = False
 MELSPECTROGRAMS = True
 MFCC = False
