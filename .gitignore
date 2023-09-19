@@ -132,21 +132,6 @@ dmypy.json
 
 # private data
 /data
-/latex/templates
-/language analysis
+/latex
 /results
 /models
-/data - x
-/results_copies
-/results_italian
-/results_polish
-/results_spanish
-/results_italian.zip
-/results_polish.zip
-/data.zip
-/data-verI.zip
-/models_all
-/models_spanish
-/results without cv
-/results_all
-/stare wyniki

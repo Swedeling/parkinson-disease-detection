@@ -330,9 +330,10 @@ Współczynnik spowolnienia jest losowo wybierany z przedziału [0,2; 0,8].
 Współczynnik przyspieszenia jest losowo wybierany z przedziału [1,2; 2,5].
 \end{enumerate}
 
-Augmentacja została przeprowadzona tylko dla zbioru treningowego i walidacyjnego.
+Augmentacja została przeprowadzona tylko dla zbioru treningowego i walidacyjnego, aby zwiększyć różnorodność danych uczących oraz poprawić wydajność modelu w procesie uczenia maszynowego.
+Zbiór testowy pozostaje nienaruszony, aby zachować jego niezmienność i umożliwić obiektywną ocenę skuteczności modelu na nieznanych wcześniej danych.
 
-\begin{figure}[ht]
+\begin{figure}[hp]
     \centering
     \begin{subfigure}{0.68\textwidth}
         \includegraphics[width=\linewidth]{./img/augmentation/rolled}
