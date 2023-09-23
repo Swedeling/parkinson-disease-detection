@@ -1,21 +1,17 @@
-import scipy
+from config import AUGMENTATION, SIGNAL_DURATION
+from utils.signal_processing import *
 
-from utils.audio_spectrogram import *
-from utils.preprocessing import silence_removing
-import numpy as np
-from scipy.signal import find_peaks, butter, lfilter
 import cv2
 from dataclasses import dataclass
 import librosa
 import matplotlib.pyplot as plt
+import numpy as np
 import os
+import scipy
+from scipy.signal import find_peaks
 import shutil
 import wave
-import random
-import seaborn as sns
 
-AUGUMENTATION = ["filtered", "pitch", "slow", "speed", "rolled"] #,  "pitch", "filtered", "rolled", "slow", "speed"
-SIZE = 224
 
 @dataclass
 class Recording:
@@ -28,15 +24,15 @@ class Recording:
     language: str
 
     def __post_init__(self):
-        self.recording_path = os.path.join(self.dir_path, "trimmed_recordings", self.vowel, self.filename)
+        self.recording_path = os.path.join(self.dir_path, "recordings", self.vowel, self.dataset, self.filename)
         self.spectrogram_dir = os.path.join(self.dir_path, "spectrograms", self.vowel)
-        self.melspectrogram_dir = os.path.join(self.dir_path, "melspectrograms", self.vowel)
+        self.mel_spectrogram_dir = os.path.join(self.dir_path, "mel-spectrograms", self.vowel)
         try:
-            self.audio, self.sr = librosa.load(self.recording_path, sr=44100, duration=0.5)
+            self.audio, self.sr = librosa.load(self.recording_path, sr=SR, duration=SIGNAL_DURATION)
         except:
             self.audio = []
 
-        self.trimmed_audio = self.audio
+        self.trimmed_audio = self._trim_recording()
         self.length = len(self.trimmed_audio)
         self.spectrograms = {}
 
@@ -45,65 +41,23 @@ class Recording:
             setting_params = setting.split("_")
             spectrogram_type = setting_params[0]
 
-            binsize, overlap = int(setting_params[1]), float(setting_params[2])
             filename = self.filename.split(".")[0] + "_" + setting
 
-            if spectrogram_type == "melspectrogram":
-                melspectrogram_dir = os.path.join(self.melspectrogram_dir, setting)
-                if not os.path.exists(melspectrogram_dir):
-                    os.makedirs(melspectrogram_dir)
-                spectrograms = self._get_melspectrogram(binsize, overlap, setting, filename)
+            if spectrogram_type == "mel-spectrogram":
+                n_mels, binsize, overlap = int(setting_params[1]), int(setting_params[2]), int(setting_params[3])
+                mel_spectrogram_dir = os.path.join(self.mel_spectrogram_dir, setting)
+                if not os.path.exists(mel_spectrogram_dir):
+                    os.makedirs(mel_spectrogram_dir)
+                spectrograms = self._get_mel_spectrogram(n_mels, binsize, overlap, setting, filename)
                 self.spectrograms[setting] += spectrograms
 
             elif spectrogram_type == "spectrogram":
+                binsize, overlap = int(setting_params[1]), int(setting_params[2])
                 spectrogram_dir = os.path.join(self.spectrogram_dir, setting)
                 if not os.path.exists(spectrogram_dir):
                     os.makedirs(spectrogram_dir)
                 spectrograms = self._get_spectrogram(binsize, overlap, setting, filename)
-                self.spectrograms[setting] = spectrograms
-
-    def random_roll(self, signal):
-        shift_amount = np.random.randint(0, len(signal)) if len(signal) > 0 else 0
-        rolled_signal = np.roll(signal, shift_amount)
-        return rolled_signal
-
-    def pitch_change(self, y):
-        time_stretch_factor = random.uniform(3, 5) * random.choice([-1, 1])
-        stretched_audio = librosa.effects.pitch_shift(y, sr=self.sr, n_steps=time_stretch_factor)
-        resampled_audio = librosa.resample(stretched_audio, orig_sr=self.sr, target_sr=self.sr)
-        return resampled_audio
-
-    def speed_up(self, y):
-        speed_factor = random.uniform(1.2, 2.5)
-        y_fast = librosa.resample(y, orig_sr=self.sr, target_sr=self.sr)
-        return y_fast
-
-    def slow_down(self, y):
-        speed_factor = random.uniform(0.2, 0.8)
-        y_slow = librosa.resample(y, orig_sr=self.sr, target_sr=self.sr)
-        return y_slow
-
-    def color_noise(self, y):
-        power_law_exponent = random.uniform(4, 6)
-        noise = np.random.normal(0, 0.5, len(y))
-        power_law_noise = noise ** power_law_exponent
-        power_law_noise[np.isnan(power_law_noise)] = 0
-        noisy_audio = y + power_law_noise
-        return noisy_audio
-
-    def bandpass_filter(self, signal):
-        low_freq = 500  # Hz
-        high_freq = 1500  # Hz
-        def butter_bandpass(lowcut, highcut, fs, order=5):
-            nyq = 0.5 * fs
-            low = lowcut / nyq
-            high = highcut / nyq
-            b, a = butter(order, [low, high], btype='band')
-            return b, a
-
-        b, a = butter_bandpass(low_freq, high_freq, self.sr)
-        y = lfilter(b, a, signal)
-        return y
+                self.spectrograms[setting] += spectrograms
 
     def _trim_recording(self):
         trimmed_recording_dir = os.path.join(self.dir_path, "trimmed_recordings", self.vowel)
@@ -133,145 +87,72 @@ class Recording:
         trimmed_recording = np.trim_zeros(trimmed_recording)
         return np.trim_zeros(trimmed_recording)
 
+    @staticmethod
+    def load_spectrogram(path):
+        spectrogram = np.load(path, allow_pickle=True)
+        index_of_min = spectrogram.shape.index(min(spectrogram.shape))
+        size = max(spectrogram.shape)
+        spectrogram = np.repeat(spectrogram, size / spectrogram.shape[index_of_min], axis=index_of_min)
+        spectrogram = cv2.resize(spectrogram, (size, size), interpolation=cv2.INTER_AREA)
+
+        return spectrogram
+
     def _get_spectrogram(self, binsize, overlap, settings_dir, filename):
         spectrogram_path = os.path.join(self.spectrogram_dir, settings_dir, filename)
         spectrograms = []
-        for augmentation in AUGUMENTATION:
-            if not os.path.exists(spectrogram_path + f"_{augmentation}.png"):
-                self._generate_spectrogram(augmentation, binsize, overlap, settings_dir, filename,)
+        for augmentation in AUGMENTATION:
+            if not os.path.exists(spectrogram_path + f"_{augmentation}.npy"):
+                self._generate_spectrogram(augmentation, binsize, overlap, settings_dir, filename)
 
-            image_array = cv2.imread(spectrogram_path + f"_{augmentation}.png")
-            resized_image = cv2.resize(image_array, (SIZE, SIZE))
-            spectrograms.append(resized_image)
+            if os.path.exists(spectrogram_path + f"_{augmentation}.npy"):
+                spectrogram = self.load_spectrogram(spectrogram_path + f"_{augmentation}.npy")
+                spectrograms.append(spectrogram)
         return spectrograms
 
-    def _generate_spectrogram(self, augmentation, binsize, overlap, settings_dir, filename, colormap="gnuplot2"):
-        aug = augmentation.split("_")[0]
-        if aug == "clear":
-            y = self.trimmed_audio
-        if aug == "rolled":
-            y = self.trimmed_audio
-            y = self.random_roll(y)
-        if aug == "filtered":
-            y = self.trimmed_audio
-            y = self.bandpass_filter(y)
-        if aug == "aug":
-            y = self.trimmed_audio  # [int(self.sr * 0.1):int(self.sr * 0.6)]
-            y = self.random_roll(y)
-            y = self.bandpass_filter(y)
-        D = librosa.amplitude_to_db(librosa.stft(y), ref=np.max)
-        plt.figure(figsize=(10, 6))
-        librosa.display.specshow(D, sr=self.sr, x_axis='off', y_axis='off')
+    def _generate_spectrogram(self, augmentation, binsize, overlap, settings_dir, filename):
+        signal = apply_audio_augmentation(self.audio, augmentation)
+        if signal is not None:
+            d = np.abs(librosa.stft(signal, n_fft=binsize, hop_length=overlap))
+            d_db = librosa.amplitude_to_db(d, ref=np.max)
 
-        plt.axis('off')
-        plt.tight_layout()
-        plt.savefig(os.path.join(self.spectrogram_dir, settings_dir, filename + f'_{augmentation}.png'), pad_inches=0, transparent=True)
-        plt.close()
+            spectrogram_path = os.path.join(self.spectrogram_dir, settings_dir, filename)
+            self.save_spectrogram(d_db, spectrogram_path, augmentation)
 
-    def _get_melspectrogram(self, binsize, overlap, settings_dir, filename):
-        melspectrogram_path = os.path.join(self.melspectrogram_dir, settings_dir, filename)
-        images = []
+    def _get_mel_spectrogram(self, n_mels, binsize, overlap, settings_dir, filename):
+        mel_spectrogram_path = os.path.join(self.mel_spectrogram_dir, settings_dir, filename)
+        mel_spectrograms = []
 
-        if self.filename == "s_1_x_x_a_001.wav" and self.classname == 0:
-            print(self.classname)
-            y = self.audio[int(self.sr * 0.41):]
-            y = self.bandpass_filter(y)
-            colors = sns.color_palette('flare')
-            print(self.classname)
-            n = 9
-            # plt.subplot(3, 1, 1)
-            plt.plot([x / SR for x in range(0, len(y))], y, color=colors[2])
-            plt.grid(True)
-            # plt.title(f"Surowe nagranie: {filename}", fontsize=n)
-            plt.xlabel("Czas [s]", fontsize=8)
-            plt.ylabel("Amplituda", fontsize=n)
+        for augmentation in AUGMENTATION:
+            if not os.path.exists(mel_spectrogram_path + f"_{augmentation}.npy"):
+                self._generate_mel_spectrogram(augmentation, n_mels, binsize, overlap, settings_dir, filename)
 
-            # plt.subplot(3, 1, 2)
-            # plt.plot([x / SR for x in range(0, len(voice_audio))], voice_audio, color=colors[1])
-            # plt.grid(True)
-            # plt.title("Nagranie po usunięciu fragmentów ciszy", fontsize=8)
-            # plt.xlabel("Czas [s]", fontsize=8)
-            # plt.ylabel("Amplituda", fontsize=n)
-            #
-            # plt.subplot(3, 1, 3)
-            # plt.plot([x / SR for x in range(0, len(normalized_signal))], normalized_signal, color=colors[2])
-            # plt.grid(True)
-            # plt.title("Nagranie po usunięciu fragmentów ciszy i normalizacji", fontsize=8)
-            # plt.xlabel("Czas [s]", fontsize=8)
-            # plt.ylabel("Amplituda", fontsize=n)
-            # plt.subplots_adjust(hspace=0.8)
-            plt.show()
+            if os.path.exists(mel_spectrogram_path + f"_{augmentation}.npy"):
+                mel_spectrogram = self.load_spectrogram(mel_spectrogram_path + f"_{augmentation}.npy")
+                mel_spectrograms.append(mel_spectrogram)
 
-        for augmentation in AUGUMENTATION:
-            if not os.path.exists(melspectrogram_path + f"_{augmentation}.npy"):
-                self._generate_melspectrogram(augmentation, binsize, overlap, settings_dir, filename)
+        return mel_spectrograms
 
-            melspectrogram = np.load(melspectrogram_path + f"_{augmentation}.npy", allow_pickle=True)
-            melspectrogram = np.repeat(melspectrogram, 128 // melspectrogram.shape[1], axis=1)
+    def _generate_mel_spectrogram(self, augmentation, n_mels, binsize, overlap, settings_dir, filename):
+        signal = apply_audio_augmentation(self.audio, augmentation)
 
-            melspectrogram = cv2.resize(melspectrogram, (128, 128), interpolation=cv2.INTER_AREA)
+        if signal is not None:
+            s = librosa.feature.melspectrogram(y=signal, sr=self.sr, n_mels=n_mels, fmax=self.sr,  n_fft=binsize,
+                                               hop_length=overlap, window=scipy.signal.windows.hann)
+            s_db = librosa.power_to_db(s, ref=np.max)
+            mel_spectrogram_path = os.path.join(self.mel_spectrogram_dir, settings_dir, filename)
+            self.save_spectrogram(s_db, mel_spectrogram_path, augmentation)
 
-            images.append(melspectrogram)
-        return images
-
-    def _generate_melspectrogram(self, augmentation, binsize, overlap, settings_dir, filename, colormap="gnuplot2"):
-        aug = augmentation.split("_")[0]
-        y = self.audio
-        if aug == "clear":
-            pass
-        if aug == "filtered":
-            pass
-        if aug == "pitch":
-            y = self.pitch_change(y)
-        if aug == "speed":
-            y = self.speed_up(y)
-        if aug == "slow":
-            y = self.slow_down(y)
-        if aug == "noise":
-            y = self.color_noise(y)
-
-        y = y[int(self.sr*0.41):]
-
-        if aug == "rolled":
-            y = self.random_roll(y)
-
-        y = self.bandpass_filter(y)
-
-        sr = self.sr
-        librosa.feature.mfcc(y=y, sr=sr)
-
-        librosa.feature.mfcc(y=y, sr=sr, hop_length=binsize, htk=True)
-
-        S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=overlap, fmax=44100,  n_fft=2048, hop_length=binsize, window=scipy.signal.windows.hann)
-
-        librosa.feature.mfcc(S=librosa.power_to_db(S))
-
-        mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=12)
-
-        melspectrogram_path = os.path.join(self.melspectrogram_dir, settings_dir, filename)
-
-        filename_without_extensionx = melspectrogram_path
-
-        filename_without_extension = filename_without_extensionx + f'_{augmentation}.png'
-
-        filename_without_extension_npy = filename_without_extensionx + f'_{augmentation}.npy'
-
-        fig, ax = plt.subplots(sharex=True, figsize=(20, 15))
-
-        img = librosa.display.specshow(librosa.power_to_db(S, ref=np.max), x_axis='time', y_axis='mel', fmax=44100)
-
+    def save_spectrogram(self, s_db, spectrogram_path, augmentation):
+        fig, ax = plt.subplots(figsize=(20, 15))
+        img = librosa.display.specshow(s_db, x_axis='time', y_axis='mel', fmax=self.sr)
         fig.colorbar(img)
-
         ax.set(title='Mel spectrogram')
-
         ax.label_outer()
-
         ax.set_ylim([0, 22000])
 
-        plt.savefig(filename_without_extension,  pad_inches=0, transparent=True)
-        np.save(filename_without_extension_npy, librosa.power_to_db(S, ref=np.max))
-
-        print('file was saved: ', filename_without_extension)
-
+        spectrogram_png = spectrogram_path + f'_{augmentation}.png'
+        spectrogram_npy = spectrogram_path + f'_{augmentation}.npy'
+        plt.savefig(spectrogram_png, pad_inches=0, transparent=True)
+        np.save(spectrogram_npy, s_db)
+        print('file was saved: ', spectrogram_png)
         plt.close()
-

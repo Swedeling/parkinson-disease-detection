@@ -1,18 +1,18 @@
-from classifiers.classifier_base import ClassifierBase
+from classifiers.ClassifierBase import ClassifierBase
 from keras.applications import VGG16
 from keras.layers import Dropout, Dense, Flatten
 from keras.models import Model
 
 
 class MyVGG16(ClassifierBase):
-    def __init__(self, train_data, test_data, settings, results_dir, val_data):
-        super().__init__(train_data, test_data, settings, results_dir, val_data)
+    def __init__(self, train_data, test_data, val_data, settings, results_dir):
+        super().__init__(train_data, test_data, val_data, settings, results_dir)
 
     def _name(self):
-        return "VGGNet"
+        return "VGG16"
 
     def _create_model(self):
-        base_model = VGG16(weights='imagenet', include_top=False, input_shape=(128, 128, 3))
+        base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
         for layer in base_model.layers:
             layer.trainable = False
         x = Flatten()(base_model.output)

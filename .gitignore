@@ -133,5 +133,3 @@ dmypy.json
 # private data
 /data
 /latex
-/results
-/models

@@ -1,12 +1,12 @@
-from classifiers.classifier_base import ClassifierBase
+from classifiers.ClassifierBase import ClassifierBase
 from keras.applications import ResNet50
 from keras.layers import Input, Dense, Dropout, Flatten
 from keras.models import Model
 
 
 class MyResNet50(ClassifierBase):
-    def __init__(self, train_data, test_data, settings, results_dir, val_data):
-        super().__init__(train_data, test_data, settings, results_dir, val_data)
+    def __init__(self, train_data, test_data, val_data, settings, results_dir):
+        super().__init__(train_data, test_data, val_data, settings, results_dir)
 
     def _name(self):
         return "ResNet50"

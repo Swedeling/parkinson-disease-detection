@@ -6,28 +6,28 @@ from classifiers.MyMobileNet import MyMobileNet
 from config import CLASSIFIERS_TO_TEST
 
 
-def initialize_classifiers(train, test, setting, settings_dir, val):
+def initialize_classifiers(train, test, val, setting, results_dir):
     classifiers = {}
     for cls in CLASSIFIERS_TO_TEST:
         if cls == "VGG16":
             classifiers[cls] = MyVGG16(
-                train, test, settings=setting, results_dir=settings_dir, val_data=val
+                train, test, settings=setting, results_dir=results_dir, val_data=val
             )
         elif cls == "ResNet50":
             classifiers[cls] = MyResNet50(
-                train, test, settings=setting, results_dir=settings_dir, val_data=val
+                train, test, settings=setting, results_dir=results_dir, val_data=val
             )
         elif cls == "Xception":
             classifiers[cls] = MyXception(
-                train, test, settings=setting, results_dir=settings_dir, val_data=val
+                train, test, settings=setting, results_dir=results_dir, val_data=val
             )
         elif cls == "MobileNetV2":
             classifiers[cls] = MyMobileNet(
-                train, test, settings=setting, results_dir=settings_dir, val_data=val
+                train, test, settings=setting, results_dir=results_dir, val_data=val
             )
         elif cls == "InceptionV3":
             classifiers[cls] = MyInceptionV3(
-                train, test, settings=setting, results_dir=settings_dir, val_data=val
+                train, test, settings=setting, results_dir=results_dir, val_data=val
             )
 
     return classifiers

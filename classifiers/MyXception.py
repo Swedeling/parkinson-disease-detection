@@ -1,15 +1,15 @@
-from classifiers.classifier_base import ClassifierBase
+from classifiers.ClassifierBase import ClassifierBase
 from keras.applications import Xception
 from keras.layers import Dense, GlobalAveragePooling2D, Flatten
 from keras.models import Model
 
 
 class MyXception(ClassifierBase):
-    def __init__(self, train_data, test_data, settings, results_dir, val_data):
-        super().__init__(train_data, test_data, settings, results_dir, val_data)
+    def __init__(self, train_data, test_data, val_data, settings, results_dir):
+        super().__init__(train_data, test_data, val_data, settings, results_dir)
 
     def _name(self):
-        return "MyXception"
+        return "Xception"
 
     def _create_model(self):
         base_model = Xception(weights='imagenet', include_top=False, input_shape=(299, 299, 3))

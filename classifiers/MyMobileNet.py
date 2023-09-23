@@ -1,15 +1,15 @@
-from classifiers.classifier_base import ClassifierBase
+from classifiers.ClassifierBase import ClassifierBase
 from keras.applications import MobileNetV2
 from keras.layers import Dense, Dropout, GlobalAveragePooling2D, Flatten
 from keras.models import Model
 
 
 class MyMobileNet(ClassifierBase):
-    def __init__(self, train_data, test_data, settings, results_dir, val_data=None):
-        super().__init__(train_data, test_data, settings, results_dir, val_data)
+    def __init__(self, train_data, test_data, val_data, settings, results_dir):
+        super().__init__(train_data, test_data, val_data, settings, results_dir)
 
     def _name(self):
-        return "MobileNet"
+        return "MobileNetV2"
 
     def _create_model(self):
         base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
