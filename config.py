@@ -2,21 +2,21 @@ import os
 from utils.utils import get_languages_to_load
 
 # LANGUAGES AND VOWELS
-LANGUAGES = ["polish"]
-VOWELS_TO_ANALYZE = ["a"]   # "a", "e", "i", "o", "u"
+LANGUAGES = ["polish", "italian", "spanish"]
+VOWELS_TO_ANALYZE = ["a", "e", "i", "o", "u"]   # "a", "e", "i", "o", "u"
 
 # LEARNING SETTINGS
 BATCH_SIZE = 16
-CLASSIFIERS_TO_TEST = ["VGG16",  "ResNet50"]    # "VGG16",  "ResNet50", "Xception", "InceptionV3", "MobileNetV2"
-CROSS_VALIDATION_SPLIT = 2
+CLASSIFIERS_TO_TEST = ["VGG16",  "ResNet50", "Xception", "InceptionV3", "MobileNetV2"]    # "VGG16",  "ResNet50", "Xception", "InceptionV3", "MobileNetV2"
+CROSS_VALIDATION_SPLIT = 10
 DEVICE = "CPU"
-EPOCHS = 2
+EPOCHS = 50
 LEARNING_RATE = 0.0005
 LOSS_FUNCTION = 'binary_crossentropy'
 OPTIMIZER = 'sgd'
 
 # SPECTROGRAM SETTINGS
-AUGMENTATION = ["filtered", "pitch", "slow", "speed", "rolled", "noise"]   # "filtered", "pitch", "slow", "speed", "rolled", "noise"
+AUGMENTATION = ["filtered", "pitch", "slow", "speed", "rolled"]   # "filtered", "pitch", "slow", "speed", "rolled", "noise"
 BINSIZE = [2048]
 OVERLAP = [512]
 N_MELS = 320
@@ -28,7 +28,7 @@ SR = 44100
 SIGNAL_DURATION = 0.1   # time in [s]
 
 # FEEDBACK SETTINGS
-SHOW_PLOTS = True
+SHOW_PLOTS = False
 SHOW_LEARNING_PROGRESS = False
 
 # CONSTANT SETTINGS
