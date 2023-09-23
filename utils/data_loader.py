@@ -80,8 +80,6 @@ class DataLoader:
             spectrograms = [recording.spectrograms[setting] for recording in x]
             spectrograms_list_flattened = [item for sublist in spectrograms for item in sublist]
             labels = np.array([item for item in y for _ in range(len(AUGMENTATION))])
-            print(len(spectrograms_list_flattened))
-            print(spectrograms_list_flattened[0].shape)
 
             spectrograms = np.array(spectrograms_list_flattened)
             labels = np.array(labels)

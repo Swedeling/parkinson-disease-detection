@@ -65,10 +65,6 @@ class ClassifierBase(ABC):
         return x_data, y_data
 
     def run_classifier(self):
-        plt.imshow(self.x_train[0][0])
-        plt.axis('off')
-        plt.show()
-
         callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
         learning_params = "{}_{}_{}".format(LOSS_FUNCTION, OPTIMIZER_NAME, BATCH_SIZE)
         results_dir = os.path.join(self.results_dir, learning_params)
