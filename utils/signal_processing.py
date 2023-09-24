@@ -4,7 +4,7 @@ import seaborn as sns
 from config import SR, SHOW_PLOTS
 import librosa
 import random
-from scipy.signal import butter, lfilter
+from scipy.signal import butter, lfilter, resample
 from sklearn.preprocessing import MinMaxScaler
 
 
@@ -61,17 +61,17 @@ def pitch_change(y):
 
 
 def speed_up(y):
-    speed_factor = random.uniform(1.2, 2.5)
-    target_sr = int(SR / speed_factor)
-    y_fast = librosa.resample(y, orig_sr=SR, target_sr=target_sr)
-    return y_fast
+    speed_factor = random.uniform(1.2, 1.5)
+    y_fast = librosa.effects.time_stretch(y, rate=speed_factor)
+    y_restored = librosa.resample(y_fast, orig_sr=int(SR / speed_factor), target_sr=SR)
+    return y_restored
 
 
 def slow_down(y):
     speed_factor = random.uniform(0.2, 0.8)
-    target_sr = int(SR / speed_factor)
-    y_slow = librosa.resample(y, orig_sr=SR, target_sr=target_sr)
-    return y_slow
+    y_slow = librosa.effects.time_stretch(y, rate=speed_factor)
+    y_restored = librosa.resample(y_slow, orig_sr=int(SR / speed_factor), target_sr=SR)
+    return y_restored
 
 
 def color_noise(y):
