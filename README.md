@@ -150,7 +150,7 @@ LANGUAGES = ["polish", "italian", "spanish"]
 VOWELS_TO_ANALYZE = ["a", "e", "i", "o", "u"]   # "a", "e", "i", "o", "u"
 ```
 
-In the above example, three languages have been selected: Polish, Italian, and Spanish. You can customize this list by choosing languages defined in the *AVAILABLE_LANGUAGES* variable or by adding new languages to the list.
+In the above example, three languages have been selected: Polish, Italian, and Spanish. You can customize this list by choosing languages defined in the `AVAILABLE_LANGUAGES` variable or by adding new languages to the list.
 
 The vowels for analysis are selected from the available options in the database, organized according to the structure described earlier. The analysis is conducted separately for each selected vowel.
 
@@ -175,7 +175,7 @@ MELSPECTROGRAMS = True  # Choose True to perform analysis for mel-spectrograms
 ```
 Spectrogram Parameters
 
-For BINSIZE and OVERLAP, you can choose multiple values, and the analysis will be conducted iteratively for all combinations.
+For `BINSIZE` and `OVERLAP`, you can choose multiple values, and the analysis will be conducted iteratively for all combinations.
 
 ```python
 BINSIZE = [2048]  # You can adjust the size of the spectrogram window (binsize)
