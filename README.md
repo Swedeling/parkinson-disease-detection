@@ -6,6 +6,48 @@ The project focuses on analyzing voice signals, specifically vowels /a/, /e/, /i
 
 The project code is available in this repository and can be used to perform similar analyses in other contexts or for further research in the field of Parkinson's disease diagnostics. The key project parameters can be customized in the [config.py](./config.py) file, allowing for easy configuration of the analysis to meet specific needs.
 
+## Requirements and Environment
+
+To use this project, make sure you have all the required dependencies installed. You can find all the necessary libraries and their versions in the `requirements.txt` file.
+
+### Installing Dependencies
+
+1. Open a terminal or command prompt.
+
+2. Navigate to the project directory.
+
+3. Run the command `pip install -r requirements.txt` to install all the required libraries.
+
+This will install all the libraries needed to run the project.
+
+Make sure you are using the appropriate version of Python as required by the project.
+
+### Creating a Virtual Environment (Optional)
+
+If you want to maintain isolation from other Python projects, we recommend creating a virtual environment. Here's how to do it:
+
+1. Open a terminal or command prompt.
+
+2. Navigate to the project directory.
+
+3. Execute the following commands:
+
+```bash
+# Install the virtualenv tool (if not already installed)
+pip install virtualenv
+
+# Create a virtual environment
+virtualenv venv
+
+# Activate the virtual environment (for Windows)
+venv\Scripts\activate
+
+# Activate the virtual environment (for macOS/Linux)
+source venv/bin/activate
+```
+After creating the virtual environment, you can proceed with installing dependencies and using the project within an isolated environment.
+
+
 ## Running the Program
 To run this program, follow these steps:
 

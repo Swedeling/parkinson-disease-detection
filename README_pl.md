@@ -7,6 +7,48 @@ Projekt skupia się na analizie sygnału głosu, konkretnie na samogłoskach /a/
 
 Kod projektu jest dostępny w tym repozytorium i może być używany do przeprowadzenia podobnych analiz w innych kontekstach lub do dalszego rozwoju badań w dziedzinie diagnostyki choroby Parkinsona. Najważniejsze parametry projektu można dostosować w pliku [config.py](./config.py), co pozwala na łatwą konfigurację analizy pod własne potrzeby.
 
+
+## Wymagania i Środowisko
+
+Aby korzystać z tego projektu, upewnij się, że masz zainstalowane wszystkie wymagane zależności. Wszystkie niezbędne biblioteki i ich wersje znajdziesz w pliku `requirements.txt`.
+
+### Instalacja zależności
+
+1. Otwórz terminal lub wiersz polecenia.
+
+2. Przejdź do katalogu projektu.
+
+3. Uruchom polecenie `pip install -r requirements.txt` w celu zainstalowania wszystkich wymaganych bibliotek.
+
+To spowoduje instalację wszystkich bibliotek wymaganych do uruchomienia projektu.
+
+```bash
+pip install --upgrade -r requirements.txt
+````
+
+### Tworzenie Wirtualnego Środowiska (Opcjonalne)
+Jeśli chcesz zachować izolację od innych projektów Pythona, zalecamy utworzenie wirtualnego środowiska. Oto jak to zrobić:
+
+1. Otwórz terminal lub wiersz polecenia.
+
+2. Przejdź do katalogu projektu.
+
+3. Wykonaj następujące polecenia:
+
+```bash
+# Instalacja narzędzia virtualenv (jeśli nie jest zainstalowane)
+pip install virtualenv
+
+# Utworzenie wirtualnego środowiska
+virtualenv venv
+
+# Aktywacja wirtualnego środowiska (dla systemu Windows)
+venv\Scripts\activate
+
+# Aktywacja wirtualnego środowiska (dla systemu macOS/Linux)
+source venv/bin/activate
+```
+
 ## Uruchamianie programu
 Aby uruchomić ten program, wykonaj następujące kroki:
 
@@ -21,7 +63,7 @@ Aby uruchomić ten program, wykonaj następujące kroki:
 ```bash
 python main.py
 ```
-
+Po utworzeniu wirtualnego środowiska możesz kontynuować instalację zależności i korzystać z projektu w izolowanym środowisku.
 
 ## Przygotowanie danych
 Aby rozpocząć pracę z tym projektem, należy odpowiednio przygotować dane. Poniżej znajdziesz kroki, które należy podjąć, aby to zrobić:
