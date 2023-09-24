@@ -122,7 +122,7 @@ The project supports multiple languages, including:
 * Spanish (`spanish`)
 * Hungarian (`hungarian`)
 
-It is possible to expand the list of supported languages by adding new entries to the AVAILABLE_LANGUAGES dictionary in the [config.py](./config.py) file.
+It is possible to expand the list of supported languages by adding new entries to the `AVAILABLE_LANGUAGES` dictionary in the [config.py](./config.py) file.
 
 ```python
 AVAILABLE_LANGUAGES = {"polish": "pl", "italian": "itl", "spanish": "es", "hungarian": "hu"}
