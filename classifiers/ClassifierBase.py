@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from config import *
 import cv2
-import matplotlib.pyplot as plt
 import numpy as np
 import os
 import pandas as pd
@@ -29,7 +28,7 @@ class ClassifierBase(ABC):
         self.results_dir = os.path.join(results_dir, self.name)
         if not os.path.exists(self.results_dir):
             os.mkdir(self.results_dir)
-
+        
     @abstractmethod
     def _name(self):
         pass

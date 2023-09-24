@@ -22,14 +22,18 @@ class DataLoader:
     def load_recordings(self, label, vowel, mode):
         data = []
         classname = CLASSES.get(label, None)
-        if classname is not None:
-            for language in self.languages_to_load:
-                dir_path = os.path.join(RECORDINGS_DIR, language, "{}_{}".format(label, language))
-                vowel_dir_path = os.path.join(dir_path, "recordings", vowel, mode)
 
-                for recording_name in os.listdir(vowel_dir_path):
-                    recording = Recording(dir_path, vowel, recording_name, classname, self.settings, mode, language)
-                    data.append(recording)
+        if classname is None:
+            return data
+
+        for language in self.languages_to_load:
+            dir_path = os.path.join(RECORDINGS_DIR, language, "{}_{}".format(label, language))
+            vowel_dir_path = os.path.join(dir_path, "recordings", vowel, mode)
+
+            for recording_name in os.listdir(vowel_dir_path):
+                recording = Recording(dir_path, vowel, recording_name, classname, self.settings, mode, language)
+                data.append(recording)
+
         return data
 
     @staticmethod
@@ -52,7 +56,9 @@ class DataLoader:
         for train_indexes, val_indexes in kf.split(speakers_ids, speakers_classes):
             train_data, val_data = [], []
             train_labels, val_labels = [], []
-            x_train, x_val = speakers_ids[train_indexes], speakers_ids[val_indexes]
+
+            x_train = speakers_ids[train_indexes]
+            x_val = speakers_ids[val_indexes]
 
             for recording in data:
                 if "_".join(recording.filename.split("_")[0:2]) in x_train:
@@ -78,13 +84,10 @@ class DataLoader:
         cv_labels = []
         for x, y in zip(data[0], data[1]):
             spectrograms = [recording.spectrograms[setting] for recording in x]
-            spectrograms_list_flattened = [item for sublist in spectrograms for item in sublist]
+            spectrograms_list_flattened = np.array([item for sublist in spectrograms for item in sublist])
             labels = np.array([item for item in y for _ in range(len(AUGMENTATION))])
 
-            spectrograms = np.array(spectrograms_list_flattened)
-            labels = np.array(labels)
-
-            cv_spectrograms.append(spectrograms)
+            cv_spectrograms.append(spectrograms_list_flattened)
             cv_labels.append(labels)
 
         return cv_spectrograms, cv_labels

@@ -44,7 +44,9 @@ class Recording:
             filename = self.filename.split(".")[0] + "_" + setting
 
             if spectrogram_type == "mel-spectrogram":
-                n_mels, binsize, overlap = int(setting_params[1]), int(setting_params[2]), int(setting_params[3])
+                n_mels = int(setting_params[1])
+                binsize = int(setting_params[2])
+                overlap = int(setting_params[3])
                 mel_spectrogram_dir = os.path.join(self.mel_spectrogram_dir, setting)
                 if not os.path.exists(mel_spectrogram_dir):
                     os.makedirs(mel_spectrogram_dir)
@@ -52,7 +54,8 @@ class Recording:
                 self.spectrograms[setting] += spectrograms
 
             elif spectrogram_type == "spectrogram":
-                binsize, overlap = int(setting_params[1]), int(setting_params[2])
+                binsize = int(setting_params[1])
+                overlap = int(setting_params[2])
                 spectrogram_dir = os.path.join(self.spectrogram_dir, setting)
                 if not os.path.exists(spectrogram_dir):
                     os.makedirs(spectrogram_dir)

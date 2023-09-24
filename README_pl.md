@@ -5,7 +5,22 @@ Projekt ma na celu przeprowadzenie badań w dziedzinie automatycznej diagnostyki
 
 Projekt skupia się na analizie sygnału głosu, konkretnie na samogłoskach /a/, /e/, /i/, /o/, /u/, wykorzystując technikę melspektrogramów i różne architektury sieci neuronowych. Wyniki eksperymentów są automatycznie zapisywane i przedstawiane w postaci różnych metryk, takich jak dokładność (accuracy), F1, specyficzność, precyzja oraz macierze pomyłek.
 
-Kod projektu jest dostępny w tym repozytorium i może być używany do przeprowadzenia podobnych analiz w innych kontekstach lub do dalszego rozwoju badań w dziedzinie diagnostyki choroby Parkinsona. Najważniejsze parametry projektu można dostosować w pliku config.py, co pozwala na łatwą konfigurację analizy pod własne potrzeby.
+Kod projektu jest dostępny w tym repozytorium i może być używany do przeprowadzenia podobnych analiz w innych kontekstach lub do dalszego rozwoju badań w dziedzinie diagnostyki choroby Parkinsona. Najważniejsze parametry projektu można dostosować w pliku [config.py](./config.py), co pozwala na łatwą konfigurację analizy pod własne potrzeby.
+
+## Uruchamianie programu
+Aby uruchomić ten program, wykonaj następujące kroki:
+
+1. Upewnij się, że masz zainstalowane wszystkie niezbędne zależności.
+
+2. Otwórz terminal lub wiersz polecenia.
+
+3. Przejdź do katalogu projektu.
+
+4. Uruchom program, wykonując polecenie:
+
+```bash
+python main.py
+```
 
 
 ## Przygotowanie danych
@@ -13,7 +28,7 @@ Aby rozpocząć pracę z tym projektem, należy odpowiednio przygotować dane. P
 
 ### Ustawienie ścieżki do danych
 Pierwszym krokiem jest ustawienie odpowiedniej ścieżki do folderu, w którym znajdują się dane źródłowe. Możesz to zrobić, 
-edytując plik [config.py](./config.py) i zmieniając wartość zmiennej RECORDINGS_DIR, tak aby wskazywała na katalog zawierający dane. Oto przykład:
+edytując plik [config.py](./config.py) i zmieniając wartość zmiennej `RECORDINGS_DIR`, tak aby wskazywała na katalog zawierający dane. Oto przykład:
 
 ```python
 # PATHS
@@ -35,9 +50,11 @@ data
 |   |   |   |   |   |-- p_1_K_56_a_002.wav
 |   |   |   |   |-- test
 |   |   |   |   |   |-- p_5_K_69_a_001
-|   |   |-- e
-|   |   |-- i
-|   |   |-- ...
+|   |   |   |-- e
+|   |   |   |   |-- ...
+|   |   |   |-- i
+|   |   |   |   |-- ...
+|   |   |   |-- ...
 |   
 |   |-- PD_polish
 |   |   |-- recordings
@@ -59,6 +76,7 @@ Struktura ta jest opisana w następujący sposób:
         * `{samogłoska}`: Katalog zawierający nagrania danej samogłoski.
             * `train`: Katalog zawierający dane treningowe.
                 * `test`: Katalog zawierający dane testowe.
+            * data: The main data directory.
 
 ### Obsługiwane Języki
 Projekt obsługuje wiele języków, w tym:
@@ -68,14 +86,14 @@ Projekt obsługuje wiele języków, w tym:
 * Hiszpański (`spanish`)
 * Węgierski (`hungarian`)
 
-Możliwe jest rozszerzenie obsługiwanych języków, dodając nowe pozycje do słownika AVAILABLE_LANGUAGES w pliku [config.py](./config.py).
+Możliwe jest rozszerzenie obsługiwanych języków, dodając nowe pozycje do słownika `AVAILABLE_LANGUAGES` w pliku [config.py](./config.py).
 
 ```python
 AVAILABLE_LANGUAGES = {"polish": "pl", "italian": "itl", "spanish": "es", "hungarian": "hu"}
 ```
 
 ### Podział Danych
-Dane są podzielone na zbiór treningowy i testowy zgodnie z podejściem "split_wise". Oznacza to, że nagrania od tych samych osób nie mogą znaleźć się zarówno w zbiorze treningowym, jak i testowym. Jest to istotne dla poprawnego przeprowadzenia krosswalidacji.
+Dane są podzielone na zbiór treningowy i testowy zgodnie z podejściem `subject_wise`. Oznacza to, że nagrania od tych samych osób nie mogą znaleźć się zarówno w zbiorze treningowym, jak i testowym. Jest to istotne dla poprawnego przeprowadzenia krosswalidacji.
 
 ### Nazewnictwo Plików
 Nazwy plików w bazie danych mają określony schemat nazewnictwa:
@@ -103,7 +121,7 @@ W powyższym przykładzie wybrane zostały trzy języki: polski, włoski i hiszp
 Samogłoski do analizy są wybierane z dostępnych opcji w bazie danych, zorganizowanej zgodnie z wcześniej opisaną strukturą. Analiza jest przeprowadzana osobno dla każdej wybranej samogłoski.
 
 ### Parametry przy wczytywaniu nagrań
-Można dostosować długość wczytywanego nagrania i częstotliwość próbkowania w pliku [config.py](./config.py) .
+Można dostosować długość wczytywanego nagrania i częstotliwość próbkowania w pliku [config.py](./config.py).
 ```python
 # RECORDING SETTINGS
 SR = 44100
