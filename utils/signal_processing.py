@@ -4,7 +4,7 @@ import seaborn as sns
 from config import SR, SHOW_PLOTS
 import librosa
 import random
-from scipy.signal import butter, lfilter, resample
+from scipy.signal import butter, lfilter
 from sklearn.preprocessing import MinMaxScaler
 
 
